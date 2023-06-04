@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'package:giganoid_app/data/responses/people_list_response.dart';
-
 import 'repository.dart';
 import 'package:http/http.dart' as http;
-import '/data/data.dart';
+import '/domain/domain.dart';
 
 class TrendingRepository extends Repository {
   TrendingRepository(super.httpClient);
@@ -11,7 +9,7 @@ class TrendingRepository extends Repository {
   Future<http.Response> movies({required int page}) async {
     return await httpClient.get(
       endpoint(
-        path: "trending/movie/day",
+        path: "trending/movie/week",
         query: {"page": "$page"},
       ),
       headers: headers,
@@ -21,7 +19,7 @@ class TrendingRepository extends Repository {
   Future<http.Response> tv({required int page}) async {
     return await httpClient.get(
       endpoint(
-        path: "trending/tv/day",
+        path: "trending/tv/week",
         query: {"page": "$page"},
       ),
       headers: headers,
@@ -31,18 +29,18 @@ class TrendingRepository extends Repository {
   Future<http.Response> people({required int page}) async {
     return await httpClient.get(
       endpoint(
-        path: "trending/person/day",
+        path: "trending/person/week",
         query: {"page": "$page"},
       ),
       headers: headers,
     );
   }
 
-  MediaListResponse adapt(http.Response response) {
-    return MediaListResponse.fromJson(jsonDecode(response.body));
+  MediaList adapt(http.Response response) {
+    return MediaList.fromJson(jsonDecode(response.body));
   }
 
-  PeopleListResponse adaptForPeople(http.Response response) {
-    return PeopleListResponse.fromJson(jsonDecode(response.body));
+  PeopleList adaptForPeople(http.Response response) {
+    return PeopleList.fromJson(jsonDecode(response.body));
   }
 }

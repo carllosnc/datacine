@@ -16,6 +16,12 @@ class Repository {
   Repository(this.httpClient);
 
   Uri endpoint({required String path, Map<String, dynamic>? query}) {
-    return Uri.https(baseUrl, '/3/$path', query ?? {});
+    Map<String, dynamic> defaultQuery = {
+      'include_adult': 'false',
+    };
+
+    defaultQuery.addAll(query ?? {});
+
+    return Uri.https(baseUrl, '/3/$path', defaultQuery);
   }
 }
