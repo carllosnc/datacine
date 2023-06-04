@@ -17,7 +17,7 @@ void main() {
     final response = await trendingRepository.movies(page: 1);
     final movies = trendingRepository.adapt(response);
 
-    expect(movies.results, isA<List<MediaItem>>());
+    expect(movies.results, isA<List<MediaItem?>?>());
     expect(response.statusCode, 200);
   });
 
@@ -26,13 +26,14 @@ void main() {
     final response = await trendingRepository.tv(page: 1);
     final tvShows = trendingRepository.adapt(response);
 
-    expect(tvShows.results, isA<List<MediaItem>>());
+    expect(tvShows.results, isA<List<MediaItem?>?>());
     expect(response.statusCode, 200);
   });
 
   test('Check trending people', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.people(page: 1);
+
     final people = trendingRepository.adaptForPeople(response);
 
     expect(people.results, isA<List<PeopleItem>>());

@@ -17,7 +17,7 @@ void main() {
     final reponse = await movieRepository.nowPlayingMoviesData(page: 1);
     final movies = movieRepository.adapt(reponse);
 
-    expect(movies.results, isA<List<MediaItem>>());
+    expect(movies.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -26,7 +26,7 @@ void main() {
     final reponse = await movieRepository.popularMoviesData(page: 1);
     final movies = movieRepository.adapt(reponse);
 
-    expect(movies.results, isA<List<MediaItem>>());
+    expect(movies.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -35,7 +35,7 @@ void main() {
     final reponse = await movieRepository.topRatedMoviesData(page: 1);
     final movies = movieRepository.adapt(reponse);
 
-    expect(movies.results, isA<List<MediaItem>>());
+    expect(movies.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -44,7 +44,7 @@ void main() {
     final reponse = await movieRepository.upcomingMoviesData(page: 1);
     final movies = movieRepository.adapt(reponse);
 
-    expect(movies.results, isA<List<MediaItem>>());
+    expect(movies.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 }

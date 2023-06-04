@@ -18,7 +18,7 @@ void main() {
 
     final tvs = tvRepository.adapt(reponse);
 
-    expect(tvs.results, isA<List<MediaItem>>());
+    expect(tvs.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -28,7 +28,7 @@ void main() {
 
     final tvs = tvRepository.adapt(reponse);
 
-    expect(tvs.results, isA<List<MediaItem>>());
+    expect(tvs.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -38,7 +38,7 @@ void main() {
 
     final tvs = tvRepository.adapt(reponse);
 
-    expect(tvs.results, isA<List<MediaItem>>());
+    expect(tvs.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 
@@ -48,7 +48,7 @@ void main() {
 
     final tvs = tvRepository.adapt(reponse);
 
-    expect(tvs.results, isA<List<MediaItem>>());
+    expect(tvs.results, isA<List<MediaItem?>?>());
     expect(reponse.statusCode, 200);
   });
 }
