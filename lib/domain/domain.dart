@@ -1,2 +1,15 @@
-export 'entities/media_item.dart';
-export 'entities/people_item.dart';
+export 'entities/media_item/media_item.dart';
+export 'entities/media_list/media_list.dart';
+export 'entities/people_item/people_item.dart';
+export 'entities/people_list/people_list.dart';
+export 'entities/genre/genre.dart';
+export 'entities/production_company/production_company.dart';
+export 'entities/production_country/production_country.dart';
+export 'entities/spoken_language/spoken_language.dart';
+export 'entities/title/title.dart';
+export 'entities/backdrop/backdrop.dart';
+export 'entities/poster/poster.dart';
+export 'entities/logo/logo.dart';
+export 'entities/keyword/keyword.dart';
+export 'entities/video/video.dart';
+export 'entities/movie_details/movie_details.dart';
