@@ -1,4 +1,4 @@
-# Flutter Starter
+# Giganoid Mobile App
 
 ### What's inside
 
@@ -15,11 +15,11 @@
 ├──📁 domain
 ├──📁 views
 📂 tests
-├──📁 integration_tests
-├──📁 unit_tests
-├──📁 widget_tests
+├──📁 integration
+├──📁 unit
+├──📁 widget
 ```
-- **core**: routes, themes, extras
+- **core**: routes, themes, constrants, config, extras
 - **data**: repositories, services
 - **domain**: entities, contracts
 - **components**: shared widgets
