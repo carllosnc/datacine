@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/domain/domain.dart';
+import '/core/core.dart';
 
 class TvShowCreators extends StatelessWidget {
   final List<PersonItem>? creators;
@@ -21,7 +22,7 @@ class TvShowCreators extends StatelessWidget {
               DS1Text(
                 person.name!,
                 fontSize: 14,
-                fontColor: const Color.fromARGB(255, 63, 220, 255),
+                fontColor: ProjectColors.link,
               ),
               //check last
               if (index != creators!.length - 1) const DS1Text('•')

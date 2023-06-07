@@ -67,7 +67,7 @@ class MediaHeader extends StatelessWidget {
               const SizedBox(height: 2),
               DS1Text((movie?.title ?? tvshow?.name)!, fontSize: 18),
               const SizedBox(height: 15),
-              if (movie != null) MediaDirectors(credits: movie?.credits),
+              if (movie != null) MovieDirectors(credits: movie?.credits),
               TvShowCreators(creators: tvshow?.createdBy),
               const SizedBox(height: 20),
               Row(

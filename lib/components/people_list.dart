@@ -4,54 +4,6 @@ import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
 
-class _Card extends StatelessWidget {
-  final PersonItem peopleItem;
-
-  const _Card({
-    required this.peopleItem,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 110,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: ColorFiltered(
-                colorFilter: const ColorFilter.mode(
-                  ProjectColors.imageFilter,
-                  BlendMode.color,
-                ),
-                child: ImageComponent(
-                  imageSize: ImageSize.profileW185,
-                  imagePath: peopleItem.profilePath,
-                  imageType: ImageType.profile,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-          DS1Text(
-            peopleItem.originalName!,
-            truncate: 14,
-            fontSize: 13,
-          ),
-          DS1Text(
-            peopleItem.knownForDepartment!,
-            truncate: 10,
-            fontSize: 12,
-            fontColor: Colors.yellow,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class PeopleGrid extends StatelessWidget {
   final List<PersonItem?> list;
   final double maxWidth;
@@ -75,7 +27,42 @@ class PeopleGrid extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final PersonItem peopleItem = list[index]!;
 
-          return _Card(peopleItem: peopleItem);
+          return SizedBox(
+            width: 110,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: ColorFiltered(
+                      colorFilter: const ColorFilter.mode(
+                        ProjectColors.imageFilter,
+                        BlendMode.color,
+                      ),
+                      child: ImageComponent(
+                        imageSize: ImageSize.profileW185,
+                        imagePath: peopleItem.profilePath,
+                        imageType: ImageType.profile,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 5),
+                DS1Text(
+                  peopleItem.originalName!,
+                  truncate: 14,
+                  fontSize: 13,
+                ),
+                DS1Text(
+                  peopleItem.knownForDepartment!,
+                  truncate: 10,
+                  fontSize: 12,
+                  fontColor: Colors.yellow,
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

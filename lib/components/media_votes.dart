@@ -1,5 +1,6 @@
 import 'package:ds1/components/text/text.dart';
 import 'package:flutter/material.dart';
+import '/core/core.dart';
 
 class MediaVotes extends StatelessWidget {
   final num? voteAverage;
@@ -13,28 +14,29 @@ class MediaVotes extends StatelessWidget {
     required this.status,
   });
 
+  Color getVoteColor(num vote) {
+    if (vote >= 8) {
+      return ProjectColors.ratingGreat;
+    } else if (vote >= 7) {
+      return ProjectColors.ratingGood;
+    } else if (vote >= 4) {
+      return ProjectColors.ratingOk;
+    }
+
+    return ProjectColors.ratingBad;
+  }
+
   @override
   Widget build(BuildContext context) {
-    Color voteColor = Colors.red;
-    num vote = voteAverage?.round() ?? 0;
-
-    if (vote == 0 && status == null) return const SizedBox.shrink();
+    if (voteAverage == 0 && status == null) return const SizedBox.shrink();
 
     if (voteAverage == 0 && status != null) {
       return DS1Text(
         status.toString().toUpperCase(),
         bold: true,
         fontSize: 11,
-        fontColor: const Color.fromARGB(255, 225, 99, 247),
+        fontColor: ProjectColors.status,
       );
-    }
-
-    if (vote >= 8) {
-      voteColor = const Color.fromARGB(255, 36, 147, 40);
-    } else if (vote >= 6) {
-      voteColor = const Color.fromARGB(255, 21, 82, 237);
-    } else if (vote >= 4) {
-      voteColor = const Color.fromARGB(255, 178, 108, 4);
     }
 
     return Wrap(
@@ -55,12 +57,12 @@ class MediaVotes extends StatelessWidget {
           width: 45,
           height: 45,
           decoration: BoxDecoration(
-            color: voteColor,
+            color: getVoteColor(voteAverage!),
             borderRadius: const BorderRadius.all(Radius.circular(100)),
           ),
           child: Center(
               child: DS1Text(
-            vote.toString(),
+            voteAverage!.toStringAsFixed(1),
             fontSize: 15,
             bold: true,
           )),

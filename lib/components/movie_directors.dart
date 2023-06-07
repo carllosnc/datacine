@@ -2,11 +2,12 @@ import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import 'package:collection/collection.dart';
+import '/core/core.dart';
 
-class MediaDirectors extends StatelessWidget {
+class MovieDirectors extends StatelessWidget {
   final Map<String, List<PersonItem>>? credits;
 
-  const MediaDirectors({super.key, required this.credits});
+  const MovieDirectors({super.key, required this.credits});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class MediaDirectors extends StatelessWidget {
               DS1Text(
                 person.originalName!,
                 fontSize: 14,
-                fontColor: const Color.fromARGB(255, 63, 220, 255),
+                fontColor: ProjectColors.link,
               ),
               //check last
               if (index != directors!.length - 1) const DS1Text('•')
