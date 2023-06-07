@@ -1,2 +1,3 @@
 export './home/home.page.dart';
-export './media/media.dart';
+export './movie/movie.dart';
+export './tvshow/tvshow.dart';

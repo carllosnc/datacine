@@ -55,7 +55,7 @@ class _TrendingTabState extends State<TrendingTab>
           List<MediaItem> tvShows = snapshot.data['tvshows'];
           List<MediaItem> featuredMovies = snapshot.data['featuredMovies'];
           List<MediaItem> featuredTvShows = snapshot.data['featuredTvshows'];
-          List<PeopleItem> people = snapshot.data['people'];
+          List<PersonItem> people = snapshot.data['people'];
 
           return SingleChildScrollView(
             child: Column(
@@ -68,6 +68,7 @@ class _TrendingTabState extends State<TrendingTab>
                   list: featuredMovies,
                 ),
                 SimpleMediaGrid(
+                  mediaType: "movie",
                   list: movies,
                   maxWidth: constraints.maxWidth,
                 ),
@@ -80,6 +81,7 @@ class _TrendingTabState extends State<TrendingTab>
                   list: featuredTvShows,
                 ),
                 SimpleMediaGrid(
+                  mediaType: "tvshow",
                   list: tvShows,
                   maxWidth: constraints.maxWidth,
                 ),
