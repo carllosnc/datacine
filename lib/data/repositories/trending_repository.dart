@@ -40,7 +40,7 @@ class TrendingRepository extends Repository {
     return MediaList.fromJson(jsonDecode(response.body));
   }
 
-  PeopleList adaptForPeople(http.Response response) {
-    return PeopleList.fromJson(jsonDecode(response.body));
+  PersonList adaptForPeople(http.Response response) {
+    return PersonList.fromJson(jsonDecode(response.body));
   }
 }

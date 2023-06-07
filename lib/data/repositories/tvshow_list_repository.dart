@@ -3,8 +3,8 @@ import 'repository.dart';
 import 'package:http/http.dart' as http;
 import '/domain/domain.dart';
 
-class TVListRepository extends Repository {
-  TVListRepository(super.httpClient);
+class TvShowListRepository extends Repository {
+  TvShowListRepository(super.httpClient);
 
   Future<http.Response> airingToday({required int page}) async {
     return await httpClient.get(
