@@ -65,6 +65,7 @@ class _TrendingTabState extends State<TrendingTab>
                   icon: Icons.movie,
                 ),
                 ExtendedMediaCardList(
+                  mediaType: 'movie',
                   list: featuredMovies,
                 ),
                 SimpleMediaGrid(
@@ -78,6 +79,7 @@ class _TrendingTabState extends State<TrendingTab>
                   icon: Icons.tv,
                 ),
                 ExtendedMediaCardList(
+                  mediaType: 'tvshow',
                   list: featuredTvShows,
                 ),
                 SimpleMediaGrid(
