@@ -1,10 +1,10 @@
-import '/domain/domain.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '/domain/domain.dart';
 
-part 'people_list.g.dart';
+part 'person_list.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PeopleList {
+class PersonList {
   @JsonKey(name: 'total_pages')
   final num? totalPages;
 
@@ -13,17 +13,17 @@ class PeopleList {
 
   final num? page;
 
-  final List<PeopleItem>? results;
+  final List<PersonItem>? results;
 
-  PeopleList({
+  PersonList({
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  factory PeopleList.fromJson(Map<String, dynamic> json) =>
-      _$PeopleListFromJson(json);
+  factory PersonList.fromJson(Map<String, dynamic> json) =>
+      _$PersonListFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PeopleListToJson(this);
+  Map<String, dynamic> toJson() => _$PersonListToJson(this);
 }

@@ -4,8 +4,8 @@ part 'genre.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Genre {
-  num? id;
-  String? name;
+  final num? id;
+  final String? name;
 
   Genre({
     required this.id,

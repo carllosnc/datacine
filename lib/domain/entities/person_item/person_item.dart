@@ -1,10 +1,10 @@
 import '/domain/domain.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'people_item.g.dart';
+part 'person_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PeopleItem {
+class PersonItem {
   @JsonKey(name: 'original_name')
   final String? originalName;
 
@@ -17,15 +17,23 @@ class PeopleItem {
   @JsonKey(name: 'known_for')
   final List<MediaItem>? knownFor;
 
+  final String? name;
+
   final bool? adult;
+
   final num? id;
+
   final num? popularity;
+
   final num? gender;
+
   final String? character;
+
   final String? job;
+
   final String? department;
 
-  PeopleItem({
+  PersonItem({
     required this.adult,
     required this.id,
     required this.originalName,
@@ -37,10 +45,11 @@ class PeopleItem {
     required this.character,
     required this.job,
     required this.department,
+    required this.name,
   });
 
-  factory PeopleItem.fromJson(Map<String, dynamic> json) =>
-      _$PeopleItemFromJson(json);
+  factory PersonItem.fromJson(Map<String, dynamic> json) =>
+      _$PersonItemFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PeopleItemToJson(this);
+  Map<String, dynamic> toJson() => _$PersonItemToJson(this);
 }

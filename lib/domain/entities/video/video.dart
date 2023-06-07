@@ -10,12 +10,16 @@ class Video {
   @JsonKey(name: 'iso_3166_1')
   String? iso31661;
 
+  @JsonKey(name: 'published_at')
+  String? publishedAt;
+
   String? id;
   String? key;
   String? name;
   String? site;
   String? type;
   num? size;
+  bool? official;
 
   Video({
     required this.id,

@@ -6,85 +6,81 @@ part 'movie_details.g.dart';
 @JsonSerializable(explicitToJson: true)
 class MovieDetails {
   @JsonKey(name: 'backdrop_path')
-  String? backdropPath;
+  final String? backdropPath;
 
   @JsonKey(name: 'belongs_to_collection')
-  Map<String, dynamic>? belongsToCollection;
+  final Map<String, dynamic>? belongsToCollection;
 
   @JsonKey(name: 'imdb_id')
-  String? imdbId;
+  final String? imdbId;
 
   @JsonKey(name: 'original_language')
-  String? originalLanguage;
+  final String? originalLanguage;
 
   @JsonKey(name: 'original_title')
-  String? originalTitle;
+  final String? originalTitle;
 
   @JsonKey(name: 'poster_path')
-  String? posterPath;
+  final String? posterPath;
 
   @JsonKey(name: 'production_companies')
-  List<ProductionCompany>? productionCompanies;
+  final List<ProductionCompany>? productionCompanies;
 
   @JsonKey(name: 'production_countries')
-  List<ProductionContry>? productionCountries;
+  final List<ProductionContry>? productionCountries;
 
   @JsonKey(name: 'release_date')
-  String? releaseDate;
+  final String? releaseDate;
 
   @JsonKey(name: 'spoken_languages')
-  List<SpokenLanguage>? spokenLanguages;
+  final List<SpokenLanguage>? spokenLanguages;
 
   @JsonKey(name: 'vote_average')
-  num? voteAverage;
+  final num? voteAverage;
 
   @JsonKey(name: 'vote_count')
-  num? voteCount;
+  final num? voteCount;
 
   @JsonKey(name: 'external_ids')
-  Map<String, dynamic>? externalIds;
+  final Map<String, dynamic>? externalIds;
 
-  Map<String, List<PeopleItem>>? credits;
+  final Map<String, List<PersonItem>>? credits;
 
-  bool? adult;
+  final bool? adult;
 
-  num? budget;
+  final num? budget;
 
-  List<Genre>? genres;
+  final List<Genre>? genres;
 
-  String? homepage;
+  final String? homepage;
 
-  num? id;
+  final num? id;
 
-  String? overview;
+  final String? overview;
 
-  num? popularity;
+  final num? popularity;
 
-  num? revenue;
+  final num? revenue;
 
-  num? runtime;
+  final num? runtime;
 
-  String? status;
+  final String? status;
 
-  String? tagline;
+  final String? tagline;
 
-  String? title;
+  final String? title;
 
-  bool? video;
+  final bool? video;
 
-  List<Backdrop>? backdrops;
+  final Map<String, List<ImageItem>?>? images;
 
-  List<Poster>? posters;
+  final Map<String, List<Keyword>?>? keywords;
 
-  List<Logo>? logos;
+  final MediaList? recommendations;
 
-  Map<String, List<Keyword>?>? keywords;
+  final MediaList? similar;
 
-  MediaList? recommendations;
-
-  MediaList? similar;
-
-  Map<String, List<Video>?>? videos;
+  final Map<String, List<Video>?>? videos;
 
   MovieDetails({
     required this.adult,
@@ -113,9 +109,7 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
     required this.externalIds,
-    required this.backdrops,
-    required this.posters,
-    required this.logos,
+    required this.images,
     required this.keywords,
     required this.recommendations,
     required this.similar,

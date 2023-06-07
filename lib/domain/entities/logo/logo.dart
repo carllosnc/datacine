@@ -5,23 +5,23 @@ part 'logo.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Logo {
   @JsonKey(name: 'aspect_ratio')
-  num? aspectRatio;
+  final num? aspectRatio;
 
   @JsonKey(name: 'file_path')
-  String? filePath;
+  final String? filePath;
 
   @JsonKey(name: 'iso_639_1')
-  String? iso6391;
+  final String? iso6391;
 
   @JsonKey(name: 'vote_average')
-  num? voteAverage;
+  final num? voteAverage;
 
   @JsonKey(name: 'vote_count')
-  num? voteCount;
+  final num? voteCount;
 
-  num? width;
+  final num? width;
 
-  num? height;
+  final num? height;
 
   Logo({
     required this.aspectRatio,

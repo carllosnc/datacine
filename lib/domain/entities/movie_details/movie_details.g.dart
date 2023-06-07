@@ -42,15 +42,13 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
       voteAverage: json['vote_average'] as num?,
       voteCount: json['vote_count'] as num?,
       externalIds: json['external_ids'] as Map<String, dynamic>?,
-      backdrops: (json['backdrops'] as List<dynamic>?)
-          ?.map((e) => Backdrop.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      posters: (json['posters'] as List<dynamic>?)
-          ?.map((e) => Poster.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      logos: (json['logos'] as List<dynamic>?)
-          ?.map((e) => Logo.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      images: (json['images'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(
+            k,
+            (e as List<dynamic>?)
+                ?.map((e) => ImageItem.fromJson(e as Map<String, dynamic>))
+                .toList()),
+      ),
       keywords: (json['keywords'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(
             k,
@@ -75,7 +73,7 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
         (k, e) => MapEntry(
             k,
             (e as List<dynamic>)
-                .map((e) => PeopleItem.fromJson(e as Map<String, dynamic>))
+                .map((e) => PersonItem.fromJson(e as Map<String, dynamic>))
                 .toList()),
       ),
     );
@@ -113,9 +111,8 @@ Map<String, dynamic> _$MovieDetailsToJson(MovieDetails instance) =>
       'tagline': instance.tagline,
       'title': instance.title,
       'video': instance.video,
-      'backdrops': instance.backdrops?.map((e) => e.toJson()).toList(),
-      'posters': instance.posters?.map((e) => e.toJson()).toList(),
-      'logos': instance.logos?.map((e) => e.toJson()).toList(),
+      'images': instance.images
+          ?.map((k, e) => MapEntry(k, e?.map((e) => e.toJson()).toList())),
       'keywords': instance.keywords
           ?.map((k, e) => MapEntry(k, e?.map((e) => e.toJson()).toList())),
       'recommendations': instance.recommendations?.toJson(),

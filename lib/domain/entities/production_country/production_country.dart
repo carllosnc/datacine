@@ -5,9 +5,9 @@ part 'production_country.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ProductionContry {
   @JsonKey(name: 'iso_3166_1')
-  String? iso31661;
+  final String? iso31661;
 
-  String? name;
+  final String? name;
 
   ProductionContry({
     required this.iso31661,

@@ -1,29 +1,29 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'backdrop.g.dart';
+part 'image_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Backdrop {
+class ImageItem {
   @JsonKey(name: 'aspect_ratio')
-  num? aspectRatio;
+  final num? aspectRatio;
 
   @JsonKey(name: 'file_path')
-  String? filePath;
+  final String? filePath;
 
   @JsonKey(name: 'iso_639_1')
-  String? iso6391;
+  final String? iso6391;
 
   @JsonKey(name: 'vote_average')
-  num? voteAverage;
+  final num? voteAverage;
 
   @JsonKey(name: 'vote_count')
-  num? voteCount;
+  final num? voteCount;
 
-  num? width;
+  final num? width;
 
-  num? height;
+  final num? height;
 
-  Backdrop({
+  ImageItem({
     required this.aspectRatio,
     required this.filePath,
     required this.height,
@@ -33,8 +33,8 @@ class Backdrop {
     required this.width,
   });
 
-  factory Backdrop.fromJson(Map<String, dynamic> json) =>
-      _$BackdropFromJson(json);
+  factory ImageItem.fromJson(Map<String, dynamic> json) =>
+      _$ImageItemFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BackdropToJson(this);
+  Map<String, dynamic> toJson() => _$ImageItemToJson(this);
 }

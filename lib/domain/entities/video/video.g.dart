@@ -15,15 +15,19 @@ Video _$VideoFromJson(Map<String, dynamic> json) => Video(
       site: json['site'] as String?,
       size: json['size'] as num?,
       type: json['type'] as String?,
-    );
+    )
+      ..publishedAt = json['published_at'] as String?
+      ..official = json['official'] as bool?;
 
 Map<String, dynamic> _$VideoToJson(Video instance) => <String, dynamic>{
       'iso_639_1': instance.iso6391,
       'iso_3166_1': instance.iso31661,
+      'published_at': instance.publishedAt,
       'id': instance.id,
       'key': instance.key,
       'name': instance.name,
       'site': instance.site,
       'type': instance.type,
       'size': instance.size,
+      'official': instance.official,
     };
