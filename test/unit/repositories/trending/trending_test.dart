@@ -36,7 +36,7 @@ void main() {
 
     final people = trendingRepository.adaptForPeople(response);
 
-    expect(people.results, isA<List<PeopleItem>>());
+    expect(people.results, isA<List<PersonItem>>());
     expect(response.statusCode, 200);
   });
 }
