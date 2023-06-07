@@ -6,16 +6,18 @@ import '/core/core.dart';
 
 class _Card extends StatelessWidget {
   final MediaItem mediaItem;
+  final String mediaType;
 
   const _Card({
     required this.mediaItem,
+    required this.mediaType,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/movie/${mediaItem.id.toString()}');
+        context.go('/$mediaType/${mediaItem.id.toString()}');
       },
       child: SizedBox(
         width: 200,
@@ -45,11 +47,13 @@ class _Card extends StatelessWidget {
 class SimpleMediaGrid extends StatelessWidget {
   final List<MediaItem?> list;
   final double maxWidth;
+  final String mediaType;
 
   const SimpleMediaGrid({
     super.key,
     required this.list,
     required this.maxWidth,
+    required this.mediaType,
   });
 
   @override
@@ -69,7 +73,7 @@ class SimpleMediaGrid extends StatelessWidget {
         itemBuilder: (context, index) {
           final MediaItem mediaItem = list[index]!;
 
-          return _Card(mediaItem: mediaItem);
+          return _Card(mediaItem: mediaItem, mediaType: mediaType);
         },
       ),
     );

@@ -3,3 +3,7 @@ export './simple_media_grid.dart';
 export './extended_media_card_list.dart';
 export './people_list.dart';
 export './image_component.dart';
+export './media_directors.dart';
+export './media_votes.dart';
+export './media_header.dart';
+export './tvshow_creators.dart';

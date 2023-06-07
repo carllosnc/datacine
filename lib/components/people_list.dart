@@ -5,7 +5,7 @@ import '/components/components.dart';
 import '/core/core.dart';
 
 class _Card extends StatelessWidget {
-  final PeopleItem peopleItem;
+  final PersonItem peopleItem;
 
   const _Card({
     required this.peopleItem,
@@ -53,7 +53,7 @@ class _Card extends StatelessWidget {
 }
 
 class PeopleGrid extends StatelessWidget {
-  final List<PeopleItem?> list;
+  final List<PersonItem?> list;
   final double maxWidth;
 
   const PeopleGrid({
@@ -73,7 +73,7 @@ class PeopleGrid extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          final PeopleItem peopleItem = list[index]!;
+          final PersonItem peopleItem = list[index]!;
 
           return _Card(peopleItem: peopleItem);
         },
