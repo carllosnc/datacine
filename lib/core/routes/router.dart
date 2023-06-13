@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '/views/views.dart';
+import '/domain/domain.dart';
 
 final router = GoRouter(
   routes: [
@@ -12,6 +13,16 @@ final router = GoRouter(
           builder: (context, state) => MoviePage(
             id: state.params['id']!,
           ),
+          routes: [
+            GoRoute(
+              path: 'images',
+              builder: (context, state) {
+                final movie = state.extra as MovieDetails;
+
+                return MovieImagesView(movie: movie);
+              },
+            ),
+          ],
         ),
         GoRoute(
           path: 'tvshow/:id',
