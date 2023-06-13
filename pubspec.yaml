@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   collection: any
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
