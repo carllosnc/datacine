@@ -51,31 +51,50 @@ class MediaHeader extends StatelessWidget {
           ),
         ),
 
-        Padding(
+        const SizedBox(height: 20),
+
+        Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
-            vertical: 30,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DS1Text(
-                DateHelper.format((movie?.releaseDate ?? tvshow?.firstAirDate)),
-                fontSize: 14,
-                fontColor: Colors.yellow,
+              Wrap(
+                spacing: 10,
+                children: [
+                  DS1Text(
+                    DateHelper.format(
+                        (movie?.releaseDate ?? tvshow?.firstAirDate)),
+                    fontSize: 12,
+                    fontColor: Colors.yellow,
+                  ),
+                  if (tvshow?.lastAirDate != null)
+                    const DS1Text(
+                      "―",
+                      fontSize: 12,
+                      fontColor: Colors.yellow,
+                    ),
+                  if (tvshow?.lastAirDate != null)
+                    DS1Text(
+                      DateHelper.format(tvshow?.lastAirDate),
+                      fontSize: 12,
+                      fontColor: Colors.yellow,
+                    ),
+                ],
               ),
               const SizedBox(height: 2),
-              DS1Text((movie?.title ?? tvshow?.name)!, fontSize: 18),
+              DS1Text((movie?.title ?? tvshow?.name)!, fontSize: 22),
               const SizedBox(height: 15),
-              if (movie != null) MovieDirectors(credits: movie?.credits),
+              MovieDirectors(credits: movie?.credits),
               TvShowCreators(creators: tvshow?.createdBy),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const DS1Button(
-                    label: "Watch Trailer",
-                    icon: Icons.play_arrow,
+                  MediaTrailer(
+                    videos: (movie?.videos?['results'] ??
+                        tvshow?.videos?['results']),
                   ),
                   MediaVotes(
                     voteAverage: (movie?.voteAverage ?? tvshow?.voteAverage),
@@ -87,8 +106,6 @@ class MediaHeader extends StatelessWidget {
             ],
           ),
         ),
-
-        const Divider(height: 1)
       ],
     );
   }

@@ -44,6 +44,9 @@ class ImageComponent extends StatelessWidget {
     return Container(
       color: ProjectColors.imageBackground,
       child: Image.network(
+        height: double.infinity,
+        width: double.infinity,
+        alignment: Alignment.topCenter,
         ImageHelper.getBackdrop(
           path: imagePath!,
           size: imageSize,

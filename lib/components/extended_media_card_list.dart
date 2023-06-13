@@ -1,117 +1,113 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import 'components.dart';
-import 'package:ds1/ds1.dart';
-import '/core/core.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ds1/ds1.dart';
+import '/domain/domain.dart';
+import '/components/components.dart';
+import '/core/core.dart';
 
 class ExtendedMediaCardList extends StatelessWidget {
   final List<MediaItem> list;
-  final String mediaType;
+  final MediaType mediaType;
+  final String title;
 
   const ExtendedMediaCardList({
     super.key,
     required this.list,
     required this.mediaType,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 200,
-      child: ListView.separated(
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(width: 15);
-        },
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.all(15),
-        itemCount: list.length,
-        itemBuilder: (BuildContext context, int index) {
-          MediaItem media = list[index];
-
-          return GestureDetector(
-            onTap: () {
-              context.go('/$mediaType/${media.id.toString()}');
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: DS1Text(title, fontSize: 16, fontColor: Colors.white),
+        ),
+        const SizedBox(height: 13),
+        SizedBox(
+          width: double.infinity,
+          height: 180,
+          child: ListView.separated(
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(width: 10);
             },
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              width: 290,
-              height: 200,
-              child: Stack(
-                children: [
-                  ImageComponent(
-                    imagePath: media.backdropPath,
-                    imageType: ImageType.backdrop,
-                    imageSize: ImageSize.backdropW300,
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              MediaItem media = list[index];
+
+              return GestureDetector(
+                onTap: () {
+                  context.go(
+                    '/${mediaType.value}/${media.id.toString()}',
+                  );
+                },
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.black,
-                          Colors.transparent,
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
+                  width: 290,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      ImageComponent(
+                        imagePath: media.backdropPath,
+                        imageType: ImageType.backdrop,
+                        imageSize: ImageSize.backdropW780,
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: Container(
-                      width: 75,
-                      height: 100,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.white38,
-                          width: 1,
+                      Container(
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.black,
+                              Colors.transparent,
+                            ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                          ),
                         ),
                       ),
-                      child: ImageComponent(
-                        imageSize: ImageSize.posterW185,
-                        imagePath: media.posterPath,
-                        imageType: ImageType.poster,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        spacing: 3,
-                        direction: Axis.vertical,
-                        children: [
-                          DS1Text(
-                            DateHelper.format(
-                                media.releaseDate ?? media.firstAirDate),
-                            fontSize: 12,
-                            truncate: 33,
-                            fontColor: Colors.yellow,
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Wrap(
+                            spacing: 3,
+                            direction: Axis.vertical,
+                            children: [
+                              DS1Text(
+                                DateHelper.format(
+                                  media.releaseDate ?? media.firstAirDate,
+                                ),
+                                fontSize: 12,
+                                truncate: 33,
+                                fontColor: Colors.yellow,
+                              ),
+                              DS1Text(
+                                (media.title ?? media.name)!,
+                                fontSize: 15,
+                                truncate: 33,
+                                fontColor: Colors.white,
+                              ),
+                            ],
                           ),
-                          DS1Text(
-                            (media.title ?? media.name)!,
-                            fontSize: 15,
-                            truncate: 33,
-                            fontColor: Colors.white,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

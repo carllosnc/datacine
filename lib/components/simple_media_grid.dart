@@ -7,7 +7,7 @@ import '/core/core.dart';
 class SimpleMediaGrid extends StatelessWidget {
   final List<MediaItem?> list;
   final double maxWidth;
-  final String mediaType;
+  final MediaType mediaType;
 
   const SimpleMediaGrid({
     super.key,
@@ -35,7 +35,7 @@ class SimpleMediaGrid extends StatelessWidget {
 
           return GestureDetector(
             onTap: () {
-              context.go('/$mediaType/${mediaItem.id.toString()}');
+              context.go('/${mediaType.value}/${mediaItem.id.toString()}');
             },
             child: SizedBox(
               width: 200,

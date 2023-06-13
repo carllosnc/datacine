@@ -44,15 +44,16 @@ class MediaVotes extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Opacity(
-            opacity: 0.5,
-            child: Wrap(
-              direction: Axis.vertical,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                DS1Text(voteCount.toString(), fontSize: 12),
-                const DS1Text("Votes", fontSize: 12),
-              ],
-            )),
+          opacity: 0.5,
+          child: Wrap(
+            direction: Axis.vertical,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              DS1Text(voteCount.toString(), fontSize: 12),
+              const DS1Text("Votes", fontSize: 12),
+            ],
+          ),
+        ),
         Container(
           width: 45,
           height: 45,
@@ -61,11 +62,12 @@ class MediaVotes extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(100)),
           ),
           child: Center(
-              child: DS1Text(
-            voteAverage!.toStringAsFixed(1),
-            fontSize: 15,
-            bold: true,
-          )),
+            child: DS1Text(
+              voteAverage!.toString().substring(0, 3),
+              fontSize: 15,
+              bold: true,
+            ),
+          ),
         )
       ],
     );
