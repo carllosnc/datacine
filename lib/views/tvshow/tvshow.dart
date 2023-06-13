@@ -23,7 +23,7 @@ class _TvShowPageState extends State<TvShowPage> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(strokeWidth: 2),
             ),
           );
         }
@@ -36,16 +36,68 @@ class _TvShowPageState extends State<TvShowPage> {
           );
         }
 
-        TvShowDetails tvShowDetails = snapshot.data!;
+        TvShowDetails tvShow = snapshot.data!;
+        bool hasKeywords = tvShow.keywords!['results'] != null &&
+            tvShow.keywords!['results']!.isNotEmpty;
+        bool hasCast = tvShow.credits!['cast'] != null &&
+            tvShow.credits!['cast']!.isNotEmpty;
+        bool hasOverview =
+            tvShow.overview != null && tvShow.overview!.isNotEmpty;
+        bool hasTagline = tvShow.tagline != null && tvShow.tagline!.isNotEmpty;
+        bool hasGenres = tvShow.genres != null && tvShow.genres!.isNotEmpty;
+        bool hasSeasons = tvShow.seasons != null && tvShow.seasons!.isNotEmpty;
 
         return Scaffold(
           appBar: AppBar(
-            title: const DS1Text("TV Show", fontSize: 14),
+            actions: [
+              MediaInfo(tvShow: tvShow),
+            ],
+            title: DS1Text(tvShow.name!, fontSize: 14),
           ),
           body: SingleChildScrollView(
             child: Column(
-              children: [MediaHeader(tvshow: tvShowDetails)],
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MediaHeader(tvshow: tvShow),
+
+                //genres
+                SectionDivider(condition: hasGenres),
+                MediaGenres(tvshow: tvShow),
+
+                //keyword
+                SectionDivider(condition: hasKeywords),
+                MediaKeywords(tvshow: tvShow),
+
+                //overview
+                SectionDivider(condition: hasOverview || hasTagline),
+                MediaOverview(tvshow: tvShow),
+
+                //cast
+                SectionDivider(condition: hasCast),
+                PeopleList(
+                  title: 'Cast',
+                  list: tvShow.credits!['cast']!,
+                  maxWidth: double.infinity,
+                ),
+
+                //seasons
+                SectionDivider(condition: hasSeasons),
+                TvShowSeasons(
+                  tvshow: tvShow,
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+
+                const SizedBox(height: 30),
+              ],
             ),
+          ),
+          bottomNavigationBar: const BottomMenu(
+            items: [
+              BottomItem(label: "Images"),
+              BottomItem(label: "Credits"),
+              BottomItem(label: "Sugestions"),
+              BottomItem(label: "Similar"),
+            ],
           ),
         );
       },

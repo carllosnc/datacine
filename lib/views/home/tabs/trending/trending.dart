@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giganoid_app/core/core.dart';
 import '/data/data.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -30,7 +31,9 @@ class _TrendingTabState extends State<TrendingTab>
           if (connectionState == ConnectionState.waiting) {
             return SizedBox(
               height: constraints.maxHeight,
-              child: const Center(child: CircularProgressIndicator()),
+              child: const Center(
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
             );
           }
 
@@ -60,43 +63,37 @@ class _TrendingTabState extends State<TrendingTab>
           return SingleChildScrollView(
             child: Column(
               children: [
-                const SectionDivider(
-                  title: "Trending Movies",
-                  icon: Icons.movie,
-                ),
+                const SizedBox(height: 40),
                 ExtendedMediaCardList(
-                  mediaType: 'movie',
+                  title: "Trending Movies",
+                  mediaType: MediaType.movie,
                   list: featuredMovies,
                 ),
+                const SizedBox(height: 20),
                 SimpleMediaGrid(
-                  mediaType: "movie",
+                  mediaType: MediaType.movie,
                   list: movies,
                   maxWidth: constraints.maxWidth,
                 ),
-                const SizedBox(height: 20),
-                const SectionDivider(
-                  title: "Trending TV Shows",
-                  icon: Icons.tv,
-                ),
+                const SizedBox(height: 50),
                 ExtendedMediaCardList(
-                  mediaType: 'tvshow',
+                  title: "Trending Tv Shows",
+                  mediaType: MediaType.tvshow,
                   list: featuredTvShows,
                 ),
+                const SizedBox(height: 20),
                 SimpleMediaGrid(
-                  mediaType: "tvshow",
+                  mediaType: MediaType.tvshow,
                   list: tvShows,
                   maxWidth: constraints.maxWidth,
                 ),
-                const SizedBox(height: 20),
-                const SectionDivider(
-                  title: "Tending People",
-                  icon: Icons.person,
-                ),
-                const SizedBox(height: 10),
-                PeopleGrid(
+                const SizedBox(height: 50),
+                PeopleList(
+                  title: "People Trending",
                   list: people,
                   maxWidth: constraints.maxWidth,
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           );

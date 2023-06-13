@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
+import 'package:go_router/go_router.dart';
 
 class MoviePage extends StatefulWidget {
   final String id;
@@ -23,7 +24,7 @@ class _MoviePageState extends State<MoviePage> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(strokeWidth: 2),
             ),
           );
         }
@@ -37,15 +38,67 @@ class _MoviePageState extends State<MoviePage> {
         }
 
         MovieDetails movie = snapshot.data!;
+        bool hasKeywords = movie.keywords!['keywords'] != null &&
+            movie.keywords!['keywords']!.isNotEmpty;
+        bool hasCollection = movie.belongsToCollection != null;
+        bool hasCast = movie.credits!['cast'] != null &&
+            movie.credits!['cast']!.isNotEmpty;
+        bool hasOverview = movie.overview != null && movie.overview!.isNotEmpty;
+        bool hasTagline = movie.tagline != null && movie.tagline!.isNotEmpty;
+        bool hasGenres = movie.genres != null && movie.genres!.isNotEmpty;
 
         return Scaffold(
           appBar: AppBar(
-            title: const DS1Text("Movie", fontSize: 14),
+            title: DS1Text(movie.title!, fontSize: 14),
+            actions: [
+              MediaInfo(movie: movie),
+            ],
           ),
           body: SingleChildScrollView(
             child: Column(
-              children: [MediaHeader(movie: movie)],
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MediaHeader(movie: movie),
+
+                //genres
+                SectionDivider(condition: hasGenres),
+                MediaGenres(movie: movie),
+
+                //keyword
+                SectionDivider(condition: hasKeywords),
+                MediaKeywords(movie: movie),
+
+                //overview
+                SectionDivider(condition: hasOverview || hasTagline),
+                MediaOverview(movie: movie),
+
+                //cast
+                SectionDivider(condition: hasCast),
+                PeopleList(
+                  title: 'Cast',
+                  list: movie.credits!['cast']!,
+                  maxWidth: double.infinity,
+                ),
+
+                //collection
+                SectionDivider(condition: hasCollection),
+                MovieCollection(movie: movie, maxWidth: double.infinity),
+                const SizedBox(height: 30),
+              ],
             ),
+          ),
+          bottomNavigationBar: BottomMenu(
+            items: [
+              BottomItem(
+                label: "Images",
+                onTap: () {
+                  context.go('/movie/${movie.id}/images', extra: movie);
+                },
+              ),
+              const BottomItem(label: "Credits"),
+              const BottomItem(label: "Sugestions"),
+              const BottomItem(label: "Similar"),
+            ],
           ),
         );
       },
