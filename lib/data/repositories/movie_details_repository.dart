@@ -1,6 +1,6 @@
 import 'dart:convert';
-import './repository.dart';
 import 'package:http/http.dart' as http;
+import './repository.dart';
 import '/domain/domain.dart';
 
 class MovieDetailsRepository extends Repository {
