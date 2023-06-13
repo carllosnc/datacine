@@ -48,7 +48,7 @@ TvShowDetails _$TvShowDetailsFromJson(Map<String, dynamic> json) =>
           ?.map((e) => Season.fromJson(e as Map<String, dynamic>))
           .toList(),
       spokenLanguages: (json['spoken_languages'] as List<dynamic>?)
-          ?.map((e) => SpokenLanguage.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Language.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as String?,
       tagline: json['tagline'] as String?,

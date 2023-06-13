@@ -9,7 +9,7 @@ class MovieDetails {
   final String? backdropPath;
 
   @JsonKey(name: 'belongs_to_collection')
-  final Map<String, dynamic>? belongsToCollection;
+  final BelongsToCollection? belongsToCollection;
 
   @JsonKey(name: 'imdb_id')
   final String? imdbId;
@@ -33,7 +33,7 @@ class MovieDetails {
   final String? releaseDate;
 
   @JsonKey(name: 'spoken_languages')
-  final List<SpokenLanguage>? spokenLanguages;
+  final List<Language>? spokenLanguages;
 
   @JsonKey(name: 'vote_average')
   final num? voteAverage;
@@ -83,38 +83,38 @@ class MovieDetails {
   final Map<String, List<Video>?>? videos;
 
   MovieDetails({
-    required this.adult,
-    required this.backdropPath,
-    required this.belongsToCollection,
-    required this.budget,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.spokenLanguages,
-    required this.status,
-    required this.tagline,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
-    required this.externalIds,
-    required this.images,
-    required this.keywords,
-    required this.recommendations,
-    required this.similar,
-    required this.videos,
-    required this.credits,
+    this.adult,
+    this.backdropPath,
+    this.belongsToCollection,
+    this.budget,
+    this.genres,
+    this.homepage,
+    this.id,
+    this.imdbId,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.productionCompanies,
+    this.productionCountries,
+    this.releaseDate,
+    this.revenue,
+    this.runtime,
+    this.spokenLanguages,
+    this.status,
+    this.tagline,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+    this.externalIds,
+    this.images,
+    this.keywords,
+    this.recommendations,
+    this.similar,
+    this.videos,
+    this.credits,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) =>

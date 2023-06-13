@@ -48,7 +48,7 @@ class TvShowDetails {
   List<ProductionContry>? productionCountries;
 
   @JsonKey(name: 'spoken_languages')
-  List<SpokenLanguage>? spokenLanguages;
+  List<Language>? spokenLanguages;
 
   @JsonKey(name: 'vote_average')
   double? voteAverage;

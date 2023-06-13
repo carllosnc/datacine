@@ -9,8 +9,10 @@ part of 'movie_details.dart';
 MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
-      belongsToCollection:
-          json['belongs_to_collection'] as Map<String, dynamic>?,
+      belongsToCollection: json['belongs_to_collection'] == null
+          ? null
+          : BelongsToCollection.fromJson(
+              json['belongs_to_collection'] as Map<String, dynamic>),
       budget: json['budget'] as num?,
       genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => Genre.fromJson(e as Map<String, dynamic>))
@@ -33,7 +35,7 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
       revenue: json['revenue'] as num?,
       runtime: json['runtime'] as num?,
       spokenLanguages: (json['spoken_languages'] as List<dynamic>?)
-          ?.map((e) => SpokenLanguage.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Language.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as String?,
       tagline: json['tagline'] as String?,
@@ -81,7 +83,7 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
 Map<String, dynamic> _$MovieDetailsToJson(MovieDetails instance) =>
     <String, dynamic>{
       'backdrop_path': instance.backdropPath,
-      'belongs_to_collection': instance.belongsToCollection,
+      'belongs_to_collection': instance.belongsToCollection?.toJson(),
       'imdb_id': instance.imdbId,
       'original_language': instance.originalLanguage,
       'original_title': instance.originalTitle,

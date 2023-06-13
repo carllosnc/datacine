@@ -5,23 +5,23 @@ part 'image_item.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ImageItem {
   @JsonKey(name: 'aspect_ratio')
-  final num? aspectRatio;
+  num? aspectRatio;
 
   @JsonKey(name: 'file_path')
-  final String? filePath;
+  String? filePath;
 
   @JsonKey(name: 'iso_639_1')
-  final String? iso6391;
+  String? iso6391;
 
   @JsonKey(name: 'vote_average')
-  final num? voteAverage;
+  num? voteAverage;
 
   @JsonKey(name: 'vote_count')
-  final num? voteCount;
+  num? voteCount;
 
-  final num? width;
+  num? width;
 
-  final num? height;
+  num? height;
 
   ImageItem({
     required this.aspectRatio,

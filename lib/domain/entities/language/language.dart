@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'spoken_language.g.dart';
+part 'language.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class SpokenLanguage {
+class Language {
   @JsonKey(name: 'english_name')
   String? englishName;
 
@@ -12,14 +12,14 @@ class SpokenLanguage {
 
   String? name;
 
-  SpokenLanguage({
+  Language({
     required this.englishName,
     required this.iso6391,
     required this.name,
   });
 
-  factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>
-      _$SpokenLanguageFromJson(json);
+  factory Language.fromJson(Map<String, dynamic> json) =>
+      _$LanguageFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SpokenLanguageToJson(this);
+  Map<String, dynamic> toJson() => _$LanguageToJson(this);
 }
