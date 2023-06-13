@@ -28,6 +28,12 @@
 
 ---
 
+Build runner
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+---
+
 ### License
 
 MIT © [C4co](https://github.com/C4co)
