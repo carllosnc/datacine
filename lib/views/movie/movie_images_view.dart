@@ -20,10 +20,13 @@ class _MovieImagesViewState extends State<MovieImagesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: DS1Text('Images: ${widget.movie.title}', fontSize: 14),
+        title: DS1Text(
+          'Posters: ${widget.movie.images!['posters']!.length}',
+          fontSize: 14,
+        ),
       ),
       //body with page view
-      body: PosterSlider(images: widget.movie.images),
+      body: MediaPosterGrid(images: widget.movie.images),
     );
   }
 }

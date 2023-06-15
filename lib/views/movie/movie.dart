@@ -95,7 +95,12 @@ class _MoviePageState extends State<MoviePage> {
                   context.go('/movie/${movie.id}/images', extra: movie);
                 },
               ),
-              const BottomItem(label: "Credits"),
+              BottomItem(
+                label: "Credits",
+                onTap: () {
+                  context.go('/movie/${movie.id}/credits', extra: movie);
+                },
+              ),
               const BottomItem(label: "Sugestions"),
               const BottomItem(label: "Similar"),
             ],

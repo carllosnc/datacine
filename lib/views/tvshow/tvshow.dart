@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
+import 'package:go_router/go_router.dart';
 
 class TvShowPage extends StatefulWidget {
   final String id;
@@ -36,54 +37,54 @@ class _TvShowPageState extends State<TvShowPage> {
           );
         }
 
-        TvShowDetails tvShow = snapshot.data!;
-        bool hasKeywords = tvShow.keywords!['results'] != null &&
-            tvShow.keywords!['results']!.isNotEmpty;
-        bool hasCast = tvShow.credits!['cast'] != null &&
-            tvShow.credits!['cast']!.isNotEmpty;
+        TvShowDetails tvshow = snapshot.data!;
+        bool hasKeywords = tvshow.keywords!['results'] != null &&
+            tvshow.keywords!['results']!.isNotEmpty;
+        bool hasCast = tvshow.credits!['cast'] != null &&
+            tvshow.credits!['cast']!.isNotEmpty;
         bool hasOverview =
-            tvShow.overview != null && tvShow.overview!.isNotEmpty;
-        bool hasTagline = tvShow.tagline != null && tvShow.tagline!.isNotEmpty;
-        bool hasGenres = tvShow.genres != null && tvShow.genres!.isNotEmpty;
-        bool hasSeasons = tvShow.seasons != null && tvShow.seasons!.isNotEmpty;
+            tvshow.overview != null && tvshow.overview!.isNotEmpty;
+        bool hasTagline = tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
+        bool hasGenres = tvshow.genres != null && tvshow.genres!.isNotEmpty;
+        bool hasSeasons = tvshow.seasons != null && tvshow.seasons!.isNotEmpty;
 
         return Scaffold(
           appBar: AppBar(
             actions: [
-              MediaInfo(tvShow: tvShow),
+              MediaInfo(tvShow: tvshow),
             ],
-            title: DS1Text(tvShow.name!, fontSize: 14),
+            title: DS1Text(tvshow.name!, fontSize: 14),
           ),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MediaHeader(tvshow: tvShow),
+                MediaHeader(tvshow: tvshow),
 
                 //genres
                 SectionDivider(condition: hasGenres),
-                MediaGenres(tvshow: tvShow),
+                MediaGenres(tvshow: tvshow),
 
                 //keyword
                 SectionDivider(condition: hasKeywords),
-                MediaKeywords(tvshow: tvShow),
+                MediaKeywords(tvshow: tvshow),
 
                 //overview
                 SectionDivider(condition: hasOverview || hasTagline),
-                MediaOverview(tvshow: tvShow),
+                MediaOverview(tvshow: tvshow),
 
                 //cast
                 SectionDivider(condition: hasCast),
                 PeopleList(
                   title: 'Cast',
-                  list: tvShow.credits!['cast']!,
+                  list: tvshow.credits!['cast']!,
                   maxWidth: double.infinity,
                 ),
 
                 //seasons
                 SectionDivider(condition: hasSeasons),
                 TvShowSeasons(
-                  tvshow: tvShow,
+                  tvshow: tvshow,
                   maxWidth: MediaQuery.of(context).size.width,
                 ),
 
@@ -91,12 +92,22 @@ class _TvShowPageState extends State<TvShowPage> {
               ],
             ),
           ),
-          bottomNavigationBar: const BottomMenu(
+          bottomNavigationBar: BottomMenu(
             items: [
-              BottomItem(label: "Images"),
-              BottomItem(label: "Credits"),
-              BottomItem(label: "Sugestions"),
-              BottomItem(label: "Similar"),
+              BottomItem(
+                label: "Images",
+                onTap: () {
+                  context.go('/tvshow/${tvshow.id}/images', extra: tvshow);
+                },
+              ),
+              BottomItem(
+                label: "Credits",
+                onTap: () {
+                  context.go('/tvshow/${tvshow.id}/credits', extra: tvshow);
+                },
+              ),
+              const BottomItem(label: "Sugestions"),
+              const BottomItem(label: "Similar"),
             ],
           ),
         );
