@@ -44,6 +44,7 @@ dependencies:
   json_annotation: ^4.8.1
   collection: any
   url_launcher: ^6.1.11
+  transparent_image: ^2.0.1
 
 dev_dependencies:
   flutter_test:

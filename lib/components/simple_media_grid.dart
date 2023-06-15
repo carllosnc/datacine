@@ -20,6 +20,7 @@ class SimpleMediaGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: maxWidth,
+      height: (maxWidth * 1.5) * 4,
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),

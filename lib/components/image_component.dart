@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 import '/core/core.dart';
 
 enum ImageType { poster, backdrop, profile }
@@ -43,14 +44,16 @@ class ImageComponent extends StatelessWidget {
 
     return Container(
       color: ProjectColors.imageBackground,
-      child: Image.network(
-        height: double.infinity,
-        width: double.infinity,
-        alignment: Alignment.topCenter,
-        ImageHelper.getBackdrop(
+      child: FadeInImage.memoryNetwork(
+        fadeInDuration: const Duration(milliseconds: 300),
+        placeholder: kTransparentImage,
+        image: ImageHelper.getBackdrop(
           path: imagePath!,
           size: imageSize,
         ),
+        height: double.infinity,
+        width: double.infinity,
+        alignment: Alignment.topCenter,
         filterQuality: FilterQuality.high,
         fit: BoxFit.cover,
       ),

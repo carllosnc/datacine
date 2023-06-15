@@ -42,7 +42,8 @@ class _MoviePageState extends State<MoviePage> {
             movie.keywords!['keywords']!.isNotEmpty;
         bool hasCollection = movie.belongsToCollection != null;
         bool hasCast = movie.credits!['cast'] != null &&
-            movie.credits!['cast']!.isNotEmpty;
+            movie.credits!['cast']!.isNotEmpty &&
+            movie.credits!['cast']!.length > 3;
         bool hasOverview = movie.overview != null && movie.overview!.isNotEmpty;
         bool hasTagline = movie.tagline != null && movie.tagline!.isNotEmpty;
         bool hasGenres = movie.genres != null && movie.genres!.isNotEmpty;

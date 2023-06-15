@@ -22,6 +22,10 @@ class PeopleList extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    if (list!.length < 3) {
+      return const SizedBox.shrink();
+    }
+
     List<PersonItem>? cutList = list;
 
     if (list!.length > 20) {
