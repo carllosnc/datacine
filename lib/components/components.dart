@@ -15,4 +15,5 @@ export './movie_collection.dart';
 export './media_keywords.dart';
 export './media_genres.dart';
 export './tvshow_seasons.dart';
-export './poster_grid.dart';
+export './media_poster_grid.dart';
+export './credits_list.dart';

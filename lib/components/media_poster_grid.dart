@@ -1,25 +1,24 @@
 import 'dart:ui';
 
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:giganoid_app/core/core.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 
-class PosterSlider extends StatefulWidget {
+class MediaPosterGrid extends StatefulWidget {
   final Map<String, List<ImageItem>?>? images;
 
-  const PosterSlider({
+  const MediaPosterGrid({
     super.key,
     required this.images,
   });
 
   @override
-  State<PosterSlider> createState() => _PosterSliderState();
+  State<MediaPosterGrid> createState() => _MediaPosterGridState();
 }
 
-class _PosterSliderState extends State<PosterSlider> {
+class _MediaPosterGridState extends State<MediaPosterGrid> {
   List<ImageItem> filteredPosters = [];
   List<ImageItem> posters = [];
   String selectedLang = 'en';
@@ -110,95 +109,46 @@ class _PosterSliderState extends State<PosterSlider> {
 
     return Stack(
       children: [
-        SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                child: DS1Select(
-                  onChange: (dynamic value) {
-                    setState(() {
-                      selectedLang = value;
-                      filteredPosters = posters
-                          .where((element) => element.iso6391 == selectedLang)
-                          .toList();
-                    });
-                  },
-                  items: supportedLangs,
-                  label: "Language",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Wrap(
-                  spacing: 20,
+        GridView.builder(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 0.66666,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
+          ),
+          itemCount: posters.length,
+          itemBuilder: (context, index) {
+            final ImageItem imageItem = posters[index];
+
+            return GestureDetector(
+              onTap: () {
+                openModal(imageItem.filePath!);
+              },
+              child: SizedBox(
+                width: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    DS1Text(
-                      "${selectedLang.toUpperCase()}: ${filteredPosters.length}",
-                      fontColor: ProjectColors.text,
-                      fontSize: 11,
-                    ),
-                    DS1Text(
-                      "Total: ${posters.length}",
-                      fontColor: ProjectColors.text,
-                      fontSize: 11,
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ImageComponent(
+                              imageSize: ImageSize.posterW185,
+                              imagePath: imageItem.filePath,
+                              imageType: ImageType.poster,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
-              Container(
-                color: Colors.black,
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 0.66666,
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 2,
-                  ),
-                  itemCount: filteredPosters.length,
-                  itemBuilder: (context, index) {
-                    final ImageItem imageItem = filteredPosters[index];
-
-                    return GestureDetector(
-                      onTap: () {
-                        openModal(imageItem.filePath!);
-                      },
-                      child: SizedBox(
-                        width: 200,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: ImageComponent(
-                                      imageSize: ImageSize.posterW185,
-                                      imagePath: imageItem.filePath,
-                                      imageType: ImageType.poster,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
         if (modal == true)
           Positioned(

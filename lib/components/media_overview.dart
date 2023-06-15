@@ -24,8 +24,6 @@ class MediaOverview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          //tagline
-
           if (movie != null)
             Wrap(
               runSpacing: 10,
@@ -49,7 +47,6 @@ class MediaOverview extends StatelessWidget {
                 ),
               ],
             ),
-
           if (tvshow != null)
             Wrap(
               runSpacing: 10,

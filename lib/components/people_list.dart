@@ -22,6 +22,12 @@ class PeopleList extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    List<PersonItem>? cutList = list;
+
+    if (list!.length > 20) {
+      cutList = list!.sublist(0, 20);
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,9 +44,9 @@ class PeopleList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             separatorBuilder: (context, index) => const SizedBox(width: 10),
-            itemCount: list!.length,
+            itemCount: cutList!.length,
             itemBuilder: (BuildContext context, int index) {
-              final PersonItem peopleItem = list![index];
+              final PersonItem peopleItem = cutList![index];
 
               return Container(
                 color: Colors.transparent,
