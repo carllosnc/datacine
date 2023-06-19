@@ -1,6 +1,6 @@
 enum MediaType {
   movie('movie'),
-  tvshow('tvshow');
+  tv('tv');
 
   String get value => _value;
   const MediaType(this._value);

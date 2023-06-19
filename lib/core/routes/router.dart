@@ -1,50 +1,103 @@
 import 'package:go_router/go_router.dart';
 import '/views/views.dart';
 import '/domain/domain.dart';
+import '/core/core.dart';
+
+// movie
+
+final movieImages = GoRoute(
+  path: 'images',
+  builder: (context, state) {
+    final movie = state.extra as MovieDetails;
+
+    return MovieImagesView(movie: movie);
+  },
+);
+
+final movieCredits = GoRoute(
+  path: 'credits',
+  builder: (context, state) {
+    final movie = state.extra as MovieDetails;
+
+    return MovieCreditsView(movie: movie);
+  },
+);
+
+final movieRecommendations = GoRoute(
+  path: 'recommendations',
+  builder: (context, state) {
+    final movie = state.extra as MovieDetails;
+
+    return MovieRecommendationView(movie: movie);
+  },
+);
+
+final movieSimilar = GoRoute(
+  path: 'similar',
+  builder: (context, state) {
+    final movie = state.extra as MovieDetails;
+
+    return MovieSimilarView(movie: movie);
+  },
+);
+
+// tvshow
+
+final tvshowImages = GoRoute(
+  path: 'images',
+  builder: (context, state) {
+    final tvshow = state.extra as TvShowDetails;
+
+    return TvShowImagesView(tvshow: tvshow);
+  },
+);
+
+final tvshowCredits = GoRoute(
+  path: 'credits',
+  builder: (context, state) {
+    final tvshow = state.extra as TvShowDetails;
+
+    return TvShowCreditsView(tvshow: tvshow);
+  },
+);
+
+final tvshowRecommendations = GoRoute(
+  path: 'recommendations',
+  builder: (context, state) {
+    final tvshow = state.extra as TvShowDetails;
+
+    return TvShowSimilarView(tvshow: tvshow);
+  },
+);
+
+final tvshowSimilar = GoRoute(
+  path: 'similar',
+  builder: (context, state) {
+    final tvshow = state.extra as TvShowDetails;
+
+    return TvShowSimilarView(tvshow: tvshow);
+  },
+);
 
 final movieRoute = GoRoute(
-  path: 'movie/:id',
-  builder: (context, state) => MoviePage(id: state.params['id']!),
+  path: '${MediaType.movie.value}/:id',
+  builder: (context, state) => MovieView(id: state.params['id']!),
   routes: [
-    GoRoute(
-      path: 'images',
-      builder: (context, state) {
-        final movie = state.extra as MovieDetails;
-
-        return MovieImagesView(movie: movie);
-      },
-    ),
-    GoRoute(
-      path: 'credits',
-      builder: (context, state) {
-        final movie = state.extra as MovieDetails;
-
-        return MovieCreditsView(movie: movie);
-      },
-    ),
+    movieImages,
+    movieCredits,
+    movieRecommendations,
+    movieSimilar,
   ],
 );
 
 final tvshowRoute = GoRoute(
-  path: 'tvshow/:id',
-  builder: (context, state) => TvShowPage(id: state.params['id']!),
+  path: '${MediaType.tv.value}/:id',
+  builder: (context, state) => TvShowView(id: state.params['id']!),
   routes: [
-    GoRoute(
-      path: 'images',
-      builder: (context, state) {
-        final tvshow = state.extra as TvShowDetails;
-
-        return TvShowImagesView(tvshow: tvshow);
-      },
-    ),
-    GoRoute(
-      path: 'credits',
-      builder: (context, state) {
-        final tvshow = state.extra as TvShowDetails;
-
-        return TvShowCreditsView(tvshow: tvshow);
-      },
-    ),
+    tvshowImages,
+    tvshowCredits,
+    tvshowRecommendations,
+    tvshowSimilar,
   ],
 );
 
@@ -52,7 +105,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomePage(),
+      builder: (context, state) => const HomeView(),
       routes: [
         movieRoute,
         tvshowRoute,
