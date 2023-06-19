@@ -14,16 +14,16 @@ class MediaVotes extends StatelessWidget {
     required this.status,
   });
 
-  Color getVoteColor(num vote) {
+  Color getVoteColor({required BuildContext context, required num vote}) {
     if (vote >= 8) {
-      return ProjectColors.ratingGreat;
+      return ProjectColors(context).ratingGreat;
     } else if (vote >= 7) {
-      return ProjectColors.ratingGood;
+      return ProjectColors(context).ratingGood;
     } else if (vote >= 4) {
-      return ProjectColors.ratingOk;
+      return ProjectColors(context).ratingOk;
     }
 
-    return ProjectColors.ratingBad;
+    return ProjectColors(context).ratingBad;
   }
 
   @override
@@ -35,7 +35,7 @@ class MediaVotes extends StatelessWidget {
         status.toString().toUpperCase(),
         bold: true,
         fontSize: 11,
-        fontColor: ProjectColors.status,
+        fontColor: ProjectColors(context).status,
       );
     }
 
@@ -43,22 +43,31 @@ class MediaVotes extends StatelessWidget {
       spacing: 10,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        Opacity(
-          opacity: 0.5,
-          child: Wrap(
-            direction: Axis.vertical,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              DS1Text(voteCount.toString(), fontSize: 12),
-              const DS1Text("Votes", fontSize: 12),
-            ],
-          ),
+        Wrap(
+          direction: Axis.vertical,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            DS1Text(
+              voteCount.toString(),
+              fontSize: 12,
+              fontColor: ProjectColors(context).label,
+            ),
+            DS1Text(
+              voteCount == 1 ? 'VOTE' : 'VOTES',
+              fontSize: 10,
+              bold: true,
+              fontColor: ProjectColors(context).label,
+            ),
+          ],
         ),
         Container(
           width: 45,
           height: 45,
           decoration: BoxDecoration(
-            color: getVoteColor(voteAverage!),
+            color: getVoteColor(
+              context: context,
+              vote: voteAverage!,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(100)),
           ),
           child: Center(

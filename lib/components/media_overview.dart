@@ -26,23 +26,31 @@ class MediaOverview extends StatelessWidget {
         children: [
           if (movie != null)
             Wrap(
+              direction: Axis.vertical,
+              spacing: 10,
               runSpacing: 10,
               children: [
                 Visibility(
                   visible: movie!.tagline != null && movie!.tagline!.isNotEmpty,
-                  child: DS1Text(
-                    '"${movie?.tagline}"',
-                    fontSize: 14,
-                    fontColor: Colors.yellow,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 40,
+                    child: DS1Text(
+                      '"${movie?.tagline}"',
+                      fontSize: 14,
+                      fontColor: ProjectColors(context).featured,
+                    ),
                   ),
                 ),
                 Visibility(
                   visible:
                       movie!.overview != null && movie!.overview!.isNotEmpty,
-                  child: DS1Text(
-                    '${movie?.overview}',
-                    fontSize: 14,
-                    fontColor: ProjectColors.text,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 40,
+                    child: DS1Text(
+                      '${movie?.overview}',
+                      fontSize: 14,
+                      fontColor: ProjectColors(context).text,
+                    ),
                   ),
                 ),
               ],
@@ -54,20 +62,24 @@ class MediaOverview extends StatelessWidget {
                 Visibility(
                   visible:
                       tvshow!.tagline != null && tvshow!.tagline!.isNotEmpty,
-                  child: DS1Text(
-                    '"${tvshow?.tagline}"',
-                    fontSize: 14,
-                    fontColor: Colors.yellow,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 40,
+                    child: DS1Text(
+                      '"${tvshow?.tagline}"',
+                      fontSize: 14,
+                      fontColor: ProjectColors(context).featured,
+                    ),
                   ),
                 ),
                 Visibility(
                   visible:
                       tvshow!.overview != null && tvshow!.overview!.isNotEmpty,
-                  child: Opacity(
-                    opacity: 0.6,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 40,
                     child: DS1Text(
                       '${tvshow?.overview}',
                       fontSize: 14,
+                      fontColor: ProjectColors(context).text,
                     ),
                   ),
                 ),

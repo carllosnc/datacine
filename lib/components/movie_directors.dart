@@ -39,11 +39,12 @@ class MovieDirectors extends StatelessWidget {
             DS1Text(
               person.originalName!,
               fontSize: 14,
-              fontColor: ProjectColors.link,
+              fontColor: ProjectColors(context).link,
             ),
             //check last
             if (index != directors!.length - 1)
-              DS1Text('•', fontColor: Colors.white.withOpacity(0.4))
+              DS1Text('•',
+                  fontColor: ProjectColors(context).text.withOpacity(0.4))
           ],
         );
       }).toList(),

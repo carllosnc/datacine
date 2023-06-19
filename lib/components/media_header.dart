@@ -34,7 +34,7 @@ class MediaHeader extends StatelessWidget {
                   ),
                 ],
                 border: Border.all(
-                  color: Colors.white,
+                  color: ProjectColors(context).text,
                   width: 3,
                 ),
                 borderRadius: BorderRadius.circular(20),
@@ -51,7 +51,7 @@ class MediaHeader extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 30),
 
         Container(
           padding: const EdgeInsets.symmetric(
@@ -67,24 +67,28 @@ class MediaHeader extends StatelessWidget {
                     DateHelper.format(
                         (movie?.releaseDate ?? tvshow?.firstAirDate)),
                     fontSize: 12,
-                    fontColor: Colors.yellow,
+                    fontColor: ProjectColors(context).label,
                   ),
                   if (tvshow?.lastAirDate != null)
-                    const DS1Text(
+                    DS1Text(
                       "―",
                       fontSize: 12,
-                      fontColor: Colors.yellow,
+                      fontColor: ProjectColors(context).label,
                     ),
                   if (tvshow?.lastAirDate != null)
                     DS1Text(
                       DateHelper.format(tvshow?.lastAirDate),
                       fontSize: 12,
-                      fontColor: Colors.yellow,
+                      fontColor: ProjectColors(context).label,
                     ),
                 ],
               ),
               const SizedBox(height: 2),
-              DS1Text((movie?.title ?? tvshow?.name)!, fontSize: 22),
+              DS1Text(
+                (movie?.title ?? tvshow?.name)!,
+                fontSize: 22,
+                fontColor: ProjectColors(context).title,
+              ),
               const SizedBox(height: 15),
               MovieDirectors(credits: movie?.credits),
               TvShowCreators(creators: tvshow?.createdBy),

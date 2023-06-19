@@ -31,7 +31,7 @@ class MediaInfoItem extends StatelessWidget {
             DS1Text(
               label,
               fontSize: 14,
-              fontColor: ProjectColors.text,
+              fontColor: ProjectColors(context).label,
             ),
             const SizedBox(height: 3),
             DS1Text(
@@ -67,9 +67,11 @@ class MediaInfo extends StatelessWidget {
     return IconButton(
       onPressed: () {
         showModalBottomSheet(
+          useSafeArea: true,
           context: context,
           builder: (context) {
             return SizedBox(
+              height: 1000,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -82,7 +84,7 @@ class MediaInfo extends StatelessWidget {
                         width: 100,
                         height: 3,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.4),
+                          color: ProjectColors(context).label,
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),

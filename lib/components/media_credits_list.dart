@@ -6,26 +6,6 @@ import '/core/core.dart';
 
 enum CreditType { cast, crew }
 
-class _Sectiontitle extends StatelessWidget {
-  final String title;
-  const _Sectiontitle({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 1),
-      width: double.infinity,
-      color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.4),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: DS1Text(
-        title,
-        fontSize: 12,
-        fontColor: Colors.white,
-      ),
-    );
-  }
-}
-
 class _Item extends StatelessWidget {
   final PersonItem person;
 
@@ -42,8 +22,8 @@ class _Item extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: ColorFiltered(
-            colorFilter: const ColorFilter.mode(
-              ProjectColors.imageFilter,
+            colorFilter: ColorFilter.mode(
+              ProjectColors(context).imageFilter,
               BlendMode.color,
             ),
             child: ImageComponent(
@@ -57,22 +37,22 @@ class _Item extends StatelessWidget {
       subtitle: DS1Text(
         person.character ?? person.job!,
         fontSize: 12,
-        fontColor: Colors.yellow,
+        fontColor: ProjectColors(context).featured,
       ),
     );
   }
 }
 
-class CreditsList extends StatefulWidget {
+class MediaCreditsList extends StatefulWidget {
   final Map<String, List<PersonItem>>? credits;
 
-  const CreditsList({super.key, required this.credits});
+  const MediaCreditsList({super.key, required this.credits});
 
   @override
-  State<CreditsList> createState() => _CreditsListState();
+  State<MediaCreditsList> createState() => _MediaCreditsListState();
 }
 
-class _CreditsListState extends State<CreditsList> {
+class _MediaCreditsListState extends State<MediaCreditsList> {
   bool showSearch = false;
   String searchQuery = "";
   CreditType creditView = CreditType.cast;
@@ -119,7 +99,7 @@ class _CreditsListState extends State<CreditsList> {
                     ),
                     hintText: 'Search',
                     hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
+                      color: ProjectColors(context).text.withOpacity(0.5),
                       fontSize: 14,
                       fontWeight: FontWeight.normal,
                     ),
@@ -147,26 +127,30 @@ class _CreditsListState extends State<CreditsList> {
         ),
         body: TabBarView(
           children: [
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: cast.length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                PersonItem person = cast[index];
+            cast.isEmpty
+                ? const Empty()
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: cast.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      PersonItem person = cast[index];
 
-                return _Item(person: person);
-              },
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: crew.length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                PersonItem person = crew[index];
+                      return _Item(person: person);
+                    },
+                  ),
+            crew.isEmpty
+                ? const Empty()
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: crew.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      PersonItem person = crew[index];
 
-                return _Item(person: person);
-              },
-            ),
+                      return _Item(person: person);
+                    },
+                  ),
           ],
         ),
       ),

@@ -26,11 +26,12 @@ class TvShowCreators extends StatelessWidget {
             DS1Text(
               person.name!,
               fontSize: 14,
-              fontColor: ProjectColors.link,
+              fontColor: ProjectColors(context).link,
             ),
             //check last
             if (index != creators!.length - 1)
-              DS1Text('•', fontColor: Colors.white.withOpacity(0.2))
+              DS1Text('•',
+                  fontColor: ProjectColors(context).text.withOpacity(0.2))
           ],
         );
       }).toList(),

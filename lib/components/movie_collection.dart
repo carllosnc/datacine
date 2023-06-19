@@ -62,12 +62,12 @@ class MovieCollection extends StatelessWidget {
                     DS1Text(
                       (movie.belongsToCollection!.name) ?? '',
                       fontSize: 16,
-                      fontColor: Colors.white,
+                      fontColor: ProjectColors(context).title,
                     ),
                     DS1Text(
                       '${collection.parts?.length} movies',
                       fontSize: 12,
-                      fontColor: Colors.yellow,
+                      fontColor: ProjectColors(context).text,
                     )
                   ],
                 ),
@@ -126,19 +126,20 @@ class MovieCollection extends StatelessWidget {
                                 DateHelper.format(movie.releaseDate),
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
-                                  color: Colors.yellow,
+                                  color: ProjectColors(context).featured,
                                 ),
                               ),
-                              const SizedBox(height: 1),
+                              const SizedBox(height: 2),
                               Text(
                                 movie.title!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 13,
+                                  color: ProjectColors(context).text,
                                 ),
                               ),
                             ],

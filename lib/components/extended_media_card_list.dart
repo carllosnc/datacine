@@ -25,7 +25,11 @@ class ExtendedMediaCardList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: DS1Text(title, fontSize: 16, fontColor: Colors.white),
+          child: DS1Text(
+            title,
+            fontSize: 16,
+            fontColor: ProjectColors(context).title,
+          ),
         ),
         const SizedBox(height: 13),
         SizedBox(
@@ -88,13 +92,13 @@ class ExtendedMediaCardList extends StatelessWidget {
                                 ),
                                 fontSize: 12,
                                 truncate: 33,
-                                fontColor: Colors.yellow,
+                                fontColor: ProjectColors(context).featured,
                               ),
                               DS1Text(
                                 (media.title ?? media.name)!,
                                 fontSize: 15,
                                 truncate: 33,
-                                fontColor: Colors.white,
+                                fontColor: ProjectColors(context).text,
                               ),
                             ],
                           ),

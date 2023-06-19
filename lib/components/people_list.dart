@@ -37,7 +37,11 @@ class PeopleList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: DS1Text(title, fontSize: 16, fontColor: Colors.white),
+          child: DS1Text(
+            title,
+            fontSize: 16,
+            fontColor: ProjectColors(context).title,
+          ),
         ),
         const SizedBox(height: 10),
         Container(
@@ -63,8 +67,8 @@ class PeopleList extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: ColorFiltered(
-                          colorFilter: const ColorFilter.mode(
-                            ProjectColors.imageFilter,
+                          colorFilter: ColorFilter.mode(
+                            ProjectColors(context).imageFilter,
                             BlendMode.color,
                           ),
                           child: ImageComponent(
@@ -83,20 +87,21 @@ class PeopleList extends StatelessWidget {
                           peopleItem.name!,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
+                            color: ProjectColors(context).text,
                           ),
                         ),
-                        const SizedBox(height: 1),
+                        const SizedBox(height: 2),
                         Text(
                           peopleItem.character ??
                               peopleItem.knownForDepartment!,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 10,
-                            color: Colors.yellow,
+                            color: ProjectColors(context).featured,
                           ),
                         ),
                       ],

@@ -26,15 +26,22 @@ class MediaGenres extends StatelessWidget {
       child: Wrap(
         spacing: 15,
         runSpacing: 15,
-        children: genres.map(
-          (genre) {
-            return DS1Text(
-              genre.name!,
-              fontColor: ProjectColors.link,
-              fontSize: 14,
-            );
-          },
-        ).toList(),
+        children: [
+          Icon(
+            Icons.label,
+            size: 20,
+            color: ProjectColors(context).label,
+          ),
+          ...genres.map(
+            (genre) {
+              return DS1Text(
+                genre.name!,
+                fontColor: ProjectColors(context).link,
+                fontSize: 14,
+              );
+            },
+          ).toList(),
+        ],
       ),
     );
   }

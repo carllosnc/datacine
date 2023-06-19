@@ -34,7 +34,7 @@ class TvShowSeasons extends StatelessWidget {
               child: DS1Text(
                 seasons.length == 1 ? '1 Season' : '${seasons.length} Seasons',
                 fontSize: 16,
-                fontColor: Colors.white,
+                fontColor: ProjectColors(context).title,
               ),
             ),
             SizedBox(
@@ -90,9 +90,9 @@ class TvShowSeasons extends StatelessWidget {
                               DateHelper.format(season.airDate),
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 12,
-                                color: Colors.yellow,
+                                color: ProjectColors(context).featured,
                               ),
                             ),
                             const SizedBox(height: 1),

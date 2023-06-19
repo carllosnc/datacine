@@ -43,7 +43,7 @@ class ImageComponent extends StatelessWidget {
     }
 
     return Container(
-      color: ProjectColors.imageBackground,
+      color: ProjectColors(context).imageBackground,
       child: FadeInImage.memoryNetwork(
         fadeInDuration: const Duration(milliseconds: 300),
         placeholder: kTransparentImage,

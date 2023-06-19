@@ -55,7 +55,9 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     }
 
     //set default language to english if exists or first language
-    selectedLang = posterLangs.contains('en') ? 'en' : posterLangs.first!;
+    if (posterLangs.isNotEmpty) {
+      selectedLang = posterLangs.contains('en') ? 'en' : posterLangs.first!;
+    }
 
     //filter posters by selected language
     filteredPosters =
@@ -104,7 +106,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     double posterHeight = posterWidth * 1.5;
 
     if (posters.isEmpty) {
-      return const SizedBox.shrink();
+      return const Empty();
     }
 
     return Stack(
@@ -183,9 +185,11 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
                       height: posterHeight,
                       width: posterWidth,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(posterOpacity),
+                        color: ProjectColors(context)
+                            .text
+                            .withOpacity(posterOpacity),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.2),
+                          color: ProjectColors(context).text.withOpacity(0.2),
                           width: 3,
                         ),
                       ),

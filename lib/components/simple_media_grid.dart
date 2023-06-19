@@ -18,50 +18,46 @@ class SimpleMediaGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: maxWidth,
-      height: (maxWidth * 1.5) * 4,
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 0.66666,
-          crossAxisSpacing: 1,
-          mainAxisSpacing: 1,
-        ),
-        itemCount: list.length,
-        itemBuilder: (context, index) {
-          final MediaItem mediaItem = list[index]!;
-
-          return GestureDetector(
-            onTap: () {
-              context.go('/${mediaType.value}/${mediaItem.id.toString()}');
-            },
-            child: SizedBox(
-              width: 200,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ImageComponent(
-                            imageSize: ImageSize.posterW154,
-                            imagePath: mediaItem.posterPath,
-                            imageType: ImageType.poster,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 0.66666,
+        crossAxisSpacing: 1,
+        mainAxisSpacing: 1,
       ),
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        final MediaItem mediaItem = list[index]!;
+
+        return GestureDetector(
+          onTap: () {
+            context.go('/${mediaType.value}/${mediaItem.id.toString()}');
+          },
+          child: SizedBox(
+            width: 200,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ImageComponent(
+                          imageSize: ImageSize.posterW154,
+                          imagePath: mediaItem.posterPath,
+                          imageType: ImageType.poster,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
