@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import './repository.dart';
 import '/domain/domain.dart';
 import 'package:http/http.dart' as http;
