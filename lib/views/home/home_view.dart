@@ -6,14 +6,14 @@ import './tabs/tv_shows/tv_shows.dart';
 import './tabs/trending/trending.dart';
 import './tabs/people/people.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomePageState extends State<HomePage>
+class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
   bool _showFloatingActionButton = false;
   late TabController _tabController;

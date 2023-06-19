@@ -76,18 +76,18 @@ class _TrendingTabState extends State<TrendingTab>
                   const SizedBox(height: 50),
                   ExtendedMediaCardList(
                     title: "Trending Tv Shows",
-                    mediaType: MediaType.tvshow,
+                    mediaType: MediaType.tv,
                     list: featuredTvShows,
                   ),
                   const SizedBox(height: 20),
                   SimpleMediaGrid(
-                    mediaType: MediaType.tvshow,
+                    mediaType: MediaType.tv,
                     list: tvShows,
                     maxWidth: constraints.maxWidth,
                   ),
                   const SizedBox(height: 50),
                   PeopleList(
-                    title: "People Trending",
+                    title: "Trending People",
                     list: people,
                     maxWidth: constraints.maxWidth,
                   ),

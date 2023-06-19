@@ -5,15 +5,15 @@ import '/data/data.dart';
 import '/components/components.dart';
 import 'package:go_router/go_router.dart';
 
-class TvShowPage extends StatefulWidget {
+class TvShowView extends StatefulWidget {
   final String id;
-  const TvShowPage({super.key, required this.id});
+  const TvShowView({super.key, required this.id});
 
   @override
-  State<TvShowPage> createState() => _TvShowPageState();
+  State<TvShowView> createState() => _TvShowViewState();
 }
 
-class _TvShowPageState extends State<TvShowPage> {
+class _TvShowViewState extends State<TvShowView> {
   final TvShowDetailsService _tvShowDetailsService = TvShowDetailsService();
 
   @override
@@ -50,6 +50,7 @@ class _TvShowPageState extends State<TvShowPage> {
         bool hasSeasons = tvshow.seasons != null && tvshow.seasons!.isNotEmpty;
 
         return Scaffold(
+          extendBody: true,
           appBar: AppBar(
             actions: [
               MediaInfo(tvShow: tvshow),
@@ -89,26 +90,52 @@ class _TvShowPageState extends State<TvShowPage> {
                   maxWidth: MediaQuery.of(context).size.width,
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 80),
               ],
             ),
           ),
           bottomNavigationBar: BottomMenu(
             items: [
               BottomItem(
+                icon: Icons.image,
                 label: "Images",
                 onTap: () {
-                  context.go('/tvshow/${tvshow.id}/images', extra: tvshow);
+                  context.go(
+                    '/tv/${tvshow.id}/images',
+                    extra: tvshow,
+                  );
                 },
               ),
               BottomItem(
+                icon: Icons.person,
                 label: "Credits",
                 onTap: () {
-                  context.go('/tvshow/${tvshow.id}/credits', extra: tvshow);
+                  context.go(
+                    '/tv/${tvshow.id}/credits',
+                    extra: tvshow,
+                  );
                 },
               ),
-              const BottomItem(label: "Sugestions"),
-              const BottomItem(label: "Similar"),
+              BottomItem(
+                icon: Icons.thumb_up,
+                label: "Recom.",
+                onTap: () {
+                  context.go(
+                    '/tv/${tvshow.id}/recommendations',
+                    extra: tvshow,
+                  );
+                },
+              ),
+              BottomItem(
+                icon: Icons.tv,
+                label: "Similar",
+                onTap: () {
+                  context.go(
+                    '/tv/${tvshow.id}/similar',
+                    extra: tvshow,
+                  );
+                },
+              ),
             ],
           ),
         );

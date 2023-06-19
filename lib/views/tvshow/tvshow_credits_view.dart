@@ -12,6 +12,6 @@ class TvShowCreditsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CreditsList(credits: tvshow.credits);
+    return MediaCreditsList(credits: tvshow.credits);
   }
 }
