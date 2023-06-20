@@ -42,7 +42,7 @@ class _TvShowViewState extends State<TvShowView> {
             tvshow.keywords!['results']!.isNotEmpty;
         bool hasCast = tvshow.credits!['cast'] != null &&
             tvshow.credits!['cast']!.isNotEmpty &&
-            tvshow.credits!['cast']!.length > 3;
+            tvshow.credits!['cast']!.length >= 3;
         bool hasOverview =
             tvshow.overview != null && tvshow.overview!.isNotEmpty;
         bool hasTagline = tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
