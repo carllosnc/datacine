@@ -1,15 +1,14 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/core.dart';
 import '/domain/domain.dart';
+import '/core/core.dart';
 
-class MediaInfoItem extends StatelessWidget {
+class _Item extends StatelessWidget {
   final bool condition;
   final String label;
   final String item;
 
-  const MediaInfoItem({
-    super.key,
+  const _Item({
     required this.item,
     required this.label,
     required this.condition,
@@ -45,6 +44,64 @@ class MediaInfoItem extends StatelessWidget {
   }
 }
 
+class Companies extends StatelessWidget {
+  final MovieDetails? movie;
+  final TvShowDetails? tvShow;
+
+  const Companies({
+    super.key,
+    this.movie,
+    this.tvShow,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    List<ProductionCompany>? productionCompanies =
+        movie?.productionCompanies ?? tvShow?.productionCompanies;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DS1Text(
+            "Companies",
+            fontSize: 14,
+            fontColor: ProjectColors(context).label,
+          ),
+          const SizedBox(height: 5),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              for (var company in productionCompanies!)
+                Wrap(
+                  children: [
+                    DS1Text(
+                      company.name!,
+                      fontSize: 14,
+                      fontColor: ProjectColors(context).link,
+                    ),
+                    if (company != productionCompanies.last)
+                      DS1Text(
+                        ',',
+                        fontSize: 14,
+                        fontColor: ProjectColors(context).text,
+                      ),
+                  ],
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class MediaInfo extends StatelessWidget {
   final MovieDetails? movie;
   final TvShowDetails? tvShow;
@@ -67,135 +124,131 @@ class MediaInfo extends StatelessWidget {
     return IconButton(
       onPressed: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           useSafeArea: true,
           context: context,
           builder: (context) {
-            return SizedBox(
-              height: 1000,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.transparent,
-                    width: double.infinity,
-                    height: 35,
-                    child: Center(
-                      child: Container(
-                        width: 100,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: ProjectColors(context).label,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.fromLTRB(0, 15, 15, 5),
+                  width: double.infinity,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.close,
                     ),
                   ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (movie != null)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                MediaInfoItem(
-                                  condition: movie!.originalTitle != null,
-                                  item: movie!.originalTitle!,
-                                  label: "Original title",
-                                ),
-                                MediaInfoItem(
-                                  condition: movie!.runtime != null &&
-                                      movie!.runtime! > 0,
-                                  item: "${movie!.runtime!} Minutes",
-                                  label: "Runtime in minutes",
-                                ),
-                                MediaInfoItem(
-                                  condition: movie!.productionCountries !=
-                                          null &&
-                                      movie!.productionCountries!.isNotEmpty,
-                                  item: movie!.productionCountries!
-                                      .map((e) => e.name)
-                                      .join(", "),
-                                  label: "Production Countries",
-                                ),
-                                MediaInfoItem(
-                                  condition: movie!.spokenLanguages != null &&
-                                      movie!.spokenLanguages!.isNotEmpty,
-                                  item: movie!.spokenLanguages!
-                                      .map((e) => e.name)
-                                      .join(", "),
-                                  label: "Spoken Languages",
-                                ),
-                                MediaInfoItem(
-                                  condition: movie!.budget != null &&
-                                      movie!.budget! > 0,
-                                  item: formatMoney(movie!.budget!.toString()),
-                                  label: "Budget",
-                                ),
-                                MediaInfoItem(
-                                  condition: movie!.revenue != null &&
-                                      movie!.revenue! > 0,
-                                  item: formatMoney(movie!.revenue!.toString()),
-                                  label: "Revenue",
-                                ),
-                                //status
-                                MediaInfoItem(
-                                  condition: movie!.status != null,
-                                  item: movie!.status!,
-                                  label: "Status",
-                                ),
-                              ],
-                            ),
-                          if (tvShow != null)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                MediaInfoItem(
-                                  condition: tvShow!.originalName != null,
-                                  item: tvShow!.originalName!,
-                                  label: "Original title",
-                                ),
-                                MediaInfoItem(
-                                  condition: tvShow!.productionCountries !=
-                                          null &&
-                                      tvShow!.productionCountries!.isNotEmpty,
-                                  item: tvShow!.productionCountries!
-                                      .map((e) => e.name)
-                                      .join(", "),
-                                  label: "Production Countries",
-                                ),
-                                MediaInfoItem(
-                                  condition: tvShow!.spokenLanguages != null &&
-                                      tvShow!.spokenLanguages!.isNotEmpty,
-                                  item: tvShow!.spokenLanguages!
-                                      .map((e) => e.name)
-                                      .join(", "),
-                                  label: "Spoken Languages",
-                                ),
-                                MediaInfoItem(
-                                  condition: tvShow!.status != null,
-                                  item: tvShow!.status!,
-                                  label: "Status",
-                                ),
-                                MediaInfoItem(
-                                  condition: tvShow!.numberOfSeasons != null,
-                                  item: tvShow!.numberOfSeasons!.toString(),
-                                  label: "Number of seasons",
-                                ),
-                                MediaInfoItem(
-                                  condition: tvShow!.numberOfEpisodes != null,
-                                  item: tvShow!.numberOfEpisodes!.toString(),
-                                  label: "Number of episodes",
-                                ),
-                              ],
-                            )
-                        ],
-                      ),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (movie != null)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _Item(
+                                condition: movie!.originalTitle != null,
+                                item: movie!.originalTitle!,
+                                label: "Original title",
+                              ),
+                              _Item(
+                                condition: movie!.runtime != null &&
+                                    movie!.runtime! > 0,
+                                item: "${movie!.runtime!} Minutes",
+                                label: "Runtime in minutes",
+                              ),
+                              _Item(
+                                condition: movie!.productionCountries != null &&
+                                    movie!.productionCountries!.isNotEmpty,
+                                item: movie!.productionCountries!
+                                    .map((e) => e.name)
+                                    .join(", "),
+                                label: "Production Countries",
+                              ),
+                              _Item(
+                                condition: movie!.spokenLanguages != null &&
+                                    movie!.spokenLanguages!.isNotEmpty,
+                                item: movie!.spokenLanguages!
+                                    .map((e) => e.name)
+                                    .join(", "),
+                                label: "Spoken Languages",
+                              ),
+                              _Item(
+                                condition:
+                                    movie!.budget != null && movie!.budget! > 0,
+                                item: formatMoney(movie!.budget!.toString()),
+                                label: "Budget",
+                              ),
+                              _Item(
+                                condition: movie!.revenue != null &&
+                                    movie!.revenue! > 0,
+                                item: formatMoney(movie!.revenue!.toString()),
+                                label: "Revenue",
+                              ),
+                              _Item(
+                                condition: movie!.status != null,
+                                item: movie!.status!,
+                                label: "Status",
+                              ),
+                              Companies(movie: movie),
+                            ],
+                          ),
+                        if (tvShow != null)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _Item(
+                                condition: tvShow!.originalName != null,
+                                item: tvShow!.originalName!,
+                                label: "Original title",
+                              ),
+                              _Item(
+                                condition:
+                                    tvShow!.productionCountries != null &&
+                                        tvShow!.productionCountries!.isNotEmpty,
+                                item: tvShow!.productionCountries!
+                                    .map((e) => e.name)
+                                    .join(", "),
+                                label: "Production Countries",
+                              ),
+                              _Item(
+                                condition: tvShow!.spokenLanguages != null &&
+                                    tvShow!.spokenLanguages!.isNotEmpty,
+                                item: tvShow!.spokenLanguages!
+                                    .map((e) => e.name)
+                                    .join(", "),
+                                label: "Spoken Languages",
+                              ),
+                              _Item(
+                                condition: tvShow!.status != null,
+                                item: tvShow!.status!,
+                                label: "Status",
+                              ),
+                              _Item(
+                                condition: tvShow!.numberOfSeasons != null,
+                                item: tvShow!.numberOfSeasons!.toString(),
+                                label: "Number of seasons",
+                              ),
+                              _Item(
+                                condition: tvShow!.numberOfEpisodes != null,
+                                item: tvShow!.numberOfEpisodes!.toString(),
+                                label: "Number of episodes",
+                              ),
+                              Companies(tvShow: tvShow),
+                            ],
+                          )
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           },
         );
