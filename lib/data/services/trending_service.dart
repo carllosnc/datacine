@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
+import '/domain/domain.dart';
 
 class TrendingService {
   final TrendingRepository _trendingRepository = TrendingRepository(
@@ -15,13 +18,13 @@ class TrendingService {
 
     final reponsePeople = await _trendingRepository.people(page: 1);
 
-    final movies1 = _trendingRepository.adapt(responseMoviesPage1);
-    final movies2 = _trendingRepository.adapt(responseMoviesPage2);
+    final movies1 = MediaList.fromJson(jsonDecode(responseMoviesPage1.body));
+    final movies2 = MediaList.fromJson(jsonDecode(responseMoviesPage2.body));
 
-    final tvshows1 = _trendingRepository.adapt(responseTvshows1);
-    final tvshows2 = _trendingRepository.adapt(responseTvshows2);
+    final tvshows1 = MediaList.fromJson(jsonDecode(responseTvshows1.body));
+    final tvshows2 = MediaList.fromJson(jsonDecode(responseTvshows2.body));
 
-    final people = _trendingRepository.adaptForPeople(reponsePeople);
+    final people = PersonList.fromJson(jsonDecode(reponsePeople.body));
 
     final featuredMovies = movies1.results?.take(4).toList();
     final featuredTvshows = tvshows1.results?.take(4).toList();

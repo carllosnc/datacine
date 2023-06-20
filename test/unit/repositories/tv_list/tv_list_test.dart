@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giganoid_app/data/data.dart';
@@ -14,41 +15,41 @@ void main() {
 
   test('Check now playing tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
-    final reponse = await tvShowRepository.airingToday(page: 1);
+    final response = await tvShowRepository.airingToday(page: 1);
 
-    final tvs = tvShowRepository.adapt(reponse);
+    final tvs = MediaList.fromJson(jsonDecode(response.body));
 
     expect(tvs.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check on the air tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
-    final reponse = await tvShowRepository.onTheAir(page: 1);
+    final response = await tvShowRepository.onTheAir(page: 1);
 
-    final tvs = tvShowRepository.adapt(reponse);
+    final tvs = MediaList.fromJson(jsonDecode(response.body));
 
     expect(tvs.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check popular tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
-    final reponse = await tvShowRepository.popular(page: 1);
+    final response = await tvShowRepository.popular(page: 1);
 
-    final tvs = tvShowRepository.adapt(reponse);
+    final tvs = MediaList.fromJson(jsonDecode(response.body));
 
     expect(tvs.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check top rated tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
-    final reponse = await tvShowRepository.topRated(page: 1);
+    final response = await tvShowRepository.topRated(page: 1);
 
-    final tvs = tvShowRepository.adapt(reponse);
+    final tvs = MediaList.fromJson(jsonDecode(response.body));
 
     expect(tvs.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 }

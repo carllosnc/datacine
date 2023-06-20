@@ -14,7 +14,7 @@ class TvShowView extends StatefulWidget {
 }
 
 class _TvShowViewState extends State<TvShowView> {
-  final TvShowDetailsService _tvShowDetailsService = TvShowDetailsService();
+  final MediaDetailsService _tvShowDetailsService = MediaDetailsService();
 
   @override
   Widget build(BuildContext context) {

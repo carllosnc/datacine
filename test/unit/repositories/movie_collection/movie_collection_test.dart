@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giganoid_app/data/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -13,11 +14,11 @@ void main() {
   });
 
   test("Check movie collection", () async {
-    final collectionRepository = CollectionRepository(http.Client());
-    final reponse = await collectionRepository.getCollection(id: "9485");
-    final collection = collectionRepository.adapt(reponse);
+    final collectionRepository = MovieCollectionRepository(http.Client());
+    final response = await collectionRepository.getCollection(id: "9485");
+    final collection = Collection.fromJson(jsonDecode(response.body));
 
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
     expect(collection.parts, isA<List<MediaItem?>?>());
   });
 }

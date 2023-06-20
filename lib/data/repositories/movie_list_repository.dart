@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'repository.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
 
 class MovieLists extends Repository {
   MovieLists(super.httpClient);
@@ -44,9 +42,5 @@ class MovieLists extends Repository {
       ),
       headers: headers,
     );
-  }
-
-  MediaList adapt(http.Response response) {
-    return MediaList.fromJson(jsonDecode(response.body));
   }
 }

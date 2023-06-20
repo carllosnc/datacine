@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:http/http.dart' as http;
 import '/data/data.dart';
@@ -18,6 +19,6 @@ class MediaSimilarService {
       page: page,
     );
 
-    return _mediaSimilarRepository.adapt(response);
+    return MediaList.fromJson(jsonDecode(response.body));
   }
 }

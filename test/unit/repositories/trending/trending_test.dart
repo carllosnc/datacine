@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giganoid_app/data/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -15,7 +17,7 @@ void main() {
   test('Check trending movie', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.movies(page: 1);
-    final movies = trendingRepository.adapt(response);
+    final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
     expect(response.statusCode, 200);
@@ -24,7 +26,7 @@ void main() {
   test('Check trending tv shows', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.tv(page: 1);
-    final tvShows = trendingRepository.adapt(response);
+    final tvShows = MediaList.fromJson(jsonDecode(response.body));
 
     expect(tvShows.results, isA<List<MediaItem?>?>());
     expect(response.statusCode, 200);
@@ -34,7 +36,7 @@ void main() {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.people(page: 1);
 
-    final people = trendingRepository.adaptForPeople(response);
+    final people = PersonList.fromJson(jsonDecode(response.body));
 
     expect(people.results, isA<List<PersonItem>>());
     expect(response.statusCode, 200);

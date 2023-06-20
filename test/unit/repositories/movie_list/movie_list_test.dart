@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mockito/annotations.dart';
@@ -14,37 +16,37 @@ void main() {
 
   test('Check now playing movies', () async {
     final movieRepository = MovieLists(http.Client());
-    final reponse = await movieRepository.nowPlayingMoviesData(page: 1);
-    final movies = movieRepository.adapt(reponse);
+    final response = await movieRepository.nowPlayingMoviesData(page: 1);
+    final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check popular movies', () async {
     final movieRepository = MovieLists(http.Client());
-    final reponse = await movieRepository.popularMoviesData(page: 1);
-    final movies = movieRepository.adapt(reponse);
+    final response = await movieRepository.popularMoviesData(page: 1);
+    final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check top rated movies', () async {
     final movieRepository = MovieLists(http.Client());
-    final reponse = await movieRepository.topRatedMoviesData(page: 1);
-    final movies = movieRepository.adapt(reponse);
+    final response = await movieRepository.topRatedMoviesData(page: 1);
+    final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 
   test('Check upcomming movies', () async {
     final movieRepository = MovieLists(http.Client());
-    final reponse = await movieRepository.upcomingMoviesData(page: 1);
-    final movies = movieRepository.adapt(reponse);
+    final response = await movieRepository.upcomingMoviesData(page: 1);
+    final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
-    expect(reponse.statusCode, 200);
+    expect(response.statusCode, 200);
   });
 }

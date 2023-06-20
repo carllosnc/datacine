@@ -18,7 +18,7 @@ class MovieCollection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CollectionService collectionService = CollectionService();
+    final MovieCollectionService collectionService = MovieCollectionService();
     num? id = movie.belongsToCollection?.id;
 
     if (id != null) {

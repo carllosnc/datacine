@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:giganoid_app/core/core.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:mockito/annotations.dart';
@@ -24,7 +26,7 @@ void main() {
       page: 1,
     );
 
-    final similar = similarRepository.adapt(response);
+    final similar = MediaList.fromJson(jsonDecode(response.body));
 
     expect(response.statusCode, 200);
     expect(similar.page, 1);
@@ -42,7 +44,7 @@ void main() {
       page: 1,
     );
 
-    final similar = similarRepository.adapt(response);
+    final similar = MediaList.fromJson(jsonDecode(response.body));
 
     expect(response.statusCode, 200);
     expect(similar.page, 1);

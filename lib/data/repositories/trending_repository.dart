@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'repository.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
 
 class TrendingRepository extends Repository {
   TrendingRepository(super.httpClient);
@@ -34,13 +32,5 @@ class TrendingRepository extends Repository {
       ),
       headers: headers,
     );
-  }
-
-  MediaList adapt(http.Response response) {
-    return MediaList.fromJson(jsonDecode(response.body));
-  }
-
-  PersonList adaptForPeople(http.Response response) {
-    return PersonList.fromJson(jsonDecode(response.body));
   }
 }

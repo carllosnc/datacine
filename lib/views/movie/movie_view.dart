@@ -10,7 +10,7 @@ class MovieView extends StatelessWidget {
 
   MovieView({super.key, required this.id});
 
-  final MovieDetailsService _movieDetailsService = MovieDetailsService();
+  final MediaDetailsService _movieDetailsService = MediaDetailsService();
 
   @override
   Widget build(BuildContext context) {

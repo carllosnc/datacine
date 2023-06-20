@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
-import '/domain/domain.dart';
 import '/core/core.dart';
 
 class MediaRecommendationsRepository extends Repository {
@@ -22,9 +20,5 @@ class MediaRecommendationsRepository extends Repository {
       ),
       headers: headers,
     );
-  }
-
-  MediaList adapt(http.Response response) {
-    return MediaList.fromJson(jsonDecode(response.body));
   }
 }

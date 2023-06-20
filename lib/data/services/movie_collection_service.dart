@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '/data/data.dart';
 import '/domain/domain.dart';
 
-class CollectionService {
-  final CollectionRepository _collectionRepository =
-      CollectionRepository(http.Client());
+class MovieCollectionService {
+  final MovieCollectionRepository _collectionRepository =
+      MovieCollectionRepository(http.Client());
 
   Future<Collection> getCollection(String id) async {
     final response = await _collectionRepository.getCollection(id: id);
-    return _collectionRepository.adapt(response);
+    return Collection.fromJson(jsonDecode(response.body));
   }
 }
