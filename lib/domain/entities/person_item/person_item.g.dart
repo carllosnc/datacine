@@ -21,6 +21,7 @@ PersonItem _$PersonItemFromJson(Map<String, dynamic> json) => PersonItem(
       job: json['job'] as String?,
       department: json['department'] as String?,
       name: json['name'] as String?,
+      mediaType: json['media_type'] as String?,
     );
 
 Map<String, dynamic> _$PersonItemToJson(PersonItem instance) =>
@@ -29,6 +30,7 @@ Map<String, dynamic> _$PersonItemToJson(PersonItem instance) =>
       'known_for_department': instance.knownForDepartment,
       'profile_path': instance.profilePath,
       'known_for': instance.knownFor?.map((e) => e.toJson()).toList(),
+      'media_type': instance.mediaType,
       'name': instance.name,
       'adult': instance.adult,
       'id': instance.id,

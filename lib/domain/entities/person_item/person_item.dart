@@ -17,6 +17,9 @@ class PersonItem {
   @JsonKey(name: 'known_for')
   final List<MediaItem>? knownFor;
 
+  @JsonKey(name: 'media_type')
+  final String? mediaType;
+
   final String? name;
 
   final bool? adult;
@@ -46,6 +49,7 @@ class PersonItem {
     required this.job,
     required this.department,
     required this.name,
+    required this.mediaType,
   });
 
   factory PersonItem.fromJson(Map<String, dynamic> json) =>

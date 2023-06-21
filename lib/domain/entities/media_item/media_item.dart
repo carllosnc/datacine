@@ -37,6 +37,9 @@ class MediaItem {
   @JsonKey(name: 'origin_country')
   final List<String>? originCountry;
 
+  @JsonKey(name: 'media_type')
+  final String? mediaType;
+
   final bool? adult;
 
   final num? id;
@@ -70,6 +73,7 @@ class MediaItem {
     required this.voteAverage,
     required this.voteCount,
     required this.originCountry,
+    required this.mediaType,
   });
 
   factory MediaItem.fromJson(Map<String, dynamic> json) =>

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import '/domain/domain.dart';
 
 part 'season.g.dart';
 
@@ -22,6 +23,8 @@ class Season {
 
   final String? overview;
 
+  final List<Episode>? episodes;
+
   Season({
     this.airDate,
     this.episodeCount,
@@ -30,6 +33,7 @@ class Season {
     this.overview,
     this.posterPath,
     this.seasonNumber,
+    this.episodes,
   });
 
   factory Season.fromJson(Map<String, dynamic> json) => _$SeasonFromJson(json);
