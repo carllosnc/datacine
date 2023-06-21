@@ -37,7 +37,7 @@ class MovieView extends StatelessWidget {
         bool hasKeywords = movie.keywords!['keywords'] != null &&
             movie.keywords!['keywords']!.isNotEmpty;
         bool hasCollection = movie.belongsToCollection != null;
-        bool hasCast = movie.credits!['cast'] != null &&
+        bool hasCast = movie.credits?['cast'] != null &&
             movie.credits!['cast']!.isNotEmpty &&
             movie.credits!['cast']!.length >= 3;
         bool hasOverview = movie.overview != null && movie.overview!.isNotEmpty;
@@ -74,7 +74,7 @@ class MovieView extends StatelessWidget {
                 SectionDivider(condition: hasCast),
                 PeopleList(
                   title: 'Cast',
-                  list: movie.credits!['cast']!,
+                  list: movie.credits?['cast']!,
                   maxWidth: double.infinity,
                 ),
 

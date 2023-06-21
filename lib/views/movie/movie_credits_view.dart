@@ -12,6 +12,10 @@ class MovieCreditsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (movie.credits == null) {
+      return const EmptyView();
+    }
+
     return MediaCreditsList(credits: movie.credits);
   }
 }
