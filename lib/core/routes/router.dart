@@ -1,3 +1,4 @@
+import 'package:giganoid_app/views/tvshow/tvshow_similar_view.dart';
 import 'package:go_router/go_router.dart';
 import '/views/views.dart';
 import '/domain/domain.dart';
@@ -66,7 +67,7 @@ final tvshowRecommendations = GoRoute(
   builder: (context, state) {
     final tvshow = state.extra as TvShowDetails;
 
-    return TvShowSimilarView(tvshow: tvshow);
+    return TvShowRecommendationView(tvshow: tvshow);
   },
 );
 
