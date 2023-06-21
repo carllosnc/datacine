@@ -46,8 +46,7 @@ class MovieCollection extends StatelessWidget {
             return a.releaseDate!.compareTo(b.releaseDate!);
           });
 
-          collection.parts!
-              .removeWhere((element) => element.posterPath == null);
+          collection.parts!.removeWhere((element) => element.posterPath == null);
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +122,7 @@ class MovieCollection extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                DateHelper.format(movie.releaseDate),
+                                (movie.releaseDate ?? '').formatDateTime(),
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(

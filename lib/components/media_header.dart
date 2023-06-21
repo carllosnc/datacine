@@ -64,8 +64,7 @@ class MediaHeader extends StatelessWidget {
                 spacing: 10,
                 children: [
                   DS1Text(
-                    DateHelper.format(
-                        (movie?.releaseDate ?? tvshow?.firstAirDate)),
+                    (movie?.releaseDate ?? tvshow?.firstAirDate ?? '').formatDateTime(),
                     fontSize: 12,
                     fontColor: ProjectColors(context).label,
                   ),
@@ -77,7 +76,7 @@ class MediaHeader extends StatelessWidget {
                     ),
                   if (tvshow?.lastAirDate != null)
                     DS1Text(
-                      DateHelper.format(tvshow?.lastAirDate),
+                      (tvshow?.lastAirDate ?? '').formatDateTime(),
                       fontSize: 12,
                       fontColor: ProjectColors(context).label,
                     ),
@@ -97,8 +96,7 @@ class MediaHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MediaTrailer(
-                    videos: (movie?.videos?['results'] ??
-                        tvshow?.videos?['results']),
+                    videos: (movie?.videos?['results'] ?? tvshow?.videos?['results']),
                   ),
                   MediaVotes(
                     voteAverage: (movie?.voteAverage ?? tvshow?.voteAverage),

@@ -18,7 +18,7 @@ class PeopleList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list!.isEmpty || list == null) {
+    if (list == null) {
       return const SizedBox.shrink();
     }
 

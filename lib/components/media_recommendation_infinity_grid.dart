@@ -53,8 +53,7 @@ class _MediaRecommendationsInfinityGridState
   }
 
   bool _onScrollNotification(ScrollNotification notification) {
-    if (notification is ScrollEndNotification &&
-        notification.metrics.pixels == notification.metrics.maxScrollExtent) {
+    if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
       if (!_isLoading && _page <= _totalPages) {
         setState(() {
           _isLoading = true;
@@ -129,10 +128,9 @@ class _MediaRecommendationsInfinityGridState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                DateHelper.format(
-                                  mediaItem.releaseDate ??
-                                      mediaItem.firstAirDate!,
-                                ),
+                                (mediaItem.releaseDate ??
+                                        mediaItem.firstAirDate!)
+                                    .formatDateTime(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(

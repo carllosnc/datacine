@@ -87,9 +87,8 @@ class ExtendedMediaCardList extends StatelessWidget {
                             direction: Axis.vertical,
                             children: [
                               DS1Text(
-                                DateHelper.format(
-                                  media.releaseDate ?? media.firstAirDate,
-                                ),
+                                (media.releaseDate ?? media.firstAirDate ?? '')
+                                    .formatDateTime(),
                                 fontSize: 12,
                                 truncate: 33,
                                 fontColor: ProjectColors(context).featured,

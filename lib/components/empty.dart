@@ -1,3 +1,4 @@
+import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 
@@ -44,6 +45,20 @@ class Empty extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class EmptyView extends StatelessWidget {
+  const EmptyView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const DS1Text('Credits', fontSize: 14)),
+      body: const Center(
+        child: Empty(),
       ),
     );
   }

@@ -60,7 +60,11 @@ class TvShowSeasons extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            //go to season page
+                            showSeasonDetails(
+                              context: context,
+                              tvshowId: tvshow!.id!,
+                              seasonNumber: season.seasonNumber!,
+                            );
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -87,7 +91,7 @@ class TvShowSeasons extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              DateHelper.format(season.airDate),
+                              (season.airDate ?? '').formatDateTime(),
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: TextStyle(
