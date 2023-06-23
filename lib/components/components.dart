@@ -22,3 +22,4 @@ export './media_poster_grid.dart';
 export './media_votes.dart';
 export './media_header.dart';
 export './media_credits_list.dart';
+export './custom_search.dart';

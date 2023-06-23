@@ -18,6 +18,10 @@ class Companies extends StatelessWidget {
     List<ProductionCompany>? productionCompanies =
         movie?.productionCompanies ?? tvShow?.productionCompanies;
 
+    if (productionCompanies == null || productionCompanies.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(
@@ -34,11 +38,12 @@ class Companies extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Wrap(
-            spacing: 10,
-            runSpacing: 10,
+            spacing: 5,
+            runSpacing: 5,
             children: [
-              for (var company in productionCompanies!)
+              for (var company in productionCompanies)
                 Wrap(
+                  spacing: 5,
                   children: [
                     DS1Text(
                       company.name!,
@@ -47,10 +52,9 @@ class Companies extends StatelessWidget {
                     ),
                     if (company != productionCompanies.last)
                       DS1Text(
-                        ',',
-                        fontSize: 14,
-                        fontColor: ProjectColors(context).text,
-                      ),
+                        '•',
+                        fontColor: ProjectColors(context).text.withOpacity(0.2),
+                      )
                   ],
                 ),
             ],

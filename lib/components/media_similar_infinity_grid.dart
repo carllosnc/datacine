@@ -2,6 +2,7 @@ import 'package:ds1/components/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
 import '/data/data.dart';
 import '/core/core.dart';
 import '/components/components.dart';
@@ -27,7 +28,7 @@ class _MediaSimilarInfinityGridState extends State<MediaSimilarInfinityGrid> {
   int _page = 1;
   dynamic _totalPages = false;
 
-  final MediaSimilarService _mediaSimilarService = MediaSimilarService();
+  final _mediaSimilarRepository = MediaSimilarRepository(http.Client());
 
   @override
   void initState() {
@@ -36,7 +37,7 @@ class _MediaSimilarInfinityGridState extends State<MediaSimilarInfinityGrid> {
   }
 
   Future<void> fetchData() async {
-    final newData = await _mediaSimilarService.get(
+    final newData = await _mediaSimilarRepository.similar(
       mediaId: widget.id,
       mediaType: widget.mediaType,
       page: _page,

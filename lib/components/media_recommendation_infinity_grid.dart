@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '/data/data.dart';
 import '/core/core.dart';
 import '/components/components.dart';
+import 'package:http/http.dart' as http;
 
 class MediaRecommendationsInfinityGrid extends StatefulWidget {
   final int id;
@@ -28,8 +29,9 @@ class _MediaRecommendationsInfinityGridState
   int _page = 1;
   dynamic _totalPages = false;
 
-  final MediaRecommendationService _mediaRecommendationService =
-      MediaRecommendationService();
+  final _mediaRecommendationService = MediaRecommendationsRepository(
+    http.Client(),
+  );
 
   @override
   void initState() {
@@ -38,7 +40,7 @@ class _MediaRecommendationsInfinityGridState
   }
 
   Future<void> fetchData() async {
-    final newData = await _mediaRecommendationService.get(
+    final newData = await _mediaRecommendationService.recommendations(
       mediaId: widget.id,
       mediaType: widget.mediaType,
       page: _page,

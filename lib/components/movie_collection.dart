@@ -5,6 +5,7 @@ import '/core/core.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 import '/data/data.dart';
+import 'package:http/http.dart' as http;
 
 class MovieCollection extends StatelessWidget {
   final MovieDetails movie;
@@ -18,12 +19,12 @@ class MovieCollection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MovieCollectionService collectionService = MovieCollectionService();
+    final collectionRepository = MovieCollectionRepository(http.Client());
     num? id = movie.belongsToCollection?.id;
 
     if (id != null) {
       return FutureBuilder(
-        future: collectionService.getCollection(id.toString()),
+        future: collectionRepository.collection(id.toString()),
         builder: (BuildContext context, AsyncSnapshot<Collection> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SizedBox(
@@ -46,7 +47,8 @@ class MovieCollection extends StatelessWidget {
             return a.releaseDate!.compareTo(b.releaseDate!);
           });
 
-          collection.parts!.removeWhere((element) => element.posterPath == null);
+          collection.parts!
+              .removeWhere((element) => element.posterPath == null);
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

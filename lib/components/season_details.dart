@@ -1,5 +1,6 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '/domain/domain.dart';
 import '/components/components.dart';
 import '/data/data.dart';
@@ -10,9 +11,9 @@ showSeasonDetails({
   required int tvshowId,
   required int seasonNumber,
 }) {
-  SeasonService seasonService = SeasonService();
+  final seasonRepository = SeasonRepository(http.Client());
 
-  final seasonFuture = seasonService.getSeason(
+  final seasonFuture = seasonRepository.season(
     tvshowId: tvshowId,
     seasonNumber: seasonNumber,
   );
@@ -31,10 +32,8 @@ showSeasonDetails({
             future: seasonFuture,
             builder: (BuildContext context, AsyncSnapshot<Season> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  ),
+                return const Center(
+                  child: CircularProgressIndicator(strokeWidth: 2),
                 );
               }
 
@@ -45,7 +44,14 @@ showSeasonDetails({
                 children: [
                   const BottomSheetHeader(),
                   Container(
-                    color: Colors.black.withOpacity(0.25),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: ProjectColors(context).line,
+                          width: 1,
+                        ),
+                      ),
+                    ),
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
@@ -89,7 +95,6 @@ showSeasonDetails({
                   Expanded(
                     child: ListView.builder(
                       controller: scrollController,
-                      physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: season.episodes!.length,
                       itemBuilder: (BuildContext context, int index) {

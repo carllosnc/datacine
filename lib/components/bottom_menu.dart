@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
@@ -61,16 +59,13 @@ class BottomMenu extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       height: 50,
       decoration: BoxDecoration(
-        color: ProjectColors(context).bottomBarBackground.withOpacity(0.7),
+        color: ProjectColors(context).bottomBarBackground,
       ),
       padding: const EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: items,
-        ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: items,
       ),
     );
   }

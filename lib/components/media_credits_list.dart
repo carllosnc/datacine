@@ -79,10 +79,6 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       },
     ).toList();
 
-    if (cast.isEmpty && crew.isEmpty) {
-      return const Empty();
-    }
-
     return DefaultTabController(
       initialIndex: 0,
       length: 2,

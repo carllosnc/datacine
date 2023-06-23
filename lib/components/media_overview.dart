@@ -30,9 +30,8 @@ class MediaOverview extends StatelessWidget {
               spacing: 10,
               runSpacing: 10,
               children: [
-                Visibility(
-                  visible: movie!.tagline != null && movie!.tagline!.isNotEmpty,
-                  child: SizedBox(
+                if (movie!.tagline != null && movie!.tagline!.isNotEmpty)
+                  SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
                     child: DS1Text(
                       '"${movie?.tagline}"',
@@ -40,11 +39,8 @@ class MediaOverview extends StatelessWidget {
                       fontColor: ProjectColors(context).featured,
                     ),
                   ),
-                ),
-                Visibility(
-                  visible:
-                      movie!.overview != null && movie!.overview!.isNotEmpty,
-                  child: SizedBox(
+                if (movie!.overview != null && movie!.overview!.isNotEmpty)
+                  SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
                     child: DS1Text(
                       '${movie?.overview}',
@@ -52,17 +48,14 @@ class MediaOverview extends StatelessWidget {
                       fontColor: ProjectColors(context).text,
                     ),
                   ),
-                ),
               ],
             ),
           if (tvshow != null)
             Wrap(
               runSpacing: 10,
               children: [
-                Visibility(
-                  visible:
-                      tvshow!.tagline != null && tvshow!.tagline!.isNotEmpty,
-                  child: SizedBox(
+                if (tvshow!.tagline != null && tvshow!.tagline!.isNotEmpty)
+                  SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
                     child: DS1Text(
                       '"${tvshow?.tagline}"',
@@ -70,11 +63,8 @@ class MediaOverview extends StatelessWidget {
                       fontColor: ProjectColors(context).featured,
                     ),
                   ),
-                ),
-                Visibility(
-                  visible:
-                      tvshow!.overview != null && tvshow!.overview!.isNotEmpty,
-                  child: SizedBox(
+                if (tvshow!.overview != null && tvshow!.overview!.isNotEmpty)
+                  SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
                     child: DS1Text(
                       '${tvshow?.overview}',
@@ -82,7 +72,6 @@ class MediaOverview extends StatelessWidget {
                       fontColor: ProjectColors(context).text,
                     ),
                   ),
-                ),
               ],
             ),
         ],

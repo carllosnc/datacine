@@ -30,24 +30,31 @@ class MovieDirectors extends StatelessWidget {
     }
 
     return Wrap(
-      spacing: 10,
+      spacing: 5,
       runSpacing: 0,
-      children: directors.mapIndexed((num index, PersonItem person) {
-        return Wrap(
-          spacing: 10,
-          children: [
-            DS1Text(
-              person.originalName!,
-              fontSize: 14,
-              fontColor: ProjectColors(context).link,
-            ),
-            //check last
-            if (index != directors!.length - 1)
-              DS1Text('•',
-                  fontColor: ProjectColors(context).text.withOpacity(0.4))
-          ],
-        );
-      }).toList(),
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        const DS1Text("🎬", fontSize: 15),
+        ...directors.mapIndexed((num index, PersonItem person) {
+          return Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 5,
+            children: [
+              DS1Text(
+                person.originalName!,
+                fontSize: 14,
+                fontColor: ProjectColors(context).link,
+              ),
+              //check last
+              if (index != directors!.length - 1)
+                DS1Text(
+                  '•',
+                  fontColor: ProjectColors(context).text.withOpacity(0.2),
+                )
+            ],
+          );
+        }).toList(),
+      ],
     );
   }
 }

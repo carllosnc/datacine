@@ -34,7 +34,7 @@ class MediaHeader extends StatelessWidget {
                   ),
                 ],
                 border: Border.all(
-                  color: ProjectColors(context).text,
+                  color: Colors.white,
                   width: 3,
                 ),
                 borderRadius: BorderRadius.circular(20),
@@ -64,7 +64,8 @@ class MediaHeader extends StatelessWidget {
                 spacing: 10,
                 children: [
                   DS1Text(
-                    (movie?.releaseDate ?? tvshow?.firstAirDate ?? '').formatDateTime(),
+                    (movie?.releaseDate ?? tvshow?.firstAirDate ?? '')
+                        .formatDateTime(),
                     fontSize: 12,
                     fontColor: ProjectColors(context).label,
                   ),
@@ -96,7 +97,8 @@ class MediaHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MediaTrailer(
-                    videos: (movie?.videos?['results'] ?? tvshow?.videos?['results']),
+                    videos: (movie?.videos?['results'] ??
+                        tvshow?.videos?['results']),
                   ),
                   MediaVotes(
                     voteAverage: (movie?.voteAverage ?? tvshow?.voteAverage),

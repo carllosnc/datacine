@@ -17,24 +17,31 @@ class TvShowCreators extends StatelessWidget {
     if (creators == null || creators!.isEmpty) return const SizedBox.shrink();
 
     return Wrap(
-      spacing: 10,
+      spacing: 5,
       runSpacing: 0,
-      children: creators!.mapIndexed((num index, PersonItem person) {
-        return Wrap(
-          spacing: 10,
-          children: [
-            DS1Text(
-              person.name!,
-              fontSize: 14,
-              fontColor: ProjectColors(context).link,
-            ),
-            //check last
-            if (index != creators!.length - 1)
-              DS1Text('•',
-                  fontColor: ProjectColors(context).text.withOpacity(0.2))
-          ],
-        );
-      }).toList(),
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        const DS1Text("😎", fontSize: 15),
+        ...creators!.mapIndexed((num index, PersonItem person) {
+          return Wrap(
+            spacing: 5,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              DS1Text(
+                person.name!,
+                fontSize: 14,
+                fontColor: ProjectColors(context).link,
+              ),
+              //check last
+              if (index != creators!.length - 1)
+                DS1Text(
+                  '•',
+                  fontColor: ProjectColors(context).text.withOpacity(0.2),
+                )
+            ],
+          );
+        }).toList(),
+      ],
     );
   }
 }
