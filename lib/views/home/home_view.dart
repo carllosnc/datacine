@@ -1,6 +1,7 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
+import '/components/components.dart';
 import './tabs/movies/movies.dart';
 import './tabs/tv_shows/tv_shows.dart';
 import './tabs/trending/trending.dart';
@@ -100,62 +101,5 @@ class _HomeViewState extends State<HomeView>
         ),
       ),
     );
-  }
-}
-
-class CustomSearchDelegate extends SearchDelegate {
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: InputBorder.none,
-      ),
-      textTheme: TextTheme(
-        titleLarge: TextStyle(
-          color: ProjectColors(context).featured,
-          fontSize: 18,
-        ),
-      ),
-    );
-  }
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = "";
-        },
-        icon: const Icon(Icons.clear),
-      ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    print('result');
-
-    return Container();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    print(query);
-
-    return Text(query);
   }
 }

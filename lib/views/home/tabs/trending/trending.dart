@@ -3,6 +3,7 @@ import 'package:giganoid_app/core/core.dart';
 import '/data/data.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
+import 'package:http/http.dart' as http;
 
 class TrendingTab extends StatefulWidget {
   const TrendingTab({super.key});
@@ -13,7 +14,7 @@ class TrendingTab extends StatefulWidget {
 
 class _TrendingTabState extends State<TrendingTab>
     with AutomaticKeepAliveClientMixin<TrendingTab> {
-  final _trendingService = TrendingService();
+  final Future getTrendings = TrendingRepository(http.Client()).getTrendings();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class _TrendingTabState extends State<TrendingTab>
     return LayoutBuilder(
       builder: (context, constraints) {
         return FutureBuilder(
-          future: _trendingService.getTrendings(),
+          future: getTrendings,
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             ConnectionState connectionState = snapshot.connectionState;
 

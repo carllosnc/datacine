@@ -12,7 +12,7 @@ class MovieCreditsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (movie.credits == null) {
+    if (movie.credits == null || movie.credits!.isEmpty) {
       return const EmptyView();
     }
 

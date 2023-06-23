@@ -1,9 +1,11 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
+import 'package:giganoid_app/core/constants/colors.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
 
 class TvShowView extends StatefulWidget {
   final String id;
@@ -14,12 +16,12 @@ class TvShowView extends StatefulWidget {
 }
 
 class _TvShowViewState extends State<TvShowView> {
-  final MediaDetailsService _tvShowDetailsService = MediaDetailsService();
+  final _movieDetailsRepository = MediaDetailsRepository(http.Client());
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _tvShowDetailsService.getTVShow(widget.id),
+      future: _movieDetailsRepository.tvShow(widget.id),
       builder: (context, AsyncSnapshot<TvShowDetails> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -55,7 +57,11 @@ class _TvShowViewState extends State<TvShowView> {
             actions: [
               MediaInfo(tvShow: tvshow),
             ],
-            title: DS1Text(tvshow.name!, fontSize: 14),
+            title: DS1Text(
+              "📺  ${tvshow.name!}",
+              fontSize: 14,
+              fontColor: ProjectColors(context).featured,
+            ),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -97,7 +103,7 @@ class _TvShowViewState extends State<TvShowView> {
           bottomNavigationBar: BottomMenu(
             items: [
               BottomItem(
-                icon: Icons.image,
+                icon: Icons.image_outlined,
                 label: "Images",
                 onTap: () {
                   context.go(
@@ -107,7 +113,7 @@ class _TvShowViewState extends State<TvShowView> {
                 },
               ),
               BottomItem(
-                icon: Icons.person,
+                icon: Icons.person_outline,
                 label: "Credits",
                 onTap: () {
                   context.go(
@@ -117,7 +123,7 @@ class _TvShowViewState extends State<TvShowView> {
                 },
               ),
               BottomItem(
-                icon: Icons.thumb_up,
+                icon: Icons.thumb_up_outlined,
                 label: "Recom.",
                 onTap: () {
                   context.go(
@@ -127,7 +133,7 @@ class _TvShowViewState extends State<TvShowView> {
                 },
               ),
               BottomItem(
-                icon: Icons.tv,
+                icon: Icons.tv_outlined,
                 label: "Similar",
                 onTap: () {
                   context.go(

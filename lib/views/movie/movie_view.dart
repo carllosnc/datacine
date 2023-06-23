@@ -1,21 +1,23 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
+import 'package:giganoid_app/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
+import 'package:http/http.dart' as http;
 
 class MovieView extends StatelessWidget {
   final String id;
 
   MovieView({super.key, required this.id});
 
-  final MediaDetailsService _movieDetailsService = MediaDetailsService();
+  final _movieDetailsRepository = MediaDetailsRepository(http.Client());
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _movieDetailsService.getMovie(id),
+      future: _movieDetailsRepository.movie(id),
       builder: (context, AsyncSnapshot<MovieDetails> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -47,7 +49,11 @@ class MovieView extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
-            title: DS1Text(movie.title!, fontSize: 14),
+            title: DS1Text(
+              "🎞   ${movie.title!}",
+              fontSize: 14,
+              fontColor: ProjectColors(context).featured,
+            ),
             actions: [
               MediaInfo(movie: movie),
             ],
@@ -88,7 +94,7 @@ class MovieView extends StatelessWidget {
           bottomNavigationBar: BottomMenu(
             items: [
               BottomItem(
-                icon: Icons.image,
+                icon: Icons.image_outlined,
                 label: "Images",
                 onTap: () {
                   context.go(
@@ -98,7 +104,7 @@ class MovieView extends StatelessWidget {
                 },
               ),
               BottomItem(
-                icon: Icons.person,
+                icon: Icons.person_outline,
                 label: "Credits",
                 onTap: () {
                   context.go(
@@ -108,7 +114,7 @@ class MovieView extends StatelessWidget {
                 },
               ),
               BottomItem(
-                icon: Icons.thumb_up,
+                icon: Icons.thumb_up_outlined,
                 label: "Recom.",
                 onTap: () {
                   context.go(
@@ -118,7 +124,7 @@ class MovieView extends StatelessWidget {
                 },
               ),
               BottomItem(
-                icon: Icons.movie,
+                icon: Icons.movie_outlined,
                 label: "Similar",
                 onTap: () {
                   context.go(
