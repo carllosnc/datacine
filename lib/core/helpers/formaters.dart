@@ -17,4 +17,18 @@ extension StringExtension on String {
 
     return DateFormat.yMMMMd('en_US').format(dateTime).toString();
   }
+
+  String formatYear() {
+    if (isEmpty || this == "null") {
+      return "No date";
+    }
+
+    DateTime dateTime = DateTime.parse(this);
+
+    return DateFormat.y('en_US').format(dateTime).toString();
+  }
+
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1)}";
+  }
 }

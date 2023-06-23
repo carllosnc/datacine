@@ -14,8 +14,7 @@ class ProjectColors {
   Color status = const Color.fromARGB(255, 225, 99, 247);
   Color link = const Color.fromARGB(255, 63, 220, 255);
 
-  Color get bottomBarBackground =>
-      Theme.of(context).colorScheme.primaryContainer;
+  Color get bottomBarBackground => Theme.of(context).colorScheme.onSecondary;
   Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.5);
   Color get text => Theme.of(context).colorScheme.onSurface;
   Color get title => Theme.of(context).colorScheme.tertiary;
