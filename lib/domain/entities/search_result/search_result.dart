@@ -12,7 +12,7 @@ class SearchResult {
   @JsonKey(name: 'total_results')
   final num? totalResults;
 
-  final List<dynamic>? results;
+  List<dynamic>? results;
 
   SearchResult({
     required this.page,

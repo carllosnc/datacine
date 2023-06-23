@@ -17,3 +17,4 @@ export 'entities/season/season.dart';
 export 'entities/tvshow_details/tvshow_details.dart';
 export 'entities/belongs_to_collection/belongs_to_collection.dart';
 export 'entities/collection/collection.dart';
+export 'entities/search_result/search_result.dart';
