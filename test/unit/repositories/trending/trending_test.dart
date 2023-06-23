@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giganoid_app/data/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,7 +15,7 @@ void main() {
 
   test('Check trending movie', () async {
     final trendingRepository = TrendingRepository(http.Client());
-    final response = await trendingRepository.movies(page: 1);
+    final response = await trendingRepository.getMovies(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));
 
     expect(movies.results, isA<List<MediaItem?>?>());
@@ -34,11 +33,26 @@ void main() {
 
   test('Check trending people', () async {
     final trendingRepository = TrendingRepository(http.Client());
-    final response = await trendingRepository.people(page: 1);
+    final response = await trendingRepository.getPeople(page: 1);
 
     final people = PersonList.fromJson(jsonDecode(response.body));
 
     expect(people.results, isA<List<PersonItem>>());
     expect(response.statusCode, 200);
+  });
+
+  //test trendings
+  test('Check trending all', () async {
+    final trendingRepository = TrendingRepository(http.Client());
+
+    final items = await trendingRepository.getTrendings();
+
+    expect(items['movies'], isA<List<MediaItem?>?>());
+    expect(items['tvshows'], isA<List<MediaItem?>?>());
+    expect(items['people'], isA<List<PersonItem>>());
+
+    expect(items['movies'].length, 36);
+    expect(items['tvshows'].length, 36);
+    expect(items['people'].length, 20);
   });
 }

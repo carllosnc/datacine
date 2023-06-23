@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:giganoid_app/core/core.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:mockito/annotations.dart';
@@ -20,7 +19,7 @@ void main() {
       http.Client(),
     );
 
-    final response = await recommendationsRepository.getRecommendations(
+    final response = await recommendationsRepository.getRecomendations(
       mediaType: MediaType.movie,
       mediaId: 385687,
       page: 1,
@@ -38,7 +37,7 @@ void main() {
       http.Client(),
     );
 
-    final response = await recommendationsRepository.getRecommendations(
+    final response = await recommendationsRepository.getRecomendations(
       mediaType: MediaType.tv,
       mediaId: 85271,
       page: 1,

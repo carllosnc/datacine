@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:giganoid_app/core/core.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:mockito/annotations.dart';
