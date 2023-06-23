@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import './repository.dart';
+import '/domain/domain.dart';
 
 class MediaDetailsRepository extends Repository {
   MediaDetailsRepository(super.httpClient);
@@ -54,5 +57,15 @@ class MediaDetailsRepository extends Repository {
       ),
       headers: headers,
     );
+  }
+
+  Future<MovieDetails> movie(String id) async {
+    final response = await getMovieDetails(id: id);
+    return MovieDetails.fromJson(jsonDecode(response.body));
+  }
+
+  Future<TvShowDetails> tvShow(String id) async {
+    final response = await getTvShowDetails(id: id);
+    return TvShowDetails.fromJson(jsonDecode(response.body));
   }
 }

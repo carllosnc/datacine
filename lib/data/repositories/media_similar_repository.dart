@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import './repository.dart';
 import '/core/core.dart';
+import '/domain/domain.dart';
 
 class MediaSimilarRepository extends Repository {
   MediaSimilarRepository(super.httpClient);
@@ -20,5 +23,19 @@ class MediaSimilarRepository extends Repository {
       ),
       headers: headers,
     );
+  }
+
+  Future<MediaList> similar({
+    required int mediaId,
+    required int page,
+    required MediaType mediaType,
+  }) async {
+    final response = await getSimilar(
+      mediaId: mediaId,
+      mediaType: mediaType,
+      page: page,
+    );
+
+    return MediaList.fromJson(jsonDecode(response.body));
   }
 }

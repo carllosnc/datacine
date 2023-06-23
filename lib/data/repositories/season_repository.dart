@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import './repository.dart';
+import '/domain/domain.dart';
 
 class SeasonRepository extends Repository {
   SeasonRepository(super.httpClient);
@@ -24,5 +27,17 @@ class SeasonRepository extends Repository {
       ),
       headers: headers,
     );
+  }
+
+  Future<Season> season({
+    required int tvshowId,
+    required int seasonNumber,
+  }) async {
+    final response = await getSeason(
+      tvshowId: tvshowId,
+      seasonNumber: seasonNumber,
+    );
+
+    return Season.fromJson(jsonDecode(response.body));
   }
 }

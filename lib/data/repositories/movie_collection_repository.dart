@@ -1,5 +1,7 @@
-import './repository.dart';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
+import './repository.dart';
+import '/domain/domain.dart';
 
 class MovieCollectionRepository extends Repository {
   MovieCollectionRepository(super.httpClient);
@@ -14,5 +16,10 @@ class MovieCollectionRepository extends Repository {
       ),
       headers: headers,
     );
+  }
+
+  Future<Collection> collection(String id) async {
+    final response = await getCollection(id: id);
+    return Collection.fromJson(jsonDecode(response.body));
   }
 }
