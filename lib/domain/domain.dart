@@ -18,3 +18,5 @@ export 'entities/tvshow_details/tvshow_details.dart';
 export 'entities/belongs_to_collection/belongs_to_collection.dart';
 export 'entities/collection/collection.dart';
 export 'entities/search_result/search_result.dart';
+export 'entities/company/company.dart';
+export 'entities/company_list/company_list.dart';
