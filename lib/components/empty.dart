@@ -7,22 +7,6 @@ class Empty extends StatelessWidget {
 
   const Empty({super.key, this.message = 'Nothing here'});
 
-  //method to return random emojis
-  String getRandomEmoji() {
-    List<String> emojis = [
-      '🤬',
-      '🤕',
-      '😵‍💫',
-      '🤢',
-      '😣',
-      '😞',
-    ];
-
-    int randomIndex = 0 + (DateTime.now().millisecond % emojis.length);
-
-    return emojis[randomIndex];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -31,7 +15,7 @@ class Empty extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            getRandomEmoji(),
+            '👁',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 80,

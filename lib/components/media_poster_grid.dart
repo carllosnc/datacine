@@ -95,7 +95,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     double posterHeight = posterWidth * 1.5;
 
     if (posters.isEmpty) {
-      return const EmptyView();
+      return const EmptyView(title: 'Posters');
     }
 
     return Scaffold(
