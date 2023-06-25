@@ -1,8 +1,9 @@
 import 'dart:convert';
-
+import 'package:giganoid_app/domain/entities/company_list/company_list.dart';
 import 'package:http/http.dart' as http;
 import './repository.dart';
 import '/domain/domain.dart';
+import '/core/core.dart';
 
 class SearchRepository extends Repository {
   SearchRepository(super.httpClient);
@@ -14,6 +15,26 @@ class SearchRepository extends Repository {
     return await httpClient.get(
       endpoint(
         path: "search/multi",
+        query: {
+          "include_adult": "false",
+          "page": "$page",
+          "query": query,
+        },
+      ),
+      headers: headers,
+    );
+  }
+
+  Future<http.Response> searchByType({
+    required String query,
+    required int page,
+    required SearchType type,
+  }) async {
+    String path = type.value;
+
+    return await httpClient.get(
+      endpoint(
+        path: "search/$path",
         query: {
           "include_adult": "false",
           "page": "$page",
@@ -46,5 +67,57 @@ class SearchRepository extends Repository {
     }).toList();
 
     return searchResult;
+  }
+
+  Future<MediaList> searchMovies({
+    required String query,
+    required int page,
+  }) async {
+    final response = await searchByType(
+      query: query,
+      page: page,
+      type: SearchType.movie,
+    );
+
+    return MediaList.fromJson(jsonDecode(response.body));
+  }
+
+  Future<MediaList> searchTvShows({
+    required String query,
+    required int page,
+  }) async {
+    final response = await searchByType(
+      query: query,
+      page: page,
+      type: SearchType.tv,
+    );
+
+    return MediaList.fromJson(jsonDecode(response.body));
+  }
+
+  Future<PersonList> searchPerson({
+    required String query,
+    required int page,
+  }) async {
+    final response = await searchByType(
+      query: query,
+      page: page,
+      type: SearchType.person,
+    );
+
+    return PersonList.fromJson(jsonDecode(response.body));
+  }
+
+  Future<CompanyList> searchCompany({
+    required String query,
+    required int page,
+  }) async {
+    final response = await searchByType(
+      query: query,
+      page: page,
+      type: SearchType.company,
+    );
+
+    return CompanyList.fromJson(jsonDecode(response.body));
   }
 }
