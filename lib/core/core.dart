@@ -6,3 +6,4 @@ export 'constants/assets.dart';
 export 'constants/image_size.dart';
 export 'constants/media_type.dart';
 export 'constants/languages.dart';
+export 'constants/search_type.dart';
