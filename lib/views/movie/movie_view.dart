@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
@@ -49,10 +48,14 @@ class MovieView extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
-            title: DS1Text(
+            title: Text(
               "🎞   ${movie.title!}",
-              fontSize: 14,
-              fontColor: ProjectColors(context).featured,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                color: ProjectColors(context).featured,
+                textBaseline: TextBaseline.values[1],
+              ),
             ),
             actions: [
               MediaInfo(movie: movie),

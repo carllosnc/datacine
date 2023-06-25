@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
 import '/domain/domain.dart';
@@ -57,10 +56,14 @@ class _TvShowViewState extends State<TvShowView> {
             actions: [
               MediaInfo(tvShow: tvshow),
             ],
-            title: DS1Text(
-              "📺  ${tvshow.name!}",
-              fontSize: 14,
-              fontColor: ProjectColors(context).featured,
+            title: Text(
+              "📺   ${tvshow.name!}",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                color: ProjectColors(context).featured,
+                textBaseline: TextBaseline.values[1],
+              ),
             ),
           ),
           body: SingleChildScrollView(

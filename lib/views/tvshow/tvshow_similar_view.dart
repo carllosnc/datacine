@@ -1,21 +1,44 @@
+import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
+import '/data/data.dart';
+import 'package:http/http.dart' as http;
 
-class TvShowRecommendationView extends StatelessWidget {
+class TvShowSimilarView extends StatelessWidget {
   final TvShowDetails tvshow;
 
-  const TvShowRecommendationView({
+  const TvShowSimilarView({
     super.key,
     required this.tvshow,
   });
 
+  Future<MediaList> getData({required int page}) async {
+    final mediaSimilarService = MediaSimilarRepository(
+      http.Client(),
+    );
+
+    final newData = await mediaSimilarService.similar(
+      mediaId: tvshow.id as int,
+      mediaType: MediaType.tv,
+      page: page,
+    );
+
+    return newData;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MediaRecommendationsInfinityGrid(
-      mediaType: MediaType.tv,
-      id: tvshow.id as int,
+    return Scaffold(
+      appBar: AppBar(
+        title: const DS1Text('Similar', fontSize: 14),
+      ),
+      body: MediaInfinityGrid(
+        pageTitle: 'Similar',
+        mediaType: MediaType.tv,
+        getData: getData,
+      ),
     );
   }
 }
