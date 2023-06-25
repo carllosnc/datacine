@@ -45,4 +45,4 @@ app.*.map.json
 /android/app/release
 
 # ignore mock files
-*.mock.dart
+*.mocks.dart
