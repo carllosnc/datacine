@@ -10,10 +10,12 @@ class Empty extends StatelessWidget {
   //method to return random emojis
   String getRandomEmoji() {
     List<String> emojis = [
-      '🐉',
-      '🐲',
-      '🦕',
-      '🦖',
+      '🤬',
+      '🤕',
+      '😵‍💫',
+      '🤢',
+      '😣',
+      '😞',
     ];
 
     int randomIndex = 0 + (DateTime.now().millisecond % emojis.length);
@@ -51,12 +53,14 @@ class Empty extends StatelessWidget {
 }
 
 class EmptyView extends StatelessWidget {
-  const EmptyView({super.key});
+  final String title;
+
+  const EmptyView({super.key, this.title = 'Nothing here'});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const DS1Text('Credits', fontSize: 14)),
+      appBar: AppBar(title: DS1Text(title, fontSize: 14)),
       body: const Center(
         child: Empty(),
       ),

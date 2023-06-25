@@ -25,14 +25,6 @@ class MediaHeader extends StatelessWidget {
             height: height,
             child: Container(
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 10,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
                 border: Border.all(
                   color: Colors.white,
                   width: 3,

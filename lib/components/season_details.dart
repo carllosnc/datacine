@@ -55,8 +55,7 @@ showSeasonDetails({
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
-                    child: Wrap(
-                      spacing: 20,
+                    child: Row(
                       children: [
                         SizedBox(
                           width: 50,
@@ -70,24 +69,32 @@ showSeasonDetails({
                             ),
                           ),
                         ),
-                        Wrap(
-                          direction: Axis.vertical,
-                          spacing: 3,
-                          children: [
-                            DS1Text(
-                              season.name!,
-                              fontSize: 12,
-                              fontColor: ProjectColors(context).title,
-                            ),
-                            DS1Text(
-                              (season.airDate ?? '').formatDateTime(),
-                              fontSize: 12,
-                            ),
-                            DS1Text(
-                              "Episodes: ${season.episodes!.length}",
-                              fontSize: 12,
-                            ),
-                          ],
+                        const SizedBox(width: 20),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 110,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                season.name!,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: ProjectColors(context).title,
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              DS1Text(
+                                (season.airDate ?? '').formatDateTime(),
+                                fontSize: 12,
+                              ),
+                              const SizedBox(height: 3),
+                              DS1Text(
+                                "Episodes: ${season.episodes!.length}",
+                                fontSize: 12,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -103,7 +110,7 @@ showSeasonDetails({
                         return ListTile(
                           title: DS1Text(
                             episode.name!,
-                            fontSize: 14,
+                            fontSize: 12,
                             fontColor: ProjectColors(context).text,
                           ),
                           subtitle: DS1Text(

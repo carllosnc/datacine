@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:giganoid_app/core/core.dart';
@@ -21,7 +22,7 @@ class MediaPosterGrid extends StatefulWidget {
 class _MediaPosterGridState extends State<MediaPosterGrid> {
   List<ImageItem> filteredPosters = [];
   List<ImageItem> posters = [];
-  String selectedLang = 'en';
+  String selectedLang = 'All posters';
   Map<String, dynamic> supportedLangs = {'No Language': 'no-lang'};
   Set<String?> posterLangs = {};
   bool modal = false;
@@ -54,19 +55,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       }
     }
 
-    //set default language to english if exists or first language
-    if (posterLangs.isNotEmpty) {
-      selectedLang = posterLangs.contains('en') ? 'en' : posterLangs.first!;
-    }
-
-    //filter posters by selected language
-    filteredPosters =
-        posters.where((element) => element.iso6391 == selectedLang).toList();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
+    filteredPosters = posters;
   }
 
   openModal(String path) {
@@ -106,105 +95,151 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     double posterHeight = posterWidth * 1.5;
 
     if (posters.isEmpty) {
-      return const Empty();
+      return const EmptyView();
     }
 
-    return Stack(
-      children: [
-        GridView.builder(
-          shrinkWrap: true,
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 0.66666,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-          ),
-          itemCount: posters.length,
-          itemBuilder: (context, index) {
-            final ImageItem imageItem = posters[index];
-
-            return GestureDetector(
-              onTap: () {
-                openModal(imageItem.filePath!);
-              },
-              child: SizedBox(
-                width: 200,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: ImageComponent(
-                              imageSize: ImageSize.posterW185,
-                              imagePath: imageItem.filePath,
-                              imageType: ImageType.poster,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+    return Scaffold(
+      appBar: AppBar(
+        title: DS1Text(
+          '$selectedLang: ${filteredPosters.length}',
+          fontSize: 14,
         ),
-        if (modal == true)
-          Positioned(
-            child: GestureDetector(
-              onTap: () {
-                closeModal();
-              },
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                child: AnimatedContainer(
-                  duration: overLayerAnimationTime,
-                  color: Colors.black.withOpacity(overLayerOpacity),
-                ),
+        actions: [
+          if (supportedLangs.length > 2)
+            PopupMenuButton(
+              color: Theme.of(context).colorScheme.onSecondary,
+              icon: Icon(
+                Icons.translate,
+                color: ProjectColors(context).featured,
               ),
+              itemBuilder: (context) {
+                return supportedLangs.keys.map((String key) {
+                  return PopupMenuItem(
+                    value: supportedLangs[key].toString(),
+                    child: Text(key),
+                  );
+                }).toList();
+              },
+              onSelected: (String value) {
+                setState(() {
+                  selectedLang = supportedLangs.keys
+                      .firstWhere((key) => supportedLangs[key] == value);
+
+                  filteredPosters = posters
+                      .where((element) => element.iso6391 == value)
+                      .toList();
+                });
+              },
             ),
+          if (supportedLangs.length > 2)
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  selectedLang = 'All posters';
+                  filteredPosters = posters;
+                });
+              },
+              icon: const Icon(Icons.refresh),
+            ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 0.66666,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
+            ),
+            itemCount: filteredPosters.length,
+            itemBuilder: (context, index) {
+              final ImageItem imageItem = filteredPosters[index];
+
+              return GestureDetector(
+                onTap: () {
+                  openModal(imageItem.filePath!);
+                },
+                child: SizedBox(
+                  width: 200,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: ImageComponent(
+                                imageSize: ImageSize.posterW185,
+                                imagePath: imageItem.filePath,
+                                imageType: ImageType.poster,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
-        if (modal == true)
-          Positioned.fill(
-            child: Center(
+          if (modal == true)
+            Positioned(
               child: GestureDetector(
                 onTap: () {
                   closeModal();
                 },
-                child: AnimatedScale(
-                  duration: posterAnimationTime,
-                  curve: Curves.ease,
-                  scale: posterScale,
-                  child: AnimatedOpacity(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: AnimatedContainer(
+                    duration: overLayerAnimationTime,
+                    color: Colors.black.withOpacity(overLayerOpacity),
+                  ),
+                ),
+              ),
+            ),
+          if (modal == true)
+            Positioned.fill(
+              child: Center(
+                child: GestureDetector(
+                  onTap: () {
+                    closeModal();
+                  },
+                  child: AnimatedScale(
                     duration: posterAnimationTime,
-                    opacity: posterOpacity,
-                    child: Container(
-                      height: posterHeight,
-                      width: posterWidth,
-                      decoration: BoxDecoration(
-                        color: ProjectColors(context)
-                            .text
-                            .withOpacity(posterOpacity),
-                        border: Border.all(
-                          color: ProjectColors(context).text.withOpacity(0.2),
-                          width: 3,
+                    curve: Curves.ease,
+                    scale: posterScale,
+                    child: AnimatedOpacity(
+                      duration: posterAnimationTime,
+                      opacity: posterOpacity,
+                      child: Container(
+                        height: posterHeight,
+                        width: posterWidth,
+                        decoration: BoxDecoration(
+                          color: ProjectColors(context)
+                              .text
+                              .withOpacity(posterOpacity),
+                          border: Border.all(
+                            color: ProjectColors(context).text.withOpacity(0.2),
+                            width: 0,
+                          ),
                         ),
-                      ),
-                      child: ImageComponent(
-                        imageSize: ImageSize.posterOriginal,
-                        imagePath: currentPoster,
-                        imageType: ImageType.poster,
+                        child: ImageComponent(
+                          imageSize: ImageSize.posterOriginal,
+                          imagePath: currentPoster,
+                          imageType: ImageType.poster,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

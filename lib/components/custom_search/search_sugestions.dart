@@ -1,104 +1,22 @@
 import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/data/data.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
+import '/data/data.dart';
 import '/components/components.dart';
 import 'package:http/http.dart' as http;
 
-class CustomSearchDelegate extends SearchDelegate {
+class SearchSugestions extends StatelessWidget {
+  final String query;
+
+  SearchSugestions({super.key, required this.query});
+
   final _searchRepository = SearchRepository(http.Client());
 
   @override
-  ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: InputBorder.none,
-      ),
-      textTheme: const TextTheme(
-        titleLarge: TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-        ),
-      ),
-    );
-  }
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = "";
-        },
-        icon: const Icon(
-          Icons.clear,
-        ),
-      ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          color: Colors.black.withOpacity(0.3),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ChoiceChip(
-                label: const DS1Text('Movies', fontSize: 12),
-                selected: true,
-                onSelected: (bool value) {},
-              ),
-              const SizedBox(width: 5),
-              ChoiceChip(
-                label: const DS1Text('TVShow', fontSize: 12),
-                selected: false,
-                onSelected: (bool value) {},
-              ),
-              const SizedBox(width: 5),
-              ChoiceChip(
-                label: const DS1Text('People', fontSize: 12),
-                selected: false,
-                onSelected: (bool value) {},
-              ),
-              const SizedBox(width: 5),
-              ChoiceChip(
-                label: const DS1Text('Company', fontSize: 12),
-                selected: false,
-                onSelected: (bool value) {},
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
+  Widget build(BuildContext context) {
     final searchKey = _searchRepository.sugestions(query: query, page: 1);
-
-    if (query.isEmpty) {
-      return const SizedBox.shrink();
-    }
 
     return FutureBuilder(
       future: Future.delayed(
@@ -107,7 +25,7 @@ class CustomSearchDelegate extends SearchDelegate {
       ),
       builder: (BuildContext context, AsyncSnapshot<SearchResult> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const LinearProgressIndicator(minHeight: 0.8);
+          return const LinearProgressIndicator(minHeight: 3);
         }
 
         SearchResult data = snapshot.data!;
