@@ -28,14 +28,14 @@ void main() {
       } else if (element['media_type'] == 'tv') {
         return MediaItem.fromJson(element);
       } else if (element['media_type'] == 'person') {
-        return PersonItem.fromJson(element);
+        return Company.fromJson(element);
       }
     }).toList();
 
     for (var result in searchResult.results!) {
       result is MediaItem
           ? expect(result, isA<MediaItem>())
-          : expect(result, isA<PersonItem>());
+          : expect(result, isA<Company>());
     }
   });
 }
