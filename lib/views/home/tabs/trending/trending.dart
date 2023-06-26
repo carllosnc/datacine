@@ -82,7 +82,7 @@ class _TrendingTabState extends State<TrendingTab>
                     maxWidth: constraints.maxWidth,
                   ),
                   const SizedBox(height: 50),
-                  PeopleList(
+                  PersonHorizontalList(
                     title: "Trending People",
                     list: people,
                     maxWidth: constraints.maxWidth,

@@ -4,12 +4,12 @@ import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
 
-class PeopleList extends StatelessWidget {
+class PersonHorizontalList extends StatelessWidget {
   final List<PersonItem>? list;
   final double maxWidth;
   final String title;
 
-  const PeopleList({
+  const PersonHorizontalList({
     super.key,
     required this.list,
     required this.maxWidth,

@@ -82,7 +82,7 @@ class MovieView extends StatelessWidget {
 
                 //cast
                 SectionDivider(condition: hasCast),
-                PeopleList(
+                PersonHorizontalList(
                   title: 'Cast',
                   list: movie.credits?['cast']!,
                   maxWidth: double.infinity,
