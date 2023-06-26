@@ -13,7 +13,7 @@ showSeasonDetails({
 }) {
   final seasonRepository = SeasonRepository(http.Client());
 
-  final seasonFuture = seasonRepository.season(
+  final Future<(Season, http.Response)> getSeason = seasonRepository.getSeason(
     tvshowId: tvshowId,
     seasonNumber: seasonNumber,
   );
@@ -29,15 +29,13 @@ showSeasonDetails({
         maxChildSize: 1,
         builder: (context, scrollController) {
           return FutureBuilder(
-            future: seasonFuture,
-            builder: (BuildContext context, AsyncSnapshot<Season> snapshot) {
+            future: getSeason,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                );
+                return const Loading();
               }
 
-              Season season = snapshot.data!;
+              Season season = snapshot.data!.$1;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

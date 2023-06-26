@@ -28,16 +28,12 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
   @override
   void initState() {
     super.initState();
+
+    //initial fetch
     fetchData();
   }
 
-  //clone fetch data when dispose
-  @override
-  void dispose() {
-    super.dispose();
-    fetchData().ignore();
-  }
-
+  // fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
     final newData = await widget.getData(page: _page);
 
@@ -49,6 +45,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
     });
   }
 
+  // check if scroll reached the end of the page
   bool _onScrollNotification(ScrollNotification notification) {
     if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
       if (!_isLoading && _page <= _totalPages) {
@@ -75,11 +72,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
                 ),
               if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
                 const Positioned(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
-                  ),
+                  child: Loading(),
                 ),
               GridView.builder(
                 padding: const EdgeInsets.fromLTRB(10, 20, 10, 80),

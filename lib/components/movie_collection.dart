@@ -27,18 +27,7 @@ class MovieCollection extends StatelessWidget {
         future: collectionRepository.collection(id.toString()),
         builder: (BuildContext context, AsyncSnapshot<Collection> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const SizedBox(
-              height: 50,
-              child: Center(
-                child: SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                  ),
-                ),
-              ),
-            );
+            return const Loading();
           }
 
           Collection collection = snapshot.data!;

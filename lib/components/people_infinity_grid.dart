@@ -66,11 +66,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                 ),
               if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
                 const Positioned(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
-                  ),
+                  child: Loading(),
                 ),
               ListView.builder(
                 shrinkWrap: true,

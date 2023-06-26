@@ -28,12 +28,7 @@ class _TrendingTabState extends State<TrendingTab>
             ConnectionState connectionState = snapshot.connectionState;
 
             if (connectionState == ConnectionState.waiting) {
-              return SizedBox(
-                height: constraints.maxHeight,
-                child: const Center(
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
-              );
+              return const Loading();
             }
 
             if (snapshot.hasError) {
