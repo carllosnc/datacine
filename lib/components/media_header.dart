@@ -26,7 +26,7 @@ class MediaHeader extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.white,
+                  color: ProjectColors(context).featured,
                   width: 3,
                 ),
                 borderRadius: BorderRadius.circular(20),
