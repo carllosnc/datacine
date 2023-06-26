@@ -35,6 +35,7 @@ class MovieView extends StatelessWidget {
 
         MovieDetails movie = snapshot.data!.$1;
 
+        // conditions for sections to be displayed
         bool hasKeywords = movie.keywords!['keywords'] != null &&
             movie.keywords!['keywords']!.isNotEmpty;
         bool hasCollection = movie.belongsToCollection != null;

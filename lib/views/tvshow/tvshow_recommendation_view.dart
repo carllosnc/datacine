@@ -39,7 +39,7 @@ class TvShowRecommendationView extends StatelessWidget {
       body: MediaInfinityGrid(
         pageTitle: 'Recommendations',
         mediaType: MediaType.tv,
-        getData: getData,
+        fetchData: getData,
       ),
     );
   }

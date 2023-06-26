@@ -26,4 +26,28 @@ void main() {
           : expect(result, isA<PersonItem>());
     }
   });
+
+  test('Check search movies', () async {
+    SearchRepository searchRepository = SearchRepository(http.Client());
+
+    final (mediaList, response) = await searchRepository.searchMovies(
+      query: "batman",
+      page: 1,
+    );
+
+    expect(response.statusCode, 200);
+    expect(mediaList.results, isA<List<MediaItem>>());
+  });
+
+  test('Check search tv shows', () async {
+    SearchRepository searchRepository = SearchRepository(http.Client());
+
+    final (mediaList, response) = await searchRepository.searchTvShows(
+      query: "batman",
+      page: 1,
+    );
+
+    expect(response.statusCode, 200);
+    expect(mediaList.results, isA<List<MediaItem>>());
+  });
 }

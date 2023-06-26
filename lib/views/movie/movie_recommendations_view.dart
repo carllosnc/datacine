@@ -14,7 +14,7 @@ class MovieRecommendationView extends StatelessWidget {
     required this.movie,
   });
 
-  Future<MediaList> getData({required int page}) async {
+  Future<MediaList> fetchData({required int page}) async {
     final mediaRecommendationService = MediaRecommendationsRepository(
       http.Client(),
     );
@@ -39,7 +39,7 @@ class MovieRecommendationView extends StatelessWidget {
       body: MediaInfinityGrid(
         pageTitle: 'Recommendations',
         mediaType: MediaType.movie,
-        getData: getData,
+        fetchData: fetchData,
       ),
     );
   }

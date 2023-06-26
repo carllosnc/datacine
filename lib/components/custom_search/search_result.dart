@@ -79,7 +79,7 @@ class _SearchResultState extends State<SearchResult> {
               key: const Key('movie_search_result'),
               pageTitle: 'Search Result',
               mediaType: MediaType.movie,
-              getData: fetchMoviesData,
+              fetchData: fetchMoviesData,
             ),
           ),
         if (_currentSearchType == SearchType.tv)
@@ -88,7 +88,7 @@ class _SearchResultState extends State<SearchResult> {
               key: const Key('tv_search_result'),
               pageTitle: 'Search Result',
               mediaType: MediaType.tv,
-              getData: fetchTvData,
+              fetchData: fetchTvData,
             ),
           ),
         if (_currentSearchType == SearchType.person)
@@ -96,7 +96,7 @@ class _SearchResultState extends State<SearchResult> {
             child: PeopleInfinityGrid(
               key: const Key('people_search_result'),
               pageTitle: 'Search Result',
-              getData: fetchPeopleData,
+              fetchData: fetchPeopleData,
             ),
           ),
         if (_currentSearchType == SearchType.company)
@@ -104,7 +104,7 @@ class _SearchResultState extends State<SearchResult> {
             child: CompanyInfinityGrid(
               key: const Key('company_search_result'),
               pageTitle: 'Search Result',
-              getData: fetchCompanyData,
+              fetchData: fetchCompanyData,
             ),
           ),
         Container(

@@ -20,15 +20,24 @@ class MediaPosterGrid extends StatefulWidget {
 }
 
 class _MediaPosterGridState extends State<MediaPosterGrid> {
+  //filter posters by language
   List<ImageItem> filteredPosters = [];
   List<ImageItem> posters = [];
   String selectedLang = 'All posters';
   Map<String, dynamic> supportedLangs = {'No Language': 'no-lang'};
   Set<String?> posterLangs = {};
+
+  //modal state
   bool modal = false;
+
+  //current poster in modal
+  String currentPoster = '';
+
+  //overlayer animation
   double overLayerOpacity = 0.0;
   Duration overLayerAnimationTime = const Duration(milliseconds: 200);
-  String currentPoster = '';
+
+  //poster animation
   double posterOpacity = 0.0;
   double posterMargin = 200;
   double posterScale = 0.8;
@@ -61,6 +70,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     filteredPosters = posters;
   }
 
+  // open modal with poster
   openModal(String path) {
     setState(() {
       modal = true;
@@ -77,6 +87,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     });
   }
 
+  // close modal with poster
   closeModal() {
     setState(() {
       overLayerOpacity = 0;
@@ -85,6 +96,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       posterMargin = 200;
     });
 
+    // wait for animation to finish then close modal
     Future.delayed(overLayerAnimationTime, () {
       setState(() {
         modal = false;
@@ -94,9 +106,11 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
   @override
   Widget build(BuildContext context) {
+    // poster size in modal
     double posterWidth = MediaQuery.of(context).size.width;
     double posterHeight = posterWidth * 1.5;
 
+    // if no posters return empty view
     if (posters.isEmpty) {
       return const EmptyView(title: 'Posters');
     }

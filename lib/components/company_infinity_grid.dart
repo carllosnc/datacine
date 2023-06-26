@@ -3,12 +3,12 @@ import 'package:giganoid_app/domain/domain.dart';
 import '/components/components.dart';
 
 class CompanyInfinityGrid extends StatefulWidget {
-  final Function({required int page}) getData;
+  final Function({required int page}) fetchData;
   final String pageTitle;
 
   const CompanyInfinityGrid({
     super.key,
-    required this.getData,
+    required this.fetchData,
     required this.pageTitle,
   });
 
@@ -25,11 +25,14 @@ class _CompanyInfinityGridState extends State<CompanyInfinityGrid> {
   @override
   void initState() {
     super.initState();
+
+    //initial fetch
     fetchData();
   }
 
+  //fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
-    final newData = await widget.getData(page: _page);
+    final newData = await widget.fetchData(page: _page);
 
     setState(() {
       _dataList.addAll(newData.results!);
@@ -39,6 +42,7 @@ class _CompanyInfinityGridState extends State<CompanyInfinityGrid> {
     });
   }
 
+  //check if scroll reached the end of the page
   bool _onScrollNotification(ScrollNotification notification) {
     if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
       if (!_isLoading && _page <= _totalPages) {
@@ -60,10 +64,13 @@ class _CompanyInfinityGridState extends State<CompanyInfinityGrid> {
           onNotification: _onScrollNotification,
           child: Stack(
             children: [
+              //if _dataList is empty and _totalPages is 0 show empty
               if (_dataList.isEmpty && (_totalPages == 1 || _totalPages == 0))
                 const Positioned(
                   child: Empty(),
                 ),
+
+              //if _dataList is empty and _totalPages is not 0 or 1 show loading
               if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
                 const Positioned(
                   child: Loading(),

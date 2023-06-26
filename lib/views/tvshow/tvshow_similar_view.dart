@@ -38,7 +38,7 @@ class TvShowSimilarView extends StatelessWidget {
       body: MediaInfinityGrid(
         pageTitle: 'Similar',
         mediaType: MediaType.tv,
-        getData: getData,
+        fetchData: getData,
       ),
     );
   }
