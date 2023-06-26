@@ -15,19 +15,20 @@ class TvShowView extends StatefulWidget {
 }
 
 class _TvShowViewState extends State<TvShowView> {
-  final _movieDetailsRepository = MediaDetailsRepository(http.Client());
+  final _mediaDetailsRepository = MediaDetailsRepository(http.Client());
 
   @override
   Widget build(BuildContext context) {
+    final getTvShow = _mediaDetailsRepository.getTvShow(id: widget.id);
+
     return FutureBuilder(
-      future: _movieDetailsRepository.tvShow(widget.id),
-      builder: (context, AsyncSnapshot<TvShowDetails> snapshot) {
+      future: getTvShow,
+      builder: (
+        context,
+        AsyncSnapshot<(TvShowDetails, http.Response)> snapshot,
+      ) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(strokeWidth: 2),
-            ),
-          );
+          return const LoadingView();
         }
 
         if (snapshot.hasError) {
@@ -38,7 +39,8 @@ class _TvShowViewState extends State<TvShowView> {
           );
         }
 
-        TvShowDetails tvshow = snapshot.data!;
+        TvShowDetails tvshow = snapshot.data!.$1;
+
         bool hasKeywords = tvshow.keywords!['results'] != null &&
             tvshow.keywords!['results']!.isNotEmpty;
         bool hasCast = tvshow.credits!['cast'] != null &&

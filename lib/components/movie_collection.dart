@@ -19,18 +19,21 @@ class MovieCollection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final collectionRepository = MovieCollectionRepository(http.Client());
     num? id = movie.belongsToCollection?.id;
+
+    final collectionRepository = MovieCollectionRepository(http.Client());
+    final getColection = collectionRepository.getCollection(id: id.toString());
 
     if (id != null) {
       return FutureBuilder(
-        future: collectionRepository.collection(id.toString()),
-        builder: (BuildContext context, AsyncSnapshot<Collection> snapshot) {
+        future: getColection,
+        builder: (BuildContext context,
+            AsyncSnapshot<(Collection, http.Response)> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Loading();
           }
 
-          Collection collection = snapshot.data!;
+          Collection collection = snapshot.data!.$1;
 
           collection.parts!.sort((a, b) {
             return a.releaseDate!.compareTo(b.releaseDate!);

@@ -7,7 +7,7 @@ import '/domain/domain.dart';
 class SeasonRepository extends Repository {
   SeasonRepository(super.httpClient);
 
-  Future<http.Response> getSeason({
+  Future<(Season, http.Response)> getSeason({
     required int tvshowId,
     required int seasonNumber,
   }) async {
@@ -17,7 +17,7 @@ class SeasonRepository extends Repository {
       "images",
     ].join(",");
 
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "tv/$tvshowId/season/$seasonNumber",
         query: {
@@ -27,17 +27,9 @@ class SeasonRepository extends Repository {
       ),
       headers: headers,
     );
-  }
 
-  Future<Season> season({
-    required int tvshowId,
-    required int seasonNumber,
-  }) async {
-    final response = await getSeason(
-      tvshowId: tvshowId,
-      seasonNumber: seasonNumber,
-    );
+    var season = Season.fromJson(jsonDecode(response.body));
 
-    return Season.fromJson(jsonDecode(response.body));
+    return (season, response);
   }
 }

@@ -16,19 +16,21 @@ class SearchSugestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchKey = _searchRepository.sugestions(query: query, page: 1);
+    final getSugestions =
+        _searchRepository.getSugestions(query: query, page: 1);
 
     return FutureBuilder(
       future: Future.delayed(
         const Duration(milliseconds: 500),
-        () => searchKey,
+        () => getSugestions,
       ),
-      builder: (BuildContext context, AsyncSnapshot<SearchResult> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<(SearchResult, http.Response)> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LinearProgressIndicator(minHeight: 3);
         }
 
-        SearchResult data = snapshot.data!;
+        SearchResult data = snapshot.data!.$1;
 
         return ListView.builder(
           itemCount: data.results!.length,

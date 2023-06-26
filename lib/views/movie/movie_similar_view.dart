@@ -19,13 +19,14 @@ class MovieSimilarView extends StatelessWidget {
       http.Client(),
     );
 
-    final newData = await mediaSimilarService.similar(
+    // ignore: unused_local_variable
+    final (similar, response) = await mediaSimilarService.getSimilar(
       mediaId: movie.id as int,
       mediaType: MediaType.movie,
       page: page,
     );
 
-    return newData;
+    return similar;
   }
 
   @override

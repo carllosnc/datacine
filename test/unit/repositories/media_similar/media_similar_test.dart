@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:giganoid_app/core/core.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:mockito/annotations.dart';
@@ -19,13 +18,11 @@ void main() {
       http.Client(),
     );
 
-    final response = await similarRepository.getSimilar(
+    final (similar, response) = await similarRepository.getSimilar(
       mediaType: MediaType.movie,
       mediaId: 385687,
       page: 1,
     );
-
-    final similar = MediaList.fromJson(jsonDecode(response.body));
 
     expect(response.statusCode, 200);
     expect(similar.page, 1);
@@ -37,13 +34,11 @@ void main() {
       http.Client(),
     );
 
-    final response = await similarRepository.getSimilar(
+    final (similar, response) = await similarRepository.getSimilar(
       mediaType: MediaType.tv,
       mediaId: 85271,
       page: 1,
     );
-
-    final similar = MediaList.fromJson(jsonDecode(response.body));
 
     expect(response.statusCode, 200);
     expect(similar.page, 1);

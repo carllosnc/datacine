@@ -11,19 +11,18 @@ class MovieView extends StatelessWidget {
 
   MovieView({super.key, required this.id});
 
-  final _movieDetailsRepository = MediaDetailsRepository(http.Client());
+  final _mediaDetailsRepository = MediaDetailsRepository(http.Client());
 
   @override
   Widget build(BuildContext context) {
+    final Future<(MovieDetails, http.Response)> getMovie =
+        _mediaDetailsRepository.getMovie(id: id);
+
     return FutureBuilder(
-      future: _movieDetailsRepository.movie(id),
-      builder: (context, AsyncSnapshot<MovieDetails> snapshot) {
+      future: getMovie,
+      builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(strokeWidth: 2),
-            ),
-          );
+          return const LoadingView();
         }
 
         if (snapshot.hasError) {
@@ -34,7 +33,8 @@ class MovieView extends StatelessWidget {
           );
         }
 
-        MovieDetails movie = snapshot.data!;
+        MovieDetails movie = snapshot.data!.$1;
+
         bool hasKeywords = movie.keywords!['keywords'] != null &&
             movie.keywords!['keywords']!.isNotEmpty;
         bool hasCollection = movie.belongsToCollection != null;

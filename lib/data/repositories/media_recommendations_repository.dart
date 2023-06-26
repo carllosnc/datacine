@@ -8,12 +8,12 @@ import '/domain/domain.dart';
 class MediaRecommendationsRepository extends Repository {
   MediaRecommendationsRepository(super.httpClient);
 
-  Future<http.Response> getRecomendations({
+  Future<(MediaList, http.Response)> getRecomendations({
     required int mediaId,
     required int page,
     required MediaType mediaType,
   }) async {
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "${mediaType.value}/$mediaId/recommendations",
         query: {
@@ -23,19 +23,9 @@ class MediaRecommendationsRepository extends Repository {
       ),
       headers: headers,
     );
-  }
 
-  Future<MediaList> recommendations({
-    required int mediaId,
-    required int page,
-    required MediaType mediaType,
-  }) async {
-    final response = await getRecomendations(
-      mediaId: mediaId,
-      page: page,
-      mediaType: mediaType,
-    );
+    var recommendations = MediaList.fromJson(jsonDecode(response.body));
 
-    return MediaList.fromJson(jsonDecode(response.body));
+    return (recommendations, response);
   }
 }

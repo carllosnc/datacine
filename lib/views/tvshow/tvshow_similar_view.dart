@@ -19,13 +19,14 @@ class TvShowSimilarView extends StatelessWidget {
       http.Client(),
     );
 
-    final newData = await mediaSimilarService.similar(
+    // ignore: unused_local_variable
+    final (similar, response) = await mediaSimilarService.getSimilar(
       mediaId: tvshow.id as int,
       mediaType: MediaType.tv,
       page: page,
     );
 
-    return newData;
+    return similar;
   }
 
   @override

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giganoid_app/data/data.dart';
 import 'package:giganoid_app/domain/domain.dart';
@@ -17,25 +15,15 @@ void main() {
   test('Check search results', () async {
     SearchRepository searchRepository = SearchRepository(http.Client());
 
-    final response =
-        await searchRepository.getMulti(query: "tarantino", page: 1);
-    SearchResult searchResult =
-        SearchResult.fromJson(jsonDecode(response.body));
+    final (searchResult, response) =
+        await searchRepository.getSugestions(query: "tarantino", page: 1);
 
-    searchResult.results = searchResult.results!.map((element) {
-      if (element['media_type'] == 'movie') {
-        return MediaItem.fromJson(element);
-      } else if (element['media_type'] == 'tv') {
-        return MediaItem.fromJson(element);
-      } else if (element['media_type'] == 'person') {
-        return Company.fromJson(element);
-      }
-    }).toList();
+    expect(response.statusCode, 200);
 
     for (var result in searchResult.results!) {
       result is MediaItem
           ? expect(result, isA<MediaItem>())
-          : expect(result, isA<Company>());
+          : expect(result, isA<PersonItem>());
     }
   });
 }

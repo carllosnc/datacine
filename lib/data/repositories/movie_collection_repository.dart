@@ -6,8 +6,10 @@ import '/domain/domain.dart';
 class MovieCollectionRepository extends Repository {
   MovieCollectionRepository(super.httpClient);
 
-  Future<http.Response> getCollection({required String id}) async {
-    return await httpClient.get(
+  Future<(Collection, http.Response)> getCollection({
+    required String id,
+  }) async {
+    var response = await httpClient.get(
       endpoint(
         path: "collection/$id",
         query: {
@@ -16,10 +18,9 @@ class MovieCollectionRepository extends Repository {
       ),
       headers: headers,
     );
-  }
 
-  Future<Collection> collection(String id) async {
-    final response = await getCollection(id: id);
-    return Collection.fromJson(jsonDecode(response.body));
+    var collection = Collection.fromJson(jsonDecode(response.body));
+
+    return (collection, response);
   }
 }

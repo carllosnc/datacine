@@ -24,37 +24,49 @@ class _SearchResultState extends State<SearchResult> {
   Future<MediaList> fetchMoviesData({required int page}) async {
     final searchRepository = SearchRepository(http.Client());
 
-    return await searchRepository.searchMovies(
+    // ignore: unused_local_variable
+    var (mediaList, response) = await searchRepository.searchMovies(
       query: widget.query,
       page: page,
     );
+
+    return mediaList;
   }
 
   Future<MediaList> fetchTvData({required int page}) async {
     final searchRepository = SearchRepository(http.Client());
 
-    return await searchRepository.searchTvShows(
+    // ignore: unused_local_variable
+    var (mediaList, response) = await searchRepository.searchTvShows(
       query: widget.query,
       page: page,
     );
+
+    return mediaList;
   }
 
   Future<PersonList> fetchPeopleData({required int page}) async {
     final searchRepository = SearchRepository(http.Client());
 
-    return await searchRepository.searchPerson(
+    // ignore: unused_local_variable
+    var (peopleList, response) = await searchRepository.searchPerson(
       query: widget.query,
       page: page,
     );
+
+    return peopleList;
   }
 
   Future<CompanyList> fetchCompanyData({required int page}) async {
     final searchRepository = SearchRepository(http.Client());
 
-    return await searchRepository.searchCompany(
+    // ignore: unused_local_variable
+    var (companyList, response) = await searchRepository.searchCompany(
       query: widget.query,
       page: page,
     );
+
+    return companyList;
   }
 
   @override

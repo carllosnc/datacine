@@ -19,13 +19,15 @@ class MovieRecommendationView extends StatelessWidget {
       http.Client(),
     );
 
-    final newData = await mediaRecommendationService.recommendations(
+    // ignore: unused_local_variable
+    final (recommendations, response) =
+        await mediaRecommendationService.getRecomendations(
       mediaId: movie.id as int,
       mediaType: MediaType.movie,
       page: page,
     );
 
-    return newData;
+    return recommendations;
   }
 
   @override

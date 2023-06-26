@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import './repository.dart';
 import '/core/core.dart';
@@ -8,12 +7,12 @@ import '/domain/domain.dart';
 class MediaSimilarRepository extends Repository {
   MediaSimilarRepository(super.httpClient);
 
-  Future<http.Response> getSimilar({
+  Future<(MediaList, http.Response)> getSimilar({
     required int mediaId,
     required int page,
     required MediaType mediaType,
   }) async {
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "${mediaType.value}/$mediaId/similar",
         query: {
@@ -23,19 +22,9 @@ class MediaSimilarRepository extends Repository {
       ),
       headers: headers,
     );
-  }
 
-  Future<MediaList> similar({
-    required int mediaId,
-    required int page,
-    required MediaType mediaType,
-  }) async {
-    final response = await getSimilar(
-      mediaId: mediaId,
-      mediaType: mediaType,
-      page: page,
-    );
+    var similar = MediaList.fromJson(jsonDecode(response.body));
 
-    return MediaList.fromJson(jsonDecode(response.body));
+    return (similar, response);
   }
 }

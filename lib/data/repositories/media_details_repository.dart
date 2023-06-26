@@ -7,7 +7,7 @@ import '/domain/domain.dart';
 class MediaDetailsRepository extends Repository {
   MediaDetailsRepository(super.httpClient);
 
-  Future<http.Response> getMovieDetails({required String id}) async {
+  Future<(MovieDetails, http.Response)> getMovie({required String id}) async {
     String itemsToAppend = [
       "images",
       "videos",
@@ -21,7 +21,7 @@ class MediaDetailsRepository extends Repository {
       "reviews",
     ].join(",");
 
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "movie/$id",
         query: {
@@ -31,9 +31,15 @@ class MediaDetailsRepository extends Repository {
       ),
       headers: headers,
     );
+
+    var movie = MovieDetails.fromJson(jsonDecode(response.body));
+
+    return (movie, response);
   }
 
-  Future<http.Response> getTvShowDetails({required String id}) async {
+  Future<(TvShowDetails, http.Response)> getTvShow({
+    required String id,
+  }) async {
     String itemsToAppend = [
       "videos",
       "images",
@@ -47,7 +53,7 @@ class MediaDetailsRepository extends Repository {
       "content_ratings",
     ].join(",");
 
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "tv/$id",
         query: {
@@ -57,15 +63,9 @@ class MediaDetailsRepository extends Repository {
       ),
       headers: headers,
     );
-  }
 
-  Future<MovieDetails> movie(String id) async {
-    final response = await getMovieDetails(id: id);
-    return MovieDetails.fromJson(jsonDecode(response.body));
-  }
+    var tvShow = TvShowDetails.fromJson(jsonDecode(response.body));
 
-  Future<TvShowDetails> tvShow(String id) async {
-    final response = await getTvShowDetails(id: id);
-    return TvShowDetails.fromJson(jsonDecode(response.body));
+    return (tvShow, response);
   }
 }

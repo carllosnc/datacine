@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:giganoid_app/domain/entities/company_list/company_list.dart';
 import 'package:http/http.dart' as http;
 import './repository.dart';
 import '/domain/domain.dart';
@@ -8,11 +7,11 @@ import '/core/core.dart';
 class SearchRepository extends Repository {
   SearchRepository(super.httpClient);
 
-  Future<http.Response> getMulti({
+  Future<(SearchResult, http.Response)> getSugestions({
     required String query,
     required int page,
   }) async {
-    return await httpClient.get(
+    var response = await httpClient.get(
       endpoint(
         path: "search/multi",
         query: {
@@ -23,6 +22,21 @@ class SearchRepository extends Repository {
       ),
       headers: headers,
     );
+
+    SearchResult searchResult =
+        SearchResult.fromJson(jsonDecode(response.body));
+
+    searchResult.results = searchResult.results!.map((element) {
+      if (element['media_type'] == 'movie') {
+        return MediaItem.fromJson(element);
+      } else if (element['media_type'] == 'tv') {
+        return MediaItem.fromJson(element);
+      } else if (element['media_type'] == 'person') {
+        return PersonItem.fromJson(element);
+      }
+    }).toList();
+
+    return (searchResult, response);
   }
 
   Future<http.Response> searchByType({
@@ -45,31 +59,7 @@ class SearchRepository extends Repository {
     );
   }
 
-  Future<SearchResult> sugestions({
-    required String query,
-    required int page,
-  }) async {
-    final response = await getMulti(
-      query: query,
-      page: page,
-    );
-    SearchResult searchResult =
-        SearchResult.fromJson(jsonDecode(response.body));
-
-    searchResult.results = searchResult.results!.map((element) {
-      if (element['media_type'] == 'movie') {
-        return MediaItem.fromJson(element);
-      } else if (element['media_type'] == 'tv') {
-        return MediaItem.fromJson(element);
-      } else if (element['media_type'] == 'person') {
-        return PersonItem.fromJson(element);
-      }
-    }).toList();
-
-    return searchResult;
-  }
-
-  Future<MediaList> searchMovies({
+  Future<(MediaList, http.Response)> searchMovies({
     required String query,
     required int page,
   }) async {
@@ -79,10 +69,12 @@ class SearchRepository extends Repository {
       type: SearchType.movie,
     );
 
-    return MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
+
+    return (mediaList, response);
   }
 
-  Future<MediaList> searchTvShows({
+  Future<(MediaList, http.Response)> searchTvShows({
     required String query,
     required int page,
   }) async {
@@ -92,10 +84,12 @@ class SearchRepository extends Repository {
       type: SearchType.tv,
     );
 
-    return MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
+
+    return (mediaList, response);
   }
 
-  Future<PersonList> searchPerson({
+  Future<(PersonList, http.Response)> searchPerson({
     required String query,
     required int page,
   }) async {
@@ -105,10 +99,12 @@ class SearchRepository extends Repository {
       type: SearchType.person,
     );
 
-    return PersonList.fromJson(jsonDecode(response.body));
+    var peopleList = PersonList.fromJson(jsonDecode(response.body));
+
+    return (peopleList, response);
   }
 
-  Future<CompanyList> searchCompany({
+  Future<(CompanyList, http.Response)> searchCompany({
     required String query,
     required int page,
   }) async {
@@ -118,6 +114,8 @@ class SearchRepository extends Repository {
       type: SearchType.company,
     );
 
-    return CompanyList.fromJson(jsonDecode(response.body));
+    var companyLits = CompanyList.fromJson(jsonDecode(response.body));
+
+    return (companyLits, response);
   }
 }
