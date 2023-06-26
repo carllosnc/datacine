@@ -37,9 +37,11 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
   @override
   void initState() {
     super.initState();
+
+    //get all posters
     posters = widget.images!['posters']!;
 
-    //add no-lang to posters without language
+    //add no-lang value to posters without language
     posters = posters.map((e) {
       e.iso6391 ??= 'no-lang';
       return e;
@@ -55,6 +57,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       }
     }
 
+    //filteres posters init value is all posters
     filteredPosters = posters;
   }
 
