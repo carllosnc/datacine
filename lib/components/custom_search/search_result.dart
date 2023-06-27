@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
@@ -125,7 +124,10 @@ class _SearchResultState extends State<SearchResult> {
             runAlignment: WrapAlignment.center,
             children: [
               ChoiceChip(
-                label: const DS1Text('Movie', fontSize: 12),
+                label: const Text(
+                  'Movie',
+                  style: TextStyle(fontSize: 12),
+                ),
                 selected: _currentSearchType == SearchType.movie,
                 onSelected: (value) {
                   setState(() {
@@ -134,7 +136,10 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const DS1Text('TV Show', fontSize: 12),
+                label: const Text(
+                  'TV Show',
+                  style: TextStyle(fontSize: 12),
+                ),
                 selected: _currentSearchType == SearchType.tv,
                 onSelected: (value) {
                   setState(() {
@@ -143,7 +148,10 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const DS1Text('Person', fontSize: 12),
+                label: const Text(
+                  'Person',
+                  style: TextStyle(fontSize: 12),
+                ),
                 selected: _currentSearchType == SearchType.person,
                 onSelected: (value) {
                   setState(() {
@@ -152,7 +160,10 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const DS1Text('Company', fontSize: 12),
+                label: const Text(
+                  'Company',
+                  style: TextStyle(fontSize: 12),
+                ),
                 selected: _currentSearchType == SearchType.company,
                 onSelected: (value) {
                   setState(() {

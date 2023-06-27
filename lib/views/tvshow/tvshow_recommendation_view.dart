@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -34,7 +33,10 @@ class TvShowRecommendationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const DS1Text('Recommendations', fontSize: 14),
+        title: const Text(
+          'Recommendations',
+          style: TextStyle(fontSize: 14),
+        ),
       ),
       body: MediaInfinityGrid(
         pageTitle: 'Recommendations',

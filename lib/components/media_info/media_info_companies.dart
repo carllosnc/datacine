@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
@@ -31,10 +30,12 @@ class Companies extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DS1Text(
+          Text(
             "Companies",
-            fontSize: 14,
-            fontColor: ProjectColors(context).label,
+            style: TextStyle(
+              fontSize: 14,
+              color: ProjectColors(context).label,
+            ),
           ),
           const SizedBox(height: 5),
           Wrap(
@@ -45,15 +46,19 @@ class Companies extends StatelessWidget {
                 Wrap(
                   spacing: 5,
                   children: [
-                    DS1Text(
+                    Text(
                       company.name!,
-                      fontSize: 14,
-                      fontColor: ProjectColors(context).link,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: ProjectColors(context).link,
+                      ),
                     ),
                     if (company != productionCompanies.last)
-                      DS1Text(
+                      Text(
                         '•',
-                        fontColor: ProjectColors(context).text.withOpacity(0.2),
+                        style: TextStyle(
+                          color: ProjectColors(context).text.withOpacity(0.2),
+                        ),
                       )
                   ],
                 ),

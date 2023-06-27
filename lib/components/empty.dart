@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 
@@ -44,7 +43,12 @@ class EmptyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: DS1Text(title, fontSize: 14)),
+      appBar: AppBar(
+        title: Text(
+          title,
+          style: const TextStyle(fontSize: 14),
+        ),
+      ),
       body: const Center(
         child: Empty(),
       ),

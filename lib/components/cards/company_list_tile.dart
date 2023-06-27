@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
@@ -15,15 +14,20 @@ class CompanyListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {},
-      title: DS1Text(company.name!, fontSize: 15),
+      title: Text(
+        company.name!,
+        style: const TextStyle(fontSize: 15),
+      ),
       leading: Icon(
         Icons.apartment,
         color: ProjectColors(context).featured,
       ),
-      subtitle: DS1Text(
+      subtitle: Text(
         company.originCountry!.isEmpty ? '―' : company.originCountry ?? '―',
-        fontSize: 12,
-        fontColor: ProjectColors(context).featured,
+        style: TextStyle(
+          fontSize: 12,
+          color: ProjectColors(context).featured,
+        ),
       ),
     );
   }

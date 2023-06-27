@@ -1,4 +1,3 @@
-import 'package:ds1/components/text/text.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 
@@ -31,11 +30,13 @@ class MediaVotes extends StatelessWidget {
     if (voteAverage == 0 && status == null) return const SizedBox.shrink();
 
     if (voteAverage == 0 && status != null) {
-      return DS1Text(
+      return Text(
         status.toString().toUpperCase(),
-        bold: true,
-        fontSize: 11,
-        fontColor: ProjectColors(context).status,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 11,
+          color: ProjectColors(context).status,
+        ),
       );
     }
 
@@ -47,16 +48,20 @@ class MediaVotes extends StatelessWidget {
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            DS1Text(
+            Text(
               voteCount.toString(),
-              fontSize: 12,
-              fontColor: ProjectColors(context).label,
+              style: TextStyle(
+                fontSize: 12,
+                color: ProjectColors(context).label,
+              ),
             ),
-            DS1Text(
+            Text(
               voteCount == 1 ? 'VOTE' : 'VOTES',
-              fontSize: 10,
-              bold: true,
-              fontColor: ProjectColors(context).label,
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: ProjectColors(context).label,
+              ),
             ),
           ],
         ),
@@ -71,10 +76,12 @@ class MediaVotes extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(100)),
           ),
           child: Center(
-            child: DS1Text(
+            child: Text(
               voteAverage!.toString().substring(0, 3),
-              fontSize: 15,
-              bold: true,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         )

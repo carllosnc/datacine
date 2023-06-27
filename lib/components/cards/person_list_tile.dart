@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 import '/components/components.dart';
@@ -16,7 +15,10 @@ class PersonListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {},
-      title: DS1Text(person.name!, fontSize: 15),
+      title: Text(
+        person.name!,
+        style: const TextStyle(fontSize: 15),
+      ),
       leading: SizedBox(
         width: 45,
         height: 45 * 1.5,
@@ -35,14 +37,16 @@ class PersonListTile extends StatelessWidget {
           ),
         ),
       ),
-      subtitle: DS1Text(
+      subtitle: Text(
         person.character ??
             person.job ??
             person.knownForDepartment ??
             person.department ??
             '-',
-        fontSize: 12,
-        fontColor: ProjectColors(context).featured,
+        style: TextStyle(
+          fontSize: 12,
+          color: ProjectColors(context).featured,
+        ),
       ),
     );
   }

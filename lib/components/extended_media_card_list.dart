@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ds1/ds1.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
@@ -25,10 +24,12 @@ class ExtendedMediaCardList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: DS1Text(
+          child: Text(
             title,
-            fontSize: 16,
-            fontColor: ProjectColors(context).title,
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).title,
+            ),
           ),
         ),
         const SizedBox(height: 13),
@@ -86,18 +87,20 @@ class ExtendedMediaCardList extends StatelessWidget {
                             spacing: 3,
                             direction: Axis.vertical,
                             children: [
-                              DS1Text(
+                              Text(
                                 (media.releaseDate ?? media.firstAirDate ?? '')
                                     .formatDateTime(),
-                                fontSize: 12,
-                                truncate: 33,
-                                fontColor: ProjectColors(context).featured,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: ProjectColors(context).featured,
+                                ),
                               ),
-                              DS1Text(
+                              Text(
                                 (media.title ?? media.name)!,
-                                fontSize: 15,
-                                truncate: 33,
-                                fontColor: ProjectColors(context).text,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: ProjectColors(context).text,
+                                ),
                               ),
                             ],
                           ),

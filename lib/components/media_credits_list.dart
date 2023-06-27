@@ -1,4 +1,3 @@
-import 'package:ds1/components/text/text.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -69,7 +68,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
                     border: const UnderlineInputBorder(),
                   ),
                 )
-              : const DS1Text('Credits', fontSize: 14),
+              : const Text('Credits', style: TextStyle(fontSize: 14)),
           actions: [
             IconButton(
               onPressed: () {

@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 
@@ -8,10 +7,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      theme: ds1Theme(
-        context: context,
-        dark: true,
-        color: Colors.red,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.red,
+        brightness: Brightness.dark,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       routerConfig: router,

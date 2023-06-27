@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
@@ -31,10 +30,12 @@ class TvShowSeasons extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: DS1Text(
+              child: Text(
                 seasons.length == 1 ? '1 Season' : '${seasons.length} Seasons',
-                fontSize: 16,
-                fontColor: ProjectColors(context).title,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ProjectColors(context).title,
+                ),
               ),
             ),
             SizedBox(

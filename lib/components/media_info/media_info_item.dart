@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 
@@ -27,15 +26,19 @@ class MediaInfoItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DS1Text(
+            Text(
               label,
-              fontSize: 14,
-              fontColor: ProjectColors(context).label,
+              style: TextStyle(
+                fontSize: 14,
+                color: ProjectColors(context).label,
+              ),
             ),
             const SizedBox(height: 3),
-            DS1Text(
+            Text(
               item,
-              fontSize: 14,
+              style: const TextStyle(
+                fontSize: 14,
+              ),
             ),
           ],
         ),

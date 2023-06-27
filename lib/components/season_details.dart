@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '/domain/domain.dart';
@@ -84,14 +83,18 @@ showSeasonDetails({
                                 ),
                               ),
                               const SizedBox(height: 3),
-                              DS1Text(
+                              Text(
                                 (season.airDate ?? '').formatDateTime(),
-                                fontSize: 12,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                ),
                               ),
                               const SizedBox(height: 3),
-                              DS1Text(
+                              Text(
                                 "Episodes: ${season.episodes!.length}",
-                                fontSize: 12,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                ),
                               ),
                             ],
                           ),
@@ -108,21 +111,27 @@ showSeasonDetails({
                         Episode episode = season.episodes![index];
 
                         return ListTile(
-                          title: DS1Text(
+                          title: Text(
                             episode.name!,
-                            fontSize: 12,
-                            fontColor: ProjectColors(context).text,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: ProjectColors(context).text,
+                            ),
                           ),
-                          subtitle: DS1Text(
+                          subtitle: Text(
                             (episode.airDate ?? '').formatDateTime(),
-                            fontSize: 12,
-                            fontColor: ProjectColors(context).featured,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: ProjectColors(context).featured,
+                            ),
                           ),
-                          leading: DS1Text(
+                          leading: Text(
                             episode.episodeNumber.toString(),
-                            bold: true,
-                            fontSize: 12,
-                            fontColor: ProjectColors(context).label,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: ProjectColors(context).label,
+                            ),
                           ),
                         );
                       },

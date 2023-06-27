@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:ds1/ds1.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
 
@@ -21,22 +20,27 @@ class TvShowCreators extends StatelessWidget {
       runSpacing: 0,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        const DS1Text("😎", fontSize: 15),
+        const Text("😎", style: TextStyle(fontSize: 15)),
         ...creators!.mapIndexed((num index, PersonItem person) {
           return Wrap(
             spacing: 5,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              DS1Text(
+              Text(
                 person.name!,
-                fontSize: 14,
-                fontColor: ProjectColors(context).link,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: ProjectColors(context).link,
+                ),
               ),
               //check last
               if (index != creators!.length - 1)
-                DS1Text(
+                Text(
                   '•',
-                  fontColor: ProjectColors(context).text.withOpacity(0.2),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: ProjectColors(context).text.withOpacity(0.2),
+                  ),
                 )
             ],
           );

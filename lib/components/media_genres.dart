@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
 import '/domain/domain.dart';
@@ -38,15 +37,20 @@ class MediaGenres extends StatelessWidget {
               return Wrap(
                 spacing: 5,
                 children: [
-                  DS1Text(
+                  Text(
                     genre.name!,
-                    fontColor: ProjectColors(context).link,
-                    fontSize: 14,
+                    style: TextStyle(
+                      color: ProjectColors(context).link,
+                      fontSize: 14,
+                    ),
                   ),
                   if (index != genres.length - 1)
-                    DS1Text(
+                    Text(
                       '•',
-                      fontColor: ProjectColors(context).text.withOpacity(0.2),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: ProjectColors(context).text.withOpacity(0.2),
+                      ),
                     ),
                 ],
               );

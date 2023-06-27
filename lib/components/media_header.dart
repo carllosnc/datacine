@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ds1/ds1.dart';
 import '/core/core.dart';
 import '/components/components.dart';
 import '/domain/domain.dart';
@@ -24,15 +23,16 @@ class MediaHeader extends StatelessWidget {
             width: width,
             height: height,
             child: Container(
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: ProjectColors(context).featured,
-                  width: 3,
+                  width: 2,
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(14),
                 child: ImageComponent(
                   imagePath: (movie?.posterPath ?? tvshow?.posterPath),
                   imageType: ImageType.poster,
@@ -55,31 +55,39 @@ class MediaHeader extends StatelessWidget {
               Wrap(
                 spacing: 10,
                 children: [
-                  DS1Text(
+                  Text(
                     (movie?.releaseDate ?? tvshow?.firstAirDate ?? '')
                         .formatDateTime(),
-                    fontSize: 12,
-                    fontColor: ProjectColors(context).label,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: ProjectColors(context).label,
+                    ),
                   ),
                   if (tvshow?.lastAirDate != null)
-                    DS1Text(
+                    Text(
                       "―",
-                      fontSize: 12,
-                      fontColor: ProjectColors(context).label,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: ProjectColors(context).label,
+                      ),
                     ),
                   if (tvshow?.lastAirDate != null)
-                    DS1Text(
+                    Text(
                       (tvshow?.lastAirDate ?? '').formatDateTime(),
-                      fontSize: 12,
-                      fontColor: ProjectColors(context).label,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: ProjectColors(context).label,
+                      ),
                     ),
                 ],
               ),
               const SizedBox(height: 2),
-              DS1Text(
+              Text(
                 (movie?.title ?? tvshow?.name)!,
-                fontSize: 22,
-                fontColor: ProjectColors(context).title,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: ProjectColors(context).title,
+                ),
               ),
               const SizedBox(height: 15),
               MovieDirectors(credits: movie?.credits),

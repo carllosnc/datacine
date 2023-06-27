@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -33,7 +32,10 @@ class MovieSimilarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const DS1Text('Similar', fontSize: 14),
+        title: const Text(
+          'Similar',
+          style: TextStyle(fontSize: 14),
+        ),
       ),
       body: MediaInfinityGrid(
         pageTitle: 'Similar',

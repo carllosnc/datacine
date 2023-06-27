@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -37,10 +36,12 @@ class PersonHorizontalList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: DS1Text(
+          child: Text(
             title,
-            fontSize: 16,
-            fontColor: ProjectColors(context).title,
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).title,
+            ),
           ),
         ),
         const SizedBox(height: 10),

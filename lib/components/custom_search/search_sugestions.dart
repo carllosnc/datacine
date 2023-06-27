@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
@@ -57,14 +56,16 @@ class SearchSugestions extends StatelessWidget {
                     ),
                   ),
                 ),
-                title: DS1Text(
+                title: Text(
                   item.title ?? item.name ?? '-',
-                  fontSize: 13,
+                  style: const TextStyle(fontSize: 13),
                 ),
-                subtitle: DS1Text(
+                subtitle: Text(
                   "${(item.releaseDate ?? item.firstAirDate!).formatYear()} — ${item.mediaType!.capitalize()}",
-                  fontSize: 13,
-                  fontColor: ProjectColors(context).featured,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: ProjectColors(context).featured,
+                  ),
                 ),
               );
             }
@@ -84,11 +85,16 @@ class SearchSugestions extends StatelessWidget {
                     ),
                   ),
                 ),
-                title: DS1Text(item.name!, fontSize: 13),
-                subtitle: DS1Text(
+                title: Text(
+                  item.name!,
+                  style: const TextStyle(fontSize: 13),
+                ),
+                subtitle: Text(
                   item.knownForDepartment ?? '―',
-                  fontSize: 13,
-                  fontColor: Colors.yellow,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Colors.yellow,
+                  ),
                 ),
               );
             }

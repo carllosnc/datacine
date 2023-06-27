@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/core/core.dart';
@@ -52,15 +51,19 @@ class MovieCollection extends StatelessWidget {
                   direction: Axis.vertical,
                   runSpacing: 10,
                   children: [
-                    DS1Text(
+                    Text(
                       (movie.belongsToCollection!.name) ?? '',
-                      fontSize: 16,
-                      fontColor: ProjectColors(context).title,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: ProjectColors(context).title,
+                      ),
                     ),
-                    DS1Text(
+                    Text(
                       '${collection.parts?.length} movies',
-                      fontSize: 12,
-                      fontColor: ProjectColors(context).text,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: ProjectColors(context).text,
+                      ),
                     )
                   ],
                 ),

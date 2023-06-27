@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:giganoid_app/core/core.dart';
@@ -117,9 +116,11 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: DS1Text(
+        title: Text(
           '$selectedLang: ${filteredPosters.length}',
-          fontSize: 14,
+          style: const TextStyle(
+            fontSize: 14,
+          ),
         ),
         actions: [
           if (supportedLangs.length > 2)

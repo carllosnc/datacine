@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
 
@@ -33,10 +32,12 @@ class BottomItem extends StatelessWidget {
                     size: 15,
                     color: ProjectColors(context).text,
                   ),
-                  DS1Text(
+                  Text(
                     label,
-                    fontColor: ProjectColors(context).text,
-                    fontSize: 13,
+                    style: TextStyle(
+                      color: ProjectColors(context).text,
+                      fontSize: 13,
+                    ),
                   ),
                 ],
               ),
