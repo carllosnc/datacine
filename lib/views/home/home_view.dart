@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 import '/components/components.dart';
@@ -55,11 +54,7 @@ class _HomeViewState extends State<HomeView>
           visible: _showFloatingActionButton,
           child: FloatingActionButton(
             onPressed: () {
-              DS1Dialog.show(
-                context: context,
-                title: "Hello world",
-                subtitle: "Hello world",
-              );
+              discoverMediaFilters(context);
             },
             child: const Icon(Icons.tune),
           ),

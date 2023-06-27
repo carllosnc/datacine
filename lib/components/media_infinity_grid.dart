@@ -82,7 +82,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
                 itemCount: _dataList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  childAspectRatio: 0.53,
+                  childAspectRatio: 0.57,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 25,
                 ),

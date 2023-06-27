@@ -60,6 +60,11 @@ class BottomMenu extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         color: ProjectColors(context).bottomBarBackground,
+        //rounded
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
+        ),
       ),
       padding: const EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
       child: Row(

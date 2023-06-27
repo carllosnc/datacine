@@ -40,7 +40,9 @@ showSeasonDetails({
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BottomSheetHeader(),
+                  const ModalHeader(
+                    title: "Season details",
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       border: Border(

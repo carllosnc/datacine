@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 
@@ -30,10 +29,9 @@ class MediaKeywords extends StatelessWidget {
           },
           itemCount: keywords!.length,
           itemBuilder: (BuildContext context, int index) {
-            return DS1Button(
-              size: 'mini',
-              label: keywords[index].name!,
-              type: DS1ButtonType.outline,
+            return OutlinedButton(
+              onPressed: () {},
+              child: Text(keywords[index].name!),
             );
           },
         ),

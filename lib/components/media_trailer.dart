@@ -1,4 +1,3 @@
-import 'package:ds1/ds1.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/domain/domain.dart';
@@ -19,13 +18,17 @@ class MediaTrailer extends StatelessWidget {
 
     var youtubeLink = 'https://www.youtube.com/watch?v=${trailer.key}';
 
-    return DS1Button(
-      size: "mini",
-      label: "Watch trailer",
-      icon: Icons.play_arrow,
-      onTap: () {
+    return FilledButton.tonal(
+      onPressed: () {
         launchUrl(Uri.parse(youtubeLink));
       },
+      child: const Row(
+        children: [
+          Icon(Icons.play_arrow),
+          SizedBox(width: 8),
+          Text('Watch trailer'),
+        ],
+      ),
     );
   }
 }

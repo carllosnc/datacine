@@ -27,7 +27,9 @@ class MediaInfo extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const BottomSheetHeader(),
+                const ModalHeader(
+                  title: "Informations",
+                ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
