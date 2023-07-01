@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
@@ -44,7 +43,6 @@ class MovieView extends StatelessWidget {
             movie.credits!['cast']!.length >= 3;
         bool hasOverview = movie.overview != null && movie.overview!.isNotEmpty;
         bool hasTagline = movie.tagline != null && movie.tagline!.isNotEmpty;
-        bool hasGenres = movie.genres != null && movie.genres!.isNotEmpty;
 
         return Scaffold(
           extendBody: true,
@@ -54,7 +52,6 @@ class MovieView extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: ProjectColors(context).featured,
                 textBaseline: TextBaseline.values[1],
               ),
             ),
@@ -67,10 +64,6 @@ class MovieView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MediaHeader(movie: movie),
-
-                //genres
-                SectionDivider(condition: hasGenres),
-                MediaGenres(movie: movie),
 
                 //keyword
                 SectionDivider(condition: hasKeywords),

@@ -15,8 +15,10 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
-  bool _showFloatingActionButton = false;
   late TabController _tabController;
+
+  bool _showMovieFilter = false;
+  bool _showTvShowFilter = false;
 
   @override
   initState() {
@@ -36,10 +38,15 @@ class _HomeViewState extends State<HomeView>
     var index = _tabController.index;
 
     setState(() {
-      if (index == 1 || index == 2) {
-        _showFloatingActionButton = true;
+      if (index == 1) {
+        _showMovieFilter = true;
+        _showTvShowFilter = false;
+      } else if (index == 2) {
+        _showTvShowFilter = true;
+        _showMovieFilter = false;
       } else {
-        _showFloatingActionButton = false;
+        _showMovieFilter = false;
+        _showTvShowFilter = false;
       }
     });
   }
@@ -50,14 +57,31 @@ class _HomeViewState extends State<HomeView>
       initialIndex: 0,
       length: 4,
       child: Scaffold(
-        floatingActionButton: Visibility(
-          visible: _showFloatingActionButton,
-          child: FloatingActionButton(
-            onPressed: () {
-              discoverMediaFilters(context);
-            },
-            child: const Icon(Icons.tune),
-          ),
+        floatingActionButton: Wrap(
+          children: [
+            if (_showMovieFilter)
+              FloatingActionButton(
+                onPressed: () {
+                  discoverMediaFilters(
+                    context: context,
+                    title: "Filter Movies",
+                    mediaType: MediaType.movie,
+                  );
+                },
+                child: const Icon(Icons.movie_filter),
+              ),
+            if (_showTvShowFilter)
+              FloatingActionButton(
+                onPressed: () {
+                  discoverMediaFilters(
+                    context: context,
+                    title: "Filter TV Shows",
+                    mediaType: MediaType.tv,
+                  );
+                },
+                child: const Icon(Icons.tv),
+              ),
+          ],
         ),
         appBar: AppBar(
           title: Image.asset(

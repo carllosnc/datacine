@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TVShowsTab extends StatefulWidget {
-  const TVShowsTab({super.key});
+  const TVShowsTab({
+    super.key,
+  });
 
   @override
   State<TVShowsTab> createState() => _TVShowsTabState();
@@ -15,7 +17,6 @@ class _TVShowsTabState extends State<TVShowsTab> {
       child: Column(
         children: [
           SizedBox(height: 16),
-          Text("TV"),
         ],
       ),
     );

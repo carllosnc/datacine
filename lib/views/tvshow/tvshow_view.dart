@@ -49,7 +49,6 @@ class _TvShowViewState extends State<TvShowView> {
         bool hasOverview =
             tvshow.overview != null && tvshow.overview!.isNotEmpty;
         bool hasTagline = tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
-        bool hasGenres = tvshow.genres != null && tvshow.genres!.isNotEmpty;
         bool hasSeasons = tvshow.seasons != null && tvshow.seasons!.isNotEmpty;
 
         return Scaffold(
@@ -73,10 +72,6 @@ class _TvShowViewState extends State<TvShowView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MediaHeader(tvshow: tvshow),
-
-                //genres
-                SectionDivider(condition: hasGenres),
-                MediaGenres(tvshow: tvshow),
 
                 //keyword
                 SectionDivider(condition: hasKeywords),
