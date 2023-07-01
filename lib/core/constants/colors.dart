@@ -12,7 +12,7 @@ class ProjectColors {
   Color ratingGreat = const Color.fromARGB(255, 22, 125, 25);
   Color status = const Color.fromARGB(255, 225, 99, 247);
 
-  Color get link => Theme.of(context).colorScheme.primary;
+  Color get link => const Color.fromARGB(255, 49, 231, 255);
   Color get imageFilter => Theme.of(context).colorScheme.onSecondary;
   Color get bottomBarBackground => Theme.of(context).colorScheme.onSecondary;
   Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.5);
