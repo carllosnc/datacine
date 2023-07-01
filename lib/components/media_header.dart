@@ -45,14 +45,12 @@ class MediaHeader extends StatelessWidget {
 
         const SizedBox(height: 30),
 
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Wrap(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Wrap(
                 spacing: 10,
                 children: [
                   Text(
@@ -81,19 +79,25 @@ class MediaHeader extends StatelessWidget {
                     ),
                 ],
               ),
-              const SizedBox(height: 2),
-              Text(
+            ),
+            const SizedBox(height: 2),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
                 (movie?.title ?? tvshow?.name)!,
                 style: TextStyle(
                   fontSize: 24,
                   color: ProjectColors(context).title,
                 ),
               ),
-              const SizedBox(height: 15),
-              MovieDirectors(credits: movie?.credits),
-              TvShowCreators(creators: tvshow?.createdBy),
-              const SizedBox(height: 20),
-              Row(
+            ),
+            const SizedBox(height: 15),
+            MovieDirectors(credits: movie?.credits),
+            TvShowCreators(creators: tvshow?.createdBy),
+            const SectionDivider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MediaTrailer(
@@ -106,9 +110,9 @@ class MediaHeader extends StatelessWidget {
                     status: (movie?.status ?? tvshow?.status),
                   ),
                 ],
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ],
     );

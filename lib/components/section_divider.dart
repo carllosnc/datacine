@@ -15,12 +15,12 @@ class SectionDivider extends StatelessWidget {
       visible: condition,
       child: Column(
         children: [
-          const SizedBox(height: 28),
+          const SizedBox(height: 25),
           Divider(
             height: 1,
             color: ProjectColors(context).line,
           ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 25),
         ],
       ),
     );

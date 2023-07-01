@@ -33,12 +33,18 @@ class ImageComponent extends StatelessWidget {
     }
 
     if (imagePath == null) {
-      return Image.asset(
-        fallBackImage,
-        filterQuality: FilterQuality.high,
-        width: double.infinity,
-        height: double.infinity,
-        fit: BoxFit.cover,
+      return ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          ProjectColors(context).imageFilter,
+          BlendMode.color,
+        ),
+        child: Image.asset(
+          fallBackImage,
+          filterQuality: FilterQuality.high,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.cover,
+        ),
       );
     }
 

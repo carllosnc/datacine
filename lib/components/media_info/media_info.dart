@@ -32,6 +32,10 @@ class MediaInfo extends StatelessWidget {
                 ),
                 Expanded(
                   child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 20,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -84,6 +88,7 @@ class MediaInfo extends StatelessWidget {
                                 label: "Status",
                               ),
                               Companies(movie: movie),
+                              MediaInfoGenres(movie: movie),
                             ],
                           ),
                         if (tvShow != null)
@@ -128,6 +133,7 @@ class MediaInfo extends StatelessWidget {
                                 label: "Number of episodes",
                               ),
                               Companies(tvShow: tvShow),
+                              MediaInfoGenres(tvshow: tvShow)
                             ],
                           )
                       ],

@@ -31,6 +31,10 @@ class SearchSugestions extends StatelessWidget {
 
         SearchResult data = snapshot.data!.$1;
 
+        if (data.results!.isEmpty) {
+          return const Empty(message: 'No results found');
+        }
+
         return ListView.builder(
           itemCount: data.results!.length,
           itemBuilder: (BuildContext context, int index) {

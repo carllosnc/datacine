@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
 import '/domain/domain.dart';
-import '/core/core.dart';
+import '/components/components.dart';
 
 class MovieDirectors extends StatelessWidget {
   final Map<String, List<PersonItem>>? credits;
@@ -28,39 +27,24 @@ class MovieDirectors extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return Wrap(
-      spacing: 5,
-      runSpacing: 0,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        const Text(
-          "🎬",
-          style: TextStyle(fontSize: 15),
-        ),
-        ...directors.mapIndexed((num index, PersonItem person) {
-          return Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 5,
-            children: [
-              Text(
-                person.originalName!,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: ProjectColors(context).link,
-                ),
-              ),
-              //check last
-              if (index != directors!.length - 1)
-                Text(
-                  '•',
-                  style: TextStyle(
-                    color: ProjectColors(context).text.withOpacity(0.2),
-                  ),
-                )
-            ],
+    return SizedBox(
+      height: 30,
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        scrollDirection: Axis.horizontal,
+        separatorBuilder: (context, index) {
+          return const SizedBox(width: 10);
+        },
+        itemCount: directors.length,
+        itemBuilder: (context, index) {
+          PersonItem person = directors![index];
+
+          return LinkButton(
+            label: person.name!,
+            onPressed: () {},
           );
-        }).toList(),
-      ],
+        },
+      ),
     );
   }
 }

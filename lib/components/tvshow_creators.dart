@@ -1,7 +1,6 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/core/core.dart';
+import '/components/components.dart';
 
 class TvShowCreators extends StatelessWidget {
   final List<PersonItem>? creators;
@@ -15,37 +14,24 @@ class TvShowCreators extends StatelessWidget {
   Widget build(BuildContext context) {
     if (creators == null || creators!.isEmpty) return const SizedBox.shrink();
 
-    return Wrap(
-      spacing: 5,
-      runSpacing: 0,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        const Text("😎", style: TextStyle(fontSize: 15)),
-        ...creators!.mapIndexed((num index, PersonItem person) {
-          return Wrap(
-            spacing: 5,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Text(
-                person.name!,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: ProjectColors(context).link,
-                ),
-              ),
-              //check last
-              if (index != creators!.length - 1)
-                Text(
-                  '•',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: ProjectColors(context).text.withOpacity(0.2),
-                  ),
-                )
-            ],
+    return SizedBox(
+      height: 30,
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        scrollDirection: Axis.horizontal,
+        separatorBuilder: (context, index) {
+          return const SizedBox(width: 10);
+        },
+        itemCount: creators!.length,
+        itemBuilder: (context, index) {
+          PersonItem person = creators![index];
+
+          return LinkButton(
+            label: person.name!,
+            onPressed: () {},
           );
-        }).toList(),
-      ],
+        },
+      ),
     );
   }
 }

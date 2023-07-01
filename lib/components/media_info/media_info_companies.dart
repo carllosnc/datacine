@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
+import '/components/components.dart';
 
 class Companies extends StatelessWidget {
   final MovieDetails? movie;
@@ -24,7 +25,6 @@ class Companies extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
         vertical: 10,
       ),
       child: Column(
@@ -37,31 +37,16 @@ class Companies extends StatelessWidget {
               color: ProjectColors(context).label,
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 7),
           Wrap(
-            spacing: 5,
-            runSpacing: 5,
+            spacing: 10,
+            runSpacing: 10,
             children: [
               for (var company in productionCompanies)
-                Wrap(
-                  spacing: 5,
-                  children: [
-                    Text(
-                      company.name!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: ProjectColors(context).link,
-                      ),
-                    ),
-                    if (company != productionCompanies.last)
-                      Text(
-                        '•',
-                        style: TextStyle(
-                          color: ProjectColors(context).text.withOpacity(0.2),
-                        ),
-                      )
-                  ],
-                ),
+                LinkButton(
+                  onPressed: () {},
+                  label: company.name!,
+                )
             ],
           ),
         ],

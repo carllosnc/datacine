@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giganoid_app/components/components.dart';
 import '/domain/domain.dart';
 
 class MediaKeywords extends StatelessWidget {
@@ -19,7 +20,6 @@ class MediaKeywords extends StatelessWidget {
     return Visibility(
       visible: keywords != null && keywords.isNotEmpty,
       child: SizedBox(
-        width: double.infinity,
         height: 30,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
@@ -29,9 +29,9 @@ class MediaKeywords extends StatelessWidget {
           },
           itemCount: keywords!.length,
           itemBuilder: (BuildContext context, int index) {
-            return OutlinedButton(
+            return LinkButton(
+              label: keywords[index].name!,
               onPressed: () {},
-              child: Text(keywords[index].name!),
             );
           },
         ),

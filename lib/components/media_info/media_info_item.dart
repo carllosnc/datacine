@@ -19,7 +19,6 @@ class MediaInfoItem extends StatelessWidget {
       visible: condition,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
           vertical: 10,
         ),
         width: double.infinity,
