@@ -8,3 +8,4 @@ export 'repositories/movie_collection_repository.dart';
 export 'repositories/season_repository.dart';
 export 'repositories/search_repository.dart';
 export 'repositories/media_genre_repository.dart';
+export 'repositories/media_discover_repository.dart';
