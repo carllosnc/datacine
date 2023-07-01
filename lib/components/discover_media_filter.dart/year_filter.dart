@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class YearsFilter extends StatefulWidget {
-  const YearsFilter({super.key});
+  final Function(dynamic) onChanged;
+
+  const YearsFilter({super.key, required this.onChanged});
 
   @override
   State<YearsFilter> createState() => _YearsFilterState();
@@ -40,34 +42,49 @@ class _YearsFilterState extends State<YearsFilter> {
   void initState() {
     super.initState();
 
-    currentYear = rangeOfyears.keys.first;
-
+    years.addAll({'All': null});
     years.addAll(decade60);
     years.addAll(decade70);
     years.addAll(decade80);
     years.addAll(decade90);
     years.addAll(decade00);
     years.addAll(rangeOfyears);
+
+    currentYear = years.keys.first;
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      value: currentYear,
-      icon: const Icon(Icons.expand_more),
-      items: years.keys.map((year) {
-        return DropdownMenuItem(
-          value: year,
-          child: Text(year.toString()),
-        );
-      }).toList(),
-      onChanged: (values) {
-        setState(() {
-          currentYear = values.toString();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text('Year: '),
+        SizedBox(
+          width: 220,
+          child: DropdownButtonFormField(
+            value: currentYear,
+            icon: const Icon(Icons.expand_more),
+            padding: EdgeInsets.zero,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.calendar_month),
+            ),
+            items: years.keys.map((year) {
+              return DropdownMenuItem(
+                value: year,
+                child: Text(year.toString()),
+              );
+            }).toList(),
+            onChanged: (values) {
+              setState(() {
+                currentYear = values.toString();
 
-          print(years[currentYear]);
-        });
-      },
+                widget.onChanged(years[currentYear]);
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 }
