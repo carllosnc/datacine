@@ -1,5 +1,6 @@
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:giganoid_app/data/data.dart';
+import 'package:giganoid_app/core/core.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -17,7 +18,9 @@ void main() {
       http.Client(),
     );
 
-    final (genres, response) = await genresRepository.getMovieGenres();
+    final (genres, response) = await genresRepository.getGenres(
+      mediaType: MediaType.movie,
+    );
 
     expect(response.statusCode, 200);
     expect(genres, isA<List<Genre>>());
@@ -28,7 +31,9 @@ void main() {
       http.Client(),
     );
 
-    final (genres, response) = await genresRepository.getTvGenres();
+    final (genres, response) = await genresRepository.getGenres(
+      mediaType: MediaType.tv,
+    );
 
     expect(response.statusCode, 200);
     expect(genres, isA<List<Genre>>());
