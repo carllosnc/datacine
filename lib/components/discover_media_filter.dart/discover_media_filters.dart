@@ -73,7 +73,7 @@ discoverMediaFilters({
                     ),
                   ),
                   padding: const EdgeInsets.all(10),
-                  child: FilledButton.tonal(
+                  child: FilledButton(
                     onPressed: () {
                       Navigator.pop(context);
 
