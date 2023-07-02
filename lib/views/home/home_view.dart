@@ -61,6 +61,10 @@ class _HomeViewState extends State<HomeView>
           children: [
             if (_showMovieFilter)
               FloatingActionButton.extended(
+                extendedTextStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
                 label: const Text('Discover movies'),
                 icon: const Icon(Icons.movie),
                 onPressed: () {
@@ -73,6 +77,10 @@ class _HomeViewState extends State<HomeView>
               ),
             if (_showTvShowFilter)
               FloatingActionButton.extended(
+                extendedTextStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
                 label: const Text('Discover TV Shows'),
                 icon: const Icon(Icons.tv),
                 onPressed: () {
