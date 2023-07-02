@@ -5,17 +5,15 @@ import '/components/components.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
 import './lang_filter.dart';
+import '/notifiers/notifiers.dart';
 
 discoverMediaFilters({
   required BuildContext context,
   required String title,
   required MediaType mediaType,
 }) {
-  Map<String, String?> filters = {
-    'year': null,
-    'lang': null,
-    'genre': null,
-  };
+  MovieFilterNotifier filterNotifier = MovieFilterNotifier();
+  Map<String, dynamic> filters = {...filterNotifier.filters.value};
 
   showDialog(
     context: context,
@@ -43,7 +41,7 @@ discoverMediaFilters({
                       children: [
                         YearsFilter(
                           onChanged: (dynamic value) {
-                            filters['year'] = value;
+                            filters['years'] = value;
                           },
                         ),
                         const SizedBox(height: 25),
@@ -55,7 +53,7 @@ discoverMediaFilters({
                         const SizedBox(height: 25),
                         GenreFilter(
                           onChanged: (dynamic value) {
-                            filters['genre'] = value;
+                            filters['genres'] = value;
                           },
                           mediaType: mediaType,
                         ),
@@ -77,8 +75,9 @@ discoverMediaFilters({
                   padding: const EdgeInsets.all(10),
                   child: FilledButton.tonal(
                     onPressed: () {
-                      debugPrint(filters.toString());
                       Navigator.pop(context);
+
+                      filterNotifier.filters.value = filters;
                     },
                     child: const Text(
                       'Apply Filters',

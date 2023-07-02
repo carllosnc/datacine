@@ -60,7 +60,9 @@ class _HomeViewState extends State<HomeView>
         floatingActionButton: Wrap(
           children: [
             if (_showMovieFilter)
-              FloatingActionButton(
+              FloatingActionButton.extended(
+                label: const Text('Discover movies'),
+                icon: const Icon(Icons.movie),
                 onPressed: () {
                   discoverMediaFilters(
                     context: context,
@@ -68,10 +70,11 @@ class _HomeViewState extends State<HomeView>
                     mediaType: MediaType.movie,
                   );
                 },
-                child: const Icon(Icons.movie_filter),
               ),
             if (_showTvShowFilter)
-              FloatingActionButton(
+              FloatingActionButton.extended(
+                label: const Text('Discover TV Shows'),
+                icon: const Icon(Icons.tv),
                 onPressed: () {
                   discoverMediaFilters(
                     context: context,
@@ -79,7 +82,6 @@ class _HomeViewState extends State<HomeView>
                     mediaType: MediaType.tv,
                   );
                 },
-                child: const Icon(Icons.tv),
               ),
           ],
         ),

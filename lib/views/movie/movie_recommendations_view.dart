@@ -39,7 +39,6 @@ class MovieRecommendationView extends StatelessWidget {
         ),
       ),
       body: MediaInfinityGrid(
-        pageTitle: 'Recommendations',
         mediaType: MediaType.movie,
         fetchData: fetchData,
       ),

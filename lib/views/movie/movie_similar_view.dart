@@ -38,7 +38,6 @@ class MovieSimilarView extends StatelessWidget {
         ),
       ),
       body: MediaInfinityGrid(
-        pageTitle: 'Similar',
         mediaType: MediaType.movie,
         fetchData: getData,
       ),

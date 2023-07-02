@@ -6,13 +6,11 @@ import '/components/components.dart';
 class MediaInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;
   final MediaType mediaType;
-  final String pageTitle;
 
   const MediaInfinityGrid({
     super.key,
     required this.fetchData,
     required this.mediaType,
-    required this.pageTitle,
   });
 
   @override

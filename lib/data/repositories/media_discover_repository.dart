@@ -9,7 +9,7 @@ class MediaDiscoverRepository extends Repository {
 
   Future<(MediaList, http.Response)> discover({
     required MediaType mediaType,
-    required Map<String, String?> filters,
+    required Map<String, dynamic> filters,
     required int page,
   }) async {
     Map<String, String> query = {
@@ -25,8 +25,8 @@ class MediaDiscoverRepository extends Repository {
       query.addAll({"primary_release_year": filters["years"]!});
     }
 
-    if (filters["languages"] != null) {
-      query.addAll({"with_original_language": filters["languages"]!});
+    if (filters["lang"] != null) {
+      query.addAll({"with_original_language": filters["lang"]!});
     }
 
     var response = await httpClient.get(

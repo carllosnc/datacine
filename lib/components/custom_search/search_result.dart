@@ -76,7 +76,6 @@ class _SearchResultState extends State<SearchResult> {
           Expanded(
             child: MediaInfinityGrid(
               key: const Key('movie_search_result'),
-              pageTitle: 'Search Result',
               mediaType: MediaType.movie,
               fetchData: fetchMoviesData,
             ),
@@ -85,7 +84,6 @@ class _SearchResultState extends State<SearchResult> {
           Expanded(
             child: MediaInfinityGrid(
               key: const Key('tv_search_result'),
-              pageTitle: 'Search Result',
               mediaType: MediaType.tv,
               fetchData: fetchTvData,
             ),

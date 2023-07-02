@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/notifiers/notifiers.dart';
 
 class YearsFilter extends StatefulWidget {
   final Function(dynamic) onChanged;
@@ -11,6 +12,8 @@ class YearsFilter extends StatefulWidget {
 
 class _YearsFilterState extends State<YearsFilter> {
   Map<String, dynamic> years = {};
+
+  final MovieFilterNotifier movieFilterNotifier = MovieFilterNotifier();
 
   var rangeOfyears = {
     for (var v in List.generate(2023 - 1899, (i) => 2023 - i)) '$v': '$v'
@@ -42,6 +45,7 @@ class _YearsFilterState extends State<YearsFilter> {
   void initState() {
     super.initState();
 
+    // add all years to the list
     years.addAll({'All': null});
     years.addAll(decade60);
     years.addAll(decade70);
@@ -50,7 +54,17 @@ class _YearsFilterState extends State<YearsFilter> {
     years.addAll(decade00);
     years.addAll(rangeOfyears);
 
-    currentYear = years.keys.first;
+    // get current filter from notifier
+    var currentFilterYear = movieFilterNotifier.filters.value['years'];
+
+    // set selected year to current filter or first year in list
+    if (currentFilterYear != null) {
+      currentYear = years.keys.firstWhere(
+        (key) => years[key] == currentFilterYear,
+      );
+    } else {
+      currentYear = years.keys.first;
+    }
   }
 
   @override
@@ -78,9 +92,9 @@ class _YearsFilterState extends State<YearsFilter> {
             onChanged: (values) {
               setState(() {
                 currentYear = values.toString();
-
-                widget.onChanged(years[currentYear]);
               });
+
+              widget.onChanged(years[currentYear]);
             },
           ),
         ),
