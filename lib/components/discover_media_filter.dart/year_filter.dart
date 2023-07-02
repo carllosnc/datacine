@@ -15,6 +15,7 @@ class _YearsFilterState extends State<YearsFilter> {
 
   final MovieFilterNotifier movieFilterNotifier = MovieFilterNotifier();
 
+  // range of years from 1900 to 2023
   var rangeOfyears = {
     for (var v in List.generate(2023 - 1899, (i) => 2023 - i)) '$v': '$v'
   };

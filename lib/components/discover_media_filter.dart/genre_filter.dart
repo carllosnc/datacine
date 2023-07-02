@@ -70,6 +70,7 @@ class _GenreFilterState extends State<GenreFilter> {
         BuildContext context,
         AsyncSnapshot<(List<Genre>, http.Response)> snapshot,
       ) {
+        // if snapshot is null or waiting return loading
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Loading();
         }

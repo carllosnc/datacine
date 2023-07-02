@@ -15,8 +15,10 @@ class MediaInfoGenres extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // get the genres from the movie or tv show
     final List<Genre>? genres = movie?.genres ?? tvshow?.genres;
 
+    // if there are no genres, return an empty SizedBox
     if (genres == null || genres.isEmpty) {
       return const SizedBox.shrink();
     }

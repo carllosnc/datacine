@@ -15,9 +15,11 @@ class Companies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // get the production companies from the movie or tv show
     List<ProductionCompany>? productionCompanies =
         movie?.productionCompanies ?? tvShow?.productionCompanies;
 
+    // if there are no production companies, return an empty SizedBox
     if (productionCompanies == null || productionCompanies.isEmpty) {
       return const SizedBox.shrink();
     }
