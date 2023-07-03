@@ -34,7 +34,7 @@ showSeasonDetails({
                 return const Loading();
               }
 
-              Season season = snapshot.data!.$1;
+              var (Season season, _) = snapshot.data!;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

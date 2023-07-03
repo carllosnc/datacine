@@ -82,7 +82,7 @@ class _GenreFilterState extends State<GenreFilter> {
           return const Loading();
         }
 
-        List<Genre> genres = snapshot.data!.$1;
+        var (List<Genre> genres, _) = snapshot.data!;
 
         //filter chips of genres
         return SizedBox(

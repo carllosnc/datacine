@@ -30,9 +30,7 @@ class _MoviesTabState extends State<MoviesTab>
             http.Client(),
           );
 
-          // ignore: unused_local_variable
-          var (discovered, response) =
-              await mediaDiscoverRepository.discoverMovies(
+          var (discovered, _) = await mediaDiscoverRepository.discoverMovies(
             page: page,
             filters: value,
           );

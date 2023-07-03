@@ -39,7 +39,7 @@ class _TvShowViewState extends State<TvShowView> {
           );
         }
 
-        TvShowDetails tvshow = snapshot.data!.$1;
+        var (TvShowDetails tvshow, _) = snapshot.data!;
 
         bool hasKeywords = tvshow.keywords!['results'] != null &&
             tvshow.keywords!['results']!.isNotEmpty;

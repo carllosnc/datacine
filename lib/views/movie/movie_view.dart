@@ -32,7 +32,7 @@ class MovieView extends StatelessWidget {
           );
         }
 
-        MovieDetails movie = snapshot.data!.$1;
+        var (MovieDetails movie, _) = snapshot.data!;
 
         // conditions for sections to be displayed
         bool hasKeywords = movie.keywords!['keywords'] != null &&

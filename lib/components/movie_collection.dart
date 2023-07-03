@@ -32,7 +32,7 @@ class MovieCollection extends StatelessWidget {
             return const Loading();
           }
 
-          Collection collection = snapshot.data!.$1;
+          var (Collection collection, _) = snapshot.data!;
 
           collection.parts!.sort((a, b) {
             return a.releaseDate!.compareTo(b.releaseDate!);

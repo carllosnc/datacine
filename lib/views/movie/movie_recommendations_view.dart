@@ -18,8 +18,7 @@ class MovieRecommendationView extends StatelessWidget {
       http.Client(),
     );
 
-    // ignore: unused_local_variable
-    final (recommendations, response) =
+    final (recommendations, _) =
         await mediaRecommendationService.getRecomendations(
       mediaId: movie.id as int,
       mediaType: MediaType.movie,

@@ -18,8 +18,7 @@ class TvShowRecommendationView extends StatelessWidget {
       http.Client(),
     );
 
-    // ignore: unused_local_variable
-    final (recommendations, respose) =
+    final (recommendations, _) =
         await mediaRecommendationService.getRecomendations(
       mediaId: tvshow.id as int,
       mediaType: MediaType.tv,

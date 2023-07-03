@@ -32,9 +32,7 @@ class _TVShowsTabState extends State<TVShowsTab>
             http.Client(),
           );
 
-          // ignore: unused_local_variable
-          var (discovered, response) =
-              await mediaDiscoverRepository.discoverTvShows(
+          var (discovered, _) = await mediaDiscoverRepository.discoverTvShows(
             page: page,
             filters: value,
           );

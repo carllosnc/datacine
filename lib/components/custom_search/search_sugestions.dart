@@ -29,7 +29,7 @@ class SearchSugestions extends StatelessWidget {
           return const LinearProgressIndicator(minHeight: 3);
         }
 
-        SearchResult data = snapshot.data!.$1;
+        var (SearchResult data, _) = snapshot.data!;
 
         if (data.results!.isEmpty) {
           return const Empty(message: 'No results found');
