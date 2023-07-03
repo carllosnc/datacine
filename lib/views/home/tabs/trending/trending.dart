@@ -14,6 +14,7 @@ class TrendingTab extends StatefulWidget {
 
 class _TrendingTabState extends State<TrendingTab>
     with AutomaticKeepAliveClientMixin<TrendingTab> {
+  // get trending movies, tv shows and people
   final Future getTrendings = TrendingRepository(http.Client()).getTrendings();
 
   @override

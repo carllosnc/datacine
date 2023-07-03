@@ -4,10 +4,13 @@ import '/domain/domain.dart';
 import '/notifiers/notifiers.dart';
 
 class LangFilter extends StatefulWidget {
+  final MediaType mediaType;
   final Function(String? value) onChanged;
+
   const LangFilter({
     super.key,
     required this.onChanged,
+    required this.mediaType,
   });
 
   @override
@@ -19,7 +22,7 @@ class _LangFilterState extends State<LangFilter> {
 
   late Language selectedLang;
 
-  MovieFilterNotifier movieFilterNotifier = MovieFilterNotifier();
+  FilterNotifier filterNotifier = FilterNotifier();
 
   @override
   void initState() {
@@ -49,10 +52,19 @@ class _LangFilterState extends State<LangFilter> {
       }).toList(),
     );
 
-    // Get current filter from notifier
-    var currentFilterLang = movieFilterNotifier.filters.value['lang'];
+    dynamic currentFilterLang;
 
-    // Set selected language to current filter or first language in list
+    // set current filter to current language
+    if (widget.mediaType == MediaType.movie) {
+      currentFilterLang = filterNotifier.movieFilters.value['lang'];
+    }
+
+    // set current filter to current language
+    if (widget.mediaType == MediaType.tv) {
+      currentFilterLang = filterNotifier.tvShowFilters.value['lang'];
+    }
+
+    // set selected language to current filter or first language in list
     if (currentFilterLang != null) {
       selectedLang = filteredLangs.firstWhere(
         (lang) => lang.iso6391 == currentFilterLang,

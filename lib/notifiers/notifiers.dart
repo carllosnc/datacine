@@ -1,1 +1,1 @@
-export 'movie_filter_notifier.dart';
+export 'filter_notifier.dart';

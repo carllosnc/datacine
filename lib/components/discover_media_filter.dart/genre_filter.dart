@@ -27,21 +27,28 @@ class _GenreFilterState extends State<GenreFilter> {
 
   late Future<(List<Genre>, http.Response)> getMovieGenres;
 
-  final MovieFilterNotifier movieFilterNotifier = MovieFilterNotifier();
+  final FilterNotifier filterNotifier = FilterNotifier();
 
   List<num> filteredGenres = [];
-
   @override
   void initState() {
     super.initState();
+    dynamic currentFilters = "";
 
     // get genres from api
     getMovieGenres = genresRepository.getGenres(
       mediaType: widget.mediaType,
     );
 
-    // get current filters from notifier
-    var currentFilters = movieFilterNotifier.filters.value['genres'];
+    // set current filters to list
+    if (widget.mediaType == MediaType.movie) {
+      currentFilters = filterNotifier.movieFilters.value['genres'];
+    }
+
+    // set current filters to list
+    if (widget.mediaType == MediaType.tv) {
+      currentFilters = filterNotifier.tvShowFilters.value['genres'];
+    }
 
     // set filters to list if not null
     if (currentFilters != null) {

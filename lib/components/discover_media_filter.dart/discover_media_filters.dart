@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:giganoid_app/core/constants/colors.dart';
 import 'package:giganoid_app/core/constants/media_type.dart';
 import '/components/components.dart';
+import '/notifiers/notifiers.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
 import './lang_filter.dart';
-import '/notifiers/notifiers.dart';
 
 discoverMediaFilters({
   required BuildContext context,
   required String title,
   required MediaType mediaType,
 }) {
-  MovieFilterNotifier filterNotifier = MovieFilterNotifier();
-  Map<String, dynamic> filters = {...filterNotifier.filters.value};
+  FilterNotifier filterNotifier = FilterNotifier();
+  Map<String, dynamic> filters = {};
+
+  if (mediaType == MediaType.movie) {
+    filters = {...filterNotifier.movieFilters.value};
+  }
+
+  if (mediaType == MediaType.tv) {
+    filters = {...filterNotifier.tvShowFilters.value};
+  }
 
   showDialog(
     context: context,
@@ -40,12 +48,14 @@ discoverMediaFilters({
                     child: Column(
                       children: [
                         YearsFilter(
+                          mediaType: mediaType,
                           onChanged: (dynamic value) {
                             filters['years'] = value;
                           },
                         ),
                         const SizedBox(height: 25),
                         LangFilter(
+                          mediaType: mediaType,
                           onChanged: (dynamic value) {
                             filters['lang'] = value;
                           },
@@ -77,7 +87,13 @@ discoverMediaFilters({
                     onPressed: () {
                       Navigator.pop(context);
 
-                      filterNotifier.filters.value = filters;
+                      if (mediaType == MediaType.movie) {
+                        filterNotifier.movieFilters.value = filters;
+                      }
+
+                      if (mediaType == MediaType.tv) {
+                        filterNotifier.tvShowFilters.value = filters;
+                      }
                     },
                     child: const Text(
                       'Apply Filters',

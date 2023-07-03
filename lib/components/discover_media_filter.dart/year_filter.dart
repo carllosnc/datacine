@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import '/notifiers/notifiers.dart';
+import '/core/core.dart';
 
 class YearsFilter extends StatefulWidget {
+  final MediaType mediaType;
   final Function(dynamic) onChanged;
 
-  const YearsFilter({super.key, required this.onChanged});
+  const YearsFilter({
+    super.key,
+    required this.onChanged,
+    required this.mediaType,
+  });
 
   @override
   State<YearsFilter> createState() => _YearsFilterState();
@@ -13,7 +19,7 @@ class YearsFilter extends StatefulWidget {
 class _YearsFilterState extends State<YearsFilter> {
   Map<String, dynamic> years = {};
 
-  final MovieFilterNotifier movieFilterNotifier = MovieFilterNotifier();
+  final FilterNotifier filterNotifier = FilterNotifier();
 
   // range of years from 1900 to 2023
   var rangeOfyears = {
@@ -48,15 +54,29 @@ class _YearsFilterState extends State<YearsFilter> {
 
     // add all years to the list
     years.addAll({'All': null});
-    years.addAll(decade60);
-    years.addAll(decade70);
-    years.addAll(decade80);
-    years.addAll(decade90);
-    years.addAll(decade00);
+
+    // add decades to the list if media type is movie
+    if (widget.mediaType == MediaType.movie) {
+      years.addAll(decade60);
+      years.addAll(decade70);
+      years.addAll(decade80);
+      years.addAll(decade90);
+      years.addAll(decade00);
+    }
+
     years.addAll(rangeOfyears);
 
-    // get current filter from notifier
-    var currentFilterYear = movieFilterNotifier.filters.value['years'];
+    dynamic currentFilterYear;
+
+    // set current filter to current year
+    if (widget.mediaType == MediaType.movie) {
+      currentFilterYear = filterNotifier.movieFilters.value['years'];
+    }
+
+    // set current filter to current year
+    if (widget.mediaType == MediaType.tv) {
+      currentFilterYear = filterNotifier.tvShowFilters.value['years'];
+    }
 
     // set selected year to current filter or first year in list
     if (currentFilterYear != null) {

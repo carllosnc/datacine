@@ -13,28 +13,31 @@ class MoviesTab extends StatefulWidget {
   State<MoviesTab> createState() => _MoviesTabState();
 }
 
-class _MoviesTabState extends State<MoviesTab> {
-  MovieFilterNotifier filtersState = MovieFilterNotifier();
-  bool isLoading = false;
+class _MoviesTabState extends State<MoviesTab>
+    with AutomaticKeepAliveClientMixin<MoviesTab> {
+  FilterNotifier filtersState = FilterNotifier();
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return ValueListenableBuilder(
-      valueListenable: filtersState.filters,
+      valueListenable: filtersState.movieFilters,
       builder: (context, value, child) {
+        // get data from api using filters
         Future<MediaList> getData({required int page}) async {
           var mediaDiscoverRepository = MediaDiscoverRepository(
             http.Client(),
           );
 
           // ignore: unused_local_variable
-          var (similar, response) = await mediaDiscoverRepository.discover(
-            mediaType: MediaType.movie,
+          var (discovered, response) =
+              await mediaDiscoverRepository.discoverMovies(
             page: page,
             filters: value,
           );
 
-          return similar;
+          return discovered;
         }
 
         return MediaInfinityGrid(
@@ -45,4 +48,7 @@ class _MoviesTabState extends State<MoviesTab> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
