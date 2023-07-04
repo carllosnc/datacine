@@ -15,16 +15,22 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    if (filters["genres"] != null) {
-      query.addAll({"with_genres": filters["genres"]!});
+    var {
+      'years': years,
+      'genres': genres,
+      'lang': lang,
+    } = filters;
+
+    if (genres != null) {
+      query.addAll({"with_genres": genres!});
     }
 
-    if (filters["years"] != null) {
-      query.addAll({"primary_release_year": filters["years"]!});
+    if (years != null) {
+      query.addAll({"primary_release_year": years!});
     }
 
-    if (filters["lang"] != null) {
-      query.addAll({"with_original_language": filters["lang"]!});
+    if (lang != null) {
+      query.addAll({"with_original_language": lang!});
     }
 
     var response = await httpClient.get(
@@ -49,16 +55,22 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    if (filters["genres"] != null) {
-      query.addAll({"with_genres": filters["genres"]!});
+    var {
+      'years': years,
+      'genres': genres,
+      'lang': lang,
+    } = filters;
+
+    if (genres != null) {
+      query.addAll({"with_genres": genres!});
     }
 
-    if (filters["years"] != null) {
-      query.addAll({"first_air_date_year": filters["years"]!});
+    if (years != null) {
+      query.addAll({"first_air_date_year": years!});
     }
 
-    if (filters["lang"] != null) {
-      query.addAll({"with_original_language": filters["lang"]!});
+    if (lang != null) {
+      query.addAll({"with_original_language": lang!});
     }
 
     var response = await httpClient.get(

@@ -9,6 +9,15 @@ class FilterNotifier {
 
   FilterNotifier._internal();
 
-  ValueNotifier<Map<String, dynamic>> movieFilters = ValueNotifier({});
-  ValueNotifier<Map<String, dynamic>> tvShowFilters = ValueNotifier({});
+  ValueNotifier<Map<String, dynamic>> movieFilters = ValueNotifier({
+    'years': null,
+    'genres': null,
+    'lang': null,
+  });
+
+  ValueNotifier<Map<String, dynamic>> tvShowFilters = ValueNotifier({
+    'years': null,
+    'genres': null,
+    'lang': null,
+  });
 }
