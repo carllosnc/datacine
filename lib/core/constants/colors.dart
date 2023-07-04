@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ProjectColors {
@@ -20,4 +22,27 @@ class ProjectColors {
   Color get title => Theme.of(context).colorScheme.tertiary;
   Color get featured => Theme.of(context).colorScheme.primary;
   Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.2);
+
+  //method to get random material colors
+  static MaterialColor getRandomColor() {
+    List<MaterialColor> colors = [
+      Colors.red,
+      Colors.pink,
+      Colors.purple,
+      Colors.deepPurple,
+      Colors.indigo,
+      Colors.blue,
+      Colors.lightBlue,
+      Colors.cyan,
+      Colors.teal,
+      Colors.green,
+      Colors.lightGreen,
+      Colors.lime,
+      Colors.yellow,
+      Colors.amber,
+      Colors.orange,
+      Colors.deepOrange,
+    ];
+    return colors[Random().nextInt(colors.length)];
+  }
 }
