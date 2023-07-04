@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import '/components/components.dart';
+import '/core/core.dart';
 
 class PeopleInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;
@@ -73,15 +74,68 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                 const Positioned(
                   child: Loading(),
                 ),
-              ListView.builder(
-                shrinkWrap: true,
+              GridView.builder(
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 80),
                 itemCount: _dataList.length,
-                scrollDirection: Axis.vertical,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 0.54,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 25,
+                ),
                 itemBuilder: (context, index) {
-                  PersonItem person = _dataList[index];
+                  PersonItem personItem = _dataList[index];
 
                   if (index < _dataList.length) {
-                    return PersonListTile(person: person);
+                    return GestureDetector(
+                      onTap: () {
+                        //
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: ColorFiltered(
+                                colorFilter: ColorFilter.mode(
+                                  ProjectColors(context).imageFilter,
+                                  BlendMode.color,
+                                ),
+                                child: ImageComponent(
+                                  imageSize: ImageSize.profileW185,
+                                  imagePath: personItem.profilePath,
+                                  imageType: ImageType.profile,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                personItem.name!,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: ProjectColors(context).featured,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                personItem.knownForDepartment ?? "―",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    );
                   }
 
                   return null;

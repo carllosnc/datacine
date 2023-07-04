@@ -86,7 +86,7 @@ class _SearchResultState extends State<SearchResult> {
           ),
         if (_currentSearchType == SearchType.person)
           Expanded(
-            child: PeopleInfinityGrid(
+            child: PeopleInfinityList(
               key: const Key('people_search_result'),
               pageTitle: 'Search Result',
               fetchData: fetchPeopleData,

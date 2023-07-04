@@ -36,6 +36,20 @@ class TrendingRepository extends Repository {
     );
   }
 
+  Future<(PersonList, http.Response)> getCelebs({required int page}) async {
+    var response = await httpClient.get(
+      endpoint(
+        path: "trending/person/week",
+        query: {"page": "$page"},
+      ),
+      headers: headers,
+    );
+
+    var personList = PersonList.fromJson(jsonDecode(response.body));
+
+    return (personList, response);
+  }
+
   Future<dynamic> getTrendings() async {
     final responseMoviesPage1 = await getMovies(page: 1);
     final responseMoviesPage2 = await getMovies(page: 2);

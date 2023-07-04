@@ -24,6 +24,7 @@ export './custom_search/custom_search.dart';
 export './cards/mini_media_card.dart';
 export './cards/person_list_tile.dart';
 export './media_infinity_grid.dart';
+export './person_infinity_list.dart';
 export './person_infinity_grid.dart';
 export './cards/company_list_tile.dart';
 export './company_infinity_grid.dart';
