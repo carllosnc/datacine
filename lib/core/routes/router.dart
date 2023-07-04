@@ -1,8 +1,17 @@
-import 'package:giganoid_app/views/tvshow/tvshow_similar_view.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/views/views.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
+
+// person
+
+final personDetails = GoRoute(
+  path: 'person',
+  builder: (BuildContext content, state) {
+    return const PersonView();
+  },
+);
 
 // movie
 
@@ -80,7 +89,7 @@ final tvshowSimilar = GoRoute(
   },
 );
 
-final movieRoute = GoRoute(
+final movieDetails = GoRoute(
   path: '${MediaType.movie.value}/:id',
   builder: (context, state) => MovieView(id: state.params['id']!),
   routes: [
@@ -91,7 +100,7 @@ final movieRoute = GoRoute(
   ],
 );
 
-final tvshowRoute = GoRoute(
+final tvshowDetails = GoRoute(
   path: '${MediaType.tv.value}/:id',
   builder: (context, state) => TvShowView(id: state.params['id']!),
   routes: [
@@ -108,8 +117,9 @@ final router = GoRouter(
       path: '/',
       builder: (context, state) => const HomeView(),
       routes: [
-        movieRoute,
-        tvshowRoute,
+        movieDetails,
+        tvshowDetails,
+        personDetails,
       ],
     )
   ],

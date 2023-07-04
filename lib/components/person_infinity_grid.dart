@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/domain/domain.dart';
+import 'package:go_router/go_router.dart';
 import '/components/components.dart';
 import '/core/core.dart';
 
@@ -89,7 +90,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                   if (index < _dataList.length) {
                     return GestureDetector(
                       onTap: () {
-                        //
+                        context.go('/person');
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

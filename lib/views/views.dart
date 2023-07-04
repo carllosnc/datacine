@@ -10,3 +10,6 @@ export './tvshow/tvshow_view.dart';
 export './tvshow/tvshow_images_view.dart';
 export './tvshow/tvshow_credits_view.dart';
 export './tvshow/tvshow_recommendation_view.dart';
+export './tvshow/tvshow_similar_view.dart';
+
+export './person/person_view.dart';
