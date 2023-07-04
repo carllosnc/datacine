@@ -13,35 +13,37 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test("Check movie similiar", () async {
-    final similarRepository = MediaSimilarRepository(
+  test("check movie recommendations", () async {
+    final recommendationsRepository = MediaRecommendationsRepository(
       http.Client(),
     );
 
-    final (similar, response) = await similarRepository.getSimilar(
+    final (recommendations, response) =
+        await recommendationsRepository.getRecomendations(
       mediaType: MediaType.movie,
       mediaId: 385687,
       page: 1,
     );
 
     expect(response.statusCode, 200);
-    expect(similar.page, 1);
-    expect(similar.results, isA<List<MediaItem?>?>());
+    expect(recommendations.page, 1);
+    expect(recommendations.results, isA<List<MediaItem?>?>());
   });
 
-  test("Check tv show similar", () async {
-    final similarRepository = MediaSimilarRepository(
+  test("check tv show recommendations", () async {
+    final recommendationsRepository = MediaRecommendationsRepository(
       http.Client(),
     );
 
-    final (similar, response) = await similarRepository.getSimilar(
+    final (recommendations, response) =
+        await recommendationsRepository.getRecomendations(
       mediaType: MediaType.tv,
       mediaId: 85271,
       page: 1,
     );
 
     expect(response.statusCode, 200);
-    expect(similar.page, 1);
-    expect(similar.results, isA<List<MediaItem?>?>());
+    expect(recommendations.page, 1);
+    expect(recommendations.results, isA<List<MediaItem?>?>());
   });
 }

@@ -12,7 +12,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test("Check movie collection", () async {
+  test("check movie collection", () async {
     final collectionRepository = MovieCollectionRepository(http.Client());
     final (collection, response) =
         await collectionRepository.getCollection(id: "9485");

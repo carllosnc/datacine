@@ -12,7 +12,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test('Check season repository', () async {
+  test('check season repository', () async {
     SeasonRepository seasonRepository = SeasonRepository(http.Client());
 
     final (season, response) = await seasonRepository.getSeason(

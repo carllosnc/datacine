@@ -12,7 +12,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test('Check search results', () async {
+  test('check search results', () async {
     SearchRepository searchRepository = SearchRepository(http.Client());
 
     final (searchResult, response) =
@@ -27,7 +27,7 @@ void main() {
     }
   });
 
-  test('Check search movies', () async {
+  test('check search movies', () async {
     SearchRepository searchRepository = SearchRepository(http.Client());
 
     final (mediaList, response) = await searchRepository.searchMovies(
@@ -39,7 +39,7 @@ void main() {
     expect(mediaList.results, isA<List<MediaItem>>());
   });
 
-  test('Check search tv shows', () async {
+  test('check search tv shows', () async {
     SearchRepository searchRepository = SearchRepository(http.Client());
 
     final (mediaList, response) = await searchRepository.searchTvShows(

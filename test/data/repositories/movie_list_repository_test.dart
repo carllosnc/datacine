@@ -13,7 +13,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test('Check now playing movies', () async {
+  test('check now playing movies', () async {
     final movieRepository = MovieLists(http.Client());
     final response = await movieRepository.nowPlayingMoviesData(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));
@@ -22,7 +22,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check popular movies', () async {
+  test('check popular movies', () async {
     final movieRepository = MovieLists(http.Client());
     final response = await movieRepository.popularMoviesData(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));
@@ -31,7 +31,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check top rated movies', () async {
+  test('check top rated movies', () async {
     final movieRepository = MovieLists(http.Client());
     final response = await movieRepository.topRatedMoviesData(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));
@@ -40,7 +40,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check upcomming movies', () async {
+  test('check upcomming movies', () async {
     final movieRepository = MovieLists(http.Client());
     final response = await movieRepository.upcomingMoviesData(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));

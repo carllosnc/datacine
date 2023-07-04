@@ -13,7 +13,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test('Check now playing tv show', () async {
+  test('check now playing tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
     final response = await tvShowRepository.airingToday(page: 1);
 
@@ -23,7 +23,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check on the air tv show', () async {
+  test('check on the air tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
     final response = await tvShowRepository.onTheAir(page: 1);
 
@@ -33,7 +33,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check popular tv show', () async {
+  test('check popular tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
     final response = await tvShowRepository.popular(page: 1);
 
@@ -43,7 +43,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check top rated tv show', () async {
+  test('check top rated tv show', () async {
     final tvShowRepository = TvShowListRepository(http.Client());
     final response = await tvShowRepository.topRated(page: 1);
 

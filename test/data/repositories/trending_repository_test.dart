@@ -13,7 +13,7 @@ void main() {
     await dotenv.load(fileName: ".env");
   });
 
-  test('Check trending movie', () async {
+  test('check trending movie', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.getMovies(page: 1);
     final movies = MediaList.fromJson(jsonDecode(response.body));
@@ -22,7 +22,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check trending tv shows', () async {
+  test('check trending tv shows', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.tv(page: 1);
     final tvShows = MediaList.fromJson(jsonDecode(response.body));
@@ -31,7 +31,7 @@ void main() {
     expect(response.statusCode, 200);
   });
 
-  test('Check trending people', () async {
+  test('check trending people', () async {
     final trendingRepository = TrendingRepository(http.Client());
     final response = await trendingRepository.getPeople(page: 1);
 
@@ -42,7 +42,7 @@ void main() {
   });
 
   //test trendings
-  test('Check trending all', () async {
+  test('check trending all', () async {
     final trendingRepository = TrendingRepository(http.Client());
 
     final items = await trendingRepository.getTrendings();
