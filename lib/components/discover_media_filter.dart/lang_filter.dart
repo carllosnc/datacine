@@ -56,12 +56,12 @@ class _LangFilterState extends State<LangFilter> {
 
     // set current filter to current language
     if (widget.mediaType == MediaType.movie) {
-      currentFilterLang = filterNotifier.movieFilters.value['lang'];
+      currentFilterLang = filterNotifier.movieFilters.value.lang;
     }
 
     // set current filter to current language
     if (widget.mediaType == MediaType.tv) {
-      currentFilterLang = filterNotifier.tvShowFilters.value['lang'];
+      currentFilterLang = filterNotifier.tvShowFilters.value.lang;
     }
 
     // set selected language to current filter or first language in list

@@ -1,5 +1,29 @@
 import 'package:flutter/material.dart';
 
+class Filter {
+  dynamic years;
+  dynamic genres;
+  dynamic lang;
+
+  Filter({
+    this.years,
+    this.genres,
+    this.lang,
+  });
+
+  Filter copyWith({
+    dynamic years,
+    dynamic genres,
+    dynamic lang,
+  }) {
+    return Filter(
+      years: years ?? this.years,
+      genres: genres ?? this.genres,
+      lang: lang ?? this.lang,
+    );
+  }
+}
+
 class FilterNotifier {
   static final FilterNotifier _singleton = FilterNotifier._internal();
 
@@ -9,15 +33,6 @@ class FilterNotifier {
 
   FilterNotifier._internal();
 
-  ValueNotifier<Map<String, dynamic>> movieFilters = ValueNotifier({
-    'years': null,
-    'genres': null,
-    'lang': null,
-  });
-
-  ValueNotifier<Map<String, dynamic>> tvShowFilters = ValueNotifier({
-    'years': null,
-    'genres': null,
-    'lang': null,
-  });
+  ValueNotifier<Filter> movieFilters = ValueNotifier(Filter());
+  ValueNotifier<Filter> tvShowFilters = ValueNotifier(Filter());
 }

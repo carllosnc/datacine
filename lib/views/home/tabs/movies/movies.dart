@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '/data/data.dart';
@@ -24,6 +26,8 @@ class _MoviesTabState extends State<MoviesTab>
     return ValueListenableBuilder(
       valueListenable: filtersState.movieFilters,
       builder: (context, value, child) {
+        var randomKey = Random().nextInt(1000);
+
         // get data from api using filters
         Future<MediaList> getData({required int page}) async {
           var mediaDiscoverRepository = MediaDiscoverRepository(
@@ -32,14 +36,14 @@ class _MoviesTabState extends State<MoviesTab>
 
           var (discovered, _) = await mediaDiscoverRepository.discoverMovies(
             page: page,
-            filters: value,
+            filter: value,
           );
 
           return discovered;
         }
 
         return MediaInfinityGrid(
-          key: ValueKey(value.toString()),
+          key: ValueKey(randomKey),
           mediaType: MediaType.movie,
           fetchData: getData,
         );

@@ -70,12 +70,12 @@ class _YearsFilterState extends State<YearsFilter> {
 
     // set current filter to current year
     if (widget.mediaType == MediaType.movie) {
-      currentFilterYear = filterNotifier.movieFilters.value['years'];
+      currentFilterYear = filterNotifier.movieFilters.value.years;
     }
 
     // set current filter to current year
     if (widget.mediaType == MediaType.tv) {
-      currentFilterYear = filterNotifier.tvShowFilters.value['years'];
+      currentFilterYear = filterNotifier.tvShowFilters.value.years;
     }
 
     // set selected year to current filter or first year in list

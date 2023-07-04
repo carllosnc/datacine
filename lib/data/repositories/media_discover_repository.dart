@@ -2,12 +2,13 @@ import 'dart:convert';
 import './repository.dart';
 import 'package:http/http.dart' as http;
 import '/domain/domain.dart';
+import '/notifiers/notifiers.dart';
 
 class MediaDiscoverRepository extends Repository {
   MediaDiscoverRepository(super.httpClient);
 
   Future<(MediaList, http.Response)> discoverMovies({
-    required Map<String, dynamic> filters,
+    required Filter filter,
     required int page,
   }) async {
     Map<String, String> query = {
@@ -15,22 +16,18 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    var {
-      'years': years,
-      'genres': genres,
-      'lang': lang,
-    } = filters;
+    print(filter);
 
-    if (genres != null) {
-      query.addAll({"with_genres": genres!});
+    if (filter.genres != null) {
+      query.addAll({"with_genres": filter.genres!});
     }
 
-    if (years != null) {
-      query.addAll({"primary_release_year": years!});
+    if (filter.years != null) {
+      query.addAll({"primary_release_year": filter.years!});
     }
 
-    if (lang != null) {
-      query.addAll({"with_original_language": lang!});
+    if (filter.lang != null) {
+      query.addAll({"with_original_language": filter.lang!});
     }
 
     var response = await httpClient.get(
@@ -47,7 +44,7 @@ class MediaDiscoverRepository extends Repository {
   }
 
   Future<(MediaList, http.Response)> discoverTvShows({
-    required Map<String, dynamic> filters,
+    required Filter filter,
     required int page,
   }) async {
     Map<String, String> query = {
@@ -55,22 +52,16 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    var {
-      'years': years,
-      'genres': genres,
-      'lang': lang,
-    } = filters;
-
-    if (genres != null) {
-      query.addAll({"with_genres": genres!});
+    if (filter.genres != null) {
+      query.addAll({"with_genres": filter.genres!});
     }
 
-    if (years != null) {
-      query.addAll({"first_air_date_year": years!});
+    if (filter.years != null) {
+      query.addAll({"first_air_date_year": filter.years!});
     }
 
-    if (lang != null) {
-      query.addAll({"with_original_language": lang!});
+    if (filter.lang != null) {
+      query.addAll({"with_original_language": filter.lang!});
     }
 
     var response = await httpClient.get(

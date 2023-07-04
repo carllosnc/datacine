@@ -42,12 +42,12 @@ class _GenreFilterState extends State<GenreFilter> {
 
     // set current filters to list
     if (widget.mediaType == MediaType.movie) {
-      currentFilters = filterNotifier.movieFilters.value['genres'];
+      currentFilters = filterNotifier.movieFilters.value.genres;
     }
 
     // set current filters to list
     if (widget.mediaType == MediaType.tv) {
-      currentFilters = filterNotifier.tvShowFilters.value['genres'];
+      currentFilters = filterNotifier.tvShowFilters.value.genres;
     }
 
     // set filters to list if not null

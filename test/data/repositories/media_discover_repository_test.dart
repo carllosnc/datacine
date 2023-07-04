@@ -1,5 +1,6 @@
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:giganoid_app/data/data.dart';
+import 'package:giganoid_app/notifiers/notifiers.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -17,14 +18,14 @@ void main() {
       http.Client(),
     );
 
-    var filters = {
-      "genres": "28",
-      "lang": "en",
-      "years": "2020",
-    };
+    var filter = Filter(
+      years: "2020",
+      genres: "28",
+      lang: "en",
+    );
 
     final (movies, response) =
-        await discoverRepository.discoverMovies(filters: filters, page: 1);
+        await discoverRepository.discoverMovies(filter: filter, page: 1);
 
     expect(response.statusCode, 200);
     expect(movies, isA<MediaList>());
@@ -35,14 +36,14 @@ void main() {
       http.Client(),
     );
 
-    var filters = {
-      "genres": "28",
-      "lang": "en",
-      "years": "2020",
-    };
+    var filter = Filter(
+      years: "2020",
+      genres: "28",
+      lang: "en",
+    );
 
     final (tvShows, response) =
-        await discoverRepository.discoverTvShows(filters: filters, page: 1);
+        await discoverRepository.discoverTvShows(filter: filter, page: 1);
 
     expect(response.statusCode, 200);
     expect(tvShows, isA<MediaList>());
