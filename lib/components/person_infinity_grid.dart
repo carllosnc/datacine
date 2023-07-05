@@ -90,7 +90,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                   if (index < _dataList.length) {
                     return GestureDetector(
                       onTap: () {
-                        context.go('/person');
+                        context.go('/person/${personItem.id}');
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

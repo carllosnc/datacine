@@ -9,3 +9,4 @@ export 'repositories/season_repository.dart';
 export 'repositories/search_repository.dart';
 export 'repositories/media_genre_repository.dart';
 export 'repositories/media_discover_repository.dart';
+export 'repositories/person_details_repository.dart';

@@ -73,6 +73,7 @@ class _PeopleInfinityListState extends State<PeopleInfinityList> {
                 const Positioned(
                   child: Loading(),
                 ),
+
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataList.length,

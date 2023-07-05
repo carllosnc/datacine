@@ -7,9 +7,9 @@ import '/core/core.dart';
 // person
 
 final personDetails = GoRoute(
-  path: 'person',
+  path: 'person/:id',
   builder: (BuildContext content, state) {
-    return const PersonView();
+    return PersonView(id: state.params['id']!);
   },
 );
 

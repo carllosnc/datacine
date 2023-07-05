@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/constants/colors.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
@@ -62,7 +61,6 @@ class _TvShowViewState extends State<TvShowView> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: ProjectColors(context).featured,
                 textBaseline: TextBaseline.values[1],
               ),
             ),

@@ -7,12 +7,12 @@ import '/domain/domain.dart';
 class PersonDetailsRepository extends Repository {
   PersonDetailsRepository(super.httpClient);
 
-  Future<(List<Genre>, http.Response)> getGenres({
-    required num id,
+  Future<(PersonDetails, http.Response)> getPerson({
+    required String id,
   }) async {
     var response = await httpClient.get(
       endpoint(
-        path: "genre/person/$id",
+        path: "/person/$id",
         query: {
           "include_adult": "false",
         },
@@ -20,10 +20,7 @@ class PersonDetailsRepository extends Repository {
       headers: headers,
     );
 
-    var genres = [
-      for (var genre in jsonDecode(response.body)["genres"])
-        Genre.fromJson(genre)
-    ];
+    var genres = PersonDetails.fromJson(json.decode(response.body));
 
     return (genres, response);
   }

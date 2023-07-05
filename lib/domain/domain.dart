@@ -20,3 +20,4 @@ export 'entities/collection/collection.dart';
 export 'entities/search_result/search_result.dart';
 export 'entities/company/company.dart';
 export 'entities/company_list/company_list.dart';
+export 'entities/person_details/person_details.dart';
