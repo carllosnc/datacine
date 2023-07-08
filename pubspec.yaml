@@ -42,6 +42,7 @@ dependencies:
   collection: any
   url_launcher: ^6.1.11
   transparent_image: ^2.0.1
+  font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
   flutter_test:
