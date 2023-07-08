@@ -21,16 +21,16 @@ class PersonDetails {
   String? profilePath;
 
   @JsonKey(name: 'movie_credits')
-  Map<String, dynamic>? movieCredits;
+  Map<String, List<MediaItem>>? movieCredits;
 
   @JsonKey(name: 'tv_credits')
-  Map<String, dynamic>? tvCredits;
+  Map<String, List<MediaItem>>? tvCredits;
 
   @JsonKey(name: 'combined_credits')
-  Map<String, dynamic>? combinedCredits;
+  Map<String, List<MediaItem>>? combinedCredits;
 
   @JsonKey(name: 'external_ids')
-  List<dynamic>? externalIds;
+  Map<String, dynamic>? externalIds;
 
   int? id;
 

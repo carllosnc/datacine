@@ -42,6 +42,8 @@ class MediaItem {
 
   final bool? adult;
 
+  final String? character;
+
   final num? id;
 
   final String? name;
@@ -54,11 +56,14 @@ class MediaItem {
 
   final bool? video;
 
+  final String? job;
+
   MediaItem({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
     required this.id,
+    required this.character,
     required this.originalLanguage,
     required this.originalTitle,
     required this.originalName,
@@ -74,6 +79,7 @@ class MediaItem {
     required this.voteCount,
     required this.originCountry,
     required this.mediaType,
+    required this.job,
   });
 
   factory MediaItem.fromJson(Map<String, dynamic> json) =>

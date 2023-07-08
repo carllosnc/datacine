@@ -12,6 +12,7 @@ MediaItem _$MediaItemFromJson(Map<String, dynamic> json) => MediaItem(
       genreIds:
           (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
       id: json['id'] as num?,
+      character: json['character'] as String?,
       originalLanguage: json['original_language'] as String?,
       originalTitle: json['original_title'] as String?,
       originalName: json['original_name'] as String?,
@@ -29,6 +30,7 @@ MediaItem _$MediaItemFromJson(Map<String, dynamic> json) => MediaItem(
           ?.map((e) => e as String)
           .toList(),
       mediaType: json['media_type'] as String?,
+      job: json['job'] as String?,
     );
 
 Map<String, dynamic> _$MediaItemToJson(MediaItem instance) => <String, dynamic>{
@@ -45,10 +47,12 @@ Map<String, dynamic> _$MediaItemToJson(MediaItem instance) => <String, dynamic>{
       'origin_country': instance.originCountry,
       'media_type': instance.mediaType,
       'adult': instance.adult,
+      'character': instance.character,
       'id': instance.id,
       'name': instance.name,
       'overview': instance.overview,
       'popularity': instance.popularity,
       'title': instance.title,
       'video': instance.video,
+      'job': instance.job,
     };
