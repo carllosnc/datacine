@@ -14,7 +14,7 @@ class Empty extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '👁',
+            '🦖',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 80,

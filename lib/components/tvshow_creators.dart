@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 
@@ -28,7 +29,9 @@ class TvShowCreators extends StatelessWidget {
 
           return LinkButton(
             label: person.name!,
-            onPressed: () {},
+            onPressed: () {
+              context.push('/person/${person.id}');
+            },
           );
         },
       ),

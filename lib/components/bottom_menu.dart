@@ -4,7 +4,7 @@ import 'package:giganoid_app/core/constants/colors.dart';
 class BottomItem extends StatelessWidget {
   final String label;
   final void Function()? onTap;
-  final IconData icon;
+  final IconData? icon;
 
   const BottomItem({
     super.key,
@@ -27,14 +27,17 @@ class BottomItem extends StatelessWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 5,
                 children: [
-                  Icon(
-                    icon,
-                    size: 15,
-                    color: ProjectColors(context).text,
-                  ),
+                  if (icon != null)
+                    Icon(
+                      icon,
+                      size: 15,
+                      color: ProjectColors(context).text,
+                    ),
                   Text(
                     label,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
+                      height: 1.2,
                       color: ProjectColors(context).text,
                       fontSize: 13,
                     ),

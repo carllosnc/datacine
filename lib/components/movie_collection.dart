@@ -92,7 +92,7 @@ class MovieCollection extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              context.go('/movie/${movie.id.toString()}');
+                              context.push('/movie/${movie.id.toString()}');
                             },
                             child: Container(
                               decoration: BoxDecoration(

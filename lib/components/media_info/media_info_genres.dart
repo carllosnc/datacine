@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
 import '/core/core.dart';
 
 class MediaInfoGenres extends StatelessWidget {
@@ -38,17 +37,7 @@ class MediaInfoGenres extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 7),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              for (var genre in genres)
-                LinkButton(
-                  onPressed: () {},
-                  label: genre.name!,
-                )
-            ],
-          ),
+          Text(genres.map((e) => e.name).join(', '))
         ],
       ),
     );

@@ -43,7 +43,7 @@ class SearchSugestions extends StatelessWidget {
             if (item is MediaItem) {
               return ListTile(
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/${item.mediaType}/${item.id.toString()}',
                   );
                 },
@@ -76,6 +76,9 @@ class SearchSugestions extends StatelessWidget {
 
             if (item is PersonItem) {
               return ListTile(
+                onTap: () {
+                  context.push('/person/${item.id}');
+                },
                 trailing: const Icon(Icons.chevron_right),
                 leading: SizedBox(
                   width: 35,
@@ -95,9 +98,9 @@ class SearchSugestions extends StatelessWidget {
                 ),
                 subtitle: Text(
                   item.knownForDepartment ?? '―',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
-                    color: Colors.yellow,
+                    color: ProjectColors(context).featured,
                   ),
                 ),
               );

@@ -18,7 +18,7 @@ class MiniMediaCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(
+        context.push(
           '/${mediaType.value}/${mediaItem.id.toString()}',
         );
       },

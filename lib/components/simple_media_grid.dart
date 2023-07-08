@@ -33,7 +33,7 @@ class SimpleMediaGrid extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            context.go('/${mediaType.value}/${mediaItem.id.toString()}');
+            context.push('/${mediaType.value}/${mediaItem.id.toString()}');
           },
           child: SizedBox(
             width: 200,

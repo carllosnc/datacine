@@ -48,7 +48,7 @@ class ExtendedMediaCardList extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/${mediaType.value}/${media.id.toString()}',
                   );
                 },

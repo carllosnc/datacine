@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/core/core.dart';
 import '/components/components.dart';
 import '/domain/domain.dart';
@@ -14,7 +15,9 @@ class PersonListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        context.push('/person/${person.id}');
+      },
       title: Text(
         person.name!,
         style: const TextStyle(fontSize: 15),

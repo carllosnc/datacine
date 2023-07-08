@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:giganoid_app/core/core.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -26,21 +25,8 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
   Map<String, dynamic> supportedLangs = {'No Language': 'no-lang'};
   Set<String?> posterLangs = {};
 
-  //modal state
-  bool modal = false;
-
   //current poster in modal
   String currentPoster = '';
-
-  //overlayer animation
-  double overLayerOpacity = 0.0;
-  Duration overLayerAnimationTime = const Duration(milliseconds: 200);
-
-  //poster animation
-  double posterOpacity = 0.0;
-  double posterMargin = 200;
-  double posterScale = 0.8;
-  Duration posterAnimationTime = const Duration(milliseconds: 200);
 
   @override
   void initState() {
@@ -69,46 +55,123 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     filteredPosters = posters;
   }
 
-  // open modal with poster
-  openModal(String path) {
-    setState(() {
-      modal = true;
-      currentPoster = path;
-    });
+  List<Widget> selectLang(BuildContext context) {
+    return [
+      if (supportedLangs.length > 2)
+        PopupMenuButton(
+          color: Theme.of(context).colorScheme.onSecondary,
+          icon: Icon(
+            Icons.translate,
+            color: ProjectColors(context).featured,
+          ),
+          itemBuilder: (context) {
+            return supportedLangs.keys.map((String key) {
+              return PopupMenuItem(
+                value: supportedLangs[key].toString(),
+                child: Text(key),
+              );
+            }).toList();
+          },
+          onSelected: (String value) {
+            setState(() {
+              selectedLang = supportedLangs.keys
+                  .firstWhere((key) => supportedLangs[key] == value);
 
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        overLayerOpacity = 0.5;
-        posterOpacity = 1;
-        posterScale = 1;
-        posterMargin = 0;
-      });
-    });
+              filteredPosters =
+                  posters.where((element) => element.iso6391 == value).toList();
+            });
+          },
+        ),
+      if (supportedLangs.length > 2)
+        IconButton(
+          onPressed: () {
+            setState(() {
+              selectedLang = 'All posters';
+              filteredPosters = posters;
+            });
+          },
+          icon: const Icon(Icons.refresh),
+        ),
+    ];
   }
 
-  // close modal with poster
-  closeModal() {
-    setState(() {
-      overLayerOpacity = 0;
-      posterOpacity = 0;
-      posterScale = 0.8;
-      posterMargin = 200;
-    });
+  Widget posterGrid() {
+    return GridView.builder(
+      shrinkWrap: true,
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 0.66666,
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 2,
+      ),
+      itemCount: filteredPosters.length,
+      itemBuilder: (context, index) {
+        final ImageItem imageItem = filteredPosters[index];
 
-    // wait for animation to finish then close modal
-    Future.delayed(overLayerAnimationTime, () {
-      setState(() {
-        modal = false;
-      });
-    });
+        return GestureDetector(
+          onTap: () {
+            openFullPoster(context, imageItem);
+          },
+          child: SizedBox(
+            width: 200,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ImageComponent(
+                          imageSize: ImageSize.posterW185,
+                          imagePath: imageItem.filePath,
+                          imageType: ImageType.poster,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<dynamic> openFullPoster(BuildContext context, ImageItem imageItem) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog.fullscreen(
+          insetAnimationCurve: Curves.easeInOut,
+          backgroundColor: Colors.black.withOpacity(0.2),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width * 1.5,
+                  child: ImageComponent(
+                    imagePath: (imageItem.filePath),
+                    imageType: ImageType.poster,
+                    imageSize: ImageSize.posterOriginal,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // poster size in modal
-    double posterWidth = MediaQuery.of(context).size.width;
-    double posterHeight = posterWidth * 1.5;
-
     // if no posters return empty view
     if (posters.isEmpty) {
       return const EmptyView(title: 'Posters');
@@ -122,142 +185,9 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
             fontSize: 14,
           ),
         ),
-        actions: [
-          if (supportedLangs.length > 2)
-            PopupMenuButton(
-              color: Theme.of(context).colorScheme.onSecondary,
-              icon: Icon(
-                Icons.translate,
-                color: ProjectColors(context).featured,
-              ),
-              itemBuilder: (context) {
-                return supportedLangs.keys.map((String key) {
-                  return PopupMenuItem(
-                    value: supportedLangs[key].toString(),
-                    child: Text(key),
-                  );
-                }).toList();
-              },
-              onSelected: (String value) {
-                setState(() {
-                  selectedLang = supportedLangs.keys
-                      .firstWhere((key) => supportedLangs[key] == value);
-
-                  filteredPosters = posters
-                      .where((element) => element.iso6391 == value)
-                      .toList();
-                });
-              },
-            ),
-          if (supportedLangs.length > 2)
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  selectedLang = 'All posters';
-                  filteredPosters = posters;
-                });
-              },
-              icon: const Icon(Icons.refresh),
-            ),
-        ],
+        actions: selectLang(context),
       ),
-      body: Stack(
-        children: [
-          GridView.builder(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 0.66666,
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2,
-            ),
-            itemCount: filteredPosters.length,
-            itemBuilder: (context, index) {
-              final ImageItem imageItem = filteredPosters[index];
-
-              return GestureDetector(
-                onTap: () {
-                  openModal(imageItem.filePath!);
-                },
-                child: SizedBox(
-                  width: 200,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: ImageComponent(
-                                imageSize: ImageSize.posterW185,
-                                imagePath: imageItem.filePath,
-                                imageType: ImageType.poster,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-          if (modal == true)
-            Positioned(
-              child: GestureDetector(
-                onTap: () {
-                  closeModal();
-                },
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: AnimatedContainer(
-                    duration: overLayerAnimationTime,
-                    color: Colors.black.withOpacity(overLayerOpacity),
-                  ),
-                ),
-              ),
-            ),
-          if (modal == true)
-            Positioned.fill(
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    closeModal();
-                  },
-                  child: AnimatedScale(
-                    duration: posterAnimationTime,
-                    curve: Curves.ease,
-                    scale: posterScale,
-                    child: AnimatedOpacity(
-                      duration: posterAnimationTime,
-                      opacity: posterOpacity,
-                      child: Container(
-                        height: posterHeight,
-                        width: posterWidth,
-                        decoration: BoxDecoration(
-                          color: ProjectColors(context)
-                              .text
-                              .withOpacity(posterOpacity),
-                          border: Border.all(
-                            color: ProjectColors(context).text.withOpacity(0.2),
-                            width: 0,
-                          ),
-                        ),
-                        child: ImageComponent(
-                          imageSize: ImageSize.posterOriginal,
-                          imagePath: currentPoster,
-                          imageType: ImageType.poster,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
+      body: posterGrid(),
     );
   }
 }
