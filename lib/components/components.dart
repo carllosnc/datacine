@@ -38,3 +38,4 @@ export './person_info.dart';
 export './person_external_links.dart';
 export './person_known_for.dart';
 export './person_images.dart';
+export './open_full_image.dart';

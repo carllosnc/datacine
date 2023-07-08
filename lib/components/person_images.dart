@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -45,33 +43,11 @@ class PersonImages extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  showDialog(
+                  openFullImage(
                     context: context,
-                    builder: (context) {
-                      return Dialog.fullscreen(
-                        insetAnimationCurve: Curves.easeInOut,
-                        backgroundColor: Colors.black.withOpacity(0.2),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Center(
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.width * 1.5,
-                                child: ImageComponent(
-                                  imagePath: (image.filePath),
-                                  imageType: ImageType.profile,
-                                  imageSize: ImageSize.profileOriginal,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
+                    image: image,
+                    imageType: ImageType.profile,
+                    imageSize: ImageSize.profileOriginal,
                   );
                 },
                 child: SizedBox(

@@ -5,10 +5,12 @@ import '/domain/domain.dart';
 import '/core/core.dart';
 import '/components/components.dart';
 
-Future<dynamic> openFullPoster(
-  BuildContext context,
-  ImageItem imageItem,
-) {
+Future<dynamic> openFullImage({
+  required BuildContext context,
+  required ImageItem image,
+  required ImageType imageType,
+  required ImageSize imageSize,
+}) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -26,9 +28,9 @@ Future<dynamic> openFullPoster(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width * 1.5,
                 child: ImageComponent(
-                  imagePath: (imageItem.filePath),
-                  imageType: ImageType.poster,
-                  imageSize: ImageSize.posterOriginal,
+                  imagePath: (image.filePath),
+                  imageType: imageType,
+                  imageSize: imageSize,
                 ),
               ),
             ),
