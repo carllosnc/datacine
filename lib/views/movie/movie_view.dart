@@ -94,7 +94,7 @@ class MovieView extends StatelessWidget {
                 icon: Icons.image_outlined,
                 label: "Images",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/movie/${movie.id}/images',
                     extra: movie,
                   );
@@ -104,7 +104,7 @@ class MovieView extends StatelessWidget {
                 icon: Icons.person_outline,
                 label: "Credits",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/movie/${movie.id}/credits',
                     extra: movie,
                   );
@@ -114,7 +114,7 @@ class MovieView extends StatelessWidget {
                 icon: Icons.thumb_up_outlined,
                 label: "Recom.",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/movie/${movie.id}/recommendations',
                     extra: movie,
                   );
@@ -124,7 +124,7 @@ class MovieView extends StatelessWidget {
                 icon: Icons.movie_outlined,
                 label: "Similar",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/movie/${movie.id}/similar',
                     extra: movie,
                   );

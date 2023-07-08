@@ -104,7 +104,7 @@ class _TvShowViewState extends State<TvShowView> {
                 icon: Icons.image_outlined,
                 label: "Images",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/tv/${tvshow.id}/images',
                     extra: tvshow,
                   );
@@ -114,7 +114,7 @@ class _TvShowViewState extends State<TvShowView> {
                 icon: Icons.person_outline,
                 label: "Credits",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/tv/${tvshow.id}/credits',
                     extra: tvshow,
                   );
@@ -124,7 +124,7 @@ class _TvShowViewState extends State<TvShowView> {
                 icon: Icons.thumb_up_outlined,
                 label: "Recom.",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/tv/${tvshow.id}/recommendations',
                     extra: tvshow,
                   );
@@ -134,7 +134,7 @@ class _TvShowViewState extends State<TvShowView> {
                 icon: Icons.tv_outlined,
                 label: "Similar",
                 onTap: () {
-                  context.go(
+                  context.push(
                     '/tv/${tvshow.id}/similar',
                     extra: tvshow,
                   );

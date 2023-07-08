@@ -3,7 +3,6 @@ import '/data/data.dart';
 import 'package:http/http.dart' as http;
 import '/components/components.dart';
 import '/domain/domain.dart';
-import './tabs/person_details_tab.dart';
 
 class PersonView extends StatefulWidget {
   final String id;
@@ -38,12 +37,18 @@ class _PersonViewState extends State<PersonView>
         }
 
         if (snapshot.hasError) {
-          return const Text('Something went wrong!');
+          return Scaffold(
+            body: Center(
+              child: Text(
+                snapshot.error.toString(),
+              ),
+            ),
+          );
         }
 
         var (PersonDetails person, _) = snapshot.data!;
 
-        return PersonDetailsTab(person: person);
+        return PersonContent(person: person);
       },
     );
   }
