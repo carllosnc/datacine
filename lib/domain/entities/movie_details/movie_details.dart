@@ -24,7 +24,7 @@ class MovieDetails {
   final String? posterPath;
 
   @JsonKey(name: 'production_companies')
-  final List<ProductionCompany>? productionCompanies;
+  final List<Company>? productionCompanies;
 
   @JsonKey(name: 'production_countries')
   final List<ProductionContry>? productionCountries;

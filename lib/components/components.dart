@@ -23,6 +23,7 @@ export './media_credits_list.dart';
 export './custom_search/custom_search.dart';
 export './cards/mini_media_card.dart';
 export './cards/person_list_tile.dart';
+export './cards/movie_collection_card.dart';
 export './media_infinity_grid.dart';
 export './person_infinity_list.dart';
 export './person_infinity_grid.dart';

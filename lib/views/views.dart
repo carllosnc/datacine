@@ -13,3 +13,7 @@ export './tvshow/tvshow_recommendation_view.dart';
 export './tvshow/tvshow_similar_view.dart';
 
 export './person/person_view.dart';
+
+export './company/company_view.dart';
+
+export './keyword/keyword_view.dart';

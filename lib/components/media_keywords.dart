@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/components/components.dart';
+import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 
 class MediaKeywords extends StatelessWidget {
@@ -29,9 +30,19 @@ class MediaKeywords extends StatelessWidget {
           },
           itemCount: keywords!.length,
           itemBuilder: (BuildContext context, int index) {
+            Keyword keyword = keywords[index];
+
             return LinkButton(
-              label: keywords[index].name!,
-              onPressed: () {},
+              label: keyword.name!,
+              onPressed: () {
+                if (movie != null) {
+                  context.push('/keyword_movies', extra: keyword);
+                }
+
+                if (tvshow != null) {
+                  context.push('/keyword_tvshows', extra: keyword);
+                }
+              },
             );
           },
         ),

@@ -42,7 +42,7 @@ class TvShowDetails {
   String? posterPath;
 
   @JsonKey(name: 'production_companies')
-  List<ProductionCompany>? productionCompanies;
+  List<Company>? productionCompanies;
 
   @JsonKey(name: 'production_countries')
   List<ProductionContry>? productionCountries;

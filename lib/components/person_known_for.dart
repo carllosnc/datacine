@@ -42,7 +42,7 @@ class PersonKnownFor extends StatelessWidget {
           child: Text(
             'Known for',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: ProjectColors(context).title,
             ),
           ),

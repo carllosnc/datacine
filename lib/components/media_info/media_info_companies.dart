@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
 import '/components/components.dart';
@@ -16,7 +17,7 @@ class Companies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // get the production companies from the movie or tv show
-    List<ProductionCompany>? productionCompanies =
+    List<Company>? productionCompanies =
         movie?.productionCompanies ?? tvShow?.productionCompanies;
 
     // if there are no production companies, return an empty SizedBox
@@ -46,7 +47,9 @@ class Companies extends StatelessWidget {
             children: [
               for (var company in productionCompanies)
                 LinkButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push('/company', extra: company);
+                  },
                   label: company.name!,
                 )
             ],

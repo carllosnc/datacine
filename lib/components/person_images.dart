@@ -21,7 +21,7 @@ class PersonImages extends StatelessWidget {
           child: Text(
             'Profile images',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: ProjectColors(context).title,
             ),
           ),

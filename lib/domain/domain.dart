@@ -3,7 +3,6 @@ export 'entities/media_list/media_list.dart';
 export 'entities/person_item/person_item.dart';
 export 'entities/person_list/person_list.dart';
 export 'entities/genre/genre.dart';
-export 'entities/production_company/production_company.dart';
 export 'entities/production_country/production_country.dart';
 export 'entities/language/language.dart';
 export 'entities/title/title.dart';

@@ -4,6 +4,43 @@ import '/views/views.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
 
+//keyword
+
+final keywordMovies = GoRoute(
+  path: 'keyword_movies',
+  builder: (context, state) {
+    final keyword = state.extra as Keyword;
+
+    return KeywordView(
+      keyword: keyword,
+      mediaType: MediaType.movie,
+    );
+  },
+);
+
+final keywordTvShows = GoRoute(
+  path: 'keyword_tvshows',
+  builder: (context, state) {
+    final keyword = state.extra as Keyword;
+
+    return KeywordView(
+      keyword: keyword,
+      mediaType: MediaType.tv,
+    );
+  },
+);
+
+// company
+
+final companyDetails = GoRoute(
+  path: 'company',
+  builder: (BuildContext content, state) {
+    final company = state.extra as Company;
+
+    return CompanyView(company: company);
+  },
+);
+
 // person
 
 final personDetails = GoRoute(
@@ -120,6 +157,9 @@ final router = GoRouter(
         movieDetails,
         tvshowDetails,
         personDetails,
+        companyDetails,
+        keywordMovies,
+        keywordTvShows,
       ],
     )
   ],

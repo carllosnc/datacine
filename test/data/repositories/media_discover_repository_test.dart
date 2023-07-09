@@ -1,3 +1,4 @@
+import 'package:giganoid_app/core/core.dart';
 import 'package:giganoid_app/domain/domain.dart';
 import 'package:giganoid_app/data/data.dart';
 import 'package:giganoid_app/notifiers/notifiers.dart';
@@ -47,5 +48,35 @@ void main() {
 
     expect(response.statusCode, 200);
     expect(tvShows, isA<MediaList>());
+  });
+
+  test("check discover movies by company", () async {
+    final discoverRepository = MediaDiscoverRepository(
+      http.Client(),
+    );
+
+    final (movies, response) = await discoverRepository.discoverMoviesByCompany(
+      page: 1,
+      companyId: 1,
+      mediaType: MediaType.movie,
+    );
+
+    expect(response.statusCode, 200);
+    expect(movies, isA<MediaList>());
+  });
+
+  test("check discover movies by keyword", () async {
+    final discoverRepository = MediaDiscoverRepository(
+      http.Client(),
+    );
+
+    final (movies, response) = await discoverRepository.discoverMoviesByKeyword(
+      page: 1,
+      keywordId: 3070,
+      mediaType: MediaType.movie,
+    );
+
+    expect(response.statusCode, 200);
+    expect(movies, isA<MediaList>());
   });
 }

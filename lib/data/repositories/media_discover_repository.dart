@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:giganoid_app/core/constants/media_type.dart';
+
 import './repository.dart';
 import 'package:http/http.dart' as http;
 import '/domain/domain.dart';
@@ -15,8 +17,6 @@ class MediaDiscoverRepository extends Repository {
       "include_adult": "false",
       "page": "$page",
     };
-
-    print(filter);
 
     if (filter.genres != null) {
       query.addAll({"with_genres": filter.genres!});
@@ -67,6 +67,53 @@ class MediaDiscoverRepository extends Repository {
     var response = await httpClient.get(
       endpoint(
         path: "discover/tv",
+        query: query,
+      ),
+      headers: headers,
+    );
+
+    var medialist = MediaList.fromJson(jsonDecode(response.body));
+
+    return (medialist, response);
+  }
+
+  Future<(MediaList, http.Response)> discoverMoviesByCompany(
+      {required int companyId,
+      required int page,
+      required MediaType mediaType}) async {
+    Map<String, String> query = {
+      "include_adult": "false",
+      "page": "$page",
+      "with_companies": "$companyId"
+    };
+
+    var response = await httpClient.get(
+      endpoint(
+        path: "discover/${mediaType.value}",
+        query: query,
+      ),
+      headers: headers,
+    );
+
+    var medialist = MediaList.fromJson(jsonDecode(response.body));
+
+    return (medialist, response);
+  }
+
+  Future<(MediaList, http.Response)> discoverMoviesByKeyword({
+    required num keywordId,
+    required int page,
+    required MediaType mediaType,
+  }) async {
+    Map<String, String> query = {
+      "include_adult": "false",
+      "page": "$page",
+      "with_keywords": "$keywordId"
+    };
+
+    var response = await httpClient.get(
+      endpoint(
+        path: "discover/${mediaType.value}",
         query: query,
       ),
       headers: headers,

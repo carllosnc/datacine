@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
 
@@ -13,7 +14,9 @@ class CompanyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        context.push('/company', extra: company);
+      },
       title: Text(
         company.name!,
         style: const TextStyle(fontSize: 15),
