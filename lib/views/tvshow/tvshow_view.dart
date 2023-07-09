@@ -4,6 +4,7 @@ import '/data/data.dart';
 import '/components/components.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
+import '/core/core.dart';
 
 class TvShowView extends StatefulWidget {
   final String id;
@@ -62,6 +63,7 @@ class _TvShowViewState extends State<TvShowView> {
               style: TextStyle(
                 fontSize: 14,
                 textBaseline: TextBaseline.values[1],
+                color: ProjectColors(context).text,
               ),
             ),
           ),

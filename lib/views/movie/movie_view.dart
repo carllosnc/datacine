@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giganoid_app/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
@@ -53,6 +54,7 @@ class MovieView extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 textBaseline: TextBaseline.values[1],
+                color: ProjectColors(context).text,
               ),
             ),
             actions: [
