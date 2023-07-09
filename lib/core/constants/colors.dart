@@ -28,9 +28,6 @@ class ProjectColors {
     List<MaterialColor> colors = [
       Colors.red,
       Colors.pink,
-      Colors.purple,
-      Colors.deepPurple,
-      Colors.indigo,
       Colors.blue,
       Colors.lightBlue,
       Colors.cyan,
