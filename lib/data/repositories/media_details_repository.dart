@@ -20,14 +20,6 @@ class MediaDetailsRepository extends Repository {
       "reviews",
     ].join(",");
 
-    print(endpoint(
-      path: "movie/$id",
-      query: {
-        "append_to_response": itemsToAppend,
-        "include_adult": "false",
-      },
-    ));
-
     var response = await httpClient.get(
       endpoint(
         path: "movie/$id",
