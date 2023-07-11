@@ -26,14 +26,14 @@ class MovieView extends StatelessWidget {
         }
 
         if (snapshot.hasError) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Error'),
-            ),
-          );
+          return const ErrorView();
         }
 
         var (MovieDetails movie, _) = snapshot.data!;
+
+        if (movie.title == null) {
+          return const ErrorView();
+        }
 
         // conditions for sections to be displayed
         bool hasKeywords = movie.keywords!['keywords'] != null &&

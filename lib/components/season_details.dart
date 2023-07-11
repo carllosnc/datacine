@@ -36,6 +36,10 @@ showSeasonDetails({
 
               var (Season season, _) = snapshot.data!;
 
+              if (snapshot.hasError || season.episodes == null) {
+                return const ErrorBlock();
+              }
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

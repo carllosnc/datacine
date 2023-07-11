@@ -22,6 +22,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
   bool _isLoading = false;
   int _page = 1;
   dynamic _totalPages = false;
+  dynamic _error = false;
 
   @override
   void initState() {
@@ -33,14 +34,20 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
 
   //fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
-    final newData = await widget.fetchData(page: _page);
+    try {
+      final newData = await widget.fetchData(page: _page);
 
-    setState(() {
-      _dataList.addAll(newData.results!);
-      _isLoading = false;
-      _totalPages = newData.totalPages;
-      _page++;
-    });
+      setState(() {
+        _dataList.addAll(newData.results!);
+        _isLoading = false;
+        _totalPages = newData.totalPages;
+        _page++;
+      });
+    } catch (e) {
+      setState(() {
+        _error = e;
+      });
+    }
   }
 
   //check if scroll reached the end of the page
@@ -58,6 +65,10 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
 
   @override
   Widget build(BuildContext context) {
+    if (_error != false) {
+      return const ErrorBlock();
+    }
+
     return Stack(
       children: [
         NotificationListener<ScrollNotification>(

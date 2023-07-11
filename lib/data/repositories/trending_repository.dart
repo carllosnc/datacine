@@ -67,15 +67,15 @@ class TrendingRepository extends Repository {
 
     final people = PersonList.fromJson(jsonDecode(reponsePeople.body));
 
-    final featuredMovies = movies1.results?.take(4).toList();
-    final featuredTvshows = tvshows1.results?.take(4).toList();
+    final featuredMovie = movies1.results?.take(1).toList()[0];
+    final featuredTvshow = tvshows1.results?.take(1).toList()[0];
 
-    movies1.results?.removeRange(0, 4);
-    tvshows1.results?.removeRange(0, 4);
+    movies1.results?.removeRange(0, 1);
+    tvshows1.results?.removeRange(0, 1);
 
     return {
-      'featuredMovies': featuredMovies,
-      'featuredTvshows': featuredTvshows,
+      'featuredMovie': featuredMovie,
+      'featuredTvshow': featuredTvshow,
       'movies': movies1.results! + movies2.results!,
       'tvshows': tvshows1.results! + tvshows2.results!,
       'people': people.results,

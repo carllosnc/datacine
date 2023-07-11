@@ -16,6 +16,7 @@ class ProjectColors {
 
   Color get link => const Color.fromARGB(255, 49, 231, 255);
   Color get imageFilter => Theme.of(context).colorScheme.onSecondary;
+  Color get textError => Theme.of(context).colorScheme.error;
   Color get bottomBarBackground => Theme.of(context).colorScheme.onSecondary;
   Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.5);
   Color get text => Theme.of(context).colorScheme.onSurface;

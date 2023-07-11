@@ -37,16 +37,16 @@ class _PersonViewState extends State<PersonView>
         }
 
         if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: Text(
-                snapshot.error.toString(),
-              ),
-            ),
-          );
+          return const ErrorView();
         }
 
         var (PersonDetails person, _) = snapshot.data!;
+
+        if (person.name == null) {
+          return const Scaffold(
+            body: ErrorView(),
+          );
+        }
 
         return PersonContent(person: person);
       },

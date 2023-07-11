@@ -33,6 +33,13 @@ class MovieCollection extends StatelessWidget {
 
           var (Collection collection, _) = snapshot.data!;
 
+          if (snapshot.hasError || collection.parts == null) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: ErrorText(message: 'Error to loading collection'),
+            );
+          }
+
           collection.parts!.sort((a, b) {
             return a.releaseDate!.compareTo(b.releaseDate!);
           });

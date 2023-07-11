@@ -33,62 +33,46 @@ class _TrendingTabState extends State<TrendingTab>
             }
 
             if (snapshot.hasError) {
-              return const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.error_outline,
-                      size: 50,
-                      color: Colors.red,
-                    ),
-                    SizedBox(height: 10),
-                    Text('Something went wrong!'),
-                  ],
-                ),
-              );
+              return const ErrorBlock();
             }
 
+            MediaItem featuredMovie = snapshot.data['featuredMovie'];
+            MediaItem featuredTvShow = snapshot.data['featuredTvshow'];
             List<MediaItem> movies = snapshot.data['movies'];
             List<MediaItem> tvShows = snapshot.data['tvshows'];
-            List<MediaItem> featuredMovies = snapshot.data['featuredMovies'];
-            List<MediaItem> featuredTvShows = snapshot.data['featuredTvshows'];
-            List<PersonItem> people = snapshot.data['people'];
 
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 40),
-                  ExtendedMediaCardList(
+                  const SizedBox(height: 20),
+                  MediaBanner(
                     title: "Trending Movies",
                     mediaType: MediaType.movie,
-                    list: featuredMovies,
+                    media: featuredMovie,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 1),
                   SimpleMediaGrid(
                     mediaType: MediaType.movie,
                     list: movies,
                     maxWidth: constraints.maxWidth,
                   ),
-                  const SizedBox(height: 50),
-                  ExtendedMediaCardList(
+                  const SizedBox(height: 30),
+                  Icon(
+                    Icons.keyboard_double_arrow_down,
+                    size: 50,
+                    color: ProjectColors(context).featured,
+                  ),
+                  const SizedBox(height: 30),
+                  MediaBanner(
                     title: "Trending Tv Shows",
                     mediaType: MediaType.tv,
-                    list: featuredTvShows,
+                    media: featuredTvShow,
                   ),
-                  const SizedBox(height: 20),
                   SimpleMediaGrid(
                     mediaType: MediaType.tv,
                     list: tvShows,
                     maxWidth: constraints.maxWidth,
                   ),
-                  const SizedBox(height: 50),
-                  PersonHorizontalList(
-                    title: "Trending People",
-                    list: people,
-                    maxWidth: constraints.maxWidth,
-                  ),
-                  const SizedBox(height: 20),
                 ],
               ),
             );

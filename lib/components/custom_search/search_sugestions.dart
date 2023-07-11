@@ -29,6 +29,10 @@ class SearchSugestions extends StatelessWidget {
           return const LinearProgressIndicator(minHeight: 3);
         }
 
+        if (snapshot.hasError) {
+          return const ErrorBlock();
+        }
+
         var (SearchResult data, _) = snapshot.data!;
 
         if (data.results!.isEmpty) {

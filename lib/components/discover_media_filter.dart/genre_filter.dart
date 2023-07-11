@@ -82,6 +82,11 @@ class _GenreFilterState extends State<GenreFilter> {
           return const Loading();
         }
 
+        //error
+        if (snapshot.hasError) {
+          return const ErrorText(message: "Error to loading genres");
+        }
+
         var (List<Genre> genres, _) = snapshot.data!;
 
         //filter chips of genres

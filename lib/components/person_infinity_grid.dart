@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giganoid_app/domain/domain.dart';
-import 'package:go_router/go_router.dart';
 import '/components/components.dart';
-import '/core/core.dart';
 
 class PeopleInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;
@@ -23,6 +21,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
   bool _isLoading = false;
   int _page = 1;
   dynamic _totalPages = false;
+  dynamic _error = false;
 
   @override
   void initState() {
@@ -32,14 +31,20 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
 
   // fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
-    final newData = await widget.fetchData(page: _page);
+    try {
+      final newData = await widget.fetchData(page: _page);
 
-    setState(() {
-      _dataList.addAll(newData.results!);
-      _isLoading = false;
-      _totalPages = newData.totalPages;
-      _page++;
-    });
+      setState(() {
+        _dataList.addAll(newData.results!);
+        _isLoading = false;
+        _totalPages = newData.totalPages;
+        _page++;
+      });
+    } catch (e) {
+      setState(() {
+        _error = e;
+      });
+    }
   }
 
   // check if scroll reached the end of the page
@@ -58,6 +63,10 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
 
   @override
   Widget build(BuildContext context) {
+    if (_error != false) {
+      return const ErrorBlock();
+    }
+
     return Stack(
       children: [
         NotificationListener<ScrollNotification>(
@@ -88,55 +97,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                   PersonItem personItem = _dataList[index];
 
                   if (index < _dataList.length) {
-                    return GestureDetector(
-                      onTap: () {
-                        context.push('/person/${personItem.id}');
-                      },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: ColorFiltered(
-                                colorFilter: ColorFilter.mode(
-                                  ProjectColors(context).imageFilter,
-                                  BlendMode.color,
-                                ),
-                                child: ImageComponent(
-                                  imageSize: ImageSize.profileW185,
-                                  imagePath: personItem.profilePath,
-                                  imageType: ImageType.profile,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                personItem.name!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: ProjectColors(context).featured,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Text(
-                                personItem.knownForDepartment ?? "―",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
+                    return PersonCard(personItem: personItem);
                   }
 
                   return null;

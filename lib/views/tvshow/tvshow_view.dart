@@ -32,14 +32,14 @@ class _TvShowViewState extends State<TvShowView> {
         }
 
         if (snapshot.hasError) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Error'),
-            ),
-          );
+          return const ErrorView();
         }
 
         var (TvShowDetails tvshow, _) = snapshot.data!;
+
+        if (tvshow.name == null) {
+          return const ErrorView();
+        }
 
         bool hasKeywords = tvshow.keywords!['results'] != null &&
             tvshow.keywords!['results']!.isNotEmpty;
