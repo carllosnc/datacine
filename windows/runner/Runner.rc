@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "cnc.ds1" "\0"
-            VALUE "FileDescription", "giganoid_app" "\0"
+            VALUE "FileDescription", "datacine" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "giganoid_app" "\0"
+            VALUE "InternalName", "datacine" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 cnc.ds1. All rights reserved." "\0"
-            VALUE "OriginalFilename", "giganoid_app.exe" "\0"
-            VALUE "ProductName", "giganoid_app" "\0"
+            VALUE "OriginalFilename", "datacine.exe" "\0"
+            VALUE "ProductName", "datacine" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

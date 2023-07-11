@@ -1,4 +1,4 @@
-package cnc.giganoid_app
+package cnc.datacine
 
 import io.flutter.embedding.android.FlutterActivity
 

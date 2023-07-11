@@ -1,4 +1,4 @@
-import 'package:giganoid_app/domain/domain.dart';
+import 'package:datacine/domain/domain.dart';
 
 var languages = [
   {"iso_639_1": "an", "english_name": "Aragonese", "name": ""},

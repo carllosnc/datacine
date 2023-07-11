@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/components/components.dart';
+import 'package:datacine/components/components.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 

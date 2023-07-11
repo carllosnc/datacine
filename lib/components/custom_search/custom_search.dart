@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/components/custom_search/search_result.dart';
-import 'package:giganoid_app/components/custom_search/search_sugestions.dart';
+import 'package:datacine/components/custom_search/search_result.dart';
+import 'package:datacine/components/custom_search/search_sugestions.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override

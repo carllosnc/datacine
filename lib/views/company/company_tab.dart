@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/constants/media_type.dart';
+import 'package:datacine/core/constants/media_type.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;

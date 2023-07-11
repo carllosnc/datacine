@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:giganoid_app/data/data.dart';
+import 'package:datacine/data/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:giganoid_app/domain/domain.dart';
+import 'package:datacine/domain/domain.dart';
 import 'package:mockito/annotations.dart';
 
 @GenerateNiceMocks([MockSpec<http.Client>()])

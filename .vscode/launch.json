@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "giganoid_app",
+      "name": "datacine",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "giganoid_app (profile mode)",
+      "name": "datacine (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "giganoid_app (release mode)",
+      "name": "datacine (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

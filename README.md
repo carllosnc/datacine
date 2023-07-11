@@ -1,4 +1,4 @@
-# Giganoid Mobile App
+# Datacine Mobile App
 
 ### What's inside
 
@@ -37,6 +37,12 @@ Launcher icon
 ```
 flutter pub run flutter_launcher_icons
 ```
+
+Spash
+```
+dart run flutter_native_splash:create
+```
+
 ---
 
 ### License

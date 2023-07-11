@@ -96,7 +96,7 @@ class _HomeViewState extends State<HomeView>
         appBar: AppBar(
           title: Image.asset(
             Assets.extendedLogo,
-            height: 20,
+            height: 28,
           ),
           actions: [
             IconButton(

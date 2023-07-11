@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/constants/colors.dart';
+import 'package:datacine/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';

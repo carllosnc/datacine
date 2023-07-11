@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/core/helpers/unique.dart';
+import 'package:datacine/core/helpers/unique.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';

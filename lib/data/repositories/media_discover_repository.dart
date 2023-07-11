@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:giganoid_app/core/constants/media_type.dart';
+import 'package:datacine/core/constants/media_type.dart';
 
 import './repository.dart';
 import 'package:http/http.dart' as http;

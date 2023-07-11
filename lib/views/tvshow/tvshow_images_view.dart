@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giganoid_app/domain/domain.dart';
+import 'package:datacine/domain/domain.dart';
 import '/components/components.dart';
 
 class TvShowImagesView extends StatefulWidget {
