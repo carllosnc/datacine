@@ -81,6 +81,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
             ),
           ],
           bottom: TabBar(
+            dividerColor: ProjectColors(context).line,
             tabs: [
               Tab(text: 'Cast (${cast.length})'),
               Tab(text: 'Crew (${crew.length})'),

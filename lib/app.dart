@@ -9,7 +9,7 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: const Color.fromARGB(255, 11, 255, 19),
+        colorSchemeSeed: const Color(0xFF0BFF6D),
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(
           centerTitle: true,

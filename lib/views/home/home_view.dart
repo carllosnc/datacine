@@ -110,6 +110,7 @@ class _HomeViewState extends State<HomeView>
             )
           ],
           bottom: TabBar(
+            dividerColor: ProjectColors(context).line,
             controller: _tabController,
             tabs: const [
               Tab(text: 'Trendings'),

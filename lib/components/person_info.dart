@@ -26,7 +26,7 @@ class PersonInfo extends StatelessWidget {
                     "Birthday",
                     style: TextStyle(
                       fontSize: 14,
-                      color: ProjectColors(context).label,
+                      color: ProjectColors(context).title,
                     ),
                   ),
                   Text(
@@ -48,7 +48,7 @@ class PersonInfo extends StatelessWidget {
                     "Deathday",
                     style: TextStyle(
                       fontSize: 14,
-                      color: ProjectColors(context).label,
+                      color: ProjectColors(context).title,
                     ),
                   ),
                   Text(
@@ -69,7 +69,7 @@ class PersonInfo extends StatelessWidget {
                     "Place of Birth",
                     style: TextStyle(
                       fontSize: 14,
-                      color: ProjectColors(context).label,
+                      color: ProjectColors(context).title,
                     ),
                   ),
                   Text(
@@ -90,7 +90,7 @@ class PersonInfo extends StatelessWidget {
                     "Biography",
                     style: TextStyle(
                       fontSize: 14,
-                      color: ProjectColors(context).label,
+                      color: ProjectColors(context).title,
                     ),
                   ),
                   SizedBox(

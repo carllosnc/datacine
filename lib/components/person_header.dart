@@ -42,7 +42,7 @@ class _PersonHeaderState extends State<PersonHeader> {
                 child: ImageComponent(
                   imagePath: (widget.person.profilePath),
                   imageType: ImageType.profile,
-                  imageSize: ImageSize.profileH632,
+                  imageSize: ImageSize.profileOriginal,
                 ),
               ),
             ),
