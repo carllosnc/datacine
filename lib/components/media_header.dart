@@ -87,6 +87,7 @@ class MediaHeader extends StatelessWidget {
                 (movie?.title ?? tvshow?.name)!,
                 style: TextStyle(
                   fontSize: 24,
+                  fontWeight: FontWeight.w400,
                   color: ProjectColors(context).title,
                 ),
               ),

@@ -35,11 +35,12 @@ class MediaBanner extends StatelessWidget {
               imageSize: ImageSize.backdropW780,
             ),
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Colors.black,
-                    Colors.transparent,
+                    Colors.black.withOpacity(0.4),
+                    Colors.black.withOpacity(0.1),
                   ],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
