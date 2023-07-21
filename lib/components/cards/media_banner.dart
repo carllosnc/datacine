@@ -59,16 +59,19 @@ class MediaBanner extends StatelessWidget {
                     Text(
                       (media.releaseDate ?? media.firstAirDate ?? '')
                           .formatDateTime(),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: ProjectColors(context).featured,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
                       ),
                     ),
-                    Text(
-                      (media.title ?? media.name)!,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: ProjectColors(context).text,
+                    SizedBox(
+                      width: 280,
+                      child: Text(
+                        media.name ?? media.title!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

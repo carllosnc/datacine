@@ -80,6 +80,7 @@ class MediaVotes extends StatelessWidget {
               voteAverage!.toString().substring(0, 3),
               style: const TextStyle(
                 fontSize: 15,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

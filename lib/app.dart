@@ -8,9 +8,22 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        tabBarTheme: const TabBarTheme(
+          labelStyle: TextStyle(
+            fontSize: 14,
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 14,
+          ),
+        ),
         fontFamily: 'SFProDisplay',
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xFF0BFF6D),
+        colorSchemeSeed: ProjectColors(context).randomColor(),
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(
           centerTitle: true,

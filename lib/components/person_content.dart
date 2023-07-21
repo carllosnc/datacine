@@ -34,7 +34,8 @@ class PersonContent extends StatelessWidget {
         title: Text(
           person.name!,
           style: const TextStyle(
-            fontSize: 14,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
@@ -63,7 +64,7 @@ class PersonContent extends StatelessWidget {
         items: [
           BottomItem(
             icon: Icons.movie_outlined,
-            label: "Cast",
+            label: "Movie cast",
             onTap: () {
               var cast = person.movieCredits?['cast'];
               showMediaCredit(
@@ -76,7 +77,7 @@ class PersonContent extends StatelessWidget {
           ),
           BottomItem(
             icon: Icons.movie_outlined,
-            label: "Crew",
+            label: "Movie crew",
             onTap: () {
               var crew = person.movieCredits?['crew'];
               showMediaCredit(
@@ -89,7 +90,7 @@ class PersonContent extends StatelessWidget {
           ),
           BottomItem(
             icon: Icons.tv,
-            label: "Cast",
+            label: "TV Cast",
             onTap: () {
               var cast = person.tvCredits?['cast'];
               showMediaCredit(
@@ -102,7 +103,7 @@ class PersonContent extends StatelessWidget {
           ),
           BottomItem(
             icon: Icons.tv,
-            label: "Crew",
+            label: "TV Crew",
             onTap: () {
               var crew = person.tvCredits?['crew'];
               showMediaCredit(

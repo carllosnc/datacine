@@ -15,31 +15,36 @@ class BottomItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+      ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
             child: Center(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 5,
                 children: [
-                  if (icon != null)
-                    Icon(
-                      icon,
-                      size: 15,
-                      color: ProjectColors(context).text,
-                    ),
+                  Icon(
+                    icon,
+                    size: 15,
+                    color: ProjectColors(context).text,
+                  ),
                   Text(
                     label,
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       height: 1.2,
                       color: ProjectColors(context).text,
-                      fontSize: 13,
+                      fontSize: 14,
                     ),
                   ),
                 ],
@@ -60,16 +65,16 @@ class BottomMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.hardEdge,
       height: 50,
       decoration: BoxDecoration(
         color: ProjectColors(context).bottomBarBackground,
       ),
-      padding: const EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: items,
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        scrollDirection: Axis.horizontal,
+        itemCount: items.length,
+        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        itemBuilder: (context, index) => items[index],
       ),
     );
   }

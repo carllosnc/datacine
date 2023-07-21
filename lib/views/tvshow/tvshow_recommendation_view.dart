@@ -32,10 +32,7 @@ class TvShowRecommendationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Recommendations',
-          style: TextStyle(fontSize: 14),
-        ),
+        title: const PageTitle(text: 'Recommendations'),
       ),
       body: MediaInfinityGrid(
         mediaType: MediaType.tv,

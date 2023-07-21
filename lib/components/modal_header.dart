@@ -26,7 +26,7 @@ class ModalHeader extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               color: ProjectColors(context).title,
             ),
           ),

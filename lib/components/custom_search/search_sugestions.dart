@@ -66,12 +66,15 @@ class SearchSugestions extends StatelessWidget {
                 ),
                 title: Text(
                   item.title ?? item.name ?? '-',
-                  style: const TextStyle(fontSize: 13),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 subtitle: Text(
                   "${(item.releaseDate ?? item.firstAirDate!).formatYear()} — ${item.mediaType!.capitalize()}",
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 14,
                     color: ProjectColors(context).featured,
                   ),
                 ),
@@ -98,12 +101,15 @@ class SearchSugestions extends StatelessWidget {
                 ),
                 title: Text(
                   item.name!,
-                  style: const TextStyle(fontSize: 13),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 subtitle: Text(
                   item.knownForDepartment ?? '―',
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 14,
                     color: ProjectColors(context).featured,
                   ),
                 ),

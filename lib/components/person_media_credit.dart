@@ -80,6 +80,7 @@ showMediaCredit(
                             '-',
                         style: TextStyle(
                           fontSize: 14,
+                          fontWeight: FontWeight.w500,
                           color: ProjectColors(context).featured,
                         ),
                       ),
@@ -87,6 +88,7 @@ showMediaCredit(
                         item.title ?? item.name ?? '-',
                         style: TextStyle(
                           fontSize: 14,
+                          fontWeight: FontWeight.w500,
                           color: ProjectColors(context).text,
                         ),
                       ),
@@ -96,6 +98,7 @@ showMediaCredit(
                     item.character ?? item.job ?? '-',
                     style: TextStyle(
                       fontSize: 14,
+                      fontWeight: FontWeight.w500,
                       color: ProjectColors(context).label,
                     ),
                   ),

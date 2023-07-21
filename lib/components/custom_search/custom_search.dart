@@ -6,25 +6,22 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBarTheme: const AppBarTheme(),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide.none,
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.05),
+        fillColor: Theme.of(context).colorScheme.secondaryContainer,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 0,
         ),
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         titleLarge: TextStyle(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onSecondaryContainer,
           fontSize: 16,
         ),
       ),

@@ -20,8 +20,11 @@ class _CompanyViewState extends State<CompanyView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "🏭  ${widget.company.name!}",
-          style: const TextStyle(fontSize: 14),
+          widget.company.name!,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
       body: [

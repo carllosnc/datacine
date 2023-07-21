@@ -41,4 +41,6 @@ export './person_external_links.dart';
 export './person_known_for.dart';
 export './person_images.dart';
 export './open_full_image.dart';
-export 'error.dart';
+export './error.dart';
+export './typography/page_title.dart';
+export './cards/season_card.dart';

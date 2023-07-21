@@ -36,7 +36,7 @@ class MediaInfoItem extends StatelessWidget {
             Text(
               item,
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
           ],

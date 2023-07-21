@@ -42,20 +42,21 @@ class MiniMediaCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  mediaItem.title ?? mediaItem.name!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: ProjectColors(context).featured,
+                  ),
+                ),
+                Text(
                   (mediaItem.releaseDate ?? mediaItem.firstAirDate ?? "null")
                       .formatDateTime(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: ProjectColors(context).featured,
-                    fontSize: 10,
-                  ),
-                ),
-                Text(
-                  mediaItem.title ?? mediaItem.name!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                    color: ProjectColors(context).text,
                     fontSize: 12,
                   ),
                 ),

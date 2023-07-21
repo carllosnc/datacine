@@ -82,7 +82,7 @@ showSeasonDetails({
                               Text(
                                 season.name!,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   color: ProjectColors(context).title,
                                 ),
                               ),
@@ -90,14 +90,14 @@ showSeasonDetails({
                               Text(
                                 (season.airDate ?? '').formatDateTime(),
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                               const SizedBox(height: 3),
                               Text(
                                 "Episodes: ${season.episodes!.length}",
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ],
@@ -118,14 +118,14 @@ showSeasonDetails({
                           title: Text(
                             episode.name!,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: ProjectColors(context).text,
                             ),
                           ),
                           subtitle: Text(
                             (episode.airDate ?? '').formatDateTime(),
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: ProjectColors(context).featured,
                             ),
                           ),
@@ -133,7 +133,7 @@ showSeasonDetails({
                             episode.episodeNumber.toString(),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 12,
+                              fontSize: 14,
                               color: ProjectColors(context).label,
                             ),
                           ),

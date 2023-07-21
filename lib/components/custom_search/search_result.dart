@@ -118,9 +118,12 @@ class _SearchResultState extends State<SearchResult> {
             runAlignment: WrapAlignment.center,
             children: [
               ChoiceChip(
-                label: const Text(
+                label: Text(
                   'Movie',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 selected: _currentSearchType == SearchType.movie,
                 onSelected: (value) {
@@ -130,9 +133,12 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const Text(
+                label: Text(
                   'TV Show',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 selected: _currentSearchType == SearchType.tv,
                 onSelected: (value) {
@@ -142,9 +148,12 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const Text(
+                label: Text(
                   'Person',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 selected: _currentSearchType == SearchType.person,
                 onSelected: (value) {
@@ -154,9 +163,12 @@ class _SearchResultState extends State<SearchResult> {
                 },
               ),
               ChoiceChip(
-                label: const Text(
+                label: Text(
                   'Company',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ProjectColors(context).text,
+                  ),
                 ),
                 selected: _currentSearchType == SearchType.company,
                 onSelected: (value) {

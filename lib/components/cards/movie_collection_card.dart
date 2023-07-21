@@ -48,22 +48,22 @@ class MovieCollectionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                (movie.releaseDate ?? '').formatDateTime(),
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: ProjectColors(context).featured,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
                 movie.title!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 14,
+                  color: ProjectColors(context).featured,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                (movie.releaseDate ?? '').formatDateTime(),
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 12,
                   color: ProjectColors(context).text,
                 ),
               ),

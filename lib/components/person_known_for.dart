@@ -1,9 +1,8 @@
+import 'package:datacine/components/cards/mini_media_card.dart';
 import 'package:flutter/material.dart';
 import 'package:datacine/core/helpers/unique.dart';
-import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
-import 'image_component.dart';
 
 class PersonKnownFor extends StatelessWidget {
   final PersonDetails person;
@@ -65,65 +64,14 @@ class PersonKnownFor extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               MediaItem media = allCredits[index];
 
+              MediaType mediaType =
+                  media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
+
               return SizedBox(
                 width: 130,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        context
-                            .go('/${media.mediaType}/${media.id.toString()}');
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: Colors.transparent,
-                            width: 2,
-                          ),
-                        ),
-                        height: 130 * 1.5,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: ImageComponent(
-                            imagePath: media.posterPath,
-                            imageType: ImageType.poster,
-                            imageSize: ImageSize.posterW342,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          (media.releaseDate ?? media.firstAirDate!)
-                              .formatDateTime(),
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: ProjectColors(context).featured,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          media.title ?? media.name!,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: ProjectColors(context).text,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                child: MiniMediaCard(
+                  mediaItem: media,
+                  mediaType: mediaType,
                 ),
               );
             },

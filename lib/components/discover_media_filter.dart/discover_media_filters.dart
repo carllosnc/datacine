@@ -28,11 +28,16 @@ discoverMediaFilters({
     builder: (context) {
       return Dialog.fullscreen(
         child: Container(
+          color: Colors.black.withOpacity(0.5),
           padding: const EdgeInsets.all(20),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Theme.of(context).colorScheme.onSecondary,
+              color: Theme.of(context).colorScheme.background,
+              border: Border.all(
+                color: ProjectColors(context).line,
+                width: 1,
+              ),
             ),
             child: Column(
               children: [

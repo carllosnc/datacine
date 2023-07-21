@@ -31,10 +31,7 @@ class MovieSimilarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Similar',
-          style: TextStyle(fontSize: 14),
-        ),
+        title: const PageTitle(text: 'Similar'),
       ),
       body: MediaInfinityGrid(
         mediaType: MediaType.movie,

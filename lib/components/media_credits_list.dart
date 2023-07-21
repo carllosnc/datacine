@@ -68,7 +68,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
                     border: const UnderlineInputBorder(),
                   ),
                 )
-              : const Text('Credits', style: TextStyle(fontSize: 14)),
+              : const PageTitle(text: 'Credits'),
           actions: [
             IconButton(
               onPressed: () {

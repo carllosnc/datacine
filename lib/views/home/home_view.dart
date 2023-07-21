@@ -63,7 +63,6 @@ class _HomeViewState extends State<HomeView>
               FloatingActionButton.extended(
                 extendedTextStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
                 ),
                 label: const Text('Discover movies'),
                 icon: const Icon(Icons.movie),
@@ -79,7 +78,6 @@ class _HomeViewState extends State<HomeView>
               FloatingActionButton.extended(
                 extendedTextStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
                 ),
                 label: const Text('Discover TV Shows'),
                 icon: const Icon(Icons.tv),
@@ -94,9 +92,15 @@ class _HomeViewState extends State<HomeView>
           ],
         ),
         appBar: AppBar(
-          title: Image.asset(
-            Assets.extendedLogo,
-            height: 28,
+          title: ColorFiltered(
+            colorFilter: ColorFilter.mode(
+              ProjectColors(context).logoFilter,
+              BlendMode.srcATop,
+            ),
+            child: Image.asset(
+              Assets.extendedLogo,
+              height: 28,
+            ),
           ),
           actions: [
             IconButton(
@@ -107,10 +111,13 @@ class _HomeViewState extends State<HomeView>
                 );
               },
               icon: const Icon(Icons.search),
-            )
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.settings),
+            ),
           ],
           bottom: TabBar(
-            dividerColor: ProjectColors(context).line,
             controller: _tabController,
             tabs: const [
               Tab(text: 'Trendings'),

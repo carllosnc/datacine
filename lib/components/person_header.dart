@@ -62,6 +62,7 @@ class _PersonHeaderState extends State<PersonHeader> {
                 widget.person.name!,
                 style: TextStyle(
                   fontSize: 20,
+                  fontWeight: FontWeight.w400,
                   color: ProjectColors(context).title,
                 ),
                 textAlign: TextAlign.center,

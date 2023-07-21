@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class ProjectColors {
@@ -7,40 +5,49 @@ class ProjectColors {
 
   ProjectColors(this.context);
 
-  Color imageBackground = const Color.fromARGB(255, 0, 0, 0);
   Color ratingBad = const Color.fromARGB(255, 225, 42, 28);
   Color ratingOk = const Color.fromARGB(255, 178, 108, 4);
   Color ratingGood = const Color.fromARGB(255, 21, 82, 237);
   Color ratingGreat = const Color.fromARGB(255, 22, 125, 25);
   Color status = const Color.fromARGB(255, 225, 99, 247);
 
-  Color get link => const Color.fromARGB(255, 49, 231, 255);
-  Color get imageFilter => Theme.of(context).colorScheme.onSecondary;
+  Color get imageBackground => Colors.black;
+  Color get imageFilter => Theme.of(context).colorScheme.secondary;
+  Color get logoFilter => Theme.of(context).colorScheme.primary;
   Color get textError => Theme.of(context).colorScheme.error;
-  Color get bottomBarBackground => Theme.of(context).colorScheme.onSecondary;
-  Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.5);
+  Color get bottomBarBackground =>
+      Theme.of(context).colorScheme.secondaryContainer;
+  Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
   Color get text => Theme.of(context).colorScheme.onSurface;
   Color get title => Theme.of(context).colorScheme.tertiary;
   Color get featured => Theme.of(context).colorScheme.primary;
   Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.2);
 
-  //method to get random material colors
-  static MaterialColor getRandomColor() {
-    List<MaterialColor> colors = [
+  Color linkButton() {
+    if (Theme.of(context).brightness == Brightness.dark) {
+      return Theme.of(context).colorScheme.secondary.withOpacity(0.11);
+    }
+
+    return Theme.of(context).colorScheme.primary.withOpacity(0.1);
+  }
+
+  Color randomColor() {
+    var colors = [
       Colors.red,
-      Colors.pink,
       Colors.blue,
-      Colors.lightBlue,
-      Colors.cyan,
-      Colors.teal,
       Colors.green,
-      Colors.lightGreen,
-      Colors.lime,
       Colors.yellow,
-      Colors.amber,
       Colors.orange,
-      Colors.deepOrange,
+      Colors.pink,
+      Colors.teal,
+      Colors.cyan,
+      Colors.indigo,
+      Colors.lime,
+      Colors.amber,
+      Colors.brown,
+      Colors.grey,
     ];
-    return colors[Random().nextInt(colors.length)];
+
+    return colors[DateTime.now().millisecondsSinceEpoch % colors.length];
   }
 }

@@ -20,7 +20,7 @@ class PersonListTile extends StatelessWidget {
       },
       title: Text(
         person.name!,
-        style: const TextStyle(fontSize: 15),
+        style: TextStyle(fontSize: 16, color: ProjectColors(context).text),
       ),
       leading: SizedBox(
         width: 45,
@@ -47,7 +47,7 @@ class PersonListTile extends StatelessWidget {
             person.department ??
             '-',
         style: TextStyle(
-          fontSize: 12,
+          fontSize: 14,
           color: ProjectColors(context).featured,
         ),
       ),

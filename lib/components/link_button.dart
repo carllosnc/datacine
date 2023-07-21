@@ -1,3 +1,4 @@
+import 'package:datacine/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class LinkButton extends StatelessWidget {
@@ -16,10 +17,7 @@ class LinkButton extends StatelessWidget {
       height: 30,
       child: TextButton(
         style: TextButton.styleFrom(
-          textStyle: const TextStyle(
-            fontSize: 13,
-          ),
-          backgroundColor: Colors.white.withOpacity(0.05),
+          backgroundColor: ProjectColors(context).linkButton(),
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 0,

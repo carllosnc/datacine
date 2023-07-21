@@ -7,12 +7,10 @@ import 'package:http/http.dart' as http;
 
 class MovieCollection extends StatelessWidget {
   final MovieDetails movie;
-  final double maxWidth;
 
   const MovieCollection({
     super.key,
     required this.movie,
-    required this.maxWidth,
   });
 
   @override
@@ -67,7 +65,7 @@ class MovieCollection extends StatelessWidget {
                     Text(
                       '${collection.parts?.length} movies',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         color: ProjectColors(context).text,
                       ),
                     )
@@ -77,7 +75,6 @@ class MovieCollection extends StatelessWidget {
               const SizedBox(height: 10),
               SizedBox(
                 height: 365,
-                width: maxWidth,
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,

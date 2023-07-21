@@ -68,6 +68,7 @@ class _TrendingTabState extends State<TrendingTab>
                     mediaType: MediaType.tv,
                     media: featuredTvShow,
                   ),
+                  const SizedBox(height: 1),
                   SimpleMediaGrid(
                     mediaType: MediaType.tv,
                     list: tvShows,

@@ -56,37 +56,35 @@ class MediaHeader extends StatelessWidget {
                   Text(
                     (movie?.releaseDate ?? tvshow?.firstAirDate ?? '')
                         .formatDateTime(),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: ProjectColors(context).label,
+                    style: const TextStyle(
+                      fontSize: 14,
                     ),
                   ),
                   if (tvshow?.lastAirDate != null)
-                    Text(
+                    const Text(
                       "―",
                       style: TextStyle(
-                        fontSize: 12,
-                        color: ProjectColors(context).label,
+                        fontSize: 14,
                       ),
                     ),
                   if (tvshow?.lastAirDate != null)
                     Text(
                       (tvshow?.lastAirDate ?? '').formatDateTime(),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: ProjectColors(context).label,
+                      style: const TextStyle(
+                        fontSize: 14,
                       ),
                     ),
                 ],
               ),
             ),
-            const SizedBox(height: 2),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 (movie?.title ?? tvshow?.name)!,
                 style: TextStyle(
                   fontSize: 24,
+                  height: 1.2,
                   fontWeight: FontWeight.w400,
                   color: ProjectColors(context).title,
                 ),

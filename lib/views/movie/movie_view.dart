@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
@@ -48,15 +47,7 @@ class MovieView extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
-            title: Text(
-              "🎞   ${movie.title!}",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                textBaseline: TextBaseline.values[1],
-                color: ProjectColors(context).text,
-              ),
-            ),
+            title: PageTitle(text: movie.title!),
             actions: [
               MediaInfo(movie: movie),
             ],
@@ -85,7 +76,7 @@ class MovieView extends StatelessWidget {
 
                 //collection
                 SectionDivider(condition: hasCollection),
-                MovieCollection(movie: movie, maxWidth: double.infinity),
+                MovieCollection(movie: movie),
                 const SizedBox(height: 80),
               ],
             ),

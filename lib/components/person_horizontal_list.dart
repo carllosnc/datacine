@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
@@ -48,73 +47,19 @@ class PersonHorizontalList extends StatelessWidget {
         const SizedBox(height: 10),
         Container(
           width: maxWidth,
-          height: 205,
+          height: 210,
           color: Colors.transparent,
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) => const SizedBox(width: 10),
+            separatorBuilder: (context, index) => const SizedBox(width: 15),
             itemCount: cutList!.length,
             itemBuilder: (BuildContext context, int index) {
               final PersonItem personItem = cutList![index];
 
-              return GestureDetector(
-                onTap: () {
-                  context.push('/person/${personItem.id}');
-                },
-                child: Container(
-                  color: Colors.transparent,
-                  width: 110,
-                  child: Wrap(
-                    runSpacing: 5,
-                    children: [
-                      SizedBox(
-                        height: 150,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: ColorFiltered(
-                            colorFilter: ColorFilter.mode(
-                              ProjectColors(context).imageFilter,
-                              BlendMode.color,
-                            ),
-                            child: ImageComponent(
-                              imageSize: ImageSize.profileW185,
-                              imagePath: personItem.profilePath,
-                              imageType: ImageType.profile,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            personItem.name!,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: ProjectColors(context).text,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            personItem.character ??
-                                personItem.knownForDepartment!,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: ProjectColors(context).featured,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+              return SizedBox(
+                width: 120,
+                child: PersonCard(personItem: personItem),
               );
             },
           ),
