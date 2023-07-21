@@ -112,10 +112,6 @@ class _HomeViewState extends State<HomeView>
               },
               icon: const Icon(Icons.search),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.settings),
-            ),
           ],
           bottom: TabBar(
             controller: _tabController,
