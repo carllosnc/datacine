@@ -45,13 +45,13 @@ class _TrendingTabState extends State<TrendingTab>
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  MediaBanner(
+                  TrendingMediaBanner(
                     title: "Trending Movies",
                     mediaType: MediaType.movie,
                     media: featuredMovie,
                   ),
                   const SizedBox(height: 1),
-                  SimpleMediaGrid(
+                  TrendingMediaGrid(
                     mediaType: MediaType.movie,
                     list: movies,
                     maxWidth: constraints.maxWidth,
@@ -63,13 +63,13 @@ class _TrendingTabState extends State<TrendingTab>
                     color: ProjectColors(context).featured,
                   ),
                   const SizedBox(height: 30),
-                  MediaBanner(
+                  TrendingMediaBanner(
                     title: "Trending Tv Shows",
                     mediaType: MediaType.tv,
                     media: featuredTvShow,
                   ),
                   const SizedBox(height: 1),
-                  SimpleMediaGrid(
+                  TrendingMediaGrid(
                     mediaType: MediaType.tv,
                     list: tvShows,
                     maxWidth: constraints.maxWidth,
