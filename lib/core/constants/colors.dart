@@ -13,6 +13,7 @@ class ProjectColors {
 
   Color get imageBackground => Colors.black;
   Color get imageFilter => Theme.of(context).colorScheme.secondary;
+  Color get profileFilter => Theme.of(context).colorScheme.background;
   Color get logoFilter => Theme.of(context).colorScheme.primary;
   Color get textError => Theme.of(context).colorScheme.error;
   Color get bottomBarBackground =>
@@ -25,7 +26,7 @@ class ProjectColors {
 
   Color linkButton() {
     if (Theme.of(context).brightness == Brightness.dark) {
-      return Theme.of(context).colorScheme.secondary.withOpacity(0.11);
+      return Theme.of(context).colorScheme.secondary.withOpacity(0.05);
     }
 
     return Theme.of(context).colorScheme.primary.withOpacity(0.1);
