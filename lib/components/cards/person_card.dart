@@ -22,7 +22,9 @@ class PersonCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  ProjectColors(context).imageFilter,
+                  personItem.profilePath == null
+                      ? ProjectColors(context).imageFilter
+                      : ProjectColors(context).profileFilter,
                   BlendMode.color,
                 ),
                 child: ImageComponent(

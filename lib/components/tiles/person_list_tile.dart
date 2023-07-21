@@ -22,6 +22,7 @@ class PersonListTile extends StatelessWidget {
         person.name!,
         style: TextStyle(fontSize: 16, color: ProjectColors(context).text),
       ),
+      trailing: const Icon(Icons.chevron_right),
       leading: SizedBox(
         width: 45,
         height: 45 * 1.5,
@@ -29,7 +30,9 @@ class PersonListTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
-              ProjectColors(context).imageFilter,
+              person.profilePath == null
+                  ? ProjectColors(context).imageFilter
+                  : ProjectColors(context).profileFilter,
               BlendMode.color,
             ),
             child: ImageComponent(

@@ -36,7 +36,9 @@ class _PersonHeaderState extends State<PersonHeader> {
               borderRadius: BorderRadius.circular(15),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  ProjectColors(context).imageFilter,
+                  widget.person.profilePath == null
+                      ? ProjectColors(context).imageFilter
+                      : ProjectColors(context).profileFilter,
                   BlendMode.color,
                 ),
                 child: ImageComponent(

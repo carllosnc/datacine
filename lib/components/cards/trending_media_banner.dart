@@ -4,12 +4,12 @@ import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
 
-class MediaBanner extends StatelessWidget {
+class TrendingMediaBanner extends StatelessWidget {
   final MediaItem media;
   final MediaType mediaType;
   final String title;
 
-  const MediaBanner({
+  const TrendingMediaBanner({
     super.key,
     required this.media,
     required this.mediaType,

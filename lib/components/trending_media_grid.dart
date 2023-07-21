@@ -4,12 +4,12 @@ import '/domain/domain.dart';
 import '/components/components.dart';
 import '/core/core.dart';
 
-class SimpleMediaGrid extends StatelessWidget {
+class TrendingMediaGrid extends StatelessWidget {
   final List<MediaItem?> list;
   final double maxWidth;
   final MediaType mediaType;
 
-  const SimpleMediaGrid({
+  const TrendingMediaGrid({
     super.key,
     required this.list,
     required this.maxWidth,
