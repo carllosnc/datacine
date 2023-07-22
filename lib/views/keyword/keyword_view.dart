@@ -35,7 +35,7 @@ class KeywordView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: PageTitle(
-          text: "${mediaType.value.toUpperCase()}: ${keyword.name!}",
+          text: "${mediaType.value}  ·  ${keyword.name!}",
         ),
       ),
       body: MediaInfinityGrid(

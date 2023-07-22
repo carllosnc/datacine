@@ -17,14 +17,20 @@ class LinkButton extends StatelessWidget {
       height: 30,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: ProjectColors(context).linkButton(),
+          backgroundColor: ProjectColors(context).linkButton,
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 0,
           ),
         ),
         onPressed: onPressed,
-        child: Text(label),
+        child: Text(
+          label,
+          maxLines: 1,
+          style: const TextStyle(
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ),
     );
   }

@@ -44,7 +44,7 @@ class PersonContent extends StatelessWidget {
               items: [
                 GridMenuItem(
                   label: 'Movie Cast',
-                  icon: Icons.movie_outlined,
+                  icon: Icons.local_movies_outlined,
                   onTap: () {
                     var cast = person.movieCredits?['cast'];
                     showMediaCredit(
@@ -70,7 +70,7 @@ class PersonContent extends StatelessWidget {
                 ),
                 GridMenuItem(
                   label: 'TV Cast',
-                  icon: Icons.tv,
+                  icon: Icons.live_tv_outlined,
                   onTap: () {
                     var cast = person.tvCredits?['cast'];
                     showMediaCredit(
@@ -83,7 +83,7 @@ class PersonContent extends StatelessWidget {
                 ),
                 GridMenuItem(
                   label: 'TV Crew',
-                  icon: Icons.tv,
+                  icon: Icons.tv_outlined,
                   onTap: () {
                     var crew = person.tvCredits?['crew'];
                     showMediaCredit(

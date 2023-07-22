@@ -23,14 +23,8 @@ class ProjectColors {
   Color get title => Theme.of(context).colorScheme.tertiary;
   Color get featured => Theme.of(context).colorScheme.primary;
   Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.2);
-
-  Color linkButton() {
-    if (Theme.of(context).brightness == Brightness.dark) {
-      return Theme.of(context).colorScheme.secondary.withOpacity(0.05);
-    }
-
-    return Theme.of(context).colorScheme.primary.withOpacity(0.1);
-  }
+  Color get linkButton =>
+      Theme.of(context).colorScheme.secondary.withOpacity(0.1);
 
   Color randomColor() {
     var colors = [
