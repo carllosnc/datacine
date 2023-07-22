@@ -114,30 +114,7 @@ showSeasonDetails({
                       itemBuilder: (BuildContext context, int index) {
                         Episode episode = season.episodes![index];
 
-                        return ListTile(
-                          title: Text(
-                            episode.name!,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: ProjectColors(context).text,
-                            ),
-                          ),
-                          subtitle: Text(
-                            (episode.airDate ?? '').formatDateTime(),
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: ProjectColors(context).featured,
-                            ),
-                          ),
-                          leading: Text(
-                            episode.episodeNumber.toString(),
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: ProjectColors(context).label,
-                            ),
-                          ),
-                        );
+                        return EpisodeListTile(episode: episode);
                       },
                     ),
                   ),

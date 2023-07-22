@@ -24,16 +24,17 @@ class MovieCollectionCard extends StatelessWidget {
               context.push('/movie/${movie.id.toString()}');
             },
             child: Container(
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(13),
                 border: Border.all(
-                  color: Colors.transparent,
-                  width: 2,
+                  color: ProjectColors(context).featured,
+                  width: 1,
                 ),
               ),
               height: 200 * 1.5,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(10),
                 child: ImageComponent(
                   imagePath: movie.posterPath,
                   imageType: ImageType.poster,
@@ -42,7 +43,7 @@ class MovieCollectionCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

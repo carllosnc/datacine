@@ -56,7 +56,7 @@ class PersonContent extends StatelessWidget {
 
             // info
             PersonInfo(person: person),
-            const SizedBox(height: 30)
+            const SizedBox(height: 80)
           ],
         ),
       ),

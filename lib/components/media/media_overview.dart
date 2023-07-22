@@ -36,7 +36,6 @@ class MediaOverview extends StatelessWidget {
                       '"${movie?.tagline}"',
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
                         color: ProjectColors(context).featured,
                       ),
                     ),
@@ -48,7 +47,6 @@ class MediaOverview extends StatelessWidget {
                       '${movie?.overview}',
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
                         color: ProjectColors(context).text,
                       ),
                     ),

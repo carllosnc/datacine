@@ -61,3 +61,4 @@ export './cards/season_card.dart';
 export './tiles/company_list_tile.dart';
 export './tiles/person_list_tile.dart';
 export './tiles/media_list_tile.dart';
+export './tiles/episode_list_tile.dart';

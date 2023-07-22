@@ -1,3 +1,4 @@
+import 'package:datacine/components/components.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import 'company_tab.dart';
@@ -19,13 +20,7 @@ class _CompanyViewState extends State<CompanyView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.company.name!,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        title: PageTitle(text: widget.company.name!),
       ),
       body: [
         CompanyMovieTabs(

@@ -30,16 +30,17 @@ class SeasonCard extends StatelessWidget {
               );
             },
             child: Container(
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(13),
                 border: Border.all(
-                  color: Colors.transparent,
-                  width: 2,
+                  color: ProjectColors(context).featured,
+                  width: 1,
                 ),
               ),
               height: 200 * 1.5,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(10),
                 child: ImageComponent(
                   imagePath: season.posterPath,
                   imageType: ImageType.poster,
@@ -54,23 +55,24 @@ class SeasonCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                season.name!,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: ProjectColors(context).featured,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
                 (season.airDate ?? '').formatDateTime(),
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 12,
                   color: ProjectColors(context).text,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                season.name!,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  height: 1.2,
+                  fontSize: 14,
+                  color: ProjectColors(context).featured,
                 ),
               ),
             ],
