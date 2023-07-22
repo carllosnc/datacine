@@ -34,12 +34,8 @@ class KeywordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "${mediaType.value.toUpperCase()}: ${keyword.name!}",
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+        title: PageTitle(
+          text: "${mediaType.value.toUpperCase()}: ${keyword.name!}",
         ),
       ),
       body: MediaInfinityGrid(

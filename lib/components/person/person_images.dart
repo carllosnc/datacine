@@ -19,7 +19,7 @@ class PersonImages extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Profile images',
+            '· Profile images',
             style: TextStyle(
               fontSize: 16,
               color: ProjectColors(context).title,

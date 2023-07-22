@@ -10,17 +10,17 @@ class EpisodeListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(
+      subtitle: Text(
         episode.name!,
         style: TextStyle(
           fontSize: 14,
           color: ProjectColors(context).text,
         ),
       ),
-      subtitle: Text(
+      title: Text(
         (episode.airDate ?? '').formatDateTime(),
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 12,
           color: ProjectColors(context).featured,
         ),
       ),

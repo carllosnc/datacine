@@ -31,7 +31,9 @@ class TvShowSeasons extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                seasons.length == 1 ? '1 Season' : '${seasons.length} Seasons',
+                seasons.length == 1
+                    ? '· 1 Season'
+                    : '· ${seasons.length} Seasons',
                 style: TextStyle(
                   fontSize: 16,
                   color: ProjectColors(context).title,

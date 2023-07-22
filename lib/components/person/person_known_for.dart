@@ -39,7 +39,7 @@ class PersonKnownFor extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Known for',
+            '· Known for',
             style: TextStyle(
               fontSize: 16,
               color: ProjectColors(context).title,

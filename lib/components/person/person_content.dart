@@ -31,13 +31,7 @@ class PersonContent extends StatelessWidget {
             person: person,
           ),
         ],
-        title: Text(
-          person.name!,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        title: PageTitle(text: person.name!),
       ),
       body: SingleChildScrollView(
         child: Column(

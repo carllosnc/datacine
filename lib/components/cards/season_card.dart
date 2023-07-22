@@ -34,7 +34,7 @@ class SeasonCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(13),
                 border: Border.all(
-                  color: ProjectColors(context).featured,
+                  color: ProjectColors(context).featured.withOpacity(0.4),
                   width: 1,
                 ),
               ),
