@@ -74,7 +74,7 @@ class _PersonHeaderState extends State<PersonHeader> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
-                  color: ProjectColors(context).featured,
+                  color: ProjectColors(context).text,
                 ),
               )
             ],

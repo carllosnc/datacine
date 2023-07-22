@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import '/components/components.dart';
-import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 
 class TvShowView extends StatefulWidget {
@@ -64,6 +64,53 @@ class _TvShowViewState extends State<TvShowView> {
               children: [
                 MediaHeader(tvshow: tvshow),
 
+                const SectionDivider(),
+
+                GridMenu(
+                  items: [
+                    GridMenuItem(
+                      label: 'Posters',
+                      icon: Icons.image_outlined,
+                      onTap: () {
+                        context.push(
+                          '/tv/$widget.id/images',
+                          extra: tvshow,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Credits',
+                      icon: Icons.people_outlined,
+                      onTap: () {
+                        context.push(
+                          '/tv/$widget.id/credits',
+                          extra: tvshow,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Recommendations',
+                      icon: Icons.thumb_up_outlined,
+                      onTap: () {
+                        context.push(
+                          '/tv/$widget.id/recommendations',
+                          extra: tvshow,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Similar',
+                      icon: Icons.movie_outlined,
+                      onTap: () {
+                        context.push(
+                          '/tv/$widget.id/similar',
+                          extra: tvshow,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+
                 //keyword
                 SectionDivider(condition: hasKeywords),
                 MediaKeywords(tvshow: tvshow),
@@ -87,53 +134,9 @@ class _TvShowViewState extends State<TvShowView> {
                   maxWidth: MediaQuery.of(context).size.width,
                 ),
 
-                const SizedBox(height: 110),
+                const SizedBox(height: 50),
               ],
             ),
-          ),
-          bottomNavigationBar: BottomMenu(
-            items: [
-              BottomItem(
-                icon: Icons.image_outlined,
-                label: "Images",
-                onTap: () {
-                  context.push(
-                    '/tv/${tvshow.id}/images',
-                    extra: tvshow,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.person_outline,
-                label: "Credits",
-                onTap: () {
-                  context.push(
-                    '/tv/${tvshow.id}/credits',
-                    extra: tvshow,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.thumb_up_outlined,
-                label: "Recom.",
-                onTap: () {
-                  context.push(
-                    '/tv/${tvshow.id}/recommendations',
-                    extra: tvshow,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.tv_outlined,
-                label: "Similar",
-                onTap: () {
-                  context.push(
-                    '/tv/${tvshow.id}/similar',
-                    extra: tvshow,
-                  );
-                },
-              ),
-            ],
           ),
         );
       },

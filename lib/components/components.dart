@@ -2,7 +2,6 @@ export './empty.dart';
 export './section_divider.dart';
 export './trending_media_grid.dart';
 export './image_component.dart';
-export './bottom_menu.dart';
 export './modal_header.dart';
 export './custom_search/custom_search.dart';
 export './loading.dart';
@@ -10,6 +9,7 @@ export './link_button.dart';
 export './open_full_image.dart';
 export './error.dart';
 export './typography/page_title.dart';
+export './grid_menu.dart';
 
 //company
 export './company/company_infinity_grid.dart';

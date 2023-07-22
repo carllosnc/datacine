@@ -58,6 +58,53 @@ class MovieView extends StatelessWidget {
               children: [
                 MediaHeader(movie: movie),
 
+                const SectionDivider(),
+
+                GridMenu(
+                  items: [
+                    GridMenuItem(
+                      label: 'Posters',
+                      icon: Icons.image_outlined,
+                      onTap: () {
+                        context.push(
+                          '/movie/$id/images',
+                          extra: movie,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Credits',
+                      icon: Icons.people_outlined,
+                      onTap: () {
+                        context.push(
+                          '/movie/$id/credits',
+                          extra: movie,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Recommendations',
+                      icon: Icons.thumb_up_outlined,
+                      onTap: () {
+                        context.push(
+                          '/movie/$id/recommendations',
+                          extra: movie,
+                        );
+                      },
+                    ),
+                    GridMenuItem(
+                      label: 'Similar',
+                      icon: Icons.movie_outlined,
+                      onTap: () {
+                        context.push(
+                          '/movie/$id/similar',
+                          extra: movie,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+
                 //keyword
                 SectionDivider(condition: hasKeywords),
                 MediaKeywords(movie: movie),
@@ -77,53 +124,9 @@ class MovieView extends StatelessWidget {
                 //collection
                 SectionDivider(condition: hasCollection),
                 MovieCollection(movie: movie),
-                const SizedBox(height: 110),
+                const SizedBox(height: 50),
               ],
             ),
-          ),
-          bottomNavigationBar: BottomMenu(
-            items: [
-              BottomItem(
-                icon: Icons.image_outlined,
-                label: "Images",
-                onTap: () {
-                  context.push(
-                    '/movie/${movie.id}/images',
-                    extra: movie,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.person_outline,
-                label: "Credits",
-                onTap: () {
-                  context.push(
-                    '/movie/${movie.id}/credits',
-                    extra: movie,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.thumb_up_outlined,
-                label: "Recom.",
-                onTap: () {
-                  context.push(
-                    '/movie/${movie.id}/recommendations',
-                    extra: movie,
-                  );
-                },
-              ),
-              BottomItem(
-                icon: Icons.movie_outlined,
-                label: "Similar",
-                onTap: () {
-                  context.push(
-                    '/movie/${movie.id}/similar',
-                    extra: movie,
-                  );
-                },
-              ),
-            ],
           ),
         );
       },

@@ -40,6 +40,65 @@ class PersonContent extends StatelessWidget {
             PersonHeader(person: person),
             const SectionDivider(),
 
+            GridMenu(
+              items: [
+                GridMenuItem(
+                  label: 'Movie Cast',
+                  icon: Icons.movie_outlined,
+                  onTap: () {
+                    var cast = person.movieCredits?['cast'];
+                    showMediaCredit(
+                      context,
+                      cast,
+                      MediaType.movie,
+                      "${person.name}: Movie Cast",
+                    );
+                  },
+                ),
+                GridMenuItem(
+                  label: 'Movie Crew',
+                  icon: Icons.movie_outlined,
+                  onTap: () {
+                    var crew = person.movieCredits?['crew'];
+                    showMediaCredit(
+                      context,
+                      crew,
+                      MediaType.movie,
+                      "${person.name}: Movie Crew",
+                    );
+                  },
+                ),
+                GridMenuItem(
+                  label: 'TV Cast',
+                  icon: Icons.tv,
+                  onTap: () {
+                    var cast = person.tvCredits?['cast'];
+                    showMediaCredit(
+                      context,
+                      cast,
+                      MediaType.tv,
+                      "${person.name}: TV Cast",
+                    );
+                  },
+                ),
+                GridMenuItem(
+                  label: 'TV Crew',
+                  icon: Icons.tv,
+                  onTap: () {
+                    var crew = person.tvCredits?['crew'];
+                    showMediaCredit(
+                      context,
+                      crew,
+                      MediaType.tv,
+                      "${person.name}: TV Crew",
+                    );
+                  },
+                ),
+              ],
+            ),
+
+            const SectionDivider(),
+
             // known for
             if (hasCredits) PersonKnownFor(person: person),
             if (hasCredits) const SectionDivider(),
@@ -50,65 +109,9 @@ class PersonContent extends StatelessWidget {
 
             // info
             PersonInfo(person: person),
-            const SizedBox(height: 80)
+            const SizedBox(height: 50)
           ],
         ),
-      ),
-      bottomNavigationBar: BottomMenu(
-        items: [
-          BottomItem(
-            icon: Icons.movie_outlined,
-            label: "Movie cast",
-            onTap: () {
-              var cast = person.movieCredits?['cast'];
-              showMediaCredit(
-                context,
-                cast,
-                MediaType.movie,
-                "${person.name}: Movie Cast",
-              );
-            },
-          ),
-          BottomItem(
-            icon: Icons.movie_outlined,
-            label: "Movie crew",
-            onTap: () {
-              var crew = person.movieCredits?['crew'];
-              showMediaCredit(
-                context,
-                crew,
-                MediaType.movie,
-                "${person.name}: Movie Crew",
-              );
-            },
-          ),
-          BottomItem(
-            icon: Icons.tv,
-            label: "TV Cast",
-            onTap: () {
-              var cast = person.tvCredits?['cast'];
-              showMediaCredit(
-                context,
-                cast,
-                MediaType.tv,
-                "${person.name}: TV Cast",
-              );
-            },
-          ),
-          BottomItem(
-            icon: Icons.tv,
-            label: "TV Crew",
-            onTap: () {
-              var crew = person.tvCredits?['crew'];
-              showMediaCredit(
-                context,
-                crew,
-                MediaType.tv,
-                "${person.name}: TV Crew",
-              );
-            },
-          ),
-        ],
       ),
     );
   }
