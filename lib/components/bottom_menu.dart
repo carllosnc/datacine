@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:datacine/core/constants/colors.dart';
 
@@ -21,12 +23,12 @@ class BottomItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
       child: Material(
-        color: Colors.transparent,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         child: InkWell(
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 15,
+              horizontal: 20,
             ),
             child: Center(
               child: Wrap(
@@ -65,16 +67,20 @@ class BottomMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      clipBehavior: Clip.hardEdge,
+      height: 65,
       decoration: BoxDecoration(
-        color: ProjectColors(context).bottomBarBackground,
+        color: Theme.of(context).colorScheme.background.withOpacity(0.7),
       ),
-      child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        scrollDirection: Axis.horizontal,
-        itemCount: items.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 0),
-        itemBuilder: (context, index) => items[index],
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          scrollDirection: Axis.horizontal,
+          itemCount: items.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 10),
+          itemBuilder: (context, index) => items[index],
+        ),
       ),
     );
   }

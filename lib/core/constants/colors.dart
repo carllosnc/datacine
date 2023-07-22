@@ -17,7 +17,7 @@ class ProjectColors {
   Color get logoFilter => Theme.of(context).colorScheme.primary;
   Color get textError => Theme.of(context).colorScheme.error;
   Color get bottomBarBackground =>
-      Theme.of(context).colorScheme.secondaryContainer;
+      Theme.of(context).colorScheme.primaryContainer;
   Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
   Color get text => Theme.of(context).colorScheme.onSurface;
   Color get title => Theme.of(context).colorScheme.tertiary;
