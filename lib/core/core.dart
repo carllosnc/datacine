@@ -8,3 +8,4 @@ export 'constants/image_size.dart';
 export 'constants/media_type.dart';
 export 'constants/languages.dart';
 export 'constants/search_type.dart';
+export 'shared_preferences/shared_preferences.dart';

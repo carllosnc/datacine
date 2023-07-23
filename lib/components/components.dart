@@ -10,6 +10,7 @@ export './open_full_image.dart';
 export './error.dart';
 export './typography/page_title.dart';
 export './grid_menu.dart';
+export './welcome.dart';
 
 //company
 export './company/company_infinity_grid.dart';

@@ -20,6 +20,8 @@ class _HomeViewState extends State<HomeView>
   bool _showMovieFilter = false;
   bool _showTvShowFilter = false;
 
+  bool firstTime = SharedPrefs().prefs.getBool('welcome') ?? true;
+
   @override
   initState() {
     super.initState();
@@ -53,6 +55,16 @@ class _HomeViewState extends State<HomeView>
 
   @override
   Widget build(BuildContext context) {
+    if (firstTime) {
+      return Welcome(
+        onPressed: () {
+          setState(() {
+            firstTime = false;
+          });
+        },
+      );
+    }
+
     return DefaultTabController(
       initialIndex: 0,
       length: 4,
@@ -111,6 +123,13 @@ class _HomeViewState extends State<HomeView>
                 );
               },
               icon: const Icon(Icons.search),
+            ),
+            //clear shared prefs
+            IconButton(
+              onPressed: () {
+                SharedPrefs().prefs.clear();
+              },
+              icon: const Icon(Icons.clear),
             ),
           ],
           bottom: TabBar(
