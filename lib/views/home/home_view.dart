@@ -124,13 +124,6 @@ class _HomeViewState extends State<HomeView>
               },
               icon: const Icon(Icons.search),
             ),
-            //clear shared prefs
-            IconButton(
-              onPressed: () {
-                SharedPrefs().prefs.clear();
-              },
-              icon: const Icon(Icons.clear),
-            ),
           ],
           bottom: TabBar(
             controller: _tabController,
