@@ -64,7 +64,7 @@ class MovieView extends StatelessWidget {
                   items: [
                     GridMenuItem(
                       label: 'Posters',
-                      icon: Icons.image_outlined,
+                      icon: Icons.image,
                       onTap: () {
                         context.push(
                           '/movie/$id/images',
@@ -74,7 +74,7 @@ class MovieView extends StatelessWidget {
                     ),
                     GridMenuItem(
                       label: 'Credits',
-                      icon: Icons.people_outlined,
+                      icon: Icons.people,
                       onTap: () {
                         context.push(
                           '/movie/$id/credits',
@@ -84,7 +84,7 @@ class MovieView extends StatelessWidget {
                     ),
                     GridMenuItem(
                       label: 'Recommendations',
-                      icon: Icons.thumb_up_outlined,
+                      icon: Icons.thumb_up,
                       onTap: () {
                         context.push(
                           '/movie/$id/recommendations',
@@ -94,7 +94,7 @@ class MovieView extends StatelessWidget {
                     ),
                     GridMenuItem(
                       label: 'Similar',
-                      icon: Icons.movie_outlined,
+                      icon: Icons.movie,
                       onTap: () {
                         context.push(
                           '/movie/$id/similar',

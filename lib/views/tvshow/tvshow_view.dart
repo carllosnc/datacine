@@ -70,7 +70,7 @@ class _TvShowViewState extends State<TvShowView> {
                   items: [
                     GridMenuItem(
                       label: 'Posters',
-                      icon: Icons.image_outlined,
+                      icon: Icons.image,
                       onTap: () {
                         context.push(
                           '/tv/$widget.id/images',
@@ -80,7 +80,7 @@ class _TvShowViewState extends State<TvShowView> {
                     ),
                     GridMenuItem(
                       label: 'Credits',
-                      icon: Icons.people_outlined,
+                      icon: Icons.people,
                       onTap: () {
                         context.push(
                           '/tv/$widget.id/credits',
@@ -90,7 +90,7 @@ class _TvShowViewState extends State<TvShowView> {
                     ),
                     GridMenuItem(
                       label: 'Recommendations',
-                      icon: Icons.thumb_up_outlined,
+                      icon: Icons.thumb_up,
                       onTap: () {
                         context.push(
                           '/tv/$widget.id/recommendations',
@@ -100,7 +100,7 @@ class _TvShowViewState extends State<TvShowView> {
                     ),
                     GridMenuItem(
                       label: 'Similar',
-                      icon: Icons.movie_outlined,
+                      icon: Icons.movie,
                       onTap: () {
                         context.push(
                           '/tv/$widget.id/similar',

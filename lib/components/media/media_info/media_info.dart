@@ -145,7 +145,7 @@ class MediaInfo extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.description_outlined),
+      icon: const Icon(Icons.description),
     );
   }
 }
