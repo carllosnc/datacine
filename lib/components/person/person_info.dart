@@ -23,7 +23,7 @@ class PersonInfo extends StatelessWidget {
                 spacing: 5,
                 children: [
                   Text(
-                    "· Birthday",
+                    "Birthday",
                     style: TextStyle(
                       color: ProjectColors(context).title,
                     ),
@@ -31,6 +31,7 @@ class PersonInfo extends StatelessWidget {
                   Text(
                     person.birthday!.formatDateTime(),
                     style: TextStyle(
+                      fontSize: 14,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -43,7 +44,7 @@ class PersonInfo extends StatelessWidget {
                 spacing: 5,
                 children: [
                   Text(
-                    "· Deathday",
+                    "Deathday",
                     style: TextStyle(
                       color: ProjectColors(context).title,
                     ),
@@ -51,6 +52,7 @@ class PersonInfo extends StatelessWidget {
                   Text(
                     person.deathday!.formatDateTime(),
                     style: TextStyle(
+                      fontSize: 14,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -62,7 +64,7 @@ class PersonInfo extends StatelessWidget {
                 spacing: 5,
                 children: [
                   Text(
-                    "· Place of birth",
+                    "Place of birth",
                     style: TextStyle(
                       color: ProjectColors(context).title,
                     ),
@@ -70,6 +72,7 @@ class PersonInfo extends StatelessWidget {
                   Text(
                     person.placeOfBirth!,
                     style: TextStyle(
+                      fontSize: 14,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -81,7 +84,7 @@ class PersonInfo extends StatelessWidget {
                 direction: Axis.vertical,
                 children: [
                   Text(
-                    "· Biography",
+                    "Biography",
                     style: TextStyle(
                       color: ProjectColors(context).title,
                     ),
@@ -91,6 +94,7 @@ class PersonInfo extends StatelessWidget {
                     child: Text(
                       person.biography!,
                       style: TextStyle(
+                        fontSize: 14,
                         color: ProjectColors(context).text,
                       ),
                     ),

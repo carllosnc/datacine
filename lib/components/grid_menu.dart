@@ -17,7 +17,7 @@ class GridMenuItem extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(14)),
+        borderRadius: BorderRadius.all(Radius.circular(3)),
       ),
       child: Material(
         color: Theme.of(context).colorScheme.secondary.withOpacity(0.08),
@@ -63,8 +63,8 @@ class GridMenu extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
         childAspectRatio: 2.2,
       ),
       children: items,

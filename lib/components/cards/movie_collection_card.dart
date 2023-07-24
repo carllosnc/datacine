@@ -26,7 +26,7 @@ class MovieCollectionCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(
                   color: ProjectColors(context).featured.withOpacity(0.4),
                   width: 1,
@@ -34,7 +34,7 @@ class MovieCollectionCard extends StatelessWidget {
               ),
               height: 200 * 1.5,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(3),
                 child: ImageComponent(
                   imagePath: movie.posterPath,
                   imageType: ImageType.poster,

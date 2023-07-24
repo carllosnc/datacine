@@ -26,14 +26,14 @@ class _PersonHeaderState extends State<PersonHeader> {
             width: 200,
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: ProjectColors(context).featured,
-                width: 2,
+                width: 1,
               ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(5),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   widget.person.profilePath == null

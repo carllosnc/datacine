@@ -12,7 +12,7 @@ class ProjectColors {
   Color status = const Color.fromARGB(255, 225, 99, 247);
 
   Color get imageBackground => Colors.black;
-  Color get imageFilter => Theme.of(context).colorScheme.secondary;
+  Color get imageFilter => Theme.of(context).colorScheme.background;
   Color get profileFilter => Theme.of(context).colorScheme.background;
   Color get logoFilter => Theme.of(context).colorScheme.primary;
   Color get textError => Theme.of(context).colorScheme.error;

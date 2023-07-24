@@ -151,9 +151,8 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '$selectedLang: ${filteredPosters.length}',
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        title: PageTitle(
+          text: '$selectedLang: ${filteredPosters.length}',
         ),
         actions: selectLang(context),
       ),

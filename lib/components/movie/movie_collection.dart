@@ -56,7 +56,7 @@ class MovieCollection extends StatelessWidget {
                   runSpacing: 10,
                   children: [
                     Text(
-                      "· ${(movie.belongsToCollection!.name)}",
+                      "${(movie.belongsToCollection!.name)}",
                       style: TextStyle(
                         fontSize: 16,
                         color: ProjectColors(context).title,

@@ -43,7 +43,7 @@ class PersonContent extends StatelessWidget {
             GridMenu(
               items: [
                 GridMenuItem(
-                  label: 'Movie Cast',
+                  label: 'Movie cast',
                   icon: Icons.local_movies,
                   onTap: () {
                     var cast = person.movieCredits?['cast'];
@@ -56,7 +56,7 @@ class PersonContent extends StatelessWidget {
                   },
                 ),
                 GridMenuItem(
-                  label: 'Movie Crew',
+                  label: 'Movie crew',
                   icon: Icons.movie,
                   onTap: () {
                     var crew = person.movieCredits?['crew'];
@@ -69,7 +69,7 @@ class PersonContent extends StatelessWidget {
                   },
                 ),
                 GridMenuItem(
-                  label: 'TV Cast',
+                  label: 'TV cast',
                   icon: Icons.live_tv,
                   onTap: () {
                     var cast = person.tvCredits?['cast'];
@@ -82,7 +82,7 @@ class PersonContent extends StatelessWidget {
                   },
                 ),
                 GridMenuItem(
-                  label: 'TV Crew',
+                  label: 'TV crew',
                   icon: Icons.tv,
                   onTap: () {
                     var crew = person.tvCredits?['crew'];

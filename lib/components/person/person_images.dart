@@ -19,7 +19,7 @@ class PersonImages extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '· Profile images',
+            'Profile images',
             style: TextStyle(
               fontSize: 16,
               color: ProjectColors(context).title,
@@ -54,7 +54,7 @@ class PersonImages extends StatelessWidget {
                   width: 130,
                   height: 130 * 1.5,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(3),
                     child: ImageComponent(
                       imagePath: (image.filePath),
                       imageType: ImageType.profile,

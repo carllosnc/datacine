@@ -27,12 +27,12 @@ class MediaHeader extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: ProjectColors(context).featured,
-                  width: 2,
+                  width: 1,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(5),
                 child: ImageComponent(
                   imagePath: (movie?.posterPath ?? tvshow?.posterPath),
                   imageType: ImageType.poster,
@@ -83,7 +83,7 @@ class MediaHeader extends StatelessWidget {
               child: Text(
                 (movie?.title ?? tvshow?.name)!,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   height: 1.2,
                   fontWeight: FontWeight.w400,
                   color: ProjectColors(context).title,

@@ -20,14 +20,17 @@ class PersonListTile extends StatelessWidget {
       },
       title: Text(
         person.name!,
-        style: TextStyle(fontSize: 16, color: ProjectColors(context).text),
+        style: TextStyle(
+          fontSize: 14,
+          color: ProjectColors(context).text,
+        ),
       ),
       trailing: const Icon(Icons.chevron_right),
       leading: SizedBox(
         width: 45,
         height: 45 * 1.5,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(3),
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
               person.profilePath == null
@@ -50,7 +53,7 @@ class PersonListTile extends StatelessWidget {
             person.department ??
             '-',
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 12,
           color: ProjectColors(context).featured,
         ),
       ),

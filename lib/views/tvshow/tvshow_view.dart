@@ -122,7 +122,7 @@ class _TvShowViewState extends State<TvShowView> {
                 //cast
                 SectionDivider(condition: hasCast),
                 PersonHorizontalList(
-                  title: '· Cast',
+                  title: 'Cast',
                   list: tvshow.credits!['cast']!,
                   maxWidth: double.infinity,
                 ),

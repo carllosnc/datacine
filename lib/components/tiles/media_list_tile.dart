@@ -33,14 +33,14 @@ class MediaListTile extends StatelessWidget {
       title: Text(
         item.title ?? item.name ?? '-',
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 14,
           color: ProjectColors(context).text,
         ),
       ),
       subtitle: Text(
         "${(item.releaseDate ?? item.firstAirDate!).formatYear()} — ${item.mediaType!.capitalize()}",
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 12,
           color: ProjectColors(context).featured,
         ),
       ),

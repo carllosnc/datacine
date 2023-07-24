@@ -19,11 +19,11 @@ class CompanyListTile extends StatelessWidget {
       },
       title: Text(
         company.name!,
-        style: const TextStyle(fontSize: 15),
+        style: const TextStyle(fontSize: 14),
       ),
       leading: Icon(
-        Icons.apartment,
-        color: ProjectColors(context).featured,
+        Icons.factory,
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
       ),
       subtitle: Text(
         company.originCountry!.isEmpty ? '―' : company.originCountry ?? '―',
