@@ -6,8 +6,14 @@ import '/app.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // load dotenv
   await dotenv.load(fileName: ".env");
+
+  // load shared preferences
   await SharedPrefs().loadPreferences();
+
+  //load shorebird
+  await ShoreBird().loadShoreBird();
 
   runApp(const App());
 }

@@ -90,7 +90,7 @@ class MediaHeader extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 25),
             MovieDirectors(credits: movie?.credits),
             TvShowCreators(creators: tvshow?.createdBy),
             const SectionDivider(),

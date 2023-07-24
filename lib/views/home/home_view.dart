@@ -115,6 +115,7 @@ class _HomeViewState extends State<HomeView>
             ),
           ),
           actions: [
+            const AppVersion(),
             IconButton(
               onPressed: () {
                 showSearch(

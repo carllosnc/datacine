@@ -11,6 +11,7 @@ export './error.dart';
 export './typography/page_title.dart';
 export './grid_menu.dart';
 export './welcome.dart';
+export './app_version.dart';
 
 //company
 export './company/company_infinity_grid.dart';
