@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "cnc.datacine"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -71,6 +71,7 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+            //signingConfig signingConfigs.debug
         }
     }
 }
