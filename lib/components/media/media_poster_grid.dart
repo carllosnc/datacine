@@ -153,15 +153,9 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            PageTitle(
-              text: '$selectedLang: ${filteredPosters.length}',
-            ),
-            const SizedBox(height: 3),
-            PageSubtitle(text: widget.title)
-          ],
+        title: PageTitle(
+          title: '$selectedLang: ${filteredPosters.length}',
+          subtitle: widget.title,
         ),
         actions: selectLang(context),
       ),

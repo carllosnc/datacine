@@ -32,7 +32,7 @@ class PersonContent extends StatelessWidget {
             person: person,
           ),
         ],
-        title: PageTitle(text: person.name!),
+        title: PageTitle(title: person.name!),
       ),
       body: SingleChildScrollView(
         child: Column(

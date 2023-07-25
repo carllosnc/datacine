@@ -57,11 +57,7 @@ class _TvShowViewState extends State<TvShowView> {
             actions: [
               MediaInfo(tvShow: tvshow),
             ],
-            title: Column(
-              children: [
-                PageTitle(text: tvshow.name!),
-              ],
-            ),
+            title: PageTitle(title: tvshow.name!),
           ),
           body: SingleChildScrollView(
             child: Column(

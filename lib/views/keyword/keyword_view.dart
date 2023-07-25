@@ -34,17 +34,9 @@ class KeywordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            PageTitle(
-              text: keyword.name!,
-            ),
-            const SizedBox(height: 3),
-            PageSubtitle(
-              text: "Keyword for ${mediaType.value}",
-            ),
-          ],
+        title: PageTitle(
+          title: keyword.name!,
+          subtitle: "Keyword for ${mediaType.value}",
         ),
       ),
       body: MediaInfinityGrid(

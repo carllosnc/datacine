@@ -34,9 +34,7 @@ class TvShowSimilarView extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const PageTitle(text: 'Similar TV Shows'),
-            const SizedBox(height: 3),
-            PageSubtitle(text: tvshow.name!),
+            PageTitle(title: 'Similar TV Shows', subtitle: tvshow.name!),
           ],
         ),
       ),

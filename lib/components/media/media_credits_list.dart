@@ -75,7 +75,9 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: showSearch ? filter(context) : title(),
+          title: showSearch
+              ? filter(context)
+              : PageTitle(title: 'Credits', subtitle: widget.title),
           actions: [
             IconButton(
               onPressed: () {
@@ -124,19 +126,6 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget title() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const PageTitle(text: 'Credits'),
-        const SizedBox(height: 3),
-        PageSubtitle(
-          text: widget.title,
-        )
-      ],
     );
   }
 }

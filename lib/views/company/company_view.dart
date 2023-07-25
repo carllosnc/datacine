@@ -21,7 +21,7 @@ class _CompanyViewState extends State<CompanyView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: PageTitle(text: widget.company.name!),
+        title: PageTitle(title: widget.company.name!),
       ),
       body: [
         CompanyMovieTabs(

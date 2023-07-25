@@ -31,13 +31,9 @@ class MovieSimilarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const PageTitle(text: 'Similar'),
-            const SizedBox(height: 3),
-            PageSubtitle(text: movie.title!),
-          ],
+        title: PageTitle(
+          title: 'Similar',
+          subtitle: movie.title!,
         ),
       ),
       body: MediaInfinityGrid(

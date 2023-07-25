@@ -13,7 +13,6 @@ export './welcome.dart';
 export './app_version.dart';
 
 export './typography/page_title.dart';
-export './typography/page_subtitle.dart';
 
 //company
 export './company/company_infinity_grid.dart';

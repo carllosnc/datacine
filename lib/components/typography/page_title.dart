@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
+import '/core/core.dart';
 
 class PageTitle extends StatelessWidget {
-  final String text;
+  final String title;
+  final String? subtitle;
 
-  const PageTitle({super.key, required this.text});
+  const PageTitle({
+    super.key,
+    required this.title,
+    this.subtitle,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontSize: 16,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        if (subtitle != null) const SizedBox(height: 3),
+        if (subtitle != null)
+          Text(
+            subtitle ?? '-',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(
+              color: ProjectColors(context).label,
+              fontSize: 12,
+            ),
+            textAlign: TextAlign.center,
+          )
+      ],
     );
   }
 }
