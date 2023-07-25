@@ -12,6 +12,6 @@ class MovieImagesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaPosterGrid(images: movie.images);
+    return MediaPosterGrid(images: movie.images, title: movie.title!);
   }
 }

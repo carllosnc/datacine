@@ -7,8 +7,13 @@ enum CreditType { cast, crew }
 
 class MediaCreditsList extends StatefulWidget {
   final Map<String, List<PersonItem>>? credits;
+  final String title;
 
-  const MediaCreditsList({super.key, required this.credits});
+  const MediaCreditsList({
+    super.key,
+    required this.credits,
+    required this.title,
+  });
 
   @override
   State<MediaCreditsList> createState() => _MediaCreditsListState();
@@ -18,6 +23,30 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
   bool showSearch = false;
   String searchQuery = "";
   CreditType creditView = CreditType.cast;
+
+  TextField filter(BuildContext context) {
+    return TextField(
+      onChanged: (value) {
+        String query = value.toLowerCase();
+        setState(() {
+          searchQuery = query;
+        });
+      },
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 0,
+        ),
+        hintText: 'Search',
+        hintStyle: TextStyle(
+          color: ProjectColors(context).text.withOpacity(0.5),
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        ),
+        border: const UnderlineInputBorder(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,29 +75,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: showSearch
-              ? TextField(
-                  onChanged: (value) {
-                    String query = value.toLowerCase();
-                    setState(() {
-                      searchQuery = query;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 0,
-                    ),
-                    hintText: 'Search',
-                    hintStyle: TextStyle(
-                      color: ProjectColors(context).text.withOpacity(0.5),
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    border: const UnderlineInputBorder(),
-                  ),
-                )
-              : const PageTitle(text: 'Credits'),
+          title: showSearch ? filter(context) : title(),
           actions: [
             IconButton(
               onPressed: () {
@@ -117,6 +124,19 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget title() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const PageTitle(text: 'Credits'),
+        const SizedBox(height: 3),
+        PageSubtitle(
+          text: widget.title,
+        )
+      ],
     );
   }
 }

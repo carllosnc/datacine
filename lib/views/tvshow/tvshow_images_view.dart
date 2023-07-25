@@ -14,6 +14,7 @@ class TvShowImagesView extends StatefulWidget {
 class _TvShowImagesViewState extends State<TvShowImagesView> {
   @override
   Widget build(BuildContext context) {
-    return MediaPosterGrid(images: widget.tvshow.images);
+    return MediaPosterGrid(
+        images: widget.tvshow.images, title: widget.tvshow.name!);
   }
 }

@@ -16,6 +16,9 @@ class MovieCreditsView extends StatelessWidget {
       return const EmptyView();
     }
 
-    return MediaCreditsList(credits: movie.credits);
+    return MediaCreditsList(
+      credits: movie.credits,
+      title: movie.title!,
+    );
   }
 }

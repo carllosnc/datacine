@@ -20,8 +20,5 @@ appTheme(BuildContext context) {
     useMaterial3: true,
     colorSchemeSeed: ProjectColors(context).randomColor(),
     brightness: Brightness.dark,
-    appBarTheme: const AppBarTheme(
-      centerTitle: true,
-    ),
   );
 }

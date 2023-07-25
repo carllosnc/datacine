@@ -32,7 +32,14 @@ class MovieRecommendationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const PageTitle(text: 'Recommendations'),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const PageTitle(text: 'Recommendations'),
+            const SizedBox(height: 3),
+            PageSubtitle(text: movie.title!),
+          ],
+        ),
       ),
       body: MediaInfinityGrid(
         mediaType: MediaType.movie,

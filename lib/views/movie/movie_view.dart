@@ -47,6 +47,7 @@ class MovieView extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
+            centerTitle: true,
             title: PageTitle(text: movie.title!),
             actions: [
               MediaInfo(movie: movie),

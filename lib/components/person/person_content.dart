@@ -26,6 +26,7 @@ class PersonContent extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         actions: [
           PersonExternalLinks(
             person: person,

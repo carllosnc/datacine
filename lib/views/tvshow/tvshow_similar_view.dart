@@ -31,7 +31,14 @@ class TvShowSimilarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const PageTitle(text: 'Similar TV Shows'),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const PageTitle(text: 'Similar TV Shows'),
+            const SizedBox(height: 3),
+            PageSubtitle(text: tvshow.name!),
+          ],
+        ),
       ),
       body: MediaInfinityGrid(
         mediaType: MediaType.tv,

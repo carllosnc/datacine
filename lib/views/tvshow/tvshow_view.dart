@@ -53,10 +53,15 @@ class _TvShowViewState extends State<TvShowView> {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
+            centerTitle: true,
             actions: [
               MediaInfo(tvShow: tvshow),
             ],
-            title: PageTitle(text: tvshow.name!),
+            title: Column(
+              children: [
+                PageTitle(text: tvshow.name!),
+              ],
+            ),
           ),
           body: SingleChildScrollView(
             child: Column(

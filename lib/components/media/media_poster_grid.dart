@@ -5,10 +5,12 @@ import '/components/components.dart';
 
 class MediaPosterGrid extends StatefulWidget {
   final Map<String, List<ImageItem>?>? images;
+  final String title;
 
   const MediaPosterGrid({
     super.key,
     required this.images,
+    required this.title,
   });
 
   @override
@@ -151,8 +153,15 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: PageTitle(
-          text: '$selectedLang: ${filteredPosters.length}',
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            PageTitle(
+              text: '$selectedLang: ${filteredPosters.length}',
+            ),
+            const SizedBox(height: 3),
+            PageSubtitle(text: widget.title)
+          ],
         ),
         actions: selectLang(context),
       ),
