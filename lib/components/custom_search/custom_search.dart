@@ -9,13 +9,13 @@ class CustomSearchDelegate extends SearchDelegate {
       appBarTheme: const AppBarTheme(),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(100),
           borderSide: BorderSide.none,
         ),
         filled: true,
         fillColor: Theme.of(context).colorScheme.secondaryContainer,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 15,
+          horizontal: 25,
           vertical: 0,
         ),
       ),

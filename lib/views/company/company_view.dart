@@ -20,6 +20,7 @@ class _CompanyViewState extends State<CompanyView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: PageTitle(text: widget.company.name!),
       ),
       body: [

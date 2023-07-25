@@ -17,7 +17,7 @@ class GridMenuItem extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(3)),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
       child: Material(
         color: Theme.of(context).colorScheme.secondary.withOpacity(0.08),
