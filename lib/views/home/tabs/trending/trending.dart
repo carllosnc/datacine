@@ -45,6 +45,14 @@ class _TrendingTabState extends State<TrendingTab>
               child: Column(
                 children: [
                   const SizedBox(height: 20),
+                  Text(
+                    "First rule: You don't talk about Datacine.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: ProjectColors(context).label,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   TrendingMediaBanner(
                     title: "Trending Movies",
                     mediaType: MediaType.movie,

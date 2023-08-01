@@ -52,7 +52,8 @@ class PersonCard extends StatelessWidget {
                 personItem.character ?? personItem.knownForDepartment ?? "―",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
+                style: TextStyle(
+                  color: ProjectColors(context).label,
                   fontSize: 12,
                 ),
               ),

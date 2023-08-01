@@ -1,4 +1,4 @@
-import 'package:datacine/components/cards/mini_media_card.dart';
+import '/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:datacine/core/helpers/unique.dart';
 import '/domain/domain.dart';
@@ -36,18 +36,12 @@ class PersonKnownFor extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //title
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            'Known for',
-            style: TextStyle(
-              fontSize: 16,
-              color: ProjectColors(context).title,
-            ),
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: SectionTitle(text: "Known For"),
         ),
 
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
 
         SizedBox(
           height: 245,
@@ -58,7 +52,7 @@ class PersonKnownFor extends StatelessWidget {
             ),
             scrollDirection: Axis.horizontal,
             separatorBuilder: (context, index) {
-              return const SizedBox(width: 10);
+              return const SizedBox(width: 20);
             },
             itemCount: allCredits.length,
             itemBuilder: (BuildContext context, int index) {

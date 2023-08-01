@@ -43,58 +43,62 @@ class PersonContent extends StatelessWidget {
 
             GridMenu(
               items: [
-                GridMenuItem(
-                  label: 'Movie cast',
-                  icon: Icons.local_movies,
-                  onTap: () {
-                    var cast = person.movieCredits?['cast'];
-                    showMediaCredit(
-                      context,
-                      cast,
-                      MediaType.movie,
-                      "${person.name}: Movie Cast",
-                    );
-                  },
-                ),
-                GridMenuItem(
-                  label: 'Movie crew',
-                  icon: Icons.movie,
-                  onTap: () {
-                    var crew = person.movieCredits?['crew'];
-                    showMediaCredit(
-                      context,
-                      crew,
-                      MediaType.movie,
-                      "${person.name}: Movie Crew",
-                    );
-                  },
-                ),
-                GridMenuItem(
-                  label: 'TV cast',
-                  icon: Icons.live_tv,
-                  onTap: () {
-                    var cast = person.tvCredits?['cast'];
-                    showMediaCredit(
-                      context,
-                      cast,
-                      MediaType.tv,
-                      "${person.name}: TV Cast",
-                    );
-                  },
-                ),
-                GridMenuItem(
-                  label: 'TV crew',
-                  icon: Icons.tv,
-                  onTap: () {
-                    var crew = person.tvCredits?['crew'];
-                    showMediaCredit(
-                      context,
-                      crew,
-                      MediaType.tv,
-                      "${person.name}: TV Crew",
-                    );
-                  },
-                ),
+                if (person.movieCredits!['cast']!.isNotEmpty)
+                  GridMenuItem(
+                    label: 'Movie cast',
+                    icon: Icons.local_movies,
+                    onTap: () {
+                      var cast = person.movieCredits?['cast'];
+                      showMediaCredit(
+                        context,
+                        cast,
+                        MediaType.movie,
+                        "${person.name}: Movie Cast",
+                      );
+                    },
+                  ),
+                if (person.movieCredits!['crew']!.isNotEmpty)
+                  GridMenuItem(
+                    label: 'Movie crew',
+                    icon: Icons.movie,
+                    onTap: () {
+                      var crew = person.movieCredits?['crew'];
+                      showMediaCredit(
+                        context,
+                        crew,
+                        MediaType.movie,
+                        "${person.name}: Movie Crew",
+                      );
+                    },
+                  ),
+                if (person.tvCredits!['cast']!.isNotEmpty)
+                  GridMenuItem(
+                    label: 'TV cast',
+                    icon: Icons.live_tv,
+                    onTap: () {
+                      var cast = person.tvCredits?['cast'];
+                      showMediaCredit(
+                        context,
+                        cast,
+                        MediaType.tv,
+                        "${person.name}: TV Cast",
+                      );
+                    },
+                  ),
+                if (person.tvCredits!['crew']!.isNotEmpty)
+                  GridMenuItem(
+                    label: 'TV crew',
+                    icon: Icons.tv,
+                    onTap: () {
+                      var crew = person.tvCredits?['crew'];
+                      showMediaCredit(
+                        context,
+                        crew,
+                        MediaType.tv,
+                        "${person.name}: TV Crew",
+                      );
+                    },
+                  ),
               ],
             ),
 

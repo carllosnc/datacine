@@ -29,15 +29,7 @@ class SeasonCard extends StatelessWidget {
                 seasonNumber: season.seasonNumber!,
               );
             },
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(
-                  color: ProjectColors(context).featured.withOpacity(0.4),
-                  width: 1,
-                ),
-              ),
+            child: SizedBox(
               height: 200 * 1.5,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(3),
@@ -60,7 +52,7 @@ class SeasonCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 12,
-                  color: ProjectColors(context).text,
+                  color: ProjectColors(context).label,
                 ),
               ),
               const SizedBox(height: 2),

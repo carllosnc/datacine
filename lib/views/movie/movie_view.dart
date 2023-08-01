@@ -63,46 +63,50 @@ class MovieView extends StatelessWidget {
 
                 GridMenu(
                   items: [
-                    GridMenuItem(
-                      label: 'Posters',
-                      icon: Icons.image,
-                      onTap: () {
-                        context.push(
-                          '/movie/$id/images',
-                          extra: movie,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Credits',
-                      icon: Icons.people,
-                      onTap: () {
-                        context.push(
-                          '/movie/$id/credits',
-                          extra: movie,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Recommendations',
-                      icon: Icons.thumb_up,
-                      onTap: () {
-                        context.push(
-                          '/movie/$id/recommendations',
-                          extra: movie,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Similar',
-                      icon: Icons.movie,
-                      onTap: () {
-                        context.push(
-                          '/movie/$id/similar',
-                          extra: movie,
-                        );
-                      },
-                    ),
+                    if (movie.images!['posters']!.isNotEmpty)
+                      GridMenuItem(
+                        label: 'Posters',
+                        icon: Icons.image,
+                        onTap: () {
+                          context.push(
+                            '/movie/$id/images',
+                            extra: movie,
+                          );
+                        },
+                      ),
+                    if (movie.credits!['cast']!.isNotEmpty)
+                      GridMenuItem(
+                        label: 'Credits',
+                        icon: Icons.people,
+                        onTap: () {
+                          context.push(
+                            '/movie/$id/credits',
+                            extra: movie,
+                          );
+                        },
+                      ),
+                    if (movie.recommendations!.results!.isNotEmpty)
+                      GridMenuItem(
+                        label: 'Recommendations',
+                        icon: Icons.thumb_up,
+                        onTap: () {
+                          context.push(
+                            '/movie/$id/recommendations',
+                            extra: movie,
+                          );
+                        },
+                      ),
+                    if (movie.similar!.results!.isNotEmpty)
+                      GridMenuItem(
+                        label: 'Similar',
+                        icon: Icons.movie,
+                        onTap: () {
+                          context.push(
+                            '/movie/$id/similar',
+                            extra: movie,
+                          );
+                        },
+                      ),
                   ],
                 ),
 

@@ -77,14 +77,13 @@ class MediaHeader extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 (movie?.title ?? tvshow?.name)!,
                 style: TextStyle(
                   fontSize: 22,
-                  height: 1.2,
                   fontWeight: FontWeight.w400,
                   color: ProjectColors(context).title,
                 ),

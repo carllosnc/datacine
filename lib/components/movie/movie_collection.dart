@@ -55,24 +55,18 @@ class MovieCollection extends StatelessWidget {
                   direction: Axis.vertical,
                   runSpacing: 10,
                   children: [
-                    Text(
-                      "${(movie.belongsToCollection!.name)}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: ProjectColors(context).title,
-                      ),
-                    ),
+                    SectionTitle(text: movie.belongsToCollection!.name!),
                     Text(
                       '${collection.parts?.length} movies',
                       style: TextStyle(
-                        fontSize: 14,
-                        color: ProjectColors(context).text,
+                        fontSize: 12,
+                        color: ProjectColors(context).label,
                       ),
                     )
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               SizedBox(
                 height: 365,
                 child: ListView.separated(

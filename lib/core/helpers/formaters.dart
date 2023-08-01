@@ -10,7 +10,7 @@ extension StringExtension on String {
 
   String formatDateTime() {
     if (isEmpty || this == "null") {
-      return "No date";
+      return "unknown date";
     }
 
     DateTime dateTime = DateTime.parse(this);
@@ -20,7 +20,7 @@ extension StringExtension on String {
 
   String formatYear() {
     if (isEmpty || this == "null") {
-      return "No date";
+      return "unknown date";
     }
 
     DateTime dateTime = DateTime.parse(this);

@@ -35,7 +35,7 @@ class MediaOverview extends StatelessWidget {
                     child: Text(
                       '"${movie?.tagline}"',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: ProjectColors(context).featured,
                       ),
                     ),
@@ -46,7 +46,7 @@ class MediaOverview extends StatelessWidget {
                     child: Text(
                       '${movie?.overview}',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: ProjectColors(context).text,
                       ),
                     ),
@@ -63,7 +63,7 @@ class MediaOverview extends StatelessWidget {
                     child: Text(
                       '"${tvshow?.tagline}"',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: ProjectColors(context).featured,
                       ),
                     ),
@@ -74,7 +74,7 @@ class MediaOverview extends StatelessWidget {
                     child: Text(
                       '${tvshow?.overview}',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: ProjectColors(context).text,
                       ),
                     ),

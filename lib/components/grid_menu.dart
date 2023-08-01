@@ -17,18 +17,20 @@ class GridMenuItem extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: BorderRadius.all(Radius.circular(100)),
       ),
       child: Material(
         color: Theme.of(context).colorScheme.secondary.withOpacity(0.08),
         child: InkWell(
           onTap: onTap,
           splashColor: Theme.of(context).colorScheme.secondaryContainer,
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Wrap(
-              direction: Axis.vertical,
-              spacing: 6,
-              crossAxisAlignment: WrapCrossAlignment.center,
+              direction: Axis.horizontal,
+              runAlignment: WrapAlignment.center,
+              spacing: 20,
+              crossAxisAlignment: WrapCrossAlignment.start,
               children: [
                 Icon(
                   icon,
@@ -62,10 +64,10 @@ class GridMenu extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
-        childAspectRatio: 2.2,
+        childAspectRatio: 8,
       ),
       children: items,
     );

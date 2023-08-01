@@ -56,7 +56,7 @@ class MiniMediaCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: ProjectColors(context).text,
+                    color: ProjectColors(context).label,
                     fontSize: 12,
                   ),
                 ),

@@ -18,7 +18,7 @@ class MediaTrailer extends StatelessWidget {
 
     var youtubeLink = 'https://www.youtube.com/watch?v=${trailer.key}';
 
-    return FilledButton(
+    return FilledButton.tonal(
       onPressed: () {
         launchUrl(Uri.parse(youtubeLink));
       },

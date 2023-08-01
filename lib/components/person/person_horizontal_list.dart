@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
-import '/core/core.dart';
 
 class PersonHorizontalList extends StatelessWidget {
   final List<PersonItem>? list;
@@ -36,15 +35,9 @@ class PersonHorizontalList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              color: ProjectColors(context).title,
-            ),
-          ),
+          child: SectionTitle(text: title),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         Container(
           width: maxWidth,
           height: 210,

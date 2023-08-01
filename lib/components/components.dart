@@ -12,7 +12,9 @@ export './grid_menu.dart';
 export './welcome.dart';
 export './app_version.dart';
 
+//typography
 export './typography/page_title.dart';
+export './typography/section_title.dart';
 
 //company
 export './company/company_infinity_grid.dart';

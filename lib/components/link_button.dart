@@ -28,6 +28,8 @@ class LinkButton extends StatelessWidget {
           label,
           maxLines: 1,
           style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            fontFamily: 'SFProDisplay',
             overflow: TextOverflow.ellipsis,
           ),
         ),

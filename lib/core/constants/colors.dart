@@ -22,7 +22,7 @@ class ProjectColors {
   Color get text => Theme.of(context).colorScheme.onSurface;
   Color get title => Theme.of(context).colorScheme.tertiary;
   Color get featured => Theme.of(context).colorScheme.primary;
-  Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.2);
+  Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.15);
   Color get linkButton =>
       Theme.of(context).colorScheme.secondary.withOpacity(0.1);
 

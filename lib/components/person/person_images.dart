@@ -16,18 +16,12 @@ class PersonImages extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //title
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            'Profile images',
-            style: TextStyle(
-              fontSize: 16,
-              color: ProjectColors(context).title,
-            ),
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: SectionTitle(text: "Profile Images"),
         ),
 
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
 
         SizedBox(
           height: 180,

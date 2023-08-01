@@ -73,8 +73,8 @@ class _PersonHeaderState extends State<PersonHeader> {
                 widget.person.knownForDepartment ?? '—',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 15,
-                  color: ProjectColors(context).text,
+                  fontSize: 16,
+                  color: ProjectColors(context).label,
                 ),
               )
             ],

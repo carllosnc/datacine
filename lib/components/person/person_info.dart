@@ -1,3 +1,4 @@
+import 'package:datacine/components/components.dart';
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 import '/domain/domain.dart';
@@ -15,23 +16,18 @@ class PersonInfo extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: Wrap(
           direction: Axis.vertical,
-          spacing: 20,
+          spacing: 25,
           children: [
             if (person.birthday != null)
               Wrap(
                 direction: Axis.vertical,
-                spacing: 5,
+                spacing: 7,
                 children: [
-                  Text(
-                    "Birthday",
-                    style: TextStyle(
-                      color: ProjectColors(context).title,
-                    ),
-                  ),
+                  const Label(text: "Birthday"),
                   Text(
                     person.birthday!.formatDateTime(),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -41,18 +37,13 @@ class PersonInfo extends StatelessWidget {
               Wrap(
                 alignment: WrapAlignment.start,
                 direction: Axis.vertical,
-                spacing: 5,
+                spacing: 7,
                 children: [
-                  Text(
-                    "Deathday",
-                    style: TextStyle(
-                      color: ProjectColors(context).title,
-                    ),
-                  ),
+                  const Label(text: "Deathday"),
                   Text(
                     person.deathday!.formatDateTime(),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -61,18 +52,13 @@ class PersonInfo extends StatelessWidget {
             if (person.placeOfBirth != null)
               Wrap(
                 direction: Axis.vertical,
-                spacing: 5,
+                spacing: 7,
                 children: [
-                  Text(
-                    "Place of birth",
-                    style: TextStyle(
-                      color: ProjectColors(context).title,
-                    ),
-                  ),
+                  const Label(text: "Place of birth"),
                   Text(
                     person.placeOfBirth!,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: ProjectColors(context).text,
                     ),
                   ),
@@ -80,21 +66,16 @@ class PersonInfo extends StatelessWidget {
               ),
             if (person.biography != null && person.biography!.isNotEmpty)
               Wrap(
-                spacing: 5,
+                spacing: 7,
                 direction: Axis.vertical,
                 children: [
-                  Text(
-                    "Biography",
-                    style: TextStyle(
-                      color: ProjectColors(context).title,
-                    ),
-                  ),
+                  const Label(text: "Biography"),
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
                     child: Text(
                       person.biography!,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: ProjectColors(context).text,
                       ),
                     ),
