@@ -26,15 +26,14 @@ class Welcome extends StatelessWidget {
           children: [
             Image.asset(
               Assets.extendedLogo,
-              height: 40,
+              height: 35,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
             Text(
               '"What a lovely day"',
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 23,
                 color: Theme.of(context).colorScheme.primary,
-                fontStyle: FontStyle.italic,
                 shadows: const [
                   Shadow(
                     color: Colors.black,

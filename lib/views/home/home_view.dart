@@ -112,7 +112,7 @@ class _HomeViewState extends State<HomeView>
             ),
             child: Image.asset(
               Assets.extendedLogo,
-              height: 28,
+              height: 24,
             ),
           ),
           actions: [

@@ -7,7 +7,7 @@ import '/app.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //lock orientation to portrait
+  // lock orientation to portrait
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -19,7 +19,7 @@ Future main() async {
   // load shared preferences
   await SharedPrefs().loadPreferences();
 
-  //load shorebird
+  // load shorebird
   await ShoreBird().loadShoreBird();
 
   runApp(const App());

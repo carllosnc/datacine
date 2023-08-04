@@ -30,7 +30,7 @@ class PageTitle extends StatelessWidget {
             maxLines: 1,
             style: TextStyle(
               color: ProjectColors(context).label,
-              fontSize: 14,
+              fontSize: 12,
             ),
             textAlign: TextAlign.center,
           )
