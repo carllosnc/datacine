@@ -59,16 +59,9 @@ class _PersonHeaderState extends State<PersonHeader> {
           child: Wrap(
             direction: Axis.vertical,
             crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 5,
             children: [
-              Text(
-                widget.person.name!,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  color: ProjectColors(context).title,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              BigTitle(text: widget.person.name!),
               Text(
                 widget.person.knownForDepartment ?? '—',
                 textAlign: TextAlign.center,

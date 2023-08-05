@@ -37,3 +37,24 @@ class Label extends StatelessWidget {
     );
   }
 }
+
+class BigTitle extends StatelessWidget {
+  final String text;
+
+  const BigTitle({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+        color: ProjectColors(context).title,
+      ),
+    );
+  }
+}

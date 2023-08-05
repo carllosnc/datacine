@@ -11,10 +11,10 @@ export './error.dart';
 export './grid_menu.dart';
 export './welcome.dart';
 export './app_version.dart';
+export './typography.dart';
+export './page_title.dart';
 
 //typography
-export './typography/page_title.dart';
-export './typography/section_title.dart';
 
 //company
 export './company/company_infinity_grid.dart';

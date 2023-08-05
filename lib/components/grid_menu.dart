@@ -1,3 +1,4 @@
+import 'package:datacine/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class GridMenuItem extends StatelessWidget {
@@ -20,7 +21,7 @@ class GridMenuItem extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(100)),
       ),
       child: Material(
-        color: Theme.of(context).colorScheme.secondary.withOpacity(0.08),
+        color: ProjectColors(context).linkButton,
         child: InkWell(
           onTap: onTap,
           splashColor: Theme.of(context).colorScheme.secondaryContainer,

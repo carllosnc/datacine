@@ -51,11 +51,11 @@ class MovieCollection extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Wrap(
-                  direction: Axis.vertical,
-                  runSpacing: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SectionTitle(text: movie.belongsToCollection!.name!),
+                    const SizedBox(height: 5),
                     Text(
                       '${collection.parts?.length} movies',
                       style: TextStyle(
