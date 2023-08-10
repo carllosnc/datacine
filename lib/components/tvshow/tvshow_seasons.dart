@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/core/core.dart';
 import '/components/components.dart';
 
 class TvShowSeasons extends StatelessWidget {
@@ -30,16 +29,14 @@ class TvShowSeasons extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                seasons.length == 1 ? '1 Season' : '${seasons.length} Seasons',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: ProjectColors(context).title,
-                ),
+              child: SectionTitle(
+                text: seasons.length == 1
+                    ? '1 Season'
+                    : '${seasons.length} Seasons',
               ),
             ),
             SizedBox(
-              height: 365,
+              height: 278,
               width: maxWidth,
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(

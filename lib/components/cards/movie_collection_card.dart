@@ -14,7 +14,7 @@ class MovieCollectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 150,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -24,9 +24,9 @@ class MovieCollectionCard extends StatelessWidget {
               context.push('/movie/${movie.id.toString()}');
             },
             child: SizedBox(
-              height: 200 * 1.5,
+              height: 150 * 1.5,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(7),
                 child: ImageComponent(
                   imagePath: movie.posterPath,
                   imageType: ImageType.poster,
@@ -35,7 +35,7 @@ class MovieCollectionCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

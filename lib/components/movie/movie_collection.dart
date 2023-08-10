@@ -68,7 +68,7 @@ class MovieCollection extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                height: 365,
+                height: 278,
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,

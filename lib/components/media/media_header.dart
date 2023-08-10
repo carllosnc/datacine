@@ -11,59 +11,18 @@ class MediaHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var width = MediaQuery.of(context).size.width - 40;
     var height = width * 1.5;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //Image
-        Center(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: ImageComponent(
-              imagePath: (movie?.posterPath ?? tvshow?.posterPath),
-              imageType: ImageType.poster,
-              imageSize: ImageSize.posterW500,
-            ),
-          ),
-        ),
-
+        mediaCover(width, height),
         const SizedBox(height: 30),
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Wrap(
-                spacing: 10,
-                children: [
-                  Text(
-                    (movie?.releaseDate ?? tvshow?.firstAirDate ?? '')
-                        .formatDateTime(),
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                  if (tvshow?.lastAirDate != null)
-                    const Text(
-                      "―",
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  if (tvshow?.lastAirDate != null)
-                    Text(
-                      (tvshow?.lastAirDate ?? '').formatDateTime(),
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                ],
-              ),
-            ),
+            mediaDate(),
             const SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -93,6 +52,62 @@ class MediaHeader extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Center mediaCover(double width, double height) {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white.withOpacity(0.4),
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        width: width,
+        height: height,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: ImageComponent(
+            imagePath: (movie?.posterPath ?? tvshow?.posterPath),
+            imageType: ImageType.poster,
+            imageSize: ImageSize.posterW500,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding mediaDate() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Wrap(
+        spacing: 10,
+        children: [
+          Text(
+            (movie?.releaseDate ?? tvshow?.firstAirDate ?? '').formatDateTime(),
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+          if (tvshow?.lastAirDate != null)
+            const Text(
+              "―",
+              style: TextStyle(
+                fontSize: 12,
+              ),
+            ),
+          if (tvshow?.lastAirDate != null)
+            Text(
+              (tvshow?.lastAirDate ?? '').formatDateTime(),
+              style: const TextStyle(
+                fontSize: 12,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

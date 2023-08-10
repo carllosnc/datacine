@@ -129,7 +129,7 @@ class MovieView extends StatelessWidget {
                 //collection
                 SectionDivider(condition: hasCollection),
                 MovieCollection(movie: movie),
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
               ],
             ),
           ),

@@ -21,11 +21,19 @@ class _PersonHeaderState extends State<PersonHeader> {
         Container(
           width: double.infinity,
           alignment: Alignment.center,
-          child: SizedBox(
+          child: Container(
             height: 200 * 1.5,
             width: 200,
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.4),
+                width: 1,
+              ),
+            ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(10),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   widget.person.profilePath == null

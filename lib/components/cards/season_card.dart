@@ -16,7 +16,7 @@ class SeasonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 150,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -30,9 +30,9 @@ class SeasonCard extends StatelessWidget {
               );
             },
             child: SizedBox(
-              height: 200 * 1.5,
+              height: 150 * 1.5,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(7),
                 child: ImageComponent(
                   imagePath: season.posterPath,
                   imageType: ImageType.poster,

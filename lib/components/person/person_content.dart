@@ -37,8 +37,8 @@ class PersonContent extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // header
             PersonHeader(person: person),
+
             const SectionDivider(),
 
             GridMenu(

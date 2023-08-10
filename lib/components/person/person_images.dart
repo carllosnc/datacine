@@ -29,7 +29,7 @@ class PersonImages extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 20),
             separatorBuilder: (context, index) {
-              return const SizedBox(width: 10);
+              return const SizedBox(width: 15);
             },
             itemCount: images!.length,
             itemBuilder: (BuildContext context, int index) {
@@ -48,7 +48,7 @@ class PersonImages extends StatelessWidget {
                   width: 130,
                   height: 130 * 1.5,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(3),
+                    borderRadius: BorderRadius.circular(7),
                     child: ImageComponent(
                       imagePath: (image.filePath),
                       imageType: ImageType.profile,

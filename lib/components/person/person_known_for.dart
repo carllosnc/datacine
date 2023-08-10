@@ -52,7 +52,7 @@ class PersonKnownFor extends StatelessWidget {
             ),
             scrollDirection: Axis.horizontal,
             separatorBuilder: (context, index) {
-              return const SizedBox(width: 20);
+              return const SizedBox(width: 15);
             },
             itemCount: allCredits.length,
             itemBuilder: (BuildContext context, int index) {

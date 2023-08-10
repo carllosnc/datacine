@@ -135,7 +135,7 @@ class _TvShowViewState extends State<TvShowView> {
                   maxWidth: MediaQuery.of(context).size.width,
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
               ],
             ),
           ),

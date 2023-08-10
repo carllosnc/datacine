@@ -29,7 +29,7 @@ class MiniMediaCard extends StatelessWidget {
           children: [
             Expanded(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(7),
                 child: ImageComponent(
                   imageSize: ImageSize.posterW154,
                   imagePath: mediaItem.posterPath,

@@ -19,7 +19,7 @@ class PersonCard extends StatelessWidget {
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(7),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   personItem.profilePath == null
