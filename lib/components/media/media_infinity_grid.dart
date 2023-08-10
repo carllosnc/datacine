@@ -82,7 +82,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
           //if _dataList is empty and _totalPages is not 0 or 1 show loading
           if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
             const SliverFillRemaining(
-              child: Expanded(child: Center(child: Loading())),
+              child: Center(child: Loading()),
             ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
