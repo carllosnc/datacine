@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import '/core/core.dart';
 
 appTheme(BuildContext context) {
   return ThemeData(
+    bottomSheetTheme: const BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(0),
+        ),
+      ),
+    ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
         fontSize: 16,
@@ -18,7 +24,7 @@ appTheme(BuildContext context) {
     ),
     fontFamily: 'SFProDisplay',
     useMaterial3: true,
-    colorSchemeSeed: ProjectColors(context).randomColor(),
+    colorSchemeSeed: Colors.teal,
     brightness: Brightness.dark,
   );
 }

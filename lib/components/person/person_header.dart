@@ -21,17 +21,9 @@ class _PersonHeaderState extends State<PersonHeader> {
         Container(
           width: double.infinity,
           alignment: Alignment.center,
-          child: Container(
+          child: SizedBox(
             height: 200 * 1.5,
             width: 200,
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: ProjectColors(context).featured,
-                width: 1,
-              ),
-            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: ColorFiltered(

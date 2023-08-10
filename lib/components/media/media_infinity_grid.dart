@@ -69,54 +69,55 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
       return const ErrorBlock();
     }
 
-    return Stack(
-      children: [
-        NotificationListener<ScrollNotification>(
-          onNotification: _onScrollNotification,
-          child: Stack(
-            children: [
-              //if _dataList is empty and _totalPages is 0 show empty
-              if (_dataList.isEmpty && (_totalPages == 1 || _totalPages == 0))
-                const Positioned(
-                  child: Empty(),
-                ),
+    return NotificationListener<ScrollNotification>(
+      onNotification: _onScrollNotification,
+      child: CustomScrollView(
+        slivers: [
+          //if _dataList is empty and _totalPages is 0 show empty
+          if (_dataList.isEmpty && (_totalPages == 1 || _totalPages == 0))
+            const SliverFillRemaining(
+              child: Empty(),
+            ),
 
-              //if _dataList is empty and _totalPages is not 0 or 1 show loading
-              if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
-                const Positioned(
-                  child: Loading(),
-                ),
-              GridView.builder(
-                padding: const EdgeInsets.fromLTRB(10, 20, 10, 80),
-                itemCount: _dataList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 0.54,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 25,
-                ),
-                itemBuilder: (context, index) {
-                  MediaItem mediaItem = _dataList[index];
-
-                  if (index < _dataList.length) {
-                    return MiniMediaCard(
-                      mediaItem: mediaItem,
-                      mediaType: widget.mediaType,
-                    );
-                  }
-                  return null;
-                },
+          //if _dataList is empty and _totalPages is not 0 or 1 show loading
+          if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
+            const SliverFillRemaining(
+              child: Expanded(child: Center(child: Loading())),
+            ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            sliver: SliverGrid.builder(
+              itemCount: _dataList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 0.54,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 25,
               ),
-            ],
-          ),
-        ),
-        if (_isLoading)
-          const Positioned(
-            child: LinearProgressIndicator(
-              minHeight: 3,
+              itemBuilder: (context, index) {
+                MediaItem mediaItem = _dataList[index];
+
+                if (index < _dataList.length) {
+                  return MiniMediaCard(
+                    mediaItem: mediaItem,
+                    mediaType: widget.mediaType,
+                  );
+                }
+                return null;
+              },
             ),
           ),
-      ],
+
+          if (_isLoading)
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: Loading(),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

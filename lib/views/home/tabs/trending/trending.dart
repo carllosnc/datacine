@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/core/core.dart';
+import '/core/core.dart';
 import '/data/data.dart';
 import '/domain/domain.dart';
 import '/components/components.dart';
@@ -14,7 +14,6 @@ class TrendingTab extends StatefulWidget {
 
 class _TrendingTabState extends State<TrendingTab>
     with AutomaticKeepAliveClientMixin<TrendingTab> {
-  // get trending movies, tv shows and people
   final Future getTrendings = TrendingRepository(http.Client()).getTrendings();
 
   @override
@@ -41,41 +40,65 @@ class _TrendingTabState extends State<TrendingTab>
             List<MediaItem> movies = snapshot.data['movies'];
             List<MediaItem> tvShows = snapshot.data['tvshows'];
 
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  TrendingMediaBanner(
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 10,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: TrendingMediaBanner(
                     title: "Trending Movies",
                     mediaType: MediaType.movie,
                     media: featuredMovie,
                   ),
-                  const SizedBox(height: 1),
-                  TrendingMediaGrid(
-                    mediaType: MediaType.movie,
-                    list: movies,
-                    maxWidth: constraints.maxWidth,
+                ),
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 1,
                   ),
-                  const SizedBox(height: 30),
-                  Icon(
+                ),
+                TrendingMediaGrid(
+                  mediaType: MediaType.movie,
+                  list: movies,
+                  maxWidth: constraints.maxWidth,
+                ),
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 30,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: Icon(
                     Icons.keyboard_double_arrow_down,
                     size: 50,
                     color: ProjectColors(context).featured,
                   ),
-                  const SizedBox(height: 30),
-                  TrendingMediaBanner(
+                ),
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 30,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: TrendingMediaBanner(
                     title: "Trending Tv Shows",
                     mediaType: MediaType.tv,
                     media: featuredTvShow,
                   ),
-                  const SizedBox(height: 1),
-                  TrendingMediaGrid(
-                    mediaType: MediaType.tv,
-                    list: tvShows,
-                    maxWidth: constraints.maxWidth,
+                ),
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 1,
                   ),
-                ],
-              ),
+                ),
+                TrendingMediaGrid(
+                  mediaType: MediaType.tv,
+                  list: tvShows,
+                  maxWidth: constraints.maxWidth,
+                ),
+              ],
             );
           },
         );

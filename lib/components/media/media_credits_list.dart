@@ -50,6 +50,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
 
   @override
   Widget build(BuildContext context) {
+    // filter cast
     List<PersonItem> cast = widget.credits!['cast']!.where(
       (person) {
         if (searchQuery.isEmpty) return true;
@@ -60,6 +61,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       },
     ).toList();
 
+    // filter crew
     List<PersonItem> crew = widget.credits!['crew']!.where(
       (person) {
         if (searchQuery.isEmpty) return true;

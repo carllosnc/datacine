@@ -105,15 +105,9 @@ class _HomeViewState extends State<HomeView>
         ),
         appBar: AppBar(
           centerTitle: true,
-          title: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-              ProjectColors(context).logoFilter,
-              BlendMode.srcATop,
-            ),
-            child: Image.asset(
-              Assets.extendedLogo,
-              height: 22,
-            ),
+          title: Image.asset(
+            Assets.extendedLogo,
+            height: 22,
           ),
           actions: [
             const AppVersion(),

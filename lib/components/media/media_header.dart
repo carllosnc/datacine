@@ -11,7 +11,7 @@ class MediaHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40;
+    var width = MediaQuery.of(context).size.width;
     var height = width * 1.5;
 
     return Column(
@@ -22,23 +22,10 @@ class MediaHeader extends StatelessWidget {
           child: SizedBox(
             width: width,
             height: height,
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: ProjectColors(context).featured,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: ImageComponent(
-                  imagePath: (movie?.posterPath ?? tvshow?.posterPath),
-                  imageType: ImageType.poster,
-                  imageSize: ImageSize.posterW500,
-                ),
-              ),
+            child: ImageComponent(
+              imagePath: (movie?.posterPath ?? tvshow?.posterPath),
+              imageType: ImageType.poster,
+              imageSize: ImageSize.posterW500,
             ),
           ),
         ),
