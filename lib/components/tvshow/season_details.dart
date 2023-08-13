@@ -42,19 +42,23 @@ showSeasonDetails({
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  centerTitle: true,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
                     titlePadding: const EdgeInsets.fromLTRB(60, 0, 60, 19),
-                    title: Text(
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      tvshowName,
-                      style: const TextStyle(fontSize: 14),
+                    title: SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        tvshowName,
+                        style: const TextStyle(fontSize: 14),
+                      ),
                     ),
                   ),
                 ),
 
-                //info
                 SliverToBoxAdapter(
                   child: Container(
                     width: double.infinity,

@@ -68,9 +68,9 @@ class TrendingMediaBanner extends StatelessWidget {
                       width: 280,
                       child: Text(
                         media.name ?? media.title!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
+                          color: ProjectColors(context).title,
                         ),
                       ),
                     ),
