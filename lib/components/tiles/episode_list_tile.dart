@@ -29,7 +29,7 @@ class EpisodeListTile extends StatelessWidget {
               child: ImageComponent(
                 imagePath: episode.stillPath,
                 imageType: ImageType.backdrop,
-                imageSize: ImageSize.stillOriginal,
+                imageSize: ImageSize.stillW300,
               ),
             ),
           ),
@@ -37,7 +37,7 @@ class EpisodeListTile extends StatelessWidget {
           Text(
             (episode.airDate ?? '').formatDateTime(),
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               color: ProjectColors(context).featured,
             ),
           ),
@@ -60,20 +60,18 @@ class EpisodeListTile extends StatelessWidget {
           const SizedBox(height: 25)
         ],
       ),
-      leading: Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(3),
-          ),
-          padding: const EdgeInsets.all(5),
-          child: Text(
-            episode.episodeNumber!.toString().padLeft(2, '0'),
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: ProjectColors(context).text,
-            ),
+      leading: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(3),
+        ),
+        padding: const EdgeInsets.all(5),
+        child: Text(
+          episode.episodeNumber!.toString().padLeft(2, '0'),
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: ProjectColors(context).text,
           ),
         ),
       ),
