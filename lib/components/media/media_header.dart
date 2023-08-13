@@ -39,11 +39,14 @@ class MediaHeader extends StatelessWidget {
                   ),
                 ),
               if (tvshow != null && tvshow!.hasGenres)
-                Text(
-                  tvshow!.genres,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: ProjectColors(context).label,
+                SizedBox(
+                  width: width,
+                  child: Text(
+                    tvshow!.genres,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: ProjectColors(context).label,
+                    ),
                   ),
                 ),
             ],

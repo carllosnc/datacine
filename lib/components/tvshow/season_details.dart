@@ -9,6 +9,7 @@ showSeasonDetails({
   required BuildContext context,
   required int tvshowId,
   required int seasonNumber,
+  required String tvshowName,
 }) {
   final seasonRepository = SeasonRepository(http.Client());
 
@@ -19,52 +20,52 @@ showSeasonDetails({
 
   showModalBottomSheet(
     isScrollControlled: true,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     useSafeArea: true,
     context: context,
     builder: (context) {
-      return DraggableScrollableSheet(
-        initialChildSize: 1,
-        minChildSize: 1,
-        maxChildSize: 1,
-        builder: (context, scrollController) {
-          return FutureBuilder(
-            future: getSeason,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Loading();
-              }
+      return FutureBuilder(
+        future: getSeason,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Loading();
+          }
 
-              var (Season season, _) = snapshot.data!;
+          var (Season season, _) = snapshot.data!;
 
-              if (snapshot.hasError || season.episodes == null) {
-                return const ErrorBlock();
-              }
+          if (snapshot.hasError || season.episodes == null) {
+            return const ErrorBlock();
+          }
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ModalHeader(
-                    title: "Season details",
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: ProjectColors(context).line,
-                          width: 1,
-                        ),
-                      ),
+          return Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    titlePadding: const EdgeInsets.fromLTRB(60, 0, 60, 19),
+                    title: Text(
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      tvshowName,
+                      style: const TextStyle(fontSize: 14),
                     ),
+                  ),
+                ),
+
+                //info
+                SliverToBoxAdapter(
+                  child: Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Row(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: Column(
                       children: [
                         SizedBox(
-                          width: 50,
-                          height: 50 * 1.5,
+                          width: 200,
+                          height: 200 * 1.5,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(8),
                             child: ImageComponent(
                               imagePath: season.posterPath,
                               imageType: ImageType.poster,
@@ -72,55 +73,61 @@ showSeasonDetails({
                             ),
                           ),
                         ),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 110,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                season.name!,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: ProjectColors(context).title,
-                                ),
+                        const SizedBox(height: 15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              season.name!,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: ProjectColors(context).title,
                               ),
-                              const SizedBox(height: 3),
-                              Text(
-                                (season.airDate ?? '').formatDateTime(),
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              (season.airDate ?? '').formatDateTime(),
+                              style: const TextStyle(
+                                fontSize: 14,
                               ),
-                              const SizedBox(height: 3),
-                              Text(
-                                "Episodes: ${season.episodes!.length}",
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              "Episodes: ${season.episodes!.length}",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: ProjectColors(context).label,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      controller: scrollController,
-                      shrinkWrap: true,
-                      itemCount: season.episodes!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        Episode episode = season.episodes![index];
+                ),
 
-                        return EpisodeListTile(episode: episode);
-                      },
-                    ),
+                //line divider
+                SliverToBoxAdapter(
+                  child: Divider(
+                    color: ProjectColors(context).line,
+                    height: 40,
                   ),
-                ],
-              );
-            },
+                ),
+
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      Episode episode = season.episodes![index];
+
+                      return EpisodeListTile(episode: episode);
+                    },
+                    childCount: season.episodes!.length,
+                  ),
+                )
+              ],
+            ),
           );
         },
       );

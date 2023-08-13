@@ -51,6 +51,7 @@ class TvShowSeasons extends StatelessWidget {
                   Season season = seasons[index];
 
                   return SeasonCard(
+                    tvshowName: tvshow!.name!,
                     tvshowId: tvshow!.id!,
                     season: season,
                   );

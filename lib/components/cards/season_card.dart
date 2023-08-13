@@ -6,11 +6,13 @@ import '/core/core.dart';
 class SeasonCard extends StatelessWidget {
   final int tvshowId;
   final Season season;
+  final String tvshowName;
 
   const SeasonCard({
     super.key,
     required this.season,
     required this.tvshowId,
+    required this.tvshowName,
   });
 
   @override
@@ -27,6 +29,7 @@ class SeasonCard extends StatelessWidget {
                 context: context,
                 tvshowId: tvshowId,
                 seasonNumber: season.seasonNumber!,
+                tvshowName: tvshowName,
               );
             },
             child: SizedBox(
