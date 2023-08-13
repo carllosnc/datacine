@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class TvShowImagesView extends StatefulWidget {
   final TvShowDetails tvshow;

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import 'package:http/http.dart' as http;
+import '/dto/dto.dart';
 
 class MovieView extends StatelessWidget {
   final String id;
@@ -29,26 +30,17 @@ class MovieView extends StatelessWidget {
         }
 
         var (MovieDetails movie, _) = snapshot.data!;
+        var movieDto = MovieDto(movie);
 
-        if (movie.title == null) {
+        if (!movieDto.hasTitle) {
           return const ErrorView();
         }
-
-        // conditions for sections to be displayed
-        bool hasKeywords = movie.keywords!['keywords'] != null &&
-            movie.keywords!['keywords']!.isNotEmpty;
-        bool hasCollection = movie.belongsToCollection != null;
-        bool hasCast = movie.credits?['cast'] != null &&
-            movie.credits!['cast']!.isNotEmpty &&
-            movie.credits!['cast']!.length >= 3;
-        bool hasOverview = movie.overview != null && movie.overview!.isNotEmpty;
-        bool hasTagline = movie.tagline != null && movie.tagline!.isNotEmpty;
 
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
             centerTitle: true,
-            title: PageTitle(title: movie.title!),
+            title: PageTitle(title: movieDto.title),
             actions: [
               MediaInfo(movie: movie),
             ],
@@ -57,13 +49,20 @@ class MovieView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MediaHeader(movie: movie),
+                MediaHeader(movie: movieDto),
 
                 const SectionDivider(),
 
+                if (movieDto.hasCredits)
+                  MovieDirectors(
+                    credits: movieDto.credits,
+                  ),
+
+                SectionDivider(condition: movieDto.hasCredits),
+
                 GridMenu(
                   items: [
-                    if (movie.images!['posters']!.isNotEmpty)
+                    if (movieDto.hasPosters)
                       GridMenuItem(
                         label: 'Posters',
                         icon: Icons.image,
@@ -74,7 +73,7 @@ class MovieView extends StatelessWidget {
                           );
                         },
                       ),
-                    if (movie.credits!['cast']!.isNotEmpty)
+                    if (movieDto.hasCredits)
                       GridMenuItem(
                         label: 'Credits',
                         icon: Icons.people,
@@ -85,7 +84,7 @@ class MovieView extends StatelessWidget {
                           );
                         },
                       ),
-                    if (movie.recommendations!.results!.isNotEmpty)
+                    if (movieDto.hasRecommendations)
                       GridMenuItem(
                         label: 'Recommendations',
                         icon: Icons.thumb_up,
@@ -96,7 +95,7 @@ class MovieView extends StatelessWidget {
                           );
                         },
                       ),
-                    if (movie.similar!.results!.isNotEmpty)
+                    if (movieDto.hasSimilar)
                       GridMenuItem(
                         label: 'Similar',
                         icon: Icons.movie,
@@ -111,23 +110,24 @@ class MovieView extends StatelessWidget {
                 ),
 
                 //keyword
-                SectionDivider(condition: hasKeywords),
+                SectionDivider(condition: movieDto.hasKeywords),
                 MediaKeywords(movie: movie),
 
                 //overview
-                SectionDivider(condition: hasOverview || hasTagline),
+                SectionDivider(
+                    condition: movieDto.hasOverview || movieDto.hasTagline),
                 MediaOverview(movie: movie),
 
                 //cast
-                SectionDivider(condition: hasCast),
+                SectionDivider(condition: movieDto.hasCast),
                 PersonHorizontalList(
                   title: 'Cast',
-                  list: movie.credits?['cast']!,
+                  list: movieDto.cast,
                   maxWidth: double.infinity,
                 ),
 
                 //collection
-                SectionDivider(condition: hasCollection),
+                SectionDivider(condition: movieDto.hasCollection),
                 MovieCollection(movie: movie),
                 const SizedBox(height: 20),
               ],

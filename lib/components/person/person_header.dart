@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/core/core.dart';
 
 class PersonHeader extends StatefulWidget {

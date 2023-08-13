@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/core/core.dart';
 
 class SeasonCard extends StatelessWidget {
@@ -59,7 +59,7 @@ class SeasonCard extends StatelessWidget {
               Text(
                 season.name!,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+                maxLines: 1,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   height: 1.2,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import 'package:http/http.dart' as http;
 
 class SearchSugestions extends StatelessWidget {

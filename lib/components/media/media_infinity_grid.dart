@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/domain/domain.dart';
 import '/core/core.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class MediaInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;
@@ -85,7 +85,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
               child: Center(child: Loading()),
             ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 80),
             sliver: SliverGrid.builder(
               itemCount: _dataList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -111,7 +111,7 @@ class _MediaInfinityGridState extends State<MediaInfinityGrid> {
           if (_isLoading)
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 200,
+                height: 50,
                 width: double.infinity,
                 child: Loading(),
               ),

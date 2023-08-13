@@ -3,7 +3,7 @@ import '/domain/domain.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
 import '/core/core.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class KeywordView extends StatelessWidget {
   final Keyword keyword;

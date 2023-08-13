@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import 'package:http/http.dart' as http;
+import '/dto/dto.dart';
 
 class TvShowView extends StatefulWidget {
   final String id;
@@ -35,20 +36,11 @@ class _TvShowViewState extends State<TvShowView> {
         }
 
         var (TvShowDetails tvshow, _) = snapshot.data!;
+        var tvshowDto = TvShowDto(tvshow);
 
         if (tvshow.name == null) {
           return const ErrorView();
         }
-
-        bool hasKeywords = tvshow.keywords!['results'] != null &&
-            tvshow.keywords!['results']!.isNotEmpty;
-        bool hasCast = tvshow.credits!['cast'] != null &&
-            tvshow.credits!['cast']!.isNotEmpty &&
-            tvshow.credits!['cast']!.length >= 3;
-        bool hasOverview =
-            tvshow.overview != null && tvshow.overview!.isNotEmpty;
-        bool hasTagline = tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
-        bool hasSeasons = tvshow.seasons != null && tvshow.seasons!.isNotEmpty;
 
         return Scaffold(
           extendBody: true,
@@ -63,73 +55,82 @@ class _TvShowViewState extends State<TvShowView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MediaHeader(tvshow: tvshow),
+                MediaHeader(tvshow: tvshowDto),
 
                 const SectionDivider(),
 
+                if (tvshowDto.hasCreatedBy)
+                  TvShowCreators(creators: tvshowDto.createdBy),
+
+                SectionDivider(condition: tvshowDto.hasCreatedBy),
+
                 GridMenu(
                   items: [
-                    GridMenuItem(
-                      label: 'Posters',
-                      icon: Icons.image,
-                      onTap: () {
-                        context.push(
-                          '/tv/$widget.id/images',
-                          extra: tvshow,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Credits',
-                      icon: Icons.people,
-                      onTap: () {
-                        context.push(
-                          '/tv/$widget.id/credits',
-                          extra: tvshow,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Recommendations',
-                      icon: Icons.thumb_up,
-                      onTap: () {
-                        context.push(
-                          '/tv/$widget.id/recommendations',
-                          extra: tvshow,
-                        );
-                      },
-                    ),
-                    GridMenuItem(
-                      label: 'Similar',
-                      icon: Icons.movie,
-                      onTap: () {
-                        context.push(
-                          '/tv/$widget.id/similar',
-                          extra: tvshow,
-                        );
-                      },
-                    ),
+                    if (tvshowDto.hasPosters)
+                      GridMenuItem(
+                        label: 'Posters',
+                        icon: Icons.image,
+                        onTap: () {
+                          context.push(
+                            '/tv/$widget.id/images',
+                            extra: tvshow,
+                          );
+                        },
+                      ),
+                    if (tvshowDto.hasCredits)
+                      GridMenuItem(
+                        label: 'Credits',
+                        icon: Icons.people,
+                        onTap: () {
+                          context.push(
+                            '/tv/$widget.id/credits',
+                            extra: tvshow,
+                          );
+                        },
+                      ),
+                    if (tvshowDto.hasRecommendations)
+                      GridMenuItem(
+                        label: 'Recommendations',
+                        icon: Icons.thumb_up,
+                        onTap: () {
+                          context.push(
+                            '/tv/$widget.id/recommendations',
+                            extra: tvshow,
+                          );
+                        },
+                      ),
+                    if (tvshowDto.hasSimilar)
+                      GridMenuItem(
+                        label: 'Similar',
+                        icon: Icons.movie,
+                        onTap: () {
+                          context.push(
+                            '/tv/$widget.id/similar',
+                            extra: tvshow,
+                          );
+                        },
+                      ),
                   ],
                 ),
 
                 //keyword
-                SectionDivider(condition: hasKeywords),
+                SectionDivider(condition: tvshowDto.hasKeywords),
                 MediaKeywords(tvshow: tvshow),
 
                 //overview
-                SectionDivider(condition: hasOverview || hasTagline),
+                SectionDivider(condition: tvshowDto.hasOverview),
                 MediaOverview(tvshow: tvshow),
 
                 //cast
-                SectionDivider(condition: hasCast),
+                SectionDivider(condition: tvshowDto.hasCast),
                 PersonHorizontalList(
                   title: 'Cast',
-                  list: tvshow.credits!['cast']!,
+                  list: tvshowDto.cast,
                   maxWidth: double.infinity,
                 ),
 
                 //seasons
-                SectionDivider(condition: hasSeasons),
+                SectionDivider(condition: tvshowDto.hasSeasons),
                 TvShowSeasons(
                   tvshow: tvshow,
                   maxWidth: MediaQuery.of(context).size.width,

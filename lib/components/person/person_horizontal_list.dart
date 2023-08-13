@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class PersonHorizontalList extends StatelessWidget {
   final List<PersonItem>? list;

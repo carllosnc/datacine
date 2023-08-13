@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
 

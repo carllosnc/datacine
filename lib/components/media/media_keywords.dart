@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/components/components.dart';
+import 'package:datacine/imports/components.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 
@@ -20,31 +20,28 @@ class MediaKeywords extends StatelessWidget {
 
     return Visibility(
       visible: keywords != null && keywords.isNotEmpty,
-      child: SizedBox(
-        height: 30,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(width: 10);
-          },
-          itemCount: keywords!.length,
-          itemBuilder: (BuildContext context, int index) {
-            Keyword keyword = keywords[index];
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 10,
+          runSpacing: 10,
+          children: [
+            const SectionTitle(text: "Keywords"),
+            for (var keyword in keywords!)
+              LinkButton(
+                label: keyword.name!,
+                onPressed: () {
+                  if (movie != null) {
+                    context.push('/keyword_movies', extra: keyword);
+                  }
 
-            return LinkButton(
-              label: keyword.name!,
-              onPressed: () {
-                if (movie != null) {
-                  context.push('/keyword_movies', extra: keyword);
-                }
-
-                if (tvshow != null) {
-                  context.push('/keyword_tvshows', extra: keyword);
-                }
-              },
-            );
-          },
+                  if (tvshow != null) {
+                    context.push('/keyword_tvshows', extra: keyword);
+                  }
+                },
+              ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:datacine/components/components.dart';
+import 'package:datacine/imports/components.dart';
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import 'company_tab.dart';

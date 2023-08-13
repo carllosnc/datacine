@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/core/core.dart';
 
 class SearchResult extends StatefulWidget {

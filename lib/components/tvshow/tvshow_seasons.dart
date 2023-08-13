@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class TvShowSeasons extends StatelessWidget {
   final TvShowDetails? tvshow;
@@ -25,7 +25,7 @@ class TvShowSeasons extends StatelessWidget {
       children: [
         Wrap(
           direction: Axis.vertical,
-          spacing: 10,
+          spacing: 20,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -36,7 +36,7 @@ class TvShowSeasons extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 278,
+              height: 290,
               width: maxWidth,
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(

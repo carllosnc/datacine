@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/core/core.dart';
 
 enum CreditType { cast, crew }
@@ -26,6 +26,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
 
   TextField filter(BuildContext context) {
     return TextField(
+      autofocus: true,
       onChanged: (value) {
         String query = value.toLowerCase();
         setState(() {

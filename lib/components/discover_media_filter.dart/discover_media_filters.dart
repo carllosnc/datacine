@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/core/constants/colors.dart';
 import 'package:datacine/core/constants/media_type.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import '/notifiers/notifiers.dart';
 import './year_filter.dart';
 import './genre_filter.dart';

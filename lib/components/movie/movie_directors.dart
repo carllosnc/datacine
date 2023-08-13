@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 
 class MovieDirectors extends StatelessWidget {
   final Map<String, List<PersonItem>>? credits;
@@ -13,10 +13,6 @@ class MovieDirectors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (credits == null) {
-      return const SizedBox.shrink();
-    }
-
     List<PersonItem>? crew = credits?["crew"];
     late List<PersonItem>? directors;
 
@@ -28,25 +24,22 @@ class MovieDirectors extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return SizedBox(
-      height: 30,
-      child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) {
-          return const SizedBox(width: 10);
-        },
-        itemCount: directors.length,
-        itemBuilder: (context, index) {
-          PersonItem person = directors![index];
-
-          return LinkButton(
-            label: person.name!,
-            onPressed: () {
-              context.push('/person/${person.id}');
-            },
-          );
-        },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Wrap(
+        spacing: 10,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runSpacing: 10,
+        children: [
+          const SectionTitle(text: "Directed by"),
+          for (var director in directors)
+            LinkButton(
+              label: director.name!,
+              onPressed: () {
+                context.push('/person/${director.id}');
+              },
+            ),
+        ],
       ),
     );
   }

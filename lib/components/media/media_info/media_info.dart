@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
-import '/components/components.dart';
+import '/imports/components.dart';
 import './media_info_item.dart';
 import './media_info_companies.dart';
 
