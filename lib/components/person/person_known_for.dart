@@ -23,7 +23,10 @@ class PersonKnownFor extends StatelessWidget {
 
     if (allCredits.isNotEmpty) {
       allCredits.sort((a, b) {
-        return b.voteCount!.compareTo(a.voteCount ?? 0);
+        var aVote = a.voteCount ?? 0;
+        var bVote = b.voteCount ?? 0;
+
+        return bVote.compareTo(aVote);
       });
     }
 
