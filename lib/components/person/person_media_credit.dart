@@ -29,14 +29,24 @@ showMediaCredit(
       // sort list by release date
       if (mediaType == MediaType.movie) {
         list.sort(
-          (a, b) => b.releaseDate!.compareTo(a.releaseDate!),
+          (a, b) {
+            var aDate = a.releaseDate ?? '0';
+            var bDate = b.releaseDate ?? '0';
+
+            return bDate.compareTo(aDate);
+          },
         );
       }
 
       // sort list by first air date
       if (mediaType == MediaType.tv) {
         list.sort(
-          (a, b) => b.firstAirDate!.compareTo(a.firstAirDate!),
+          (a, b) {
+            var aDate = a.firstAirDate ?? '0';
+            var bDate = b.firstAirDate ?? '0';
+
+            return bDate.compareTo(aDate);
+          },
         );
       }
 

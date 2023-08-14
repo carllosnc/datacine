@@ -21,10 +21,11 @@ class PersonKnownFor extends StatelessWidget {
     // combine cast and crew
     List<MediaItem> allCredits = [...movies, ...series];
 
-    //order by vote count
-    allCredits.sort((a, b) {
-      return b.voteCount!.compareTo(a.voteCount!);
-    });
+    if (allCredits.isNotEmpty) {
+      allCredits.sort((a, b) {
+        return b.voteCount!.compareTo(a.voteCount ?? 0);
+      });
+    }
 
     // remove duplicates
     allCredits = allCredits.unique((p1) => p1.id);
