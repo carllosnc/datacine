@@ -9,6 +9,8 @@ class TvShowDto {
 
   String get name => tvshow.name ?? 'No Name';
 
+  String get originalName => tvshow.originalName!;
+
   String get lastAirDate => tvshow.lastAirDate!.formatDateTime();
 
   String get firstAirDate => tvshow.firstAirDate!.formatDateTime();
@@ -52,8 +54,42 @@ class TvShowDto {
 
   List<PersonItem> get createdBy => tvshow.createdBy!;
 
+  List<Company> get productionCompanies => tvshow.productionCompanies!;
+
+  String get spokenLanguages {
+    var spokenLanguages = tvshow.spokenLanguages!.map((language) {
+      return language.name;
+    }).toList();
+    return spokenLanguages.join(', ');
+  }
+
+  String get productionCountries {
+    var productionCountries = tvshow.productionCountries!.map((country) {
+      return country.name;
+    }).toList();
+    return productionCountries.join(', ');
+  }
+
+  String get numberOfSeasons => tvshow.numberOfSeasons.toString();
+  String get numberOfEpisodes => tvshow.numberOfEpisodes.toString();
+
+  String get genresAsString {
+    var genres = tvshow.genres!.map((genre) => genre.name).toList();
+    return genres.join(', ');
+  }
+
   //checks
 
+  bool get hasGenres => tvshow.genres != null && tvshow.genres!.isNotEmpty;
+  bool get hasNumberOfSeasons => tvshow.numberOfSeasons != null;
+  bool get hasNumberOfEpisodes => tvshow.numberOfEpisodes != null;
+  bool get hasProductionCountries =>
+      tvshow.productionCountries != null &&
+      tvshow.productionCountries!.isNotEmpty;
+  bool get hasSpokenLanguages =>
+      tvshow.spokenLanguages != null && tvshow.spokenLanguages!.isNotEmpty;
+  bool get hasOriginalName => tvshow.originalName != null;
+  bool get hasProductionCompanies => tvshow.productionCompanies!.isNotEmpty;
   bool get hasLastAirDate => tvshow.lastAirDate != null;
   bool get hasFirstAirDate => tvshow.firstAirDate != null;
   bool get hasStatus => tvshow.status != null;
@@ -84,5 +120,4 @@ class TvShowDto {
       tvshow.credits!['cast']!.isNotEmpty &&
       tvshow.credits!['crew']!.isNotEmpty;
   bool get hasVideos => tvshow.videos!['results']!.isNotEmpty;
-  bool get hasGenres => tvshow.genres!.isNotEmpty;
 }

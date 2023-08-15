@@ -47,7 +47,7 @@ class _TvShowViewState extends State<TvShowView> {
           appBar: AppBar(
             centerTitle: true,
             actions: [
-              MediaInfo(tvShow: tvshow),
+              MediaInfo(tvShow: tvshowDto),
             ],
             title: PageTitle(title: tvshow.name!),
           ),

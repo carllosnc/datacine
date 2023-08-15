@@ -42,7 +42,7 @@ class MovieView extends StatelessWidget {
             centerTitle: true,
             title: PageTitle(title: movieDto.title),
             actions: [
-              MediaInfo(movie: movie),
+              MediaInfo(movie: movieDto),
             ],
           ),
           body: SingleChildScrollView(

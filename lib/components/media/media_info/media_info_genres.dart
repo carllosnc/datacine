@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
 import '/core/core.dart';
+import '/dto/dto.dart';
 
 class MediaInfoGenres extends StatelessWidget {
-  final MovieDetails? movie;
-  final TvShowDetails? tvshow;
+  final MovieDto? movie;
+  final TvShowDto? tvshow;
 
   const MediaInfoGenres({
     super.key,
@@ -15,10 +15,10 @@ class MediaInfoGenres extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // get the genres from the movie or tv show
-    final List<Genre>? genres = movie?.genres ?? tvshow?.genres;
+    final String? genres = (movie?.genres ?? tvshow?.genres);
 
     // if there are no genres, return an empty SizedBox
-    if (genres == null || genres.isEmpty) {
+    if (genres == null) {
       return const SizedBox.shrink();
     }
 
@@ -37,7 +37,7 @@ class MediaInfoGenres extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 7),
-          Text(genres.map((e) => e.name).join(', '))
+          Text(genres)
         ],
       ),
     );

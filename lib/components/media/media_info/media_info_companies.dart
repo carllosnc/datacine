@@ -3,10 +3,11 @@ import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
 import '/imports/components.dart';
+import '/dto/dto.dart';
 
 class Companies extends StatelessWidget {
-  final MovieDetails? movie;
-  final TvShowDetails? tvShow;
+  final MovieDto? movie;
+  final TvShowDto? tvShow;
 
   const Companies({
     super.key,

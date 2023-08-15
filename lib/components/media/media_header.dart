@@ -7,13 +7,22 @@ class MediaHeader extends StatelessWidget {
   final MovieDto? movie;
   final TvShowDto? tvshow;
 
-  const MediaHeader({super.key, this.movie, this.tvshow});
+  const MediaHeader({
+    super.key,
+    this.movie,
+    this.tvshow,
+  });
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width - 40;
     var hasMovie = movie != null;
     var hasTvShow = tvshow != null;
+    var mediaTitle = movie?.title ?? tvshow?.name ?? 'No name';
+    var mediaVideo = movie?.videos ?? tvshow?.videos;
+    var mediaVoteAverage = movie?.voteAverage ?? tvshow?.voteAverage;
+    var mediaVoteCount = movie?.voteCount ?? tvshow?.voteCount;
+    var mediaStatus = movie?.status ?? tvshow?.status;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -31,7 +40,7 @@ class MediaHeader extends StatelessWidget {
               SizedBox(
                 width: width,
                 child: BigTitle(
-                  text: (movie?.title ?? tvshow?.name ?? 'No name'),
+                  text: (mediaTitle),
                 ),
               ),
               if (hasMovie && movie!.hasGenres)
@@ -61,12 +70,12 @@ class MediaHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MediaTrailer(
-                  videos: (movie?.videos ?? tvshow?.videos),
+                  videos: (mediaVideo),
                 ),
                 MediaVotes(
-                  voteAverage: (movie?.voteAverage ?? tvshow?.voteAverage),
-                  voteCount: (movie?.voteCount ?? tvshow?.voteCount),
-                  status: (movie?.status ?? tvshow?.status),
+                  voteAverage: (mediaVoteAverage),
+                  voteCount: (mediaVoteCount),
+                  status: (mediaStatus),
                 ),
               ],
             ),
@@ -79,6 +88,7 @@ class MediaHeader extends StatelessWidget {
   Center mediaCover(BuildContext context) {
     var width = MediaQuery.of(context).size.width - 40;
     var height = width * 1.5;
+    var mediaPoster = movie?.poster ?? tvshow?.poster;
 
     return Center(
       child: Container(
@@ -95,7 +105,7 @@ class MediaHeader extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: ImageComponent(
-            imagePath: (movie?.poster ?? tvshow?.poster),
+            imagePath: (mediaPoster),
             imageType: ImageType.poster,
             imageSize: ImageSize.posterW500,
           ),
@@ -105,8 +115,10 @@ class MediaHeader extends StatelessWidget {
   }
 
   Widget mediaDate() {
+    var date = movie?.releaseDate ?? tvshow?.date ?? 'Unknown date';
+
     return Text(
-      (movie?.releaseDate ?? tvshow?.date ?? '―'),
+      date,
       style: const TextStyle(
         fontSize: 12,
       ),

@@ -1,5 +1,4 @@
-import 'package:datacine/core/core.dart';
-
+import '/core/core.dart';
 import '/domain/domain.dart';
 
 class MovieDto {
@@ -8,6 +7,8 @@ class MovieDto {
   MovieDto(this.movie);
 
   String get title => movie.title ?? 'No Title';
+
+  String? get originalTitle => movie.originalTitle;
 
   String get releaseDate =>
       movie.releaseDate?.formatDateTime() ?? 'Unknown date';
@@ -31,9 +32,50 @@ class MovieDto {
     return genres.join(', ');
   }
 
+  List<Company> get productionCompanies => movie.productionCompanies!;
+
+  String get runTime {
+    var runTime = movie.runtime ?? 0;
+    var hours = runTime ~/ 60;
+    var minutes = runTime % 60;
+    return '$hours h $minutes min';
+  }
+
+  String get productionCountries {
+    var countries = movie.productionCountries!.map((country) => country.name);
+    return countries.join(', ');
+  }
+
+  String get spokenLanguages {
+    var languages = movie.spokenLanguages!.map((language) => language.name);
+    return languages.join(', ');
+  }
+
+  String get budget {
+    var budget = movie.budget ?? 0;
+    return '$budget'.formatMoney();
+  }
+
+  //revenue
+  String get revenue {
+    var revenue = movie.revenue ?? 0;
+    return '$revenue'.formatMoney();
+  }
+
   //checks
 
+  bool get hasBudget => movie.budget != null && movie.budget! > 0;
+  bool get hasRevenue => movie.revenue != null && movie.revenue! > 0;
+  bool get hasSpokenLanguages =>
+      movie.spokenLanguages != null && movie.spokenLanguages!.isNotEmpty;
+  bool get hasProductionCountries =>
+      movie.productionCountries != null &&
+      movie.productionCountries!.isNotEmpty;
+  bool get hasRuntime => movie.runtime != null;
   bool get hasTitle => movie.title != null;
+  bool get hasOriginalTitle => movie.originalTitle != null;
+  bool get hasPosterPath => movie.posterPath != null;
+  bool get hasPoster => movie.posterPath != null;
   bool get hasReleaseDate => movie.releaseDate != null;
   bool get hasKeywords =>
       movie.keywords!['keywords'] != null &&
