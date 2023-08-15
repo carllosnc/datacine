@@ -12,6 +12,8 @@ class MediaHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width - 40;
+    var hasMovie = movie != null;
+    var hasTvShow = tvshow != null;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -28,9 +30,11 @@ class MediaHeader extends StatelessWidget {
               mediaDate(),
               SizedBox(
                 width: width,
-                child: BigTitle(text: (movie?.title ?? tvshow?.name)!),
+                child: BigTitle(
+                  text: (movie?.title ?? tvshow?.name ?? 'No name'),
+                ),
               ),
-              if (movie != null && movie!.hasGenres)
+              if (hasMovie && movie!.hasGenres)
                 Text(
                   movie!.genres,
                   style: TextStyle(
@@ -38,7 +42,7 @@ class MediaHeader extends StatelessWidget {
                     color: ProjectColors(context).label,
                   ),
                 ),
-              if (tvshow != null && tvshow!.hasGenres)
+              if (hasTvShow && tvshow!.hasGenres)
                 SizedBox(
                   width: width,
                   child: Text(

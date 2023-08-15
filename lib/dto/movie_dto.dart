@@ -7,7 +7,7 @@ class MovieDto {
 
   MovieDto(this.movie);
 
-  String get title => movie.title!;
+  String get title => movie.title ?? 'No Title';
 
   String get releaseDate =>
       movie.releaseDate?.formatDateTime() ?? 'Unknown date';
@@ -20,13 +20,12 @@ class MovieDto {
 
   List<Video>? get videos => movie.videos!['results'];
 
-  num get voteAverage => movie.voteAverage!;
+  num get voteAverage => movie.voteAverage ?? 0;
 
-  num get voteCount => movie.voteCount!;
+  num get voteCount => movie.voteCount ?? 0;
 
-  String get status => movie.status!;
+  String get status => movie.status ?? 'Unknown status';
 
-  //list of genres as string
   String get genres {
     var genres = movie.genres!.map((genre) => genre.name).toList();
     return genres.join(', ');

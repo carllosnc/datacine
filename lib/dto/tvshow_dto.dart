@@ -7,9 +7,7 @@ class TvShowDto {
 
   TvShowDto(this.tvshow);
 
-  String get name => tvshow.name!;
-
-  String get status => tvshow.status!;
+  String get name => tvshow.name ?? 'No Name';
 
   String get lastAirDate => tvshow.lastAirDate!.formatDateTime();
 
@@ -41,9 +39,11 @@ class TvShowDto {
 
   List<Video>? get videos => tvshow.videos!['results'];
 
-  num get voteAverage => tvshow.voteAverage!;
+  String get status => tvshow.status ?? 'Unknown status';
 
-  num get voteCount => tvshow.voteCount!;
+  num get voteAverage => tvshow.voteAverage ?? 0;
+
+  num get voteCount => tvshow.voteCount ?? 0;
 
   String get genres {
     var genres = tvshow.genres!.map((genre) => genre.name).toList();
