@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
+import '/dto/dto.dart';
 import '/imports/components.dart';
 
 class MovieCreditsView extends StatelessWidget {
-  final MovieDetails movie;
+  final MovieDto movie;
 
   const MovieCreditsView({
     super.key,
@@ -18,7 +18,7 @@ class MovieCreditsView extends StatelessWidget {
 
     return MediaCreditsList(
       credits: movie.credits,
-      title: movie.title!,
+      title: movie.title,
     );
   }
 }

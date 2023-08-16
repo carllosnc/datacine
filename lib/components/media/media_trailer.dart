@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '/domain/domain.dart';
 
 class MediaTrailer extends StatelessWidget {
-  final List<Video>? videos;
+  final String? trailer;
 
-  const MediaTrailer({super.key, required this.videos});
+  const MediaTrailer({super.key, required this.trailer});
 
   @override
   Widget build(BuildContext context) {
-    if (videos == null || videos!.isEmpty) return const SizedBox.shrink();
-
-    var trailer = videos!.firstWhere(
-      (Video video) => video.type == 'Trailer' && video.official == true,
-      orElse: () => videos!.first,
-    );
-
-    var youtubeLink = 'https://www.youtube.com/watch?v=${trailer.key}';
+    if (trailer == null) return const SizedBox.shrink();
 
     return FilledButton(
       onPressed: () {
-        launchUrl(Uri.parse(youtubeLink));
+        launchUrl(Uri.parse(trailer!));
       },
       child: const Row(
         children: [

@@ -27,9 +27,14 @@ class MediaVotes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (voteAverage == 0 && status == null) return const SizedBox.shrink();
+    var hasNoVotes = voteAverage == 0 && status == null;
+    var hasStatus = voteAverage == 0 && status != null;
+    var voteName = voteCount == 1 ? 'VOTE' : 'VOTES';
+    var voteAverageFormated = voteAverage!.toString().substring(0, 3);
 
-    if (voteAverage == 0 && status != null) {
+    if (hasNoVotes) return const SizedBox.shrink();
+
+    if (hasStatus) {
       return Text(
         status.toString().toUpperCase(),
         style: TextStyle(
@@ -56,7 +61,7 @@ class MediaVotes extends StatelessWidget {
               ),
             ),
             Text(
-              voteCount == 1 ? 'VOTE' : 'VOTES',
+              voteName,
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
@@ -77,7 +82,7 @@ class MediaVotes extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              voteAverage!.toString().substring(0, 3),
+              voteAverageFormated,
               style: const TextStyle(
                 fontSize: 15,
                 color: Colors.white,

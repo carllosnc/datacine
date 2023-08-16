@@ -69,7 +69,7 @@ class MovieView extends StatelessWidget {
                         onTap: () {
                           context.push(
                             '/movie/$id/images',
-                            extra: movie,
+                            extra: movieDto,
                           );
                         },
                       ),
@@ -111,12 +111,13 @@ class MovieView extends StatelessWidget {
 
                 //keyword
                 SectionDivider(condition: movieDto.hasKeywords),
-                MediaKeywords(movie: movie),
+                MediaKeywords(movie: movieDto),
 
                 //overview
                 SectionDivider(
-                    condition: movieDto.hasOverview || movieDto.hasTagline),
-                MediaOverview(movie: movie),
+                  condition: movieDto.hasOverview || movieDto.hasTagline,
+                ),
+                MediaOverview(movie: movieDto),
 
                 //cast
                 SectionDivider(condition: movieDto.hasCast),

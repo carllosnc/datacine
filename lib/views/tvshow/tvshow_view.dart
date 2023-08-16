@@ -73,7 +73,7 @@ class _TvShowViewState extends State<TvShowView> {
                         onTap: () {
                           context.push(
                             '/tv/$widget.id/images',
-                            extra: tvshow,
+                            extra: tvshowDto,
                           );
                         },
                       ),
@@ -115,11 +115,11 @@ class _TvShowViewState extends State<TvShowView> {
 
                 //keyword
                 SectionDivider(condition: tvshowDto.hasKeywords),
-                MediaKeywords(tvshow: tvshow),
+                MediaKeywords(tvshow: tvshowDto),
 
                 //overview
                 SectionDivider(condition: tvshowDto.hasOverview),
-                MediaOverview(tvshow: tvshow),
+                MediaOverview(tvshow: tvshowDto),
 
                 //cast
                 SectionDivider(condition: tvshowDto.hasCast),

@@ -4,12 +4,12 @@ import '/domain/domain.dart';
 import '/imports/components.dart';
 
 class MediaPosterGrid extends StatefulWidget {
-  final Map<String, List<ImageItem>?>? images;
+  final List<ImageItem> posters;
   final String title;
 
   const MediaPosterGrid({
     super.key,
-    required this.images,
+    required this.posters,
     required this.title,
   });
 
@@ -33,7 +33,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
     super.initState();
 
     //get all posters
-    posters = widget.images!['posters']!;
+    posters = widget.posters;
 
     //add no-lang value to posters without language
     posters = posters.map((e) {

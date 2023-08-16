@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/domain/domain.dart';
 import '/imports/components.dart';
+import '/dto/dto.dart';
 
-class TvShowImagesView extends StatefulWidget {
-  final TvShowDetails tvshow;
+class TvShowImagesView extends StatelessWidget {
+  final TvShowDto tvshow;
 
-  const TvShowImagesView({super.key, required this.tvshow});
+  const TvShowImagesView({
+    super.key,
+    required this.tvshow,
+  });
 
-  @override
-  State<TvShowImagesView> createState() => _TvShowImagesViewState();
-}
-
-class _TvShowImagesViewState extends State<TvShowImagesView> {
   @override
   Widget build(BuildContext context) {
     return MediaPosterGrid(
-        images: widget.tvshow.images, title: widget.tvshow.name!);
+      posters: tvshow.posters,
+      title: tvshow.name,
+    );
   }
 }

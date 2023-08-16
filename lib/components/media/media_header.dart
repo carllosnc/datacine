@@ -19,10 +19,10 @@ class MediaHeader extends StatelessWidget {
     var hasMovie = movie != null;
     var hasTvShow = tvshow != null;
     var mediaTitle = movie?.title ?? tvshow?.name ?? 'No name';
-    var mediaVideo = movie?.videos ?? tvshow?.videos;
     var mediaVoteAverage = movie?.voteAverage ?? tvshow?.voteAverage;
     var mediaVoteCount = movie?.voteCount ?? tvshow?.voteCount;
     var mediaStatus = movie?.status ?? tvshow?.status;
+    var mediaTrailer = movie?.trailer ?? tvshow?.trailer;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -70,7 +70,7 @@ class MediaHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MediaTrailer(
-                  videos: (mediaVideo),
+                  trailer: (mediaTrailer),
                 ),
                 MediaVotes(
                   voteAverage: (mediaVoteAverage),

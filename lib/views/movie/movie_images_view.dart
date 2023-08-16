@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
 import '/imports/components.dart';
+import '/dto/dto.dart';
 
 class MovieImagesView extends StatelessWidget {
-  final MovieDetails movie;
+  final MovieDto movie;
 
   const MovieImagesView({
     super.key,
@@ -12,6 +12,6 @@ class MovieImagesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaPosterGrid(images: movie.images, title: movie.title!);
+    return MediaPosterGrid(posters: movie.posters, title: movie.title);
   }
 }

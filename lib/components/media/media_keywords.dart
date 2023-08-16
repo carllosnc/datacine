@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:datacine/imports/components.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
+import '/dto/dto.dart';
 
 class MediaKeywords extends StatelessWidget {
-  final MovieDetails? movie;
-  final TvShowDetails? tvshow;
+  final MovieDto? movie;
+  final TvShowDto? tvshow;
 
   const MediaKeywords({
     super.key,
@@ -15,8 +16,7 @@ class MediaKeywords extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Keyword>? keywords =
-        movie?.keywords?['keywords'] ?? tvshow?.keywords?['results'];
+    List<Keyword>? keywords = movie?.keywords ?? tvshow?.keywords;
 
     return Visibility(
       visible: keywords != null && keywords.isNotEmpty,

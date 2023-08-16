@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '/views/views.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
+import '/dto/dto.dart';
 
 //keyword
 
@@ -55,7 +56,7 @@ final personDetails = GoRoute(
 final movieImages = GoRoute(
   path: 'images',
   builder: (context, state) {
-    final movie = state.extra as MovieDetails;
+    final movie = state.extra as MovieDto;
 
     return MovieImagesView(movie: movie);
   },
@@ -64,7 +65,7 @@ final movieImages = GoRoute(
 final movieCredits = GoRoute(
   path: 'credits',
   builder: (context, state) {
-    final movie = state.extra as MovieDetails;
+    final movie = state.extra as MovieDto;
 
     return MovieCreditsView(movie: movie);
   },
@@ -93,7 +94,7 @@ final movieSimilar = GoRoute(
 final tvshowImages = GoRoute(
   path: 'images',
   builder: (context, state) {
-    final tvshow = state.extra as TvShowDetails;
+    final tvshow = state.extra as TvShowDto;
 
     return TvShowImagesView(tvshow: tvshow);
   },

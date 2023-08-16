@@ -15,6 +15,8 @@ class TvShowDto {
 
   String get firstAirDate => tvshow.firstAirDate!.formatDateTime();
 
+  String get tagline => tvshow.tagline ?? 'No tagline';
+
   String get date {
     if (hasFirstAirDate && hasLastAirDate) {
       return '$firstAirDate - $lastAirDate';
@@ -78,8 +80,25 @@ class TvShowDto {
     return genres.join(', ');
   }
 
-  //checks
+  List<Keyword> get keywordsList => tvshow.keywords!['results']!;
 
+  String? get trailer {
+    if (hasVideos == false) {
+      return null;
+    }
+
+    var videos = tvshow.videos!['results']!;
+    var trailer = videos.firstWhere(
+      (video) => video.type == 'Trailer' && video.official == true,
+      orElse: () => videos.first,
+    );
+
+    return 'https://www.youtube.com/watch?v=${trailer.key}';
+  }
+
+  List<ImageItem> get posters => tvshow.images!['posters'] ?? [];
+
+  bool get hasTagline => tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
   bool get hasGenres => tvshow.genres != null && tvshow.genres!.isNotEmpty;
   bool get hasNumberOfSeasons => tvshow.numberOfSeasons != null;
   bool get hasNumberOfEpisodes => tvshow.numberOfEpisodes != null;

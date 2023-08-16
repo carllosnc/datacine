@@ -10,6 +10,10 @@ class MovieDto {
 
   String? get originalTitle => movie.originalTitle;
 
+  String get tagline => movie.tagline!;
+
+  String get overview => movie.overview!;
+
   String get releaseDate =>
       movie.releaseDate?.formatDateTime() ?? 'Unknown date';
 
@@ -56,11 +60,28 @@ class MovieDto {
     return '$budget'.formatMoney();
   }
 
-  //revenue
   String get revenue {
     var revenue = movie.revenue ?? 0;
     return '$revenue'.formatMoney();
   }
+
+  List<Keyword> get keywords => movie.keywords!['keywords']!;
+
+  String? get trailer {
+    if (hasVideos == false) {
+      return null;
+    }
+
+    var videos = movie.videos!['results']!;
+    var trailer = videos.firstWhere(
+      (video) => video.type == 'Trailer' && video.official == true,
+      orElse: () => videos.first,
+    );
+
+    return 'https://www.youtube.com/watch?v=${trailer.key}';
+  }
+
+  List<ImageItem> get posters => movie.images!['posters'] ?? [];
 
   //checks
 
