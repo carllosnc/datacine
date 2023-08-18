@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class MediaDetailsRepository extends Repository {
   MediaDetailsRepository(super.httpClient);

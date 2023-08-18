@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 enum CreditType { cast, crew }
 

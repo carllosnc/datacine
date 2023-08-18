@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'package:datacine/core/constants/media_type.dart';
-
 import './repository.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
-import '/notifiers/notifiers.dart';
+
+import '/imports/app.dart';
 
 class MediaDiscoverRepository extends Repository {
   MediaDiscoverRepository(super.httpClient);

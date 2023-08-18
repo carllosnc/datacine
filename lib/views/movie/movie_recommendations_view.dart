@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import '/dto/dto.dart';
-import '../../components/components.dart';
-import '/core/core.dart';
-import '/data/data.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class MovieRecommendationView extends StatelessWidget {
   final MovieDto movie;

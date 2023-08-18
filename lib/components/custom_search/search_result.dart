@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '/data/data.dart';
 import 'package:http/http.dart' as http;
-import '../components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class SearchResult extends StatefulWidget {
   final String query;

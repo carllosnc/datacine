@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../components.dart';
 import './media_info_item.dart';
 import './media_info_companies.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class MediaInfo extends StatelessWidget {
   final MovieDto? movie;

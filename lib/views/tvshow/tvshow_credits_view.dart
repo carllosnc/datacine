@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '/dto/dto.dart';
-import '../../components/components.dart';
+import '/imports/app.dart';
 
 class TvShowCreditsView extends StatelessWidget {
   final TvShowDto tvshow;

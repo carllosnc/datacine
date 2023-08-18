@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 part 'person_list.g.dart';
 

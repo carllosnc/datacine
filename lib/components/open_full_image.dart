@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
-import 'components.dart';
+import '/imports/app.dart';
 
 Future<dynamic> openFullImage({
   required BuildContext context,

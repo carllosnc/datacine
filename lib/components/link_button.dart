@@ -1,5 +1,5 @@
-import 'package:datacine/core/constants/colors.dart';
 import 'package:flutter/material.dart';
+import '/imports/app.dart';
 
 class LinkButton extends StatelessWidget {
   final void Function()? onPressed;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/components.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class TvShowImagesView extends StatelessWidget {
   final TvShowDto tvshow;

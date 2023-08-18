@@ -1,8 +1,6 @@
-import 'package:datacine/components/components.dart';
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
 import 'company_tab.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class CompanyView extends StatefulWidget {
   final Company company;

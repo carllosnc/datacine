@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
-import '../../components.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class Companies extends StatelessWidget {
   final MovieDto? movie;

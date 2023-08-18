@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class TvShowSeasons extends StatelessWidget {
   final TvShowDetails? tvshow;

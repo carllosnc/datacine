@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../components.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class CreditListTile extends StatelessWidget {
   final MediaItem item;

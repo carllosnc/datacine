@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/core/constants/colors.dart';
+import '/imports/app.dart';
 
 class ModalHeader extends StatelessWidget {
   final String title;

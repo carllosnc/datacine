@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../components.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class MovieDirectors extends StatelessWidget {
   final MovieDto movie;

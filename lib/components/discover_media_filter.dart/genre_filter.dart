@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../components.dart';
-import '/data/data.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
-import '/notifiers/notifiers.dart';
+import '/imports/app.dart';
 
 class GenreFilter extends StatefulWidget {
   final MediaType mediaType;

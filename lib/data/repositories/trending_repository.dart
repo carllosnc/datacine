@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'repository.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class TrendingRepository extends Repository {
   TrendingRepository(super.httpClient);

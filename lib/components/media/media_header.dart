@@ -1,7 +1,5 @@
-import '/dto/dto.dart';
 import 'package:flutter/material.dart';
-import '/core/core.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class MediaHeader extends StatelessWidget {
   final MovieDto? movie;

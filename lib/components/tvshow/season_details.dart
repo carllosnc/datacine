@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '/domain/domain.dart';
-import '../components.dart';
-import '/data/data.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 showSeasonDetails({
   required BuildContext context,

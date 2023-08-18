@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
-import '/notifiers/notifiers.dart';
+import '/imports/app.dart';
 
 class LangFilter extends StatefulWidget {
   final MediaType mediaType;

@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import './repository.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
+
+import '/imports/app.dart';
 
 class MediaRecommendationsRepository extends Repository {
   MediaRecommendationsRepository(super.httpClient);

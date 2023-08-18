@@ -1,11 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '/data/data.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
-import '../../../../components/components.dart';
-import '/notifiers/notifiers.dart';
+import '/imports/app.dart';
 
 class MoviesTab extends StatefulWidget {
   const MoviesTab({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 enum ImageType { poster, backdrop, profile }
 

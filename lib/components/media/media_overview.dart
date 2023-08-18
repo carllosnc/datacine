@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '/core/core.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class MediaOverview extends StatelessWidget {
   final MovieDto? movie;

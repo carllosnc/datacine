@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '/dto/dto.dart';
-import '../../components/components.dart';
+import '/imports/app.dart';
 
 class MovieCreditsView extends StatelessWidget {
   final MovieDto movie;

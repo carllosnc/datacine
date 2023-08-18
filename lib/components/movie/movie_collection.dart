@@ -1,10 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
-import '../components.dart';
-import '/data/data.dart';
-import '/dto/dto.dart';
+import '/imports/app.dart';
 
 class MovieCollection extends StatelessWidget {
   final MovieDto movie;

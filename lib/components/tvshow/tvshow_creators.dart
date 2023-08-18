@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/dto/dto.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class TvShowCreators extends StatelessWidget {
   final TvShowDto tvShowDto;

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/core/constants/colors.dart';
-import 'package:datacine/core/constants/media_type.dart';
-import '../components.dart';
-import '/notifiers/notifiers.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
 import './lang_filter.dart';
+import '/imports/app.dart';
 
 discoverMediaFilters({
   required BuildContext context,

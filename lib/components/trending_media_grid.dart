@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/domain/domain.dart';
-import 'components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class TrendingMediaGrid extends StatelessWidget {
   final List<MediaItem?> list;

@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class SearchRepository extends Repository {
   SearchRepository(super.httpClient);

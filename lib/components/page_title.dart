@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class PageTitle extends StatelessWidget {
   final String title;
