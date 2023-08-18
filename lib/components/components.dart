@@ -42,7 +42,7 @@ export '/components/media/media_credits_list.dart';
 export '/components/media/media_infinity_grid.dart';
 
 //person
-export '/components/person/person_media_credit.dart';
+export 'person/person_show_media_credit.dart';
 export '/components/person/person_header.dart';
 export '/components/person/person_content.dart';
 export '/components/person/person_info.dart';

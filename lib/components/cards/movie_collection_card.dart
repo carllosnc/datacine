@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
 import 'package:go_router/go_router.dart';
-import '/core/core.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class MovieCollectionCard extends StatelessWidget {
   final MediaItem movie;
