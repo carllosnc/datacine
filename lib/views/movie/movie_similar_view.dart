@@ -4,9 +4,10 @@ import '/imports/components.dart';
 import '/core/core.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
+import '/dto/dto.dart';
 
 class MovieSimilarView extends StatelessWidget {
-  final MovieDetails movie;
+  final MovieDto movie;
 
   const MovieSimilarView({
     super.key,
@@ -33,7 +34,7 @@ class MovieSimilarView extends StatelessWidget {
       appBar: AppBar(
         title: PageTitle(
           title: 'Similar',
-          subtitle: movie.title!,
+          subtitle: movie.title,
         ),
       ),
       body: MediaInfinityGrid(

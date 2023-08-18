@@ -59,8 +59,7 @@ class _TvShowViewState extends State<TvShowView> {
 
                 const SectionDivider(),
 
-                if (tvshowDto.hasCreatedBy)
-                  TvShowCreators(creators: tvshowDto.createdBy),
+                TvShowCreators(tvShowDto: tvshowDto),
 
                 SectionDivider(condition: tvshowDto.hasCreatedBy),
 
@@ -84,7 +83,7 @@ class _TvShowViewState extends State<TvShowView> {
                         onTap: () {
                           context.push(
                             '/tv/$widget.id/credits',
-                            extra: tvshow,
+                            extra: tvshowDto,
                           );
                         },
                       ),
@@ -95,7 +94,7 @@ class _TvShowViewState extends State<TvShowView> {
                         onTap: () {
                           context.push(
                             '/tv/$widget.id/recommendations',
-                            extra: tvshow,
+                            extra: tvshowDto,
                           );
                         },
                       ),
@@ -106,7 +105,7 @@ class _TvShowViewState extends State<TvShowView> {
                         onTap: () {
                           context.push(
                             '/tv/$widget.id/similar',
-                            extra: tvshow,
+                            extra: tvshowDto,
                           );
                         },
                       ),

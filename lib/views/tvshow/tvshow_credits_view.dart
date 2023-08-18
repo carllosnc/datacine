@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
+import '/dto/dto.dart';
 import '/imports/components.dart';
 
 class TvShowCreditsView extends StatelessWidget {
-  final TvShowDetails tvshow;
+  final TvShowDto tvshow;
 
   const TvShowCreditsView({
     super.key,
@@ -14,7 +14,7 @@ class TvShowCreditsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MediaCreditsList(
       credits: tvshow.credits,
-      title: tvshow.name!,
+      title: tvshow.name,
     );
   }
 }

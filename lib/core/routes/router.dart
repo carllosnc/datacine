@@ -74,7 +74,7 @@ final movieCredits = GoRoute(
 final movieRecommendations = GoRoute(
   path: 'recommendations',
   builder: (context, state) {
-    final movie = state.extra as MovieDetails;
+    final movie = state.extra as MovieDto;
 
     return MovieRecommendationView(movie: movie);
   },
@@ -83,7 +83,7 @@ final movieRecommendations = GoRoute(
 final movieSimilar = GoRoute(
   path: 'similar',
   builder: (context, state) {
-    final movie = state.extra as MovieDetails;
+    final movie = state.extra as MovieDto;
 
     return MovieSimilarView(movie: movie);
   },
@@ -103,7 +103,7 @@ final tvshowImages = GoRoute(
 final tvshowCredits = GoRoute(
   path: 'credits',
   builder: (context, state) {
-    final tvshow = state.extra as TvShowDetails;
+    final tvshow = state.extra as TvShowDto;
 
     return TvShowCreditsView(tvshow: tvshow);
   },
@@ -112,7 +112,7 @@ final tvshowCredits = GoRoute(
 final tvshowRecommendations = GoRoute(
   path: 'recommendations',
   builder: (context, state) {
-    final tvshow = state.extra as TvShowDetails;
+    final tvshow = state.extra as TvShowDto;
 
     return TvShowRecommendationView(tvshow: tvshow);
   },
@@ -121,7 +121,7 @@ final tvshowRecommendations = GoRoute(
 final tvshowSimilar = GoRoute(
   path: 'similar',
   builder: (context, state) {
-    final tvshow = state.extra as TvShowDetails;
+    final tvshow = state.extra as TvShowDto;
 
     return TvShowSimilarView(tvshow: tvshow);
   },

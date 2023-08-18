@@ -4,9 +4,10 @@ import '/imports/components.dart';
 import '/core/core.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
+import '/dto/dto.dart';
 
 class TvShowSimilarView extends StatelessWidget {
-  final TvShowDetails tvshow;
+  final TvShowDto tvshow;
 
   const TvShowSimilarView({
     super.key,
@@ -19,7 +20,7 @@ class TvShowSimilarView extends StatelessWidget {
     );
 
     final (similar, _) = await mediaSimilarService.getSimilar(
-      mediaId: tvshow.id as int,
+      mediaId: tvshow.id,
       mediaType: MediaType.tv,
       page: page,
     );
@@ -34,7 +35,7 @@ class TvShowSimilarView extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PageTitle(title: 'Similar TV Shows', subtitle: tvshow.name!),
+            PageTitle(title: 'Similar TV Shows', subtitle: tvshow.name),
           ],
         ),
       ),

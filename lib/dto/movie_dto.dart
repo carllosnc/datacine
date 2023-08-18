@@ -6,6 +6,9 @@ class MovieDto {
 
   MovieDto(this.movie);
 
+  //id
+  num get id => movie.id!;
+
   String get title => movie.title ?? 'No Title';
 
   String? get originalTitle => movie.originalTitle;
@@ -83,7 +86,24 @@ class MovieDto {
 
   List<ImageItem> get posters => movie.images!['posters'] ?? [];
 
+  BelongsToCollection? get belongsToCollection => movie.belongsToCollection;
+
+  List<PersonItem> get directors {
+    var directors = movie.credits!['crew']!
+        .where((crew) => crew.job == 'Director')
+        .toList();
+    return directors;
+  }
+
   //checks
+
+  //has directors
+  bool get hasDirectors {
+    var directors = movie.credits!['crew']!
+        .where((crew) => crew.job == 'Director')
+        .toList();
+    return directors.isNotEmpty;
+  }
 
   bool get hasBudget => movie.budget != null && movie.budget! > 0;
   bool get hasRevenue => movie.revenue != null && movie.revenue! > 0;

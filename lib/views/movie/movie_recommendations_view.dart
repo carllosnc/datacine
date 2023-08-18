@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
+import '/dto/dto.dart';
 import '/imports/components.dart';
 import '/core/core.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
+import '/domain/domain.dart';
 
 class MovieRecommendationView extends StatelessWidget {
-  final MovieDetails movie;
+  final MovieDto movie;
 
   const MovieRecommendationView({
     super.key,
@@ -34,7 +35,7 @@ class MovieRecommendationView extends StatelessWidget {
       appBar: AppBar(
         title: PageTitle(
           title: 'Recommendations',
-          subtitle: movie.title!,
+          subtitle: movie.title,
         ),
       ),
       body: MediaInfinityGrid(

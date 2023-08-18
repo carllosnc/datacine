@@ -7,6 +7,8 @@ class TvShowDto {
 
   TvShowDto(this.tvshow);
 
+  int get id => tvshow.id!;
+
   String get name => tvshow.name ?? 'No Name';
 
   String get originalName => tvshow.originalName!;
@@ -73,6 +75,7 @@ class TvShowDto {
   }
 
   String get numberOfSeasons => tvshow.numberOfSeasons.toString();
+
   String get numberOfEpisodes => tvshow.numberOfEpisodes.toString();
 
   String get genresAsString {
@@ -88,6 +91,7 @@ class TvShowDto {
     }
 
     var videos = tvshow.videos!['results']!;
+
     var trailer = videos.firstWhere(
       (video) => video.type == 'Trailer' && video.official == true,
       orElse: () => videos.first,
@@ -97,6 +101,8 @@ class TvShowDto {
   }
 
   List<ImageItem> get posters => tvshow.images!['posters'] ?? [];
+
+  //checks
 
   bool get hasTagline => tvshow.tagline != null && tvshow.tagline!.isNotEmpty;
   bool get hasGenres => tvshow.genres != null && tvshow.genres!.isNotEmpty;

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/domain/domain.dart';
+import '/dto/dto.dart';
 import '/imports/components.dart';
 
 class TvShowCreators extends StatelessWidget {
-  final List<PersonItem>? creators;
+  final TvShowDto tvShowDto;
 
   const TvShowCreators({
     super.key,
-    required this.creators,
+    required this.tvShowDto,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (creators == null || creators!.isEmpty) return const SizedBox.shrink();
+    if (!tvShowDto.hasCreatedBy) return const SizedBox.shrink();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -23,7 +23,7 @@ class TvShowCreators extends StatelessWidget {
         runSpacing: 10,
         children: [
           const SectionTitle(text: "Created by"),
-          for (var creator in creators!)
+          for (var creator in tvShowDto.createdBy)
             LinkButton(
               label: creator.name!,
               onPressed: () {

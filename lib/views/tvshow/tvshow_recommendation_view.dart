@@ -4,9 +4,10 @@ import '/imports/components.dart';
 import '/core/core.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
+import '/dto/dto.dart';
 
 class TvShowRecommendationView extends StatelessWidget {
-  final TvShowDetails tvshow;
+  final TvShowDto tvshow;
 
   const TvShowRecommendationView({
     super.key,
@@ -20,7 +21,7 @@ class TvShowRecommendationView extends StatelessWidget {
 
     final (recommendations, _) =
         await mediaRecommendationService.getRecomendations(
-      mediaId: tvshow.id as int,
+      mediaId: tvshow.id,
       mediaType: MediaType.tv,
       page: page,
     );
@@ -34,7 +35,7 @@ class TvShowRecommendationView extends StatelessWidget {
       appBar: AppBar(
         title: PageTitle(
           title: 'Recommendations',
-          subtitle: tvshow.name!,
+          subtitle: tvshow.name,
         ),
       ),
       body: MediaInfinityGrid(

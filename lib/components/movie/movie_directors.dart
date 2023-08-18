@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/domain/domain.dart';
 import '/imports/components.dart';
+import '/dto/dto.dart';
 
 class MovieDirectors extends StatelessWidget {
-  final Map<String, List<PersonItem>>? credits;
+  final MovieDto movie;
 
   const MovieDirectors({
     super.key,
-    required this.credits,
+    required this.movie,
   });
 
   @override
   Widget build(BuildContext context) {
-    List<PersonItem>? crew = credits?["crew"];
-    late List<PersonItem>? directors;
-
-    if (crew != null) {
-      directors = crew.where((element) => element.job == "Director").toList();
-    }
-
-    if (directors == null || directors.isEmpty) {
+    if (movie.hasDirectors == false) {
       return const SizedBox.shrink();
     }
 
@@ -32,7 +25,7 @@ class MovieDirectors extends StatelessWidget {
         runSpacing: 10,
         children: [
           const SectionTitle(text: "Directed by"),
-          for (var director in directors)
+          for (var director in movie.directors)
             LinkButton(
               label: director.name!,
               onPressed: () {

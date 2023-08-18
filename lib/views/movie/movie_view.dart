@@ -53,12 +53,9 @@ class MovieView extends StatelessWidget {
 
                 const SectionDivider(),
 
-                if (movieDto.hasCredits)
-                  MovieDirectors(
-                    credits: movieDto.credits,
-                  ),
+                MovieDirectors(movie: movieDto),
 
-                SectionDivider(condition: movieDto.hasCredits),
+                SectionDivider(condition: movieDto.hasDirectors),
 
                 GridMenu(
                   items: [
@@ -80,7 +77,7 @@ class MovieView extends StatelessWidget {
                         onTap: () {
                           context.push(
                             '/movie/$id/credits',
-                            extra: movie,
+                            extra: movieDto,
                           );
                         },
                       ),
@@ -91,7 +88,7 @@ class MovieView extends StatelessWidget {
                         onTap: () {
                           context.push(
                             '/movie/$id/recommendations',
-                            extra: movie,
+                            extra: movieDto,
                           );
                         },
                       ),
@@ -102,7 +99,7 @@ class MovieView extends StatelessWidget {
                         onTap: () {
                           context.push(
                             '/movie/$id/similar',
-                            extra: movie,
+                            extra: movieDto,
                           );
                         },
                       ),
@@ -129,7 +126,7 @@ class MovieView extends StatelessWidget {
 
                 //collection
                 SectionDivider(condition: movieDto.hasCollection),
-                MovieCollection(movie: movie),
+                MovieCollection(movie: movieDto),
                 const SizedBox(height: 20),
               ],
             ),
