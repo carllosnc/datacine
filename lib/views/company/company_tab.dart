@@ -3,7 +3,7 @@ import 'package:datacine/core/constants/media_type.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
 import 'package:http/http.dart' as http;
-import '/imports/components.dart';
+import '../../components/components.dart';
 
 class CompanyMovieTabs extends StatelessWidget {
   final Company company;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/core/constants/media_type.dart';
-import '/imports/components.dart';
+import '../components.dart';
 import '/domain/domain.dart';
 
 class PersonContent extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import '/core/core.dart';
 import '/domain/domain.dart';
-import '/imports/components.dart';
+import '../components.dart';
 import '/data/data.dart';
 import '/dto/dto.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/domain/domain.dart';
 import '/data/data.dart';
-import '/imports/components.dart';
+import '../../components/components.dart';
 import 'package:http/http.dart' as http;
 import '/dto/dto.dart';
 

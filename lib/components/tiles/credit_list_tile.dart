@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/imports/components.dart';
+import '../components.dart';
 import '/core/core.dart';
 import '/domain/domain.dart';
 

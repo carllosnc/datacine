@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/core/core.dart';
-import '/imports/components.dart';
+import '../components.dart';
 import '/domain/domain.dart';
 
 class PersonListTile extends StatelessWidget {

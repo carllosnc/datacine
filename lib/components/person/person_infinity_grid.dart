@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/domain/domain.dart';
-import '/imports/components.dart';
+import '../components.dart';
 
 class PeopleInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;

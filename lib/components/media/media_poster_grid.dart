@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:datacine/core/core.dart';
 import '/domain/domain.dart';
-import '/imports/components.dart';
+import '../components.dart';
 
 class MediaPosterGrid extends StatefulWidget {
   final List<ImageItem> posters;

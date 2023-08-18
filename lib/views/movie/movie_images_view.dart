@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/components.dart';
+import '../../components/components.dart';
 import '/dto/dto.dart';
 
 class MovieImagesView extends StatelessWidget {

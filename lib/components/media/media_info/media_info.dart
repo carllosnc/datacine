@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/components.dart';
+import '../../components.dart';
 import './media_info_item.dart';
 import './media_info_companies.dart';
 import '/dto/dto.dart';

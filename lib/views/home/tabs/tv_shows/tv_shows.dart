@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
-import '/imports/components.dart';
+import '../../../../components/components.dart';
 import '/notifiers/notifiers.dart';
 import 'package:http/http.dart' as http;
 import '/data/data.dart';

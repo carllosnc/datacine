@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/core/core.dart';
-import '/imports/components.dart';
+import '../../components/components.dart';
 import './tabs/movies/movies.dart';
 import './tabs/tv_shows/tv_shows.dart';
 import './tabs/trending/trending.dart';

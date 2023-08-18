@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/domain/domain.dart';
 import '/core/core.dart';
-import '/imports/components.dart';
+import '../components.dart';
 
 class EpisodeListTile extends StatelessWidget {
   final Episode episode;

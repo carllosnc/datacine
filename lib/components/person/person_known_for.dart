@@ -1,4 +1,4 @@
-import '/imports/components.dart';
+import '../components.dart';
 import 'package:flutter/material.dart';
 import 'package:datacine/core/helpers/unique.dart';
 import '/domain/domain.dart';
