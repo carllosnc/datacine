@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 showMediaCredit(
   BuildContext context,
@@ -14,7 +12,6 @@ showMediaCredit(
     useSafeArea: true,
     context: context,
     builder: (context) {
-      // if list is null or empty, show empty widget
       if (list == null || list.isEmpty) {
         return Column(
           children: [
@@ -26,7 +23,6 @@ showMediaCredit(
         );
       }
 
-      // sort list by release date
       if (mediaType == MediaType.movie) {
         list.sort(
           (a, b) {
@@ -38,7 +34,6 @@ showMediaCredit(
         );
       }
 
-      // sort list by first air date
       if (mediaType == MediaType.tv) {
         list.sort(
           (a, b) {

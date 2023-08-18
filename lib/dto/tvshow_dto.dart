@@ -1,6 +1,4 @@
-import 'package:datacine/core/core.dart';
-
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class TvShowDto {
   final TvShowDetails tvshow;

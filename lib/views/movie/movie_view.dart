@@ -121,7 +121,6 @@ class MovieView extends StatelessWidget {
                 PersonHorizontalList(
                   title: 'Cast',
                   list: movieDto.cast,
-                  maxWidth: double.infinity,
                 ),
 
                 //collection

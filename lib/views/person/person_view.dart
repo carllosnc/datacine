@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '/data/data.dart';
 import 'package:http/http.dart' as http;
-import '../../components/components.dart';
-import '/domain/domain.dart';
+
+import '/imports/app.dart';
 
 class PersonView extends StatefulWidget {
   final String id;
@@ -41,6 +40,7 @@ class _PersonViewState extends State<PersonView>
         }
 
         var (PersonDetails person, _) = snapshot.data!;
+        PersonDto personDto = PersonDto(person: person);
 
         if (person.name == null) {
           return const Scaffold(
@@ -48,7 +48,7 @@ class _PersonViewState extends State<PersonView>
           );
         }
 
-        return PersonContent(person: person);
+        return PersonContent(person: personDto);
       },
     );
   }

@@ -1,10 +1,8 @@
-import 'package:datacine/components/components.dart';
 import 'package:flutter/material.dart';
-import '/core/core.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class PersonInfo extends StatelessWidget {
-  final PersonDetails person;
+  final PersonDto person;
 
   const PersonInfo({super.key, required this.person});
 
@@ -18,73 +16,59 @@ class PersonInfo extends StatelessWidget {
           direction: Axis.vertical,
           spacing: 25,
           children: [
-            if (person.birthday != null)
-              Wrap(
-                direction: Axis.vertical,
-                spacing: 7,
-                children: [
-                  const Label(text: "Birthday"),
-                  Text(
-                    person.birthday!.formatDateTime(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: ProjectColors(context).text,
-                    ),
-                  ),
-                ],
+            if (person.hasBirthday)
+              infoItem(
+                context: context,
+                label: "Birthday",
+                text: person.birthday,
               ),
-            if (person.deathday != null)
-              Wrap(
-                alignment: WrapAlignment.start,
-                direction: Axis.vertical,
-                spacing: 7,
-                children: [
-                  const Label(text: "Deathday"),
-                  Text(
-                    person.deathday!.formatDateTime(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: ProjectColors(context).text,
-                    ),
-                  ),
-                ],
+            if (person.hasDeathday)
+              infoItem(
+                context: context,
+                label: "Deathday",
+                text: person.deathday,
               ),
-            if (person.placeOfBirth != null)
-              Wrap(
-                direction: Axis.vertical,
-                spacing: 7,
-                children: [
-                  const Label(text: "Place of birth"),
-                  Text(
-                    person.placeOfBirth!,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: ProjectColors(context).text,
-                    ),
-                  ),
-                ],
+            if (person.hasPlaceOfBirth)
+              infoItem(
+                context: context,
+                label: "Place of birth",
+                text: person.placeOfBirth,
               ),
-            if (person.biography != null && person.biography!.isNotEmpty)
-              Wrap(
-                spacing: 7,
-                direction: Axis.vertical,
-                children: [
-                  const Label(text: "Biography"),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width - 40,
-                    child: Text(
-                      person.biography!,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: ProjectColors(context).text,
-                      ),
-                    ),
-                  ),
-                ],
+            if (person.hasBiography)
+              infoItem(
+                context: context,
+                label: "Biography",
+                text: person.biography,
               ),
           ],
         ),
       ),
+    );
+  }
+
+  Wrap infoItem({
+    required BuildContext context,
+    required String label,
+    required String text,
+  }) {
+    double width = MediaQuery.of(context).size.width - 40;
+
+    return Wrap(
+      direction: Axis.vertical,
+      spacing: 7,
+      children: [
+        Label(text: label),
+        SizedBox(
+          width: width,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).text,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

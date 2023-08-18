@@ -1,185 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '/domain/domain.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '/imports/app.dart';
+
 class PersonExternalLinks extends StatelessWidget {
-  final PersonDetails person;
+  final PersonDto person;
 
   const PersonExternalLinks({super.key, required this.person});
 
   @override
   Widget build(BuildContext context) {
-    if (person.externalIds?['imdb_id'] == null &&
-        person.externalIds?['instagram_id'] == null &&
-        person.externalIds?['facebook_id'] == null &&
-        person.externalIds?['twitter_id'] == null &&
-        person.externalIds?['tiktok_id'] == null &&
-        person.externalIds?['wikidata_id'] == null) {
+    if (person.hasExternalLinks) {
       return const SizedBox.shrink();
     }
 
     return PopupMenuButton(
       itemBuilder: (context) {
         return [
-          if (person.externalIds?['imdb_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://www.imdb.com/name/${person.externalIds?['imdb_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.imdb,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "IMDb",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+          if (person.hasImdbId)
+            linkItem(
+              url: person.imdbUrl,
+              icon: FontAwesomeIcons.imdb,
+              label: "IMDb",
             ),
-          if (person.externalIds?['instagram_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://www.instagram.com/${person.externalIds?['instagram_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.instagram,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Instagram",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+          if (person.hasInstagramId)
+            linkItem(
+              url: person.instagramUrl,
+              icon: FontAwesomeIcons.instagram,
+              label: "Instagram",
             ),
-          if (person.externalIds?['facebook_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://www.facebook.com/${person.externalIds?['facebook_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.facebook,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Facebook",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+          if (person.hasFacebookId)
+            linkItem(
+              url: person.facebookUrl,
+              icon: FontAwesomeIcons.facebook,
+              label: "Facebook",
             ),
-          if (person.externalIds?['twitter_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://twitter.com/${person.externalIds?['twitter_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.twitter,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Twitter",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+          if (person.hasTwitterId)
+            linkItem(
+              url: person.twitterUrl,
+              icon: FontAwesomeIcons.twitter,
+              label: "Twitter",
             ),
-          if (person.externalIds?['tiktok_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://www.tiktok.com/@${person.externalIds?['tiktok_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.tiktok,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "TikTok",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+          if (person.hasTiktokId)
+            linkItem(
+              url: person.tiktokUrl,
+              icon: FontAwesomeIcons.tiktok,
+              label: "TikTok",
             ),
-          if (person.externalIds?['wikidata_id'] != null)
-            PopupMenuItem(
-              onTap: () {
-                launchUrl(
-                  Uri.parse(
-                    'https://www.wikidata.org/wiki/${person.externalIds?['wikidata_id']}',
-                  ),
-                );
-              },
-              child: const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.wikipediaW,
-                    size: 15,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Wikidata",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          if (person.hasWikidataId)
+            linkItem(
+              url: person.wikidataUrl,
+              icon: FontAwesomeIcons.wikipediaW,
+              label: "Wikipedia",
+            )
         ];
       },
+    );
+  }
+
+  PopupMenuItem<dynamic> linkItem({
+    required String url,
+    required IconData icon,
+    required String label,
+  }) {
+    return PopupMenuItem(
+      onTap: () {
+        launchUrl(
+          Uri.parse(url),
+        );
+      },
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          FaIcon(
+            icon,
+            size: 15,
+          ),
+          const SizedBox(width: 10),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

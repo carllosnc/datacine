@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class PersonImages extends StatelessWidget {
-  final PersonDetails person;
+  final PersonDto person;
 
   const PersonImages({super.key, required this.person});
 
   @override
   Widget build(BuildContext context) {
-    List<ImageItem>? images = person.images?['profiles'];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //title
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: SectionTitle(text: "Profile Images"),
         ),
-
         const SizedBox(height: 20),
-
         SizedBox(
           height: 180,
           child: ListView.separated(
@@ -31,9 +24,9 @@ class PersonImages extends StatelessWidget {
             separatorBuilder: (context, index) {
               return const SizedBox(width: 15);
             },
-            itemCount: images!.length,
+            itemCount: person.profileImages!.length,
             itemBuilder: (BuildContext context, int index) {
-              ImageItem image = images[index];
+              ImageItem image = person.profileImages![index];
 
               return GestureDetector(
                 onTap: () {

@@ -1,6 +1,7 @@
 export 'routes/router.dart';
 export 'helpers/image_helper.dart';
 export 'helpers/formaters.dart';
+export 'helpers/unique.dart';
 export 'theme/app_theme.dart';
 export 'constants/colors.dart';
 export 'constants/assets.dart';

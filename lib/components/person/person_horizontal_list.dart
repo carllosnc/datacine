@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class PersonHorizontalList extends StatelessWidget {
   final List<PersonItem>? list;
-  final double maxWidth;
   final String title;
 
   const PersonHorizontalList({
     super.key,
     required this.list,
-    required this.maxWidth,
     required this.title,
   });
 
@@ -39,7 +36,7 @@ class PersonHorizontalList extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Container(
-          width: maxWidth,
+          width: MediaQuery.of(context).size.width,
           height: 210,
           color: Colors.transparent,
           child: ListView.separated(

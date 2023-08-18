@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/domain/domain.dart';
-import '../components.dart';
+import '/imports/app.dart';
 
 class PeopleInfinityList extends StatefulWidget {
   final Function({required int page}) fetchData;

@@ -1,12 +1,10 @@
-import '/core/core.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class MovieDto {
   final MovieDetails movie;
 
   MovieDto(this.movie);
 
-  //id
   num get id => movie.id!;
 
   String get title => movie.title ?? 'No Title';

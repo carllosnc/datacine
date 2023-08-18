@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import '/domain/domain.dart';
-import '../components.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
-class PersonHeader extends StatefulWidget {
-  final PersonDetails person;
+class PersonHeader extends StatelessWidget {
+  final PersonDto person;
 
   const PersonHeader({super.key, required this.person});
 
-  @override
-  State<PersonHeader> createState() => _PersonHeaderState();
-}
-
-class _PersonHeaderState extends State<PersonHeader> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,13 +29,13 @@ class _PersonHeaderState extends State<PersonHeader> {
               borderRadius: BorderRadius.circular(10),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  widget.person.profilePath == null
+                  person.hasProfilePath
                       ? ProjectColors(context).imageFilter
                       : ProjectColors(context).profileFilter,
                   BlendMode.color,
                 ),
                 child: ImageComponent(
-                  imagePath: (widget.person.profilePath),
+                  imagePath: (person.profilePath),
                   imageType: ImageType.profile,
                   imageSize: ImageSize.profileOriginal,
                 ),
@@ -61,9 +54,9 @@ class _PersonHeaderState extends State<PersonHeader> {
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: 5,
             children: [
-              BigTitle(text: widget.person.name!),
+              BigTitle(text: person.name),
               Text(
-                widget.person.knownForDepartment ?? '—',
+                person.knownForDepartment,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,

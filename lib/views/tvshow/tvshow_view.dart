@@ -125,7 +125,6 @@ class _TvShowViewState extends State<TvShowView> {
                 PersonHorizontalList(
                   title: 'Cast',
                   list: tvshowDto.cast,
-                  maxWidth: double.infinity,
                 ),
 
                 //seasons

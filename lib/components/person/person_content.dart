@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:datacine/core/constants/media_type.dart';
-import '../components.dart';
-import '/domain/domain.dart';
+import '/imports/app.dart';
 
 class PersonContent extends StatelessWidget {
-  final PersonDetails person;
+  final PersonDto person;
 
   const PersonContent({
     super.key,
@@ -13,17 +11,6 @@ class PersonContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //check if person has credits
-    bool hasCredits = [
-          ...person.combinedCredits?['cast'] ?? [],
-          ...person.combinedCredits?['crew'] ?? [],
-        ].length >
-        3;
-
-    // check if person has images
-    bool hasImages = (person.images?['profiles']?.isNotEmpty ?? false) &&
-        (person.images!['profiles']!.length > 3);
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,7 +19,7 @@ class PersonContent extends StatelessWidget {
             person: person,
           ),
         ],
-        title: PageTitle(title: person.name!),
+        title: PageTitle(title: person.name),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,57 +30,53 @@ class PersonContent extends StatelessWidget {
 
             GridMenu(
               items: [
-                if (person.movieCredits!['cast']!.isNotEmpty)
+                if (person.hasMovieCast)
                   GridMenuItem(
                     label: 'Movie cast',
                     icon: Icons.local_movies,
                     onTap: () {
-                      var cast = person.movieCredits?['cast'];
                       showMediaCredit(
                         context,
-                        cast,
+                        person.movieCast,
                         MediaType.movie,
                         "${person.name}: Movie Cast",
                       );
                     },
                   ),
-                if (person.movieCredits!['crew']!.isNotEmpty)
+                if (person.hasMovieCrew)
                   GridMenuItem(
                     label: 'Movie crew',
                     icon: Icons.movie,
                     onTap: () {
-                      var crew = person.movieCredits?['crew'];
                       showMediaCredit(
                         context,
-                        crew,
+                        person.movieCrew,
                         MediaType.movie,
                         "${person.name}: Movie Crew",
                       );
                     },
                   ),
-                if (person.tvCredits!['cast']!.isNotEmpty)
+                if (person.hasTvCast)
                   GridMenuItem(
                     label: 'TV cast',
                     icon: Icons.live_tv,
                     onTap: () {
-                      var cast = person.tvCredits?['cast'];
                       showMediaCredit(
                         context,
-                        cast,
+                        person.tvCast,
                         MediaType.tv,
                         "${person.name}: TV Cast",
                       );
                     },
                   ),
-                if (person.tvCredits!['crew']!.isNotEmpty)
+                if (person.hasTvCrew)
                   GridMenuItem(
                     label: 'TV crew',
                     icon: Icons.tv,
                     onTap: () {
-                      var crew = person.tvCredits?['crew'];
                       showMediaCredit(
                         context,
-                        crew,
+                        person.tvCrew,
                         MediaType.tv,
                         "${person.name}: TV Crew",
                       );
@@ -102,19 +85,19 @@ class PersonContent extends StatelessWidget {
               ],
             ),
 
-            const SectionDivider(),
-
             // known for
-            if (hasCredits) PersonKnownFor(person: person),
-            if (hasCredits) const SectionDivider(),
+            SectionDivider(condition: person.hasCredits),
+            if (person.hasCredits) PersonKnownFor(person: person),
 
             // images
-            if (hasImages) PersonImages(person: person),
-            if (hasImages) const SectionDivider(),
+            SectionDivider(condition: person.hasProfileImages),
+            if (person.hasProfileImages) PersonImages(person: person),
 
             // info
-            PersonInfo(person: person),
-            const SizedBox(height: 50)
+            SectionDivider(condition: person.hasInfo),
+            if (person.hasInfo) PersonInfo(person: person),
+
+            const SizedBox(height: 30)
           ],
         ),
       ),

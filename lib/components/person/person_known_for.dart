@@ -1,11 +1,8 @@
-import '../components.dart';
 import 'package:flutter/material.dart';
-import 'package:datacine/core/helpers/unique.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
+import '/imports/app.dart';
 
 class PersonKnownFor extends StatelessWidget {
-  final PersonDetails person;
+  final PersonDto person;
 
   const PersonKnownFor({
     super.key,
@@ -14,28 +11,6 @@ class PersonKnownFor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //get all cast and crew
-    List<MediaItem> movies = person.combinedCredits?['cast'] ?? [];
-    List<MediaItem> series = person.combinedCredits?['crew'] ?? [];
-
-    // combine cast and crew
-    List<MediaItem> allCredits = [...movies, ...series];
-
-    if (allCredits.isNotEmpty) {
-      allCredits.sort((a, b) {
-        var aVote = a.voteCount ?? 0;
-        var bVote = b.voteCount ?? 0;
-
-        return bVote.compareTo(aVote);
-      });
-    }
-
-    // remove duplicates
-    allCredits = allCredits.unique((p1) => p1.id);
-
-    //cut in 20 items
-    allCredits = allCredits.take(20).toList();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,9 +33,9 @@ class PersonKnownFor extends StatelessWidget {
             separatorBuilder: (context, index) {
               return const SizedBox(width: 15);
             },
-            itemCount: allCredits.length,
+            itemCount: person.knownForCredits.length,
             itemBuilder: (BuildContext context, int index) {
-              MediaItem media = allCredits[index];
+              MediaItem media = person.knownForCredits[index];
 
               MediaType mediaType =
                   media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
