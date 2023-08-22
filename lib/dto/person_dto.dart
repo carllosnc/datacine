@@ -92,7 +92,7 @@ class PersonDto {
         3;
   }
 
-  bool get hasImages {
+  bool get hasProfileImages {
     return (person.images?['profiles']?.isNotEmpty ?? false) &&
         (person.images!['profiles']!.length > 3);
   }
@@ -114,10 +114,6 @@ class PersonDto {
 
   bool get hasTvCast => person.tvCredits!['cast']!.isNotEmpty;
   bool get hasTvCrew => person.tvCredits!['crew']!.isNotEmpty;
-
-  bool get hasProfileImages {
-    return person.images?['profiles']?.isNotEmpty ?? false;
-  }
 
   bool get hasBirthday => person.birthday != null;
   bool get hasDeathday => person.deathday != null;
