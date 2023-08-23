@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class MediaHeader extends StatelessWidget {
@@ -83,32 +84,26 @@ class MediaHeader extends StatelessWidget {
     );
   }
 
-  Center mediaCover(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40;
+  Widget mediaCover(BuildContext context) {
+    var width = MediaQuery.of(context).size.width - 40 - 14;
     var height = width * 1.5;
     var mediaPoster = movie?.poster ?? tvshow?.poster;
 
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.white.withOpacity(0.4),
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        width: width,
-        height: height,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: ImageComponent(
-            imagePath: (mediaPoster),
-            imageType: ImageType.poster,
-            imageSize: ImageSize.posterW500,
-          ),
-        ),
-      ),
+    String imageSrc = ImageHelper.getPoster(
+      path: mediaPoster,
+      size: ImageSize.posterW780,
+    );
+
+    return Imgy(
+      borderColor: Colors.white.withOpacity(0.2),
+      padding: 6,
+      rounded: 10,
+      borderWidth: 2,
+      width: width,
+      height: height,
+      src: imageSrc,
+      placeholderColor: Colors.black,
+      fullSrc: imageSrc,
     );
   }
 

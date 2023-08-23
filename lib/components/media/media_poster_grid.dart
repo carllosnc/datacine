@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '/imports/app.dart';
 
+import 'package:imgy/imgy.dart';
+
 class MediaPosterGrid extends StatefulWidget {
   final List<ImageItem> posters;
   final String title;
@@ -107,36 +109,25 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       itemBuilder: (context, index) {
         final ImageItem imageItem = filteredPosters[index];
 
-        return GestureDetector(
-          onTap: () {
-            openFullImage(
-              context: context,
-              image: imageItem,
-              imageType: ImageType.poster,
-              imageSize: ImageSize.posterOriginal,
-            );
-          },
-          child: SizedBox(
-            width: 200,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ImageComponent(
-                          imageSize: ImageSize.posterW185,
-                          imagePath: imageItem.filePath,
-                          imageType: ImageType.poster,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        String imageSrc = ImageHelper.getPoster(
+          path: imageItem.filePath!,
+          size: ImageSize.posterW185,
+        );
+
+        String fullImageSrc = ImageHelper.getPoster(
+          path: imageItem.filePath!,
+          size: ImageSize.posterW780,
+        );
+
+        String description =
+            "${imageItem.iso6391} - ${imageItem.width} x ${imageItem.height}";
+
+        return Imgy(
+          src: imageSrc,
+          enableFullScreen: true,
+          fullSrc: fullImageSrc,
+          placeholderColor: Colors.black,
+          description: description,
         );
       },
     );

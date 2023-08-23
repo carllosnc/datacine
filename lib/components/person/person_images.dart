@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class PersonImages extends StatelessWidget {
@@ -28,27 +29,23 @@ class PersonImages extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               ImageItem image = person.profileImages![index];
 
-              return GestureDetector(
-                onTap: () {
-                  openFullImage(
-                    context: context,
-                    image: image,
-                    imageType: ImageType.profile,
-                    imageSize: ImageSize.profileOriginal,
-                  );
-                },
-                child: SizedBox(
-                  width: 130,
-                  height: 130 * 1.5,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(7),
-                    child: ImageComponent(
-                      imagePath: (image.filePath),
-                      imageType: ImageType.profile,
-                      imageSize: ImageSize.profileW185,
-                    ),
-                  ),
-                ),
+              var previewImage = ImageHelper.getPoster(
+                path: image.filePath,
+                size: ImageSize.profileW185,
+              );
+
+              var fullScreenImage = ImageHelper.getPoster(
+                path: image.filePath,
+                size: ImageSize.profileOriginal,
+              );
+
+              return Imgy(
+                rounded: 5,
+                width: 120,
+                src: previewImage,
+                fullSrc: fullScreenImage,
+                enableFullScreen: true,
+                placeholderColor: Colors.black,
               );
             },
           ),
