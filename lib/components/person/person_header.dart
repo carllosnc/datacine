@@ -29,7 +29,7 @@ class PersonHeader extends StatelessWidget {
             fullSrc: profileImage,
             rounded: 10,
             padding: 5,
-            borderColor: Colors.white.withOpacity(0.4),
+            borderColor: Colors.white.withOpacity(0.2),
             borderWidth: 2,
             placeholderColor: Colors.black,
           ),
