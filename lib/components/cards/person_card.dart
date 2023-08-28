@@ -9,7 +9,7 @@ class PersonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var poster = ImageHelper.getPoster(
+    var poster = ImageHelper.getProfile(
       path: personItem.profilePath,
       size: ImageSize.profileW185,
     );
