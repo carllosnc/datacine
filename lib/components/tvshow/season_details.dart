@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 showSeasonDetails({
@@ -34,6 +35,11 @@ showSeasonDetails({
             return const ErrorBlock();
           }
 
+          var poster = ImageHelper.getPoster(
+            path: season.posterPath,
+            size: ImageSize.posterW342,
+          );
+
           return Container(
             color: Theme.of(context).scaffoldBackgroundColor,
             child: CustomScrollView(
@@ -62,17 +68,13 @@ showSeasonDetails({
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        SizedBox(
+                        Imgy(
+                          rounded: 10,
+                          src: poster,
+                          fullSrc: poster,
                           width: 200,
                           height: 200 * 1.5,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: ImageComponent(
-                              imagePath: season.posterPath,
-                              imageType: ImageType.poster,
-                              imageSize: ImageSize.posterW342,
-                            ),
-                          ),
+                          placeholderColor: Colors.black,
                         ),
                         const SizedBox(height: 15),
                         Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class MiniMediaCard extends StatelessWidget {
@@ -14,6 +15,11 @@ class MiniMediaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var poster = ImageHelper.getPoster(
+      path: mediaItem.posterPath,
+      size: ImageSize.posterW154,
+    );
+
     return GestureDetector(
       onTap: () {
         context.push(
@@ -26,13 +32,13 @@ class MiniMediaCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(7),
-                child: ImageComponent(
-                  imageSize: ImageSize.posterW154,
-                  imagePath: mediaItem.posterPath,
-                  imageType: ImageType.poster,
-                ),
+              child: Imgy(
+                rounded: 5,
+                src: poster,
+                fullSrc: poster,
+                width: double.infinity,
+                height: double.infinity,
+                placeholderColor: Colors.black,
               ),
             ),
             const SizedBox(height: 5),

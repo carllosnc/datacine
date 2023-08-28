@@ -13,7 +13,7 @@ Future main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  // load dotenv''
+  // load dotenv
   await dotenv.load(fileName: ".env");
 
   // load shared preferences

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class CreditListTile extends StatelessWidget {
@@ -11,6 +12,11 @@ class CreditListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var poster = ImageHelper.getPoster(
+      path: item.posterPath,
+      size: ImageSize.posterW154,
+    );
+
     return ListTile(
       onTap: () {
         context.push(
@@ -18,17 +24,12 @@ class CreditListTile extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: SizedBox(
+      leading: Imgy(
+        src: poster,
+        fullSrc: poster,
         width: 35,
-        height: 35 * 1.5,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(3),
-          child: ImageComponent(
-            imageSize: ImageSize.posterW154,
-            imagePath: item.posterPath,
-            imageType: ImageType.poster,
-          ),
-        ),
+        height: 53,
+        placeholderColor: Colors.black,
       ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

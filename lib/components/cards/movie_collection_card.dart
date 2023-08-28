@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class MovieCollectionCard extends StatelessWidget {
@@ -11,56 +12,59 @@ class MovieCollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              context.push('/movie/${movie.id.toString()}');
-            },
-            child: SizedBox(
-              height: 150 * 1.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(7),
-                child: ImageComponent(
-                  imagePath: movie.posterPath,
-                  imageType: ImageType.poster,
-                  imageSize: ImageSize.posterW342,
-                ),
+    var poster = ImageHelper.getPoster(
+      path: movie.posterPath,
+      size: ImageSize.posterW342,
+    );
+
+    return GestureDetector(
+      onTap: () {
+        context.push('/movie/${movie.id.toString()}');
+      },
+      child: SizedBox(
+        width: 150,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Imgy(
+                src: poster,
+                fullSrc: poster,
+                rounded: 7,
+                width: double.infinity,
+                placeholderColor: Colors.black,
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                movie.title!,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: ProjectColors(context).featured,
+            const SizedBox(height: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  movie.title!,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: ProjectColors(context).featured,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                (movie.releaseDate ?? '').formatDateTime(),
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: ProjectColors(context).label,
+                const SizedBox(height: 2),
+                Text(
+                  (movie.releaseDate ?? '').formatDateTime(),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ProjectColors(context).label,
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

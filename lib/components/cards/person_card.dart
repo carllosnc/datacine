@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class PersonCard extends StatelessWidget {
@@ -8,6 +9,11 @@ class PersonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var poster = ImageHelper.getPoster(
+      path: personItem.profilePath,
+      size: ImageSize.profileW185,
+    );
+
     return GestureDetector(
       onTap: () {
         context.push('/person/${personItem.id}');
@@ -16,20 +22,17 @@ class PersonCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(7),
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  personItem.profilePath == null
-                      ? ProjectColors(context).imageFilter
-                      : ProjectColors(context).profileFilter,
-                  BlendMode.color,
-                ),
-                child: ImageComponent(
-                  imageSize: ImageSize.profileW185,
-                  imagePath: personItem.profilePath,
-                  imageType: ImageType.profile,
-                ),
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                ProjectColors(context).imageFilter,
+                BlendMode.color,
+              ),
+              child: Imgy(
+                src: poster,
+                fullSrc: poster,
+                rounded: 7,
+                width: double.infinity,
+                placeholderColor: Colors.black,
               ),
             ),
           ),

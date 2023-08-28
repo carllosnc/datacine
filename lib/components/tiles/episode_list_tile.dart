@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class EpisodeListTile extends StatelessWidget {
@@ -15,21 +16,22 @@ class EpisodeListTile extends StatelessWidget {
       return true;
     }
 
+    var image = ImageHelper.getBackdrop(
+      path: episode.stillPath,
+      size: ImageSize.backdropW780,
+    );
+
     return ListTile(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: SizedBox(
-              width: double.infinity,
-              height: 170,
-              child: ImageComponent(
-                imagePath: episode.stillPath,
-                imageType: ImageType.backdrop,
-                imageSize: ImageSize.stillW300,
-              ),
-            ),
+          Imgy(
+            height: 170,
+            width: double.infinity,
+            src: image,
+            rounded: 10,
+            fullSrc: image,
+            placeholderColor: Colors.black,
           ),
           const SizedBox(height: 10),
           Text(

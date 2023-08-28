@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class PersonListTile extends StatelessWidget {
@@ -12,6 +13,11 @@ class PersonListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var image = ImageHelper.getProfile(
+      path: person.profilePath,
+      size: ImageSize.profileW185,
+    );
+
     return ListTile(
       onTap: () {
         context.push('/person/${person.id}');
@@ -24,24 +30,20 @@ class PersonListTile extends StatelessWidget {
         ),
       ),
       trailing: const Icon(Icons.chevron_right),
-      leading: SizedBox(
-        width: 45,
-        height: 45 * 1.5,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(3),
-          child: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-              person.profilePath == null
-                  ? ProjectColors(context).imageFilter
-                  : ProjectColors(context).profileFilter,
-              BlendMode.color,
-            ),
-            child: ImageComponent(
-              imageSize: ImageSize.profileW185,
-              imagePath: person.profilePath,
-              imageType: ImageType.profile,
-            ),
-          ),
+      leading: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          person.profilePath == null
+              ? ProjectColors(context).imageFilter
+              : ProjectColors(context).profileFilter,
+          BlendMode.color,
+        ),
+        child: Imgy(
+          rounded: 4,
+          src: image,
+          fullSrc: image,
+          width: 40,
+          height: 55,
+          placeholderColor: Colors.black,
         ),
       ),
       subtitle: Text(

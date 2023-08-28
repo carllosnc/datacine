@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class MediaListTile extends StatelessWidget {
@@ -9,6 +10,11 @@ class MediaListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var poster = ImageHelper.getPoster(
+      path: item.posterPath,
+      size: ImageSize.posterW154,
+    );
+
     return ListTile(
       onTap: () {
         context.push(
@@ -16,17 +22,13 @@ class MediaListTile extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: SizedBox(
-        width: 45,
-        height: 45 * 1.5,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(3),
-          child: ImageComponent(
-            imageSize: ImageSize.posterW154,
-            imagePath: item.posterPath,
-            imageType: ImageType.poster,
-          ),
-        ),
+      leading: Imgy(
+        rounded: 4,
+        src: poster,
+        fullSrc: poster,
+        width: 40,
+        height: 55,
+        placeholderColor: Colors.black,
       ),
       title: Text(
         item.title ?? item.name ?? '-',

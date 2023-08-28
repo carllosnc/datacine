@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class TrendingMediaGrid extends StatelessWidget {
@@ -27,6 +28,11 @@ class TrendingMediaGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         final MediaItem mediaItem = list[index]!;
 
+        var poster = ImageHelper.getPoster(
+          path: mediaItem.posterPath,
+          size: ImageSize.posterW154,
+        );
+
         return GestureDetector(
           onTap: () {
             context.push('/${mediaType.value}/${mediaItem.id.toString()}');
@@ -37,18 +43,13 @@ class TrendingMediaGrid extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ImageComponent(
-                          imageSize: ImageSize.posterW154,
-                          imagePath: mediaItem.posterPath,
-                          imageType: ImageType.poster,
-                        ),
-                      ),
-                    ],
+                  child: Imgy(
+                    src: poster,
+                    fullSrc: poster,
+                    width: double.infinity,
+                    placeholderColor: Colors.black,
                   ),
-                ),
+                )
               ],
             ),
           ),

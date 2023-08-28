@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class SeasonCard extends StatelessWidget {
@@ -15,6 +16,11 @@ class SeasonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var poster = ImageHelper.getPoster(
+      path: season.posterPath,
+      size: ImageSize.posterW342,
+    );
+
     return SizedBox(
       width: 150,
       child: Column(
@@ -30,16 +36,13 @@ class SeasonCard extends StatelessWidget {
                 tvshowName: tvshowName,
               );
             },
-            child: SizedBox(
+            child: Imgy(
+              src: poster,
+              fullSrc: poster,
+              rounded: 7,
+              width: double.infinity,
               height: 150 * 1.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(7),
-                child: ImageComponent(
-                  imagePath: season.posterPath,
-                  imageType: ImageType.poster,
-                  imageSize: ImageSize.posterW342,
-                ),
-              ),
+              placeholderColor: Colors.black,
             ),
           ),
           const SizedBox(height: 8),

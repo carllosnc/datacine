@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imgy/imgy.dart';
 import '/imports/app.dart';
 
 class TrendingMediaBanner extends StatelessWidget {
@@ -16,6 +17,11 @@ class TrendingMediaBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var backdrop = ImageHelper.getBackdrop(
+      path: media.backdropPath,
+      size: ImageSize.backdropW780,
+    );
+
     return GestureDetector(
       onTap: () {
         context.push(
@@ -27,10 +33,12 @@ class TrendingMediaBanner extends StatelessWidget {
         height: 250,
         child: Stack(
           children: [
-            ImageComponent(
-              imagePath: media.backdropPath,
-              imageType: ImageType.backdrop,
-              imageSize: ImageSize.backdropW780,
+            Imgy(
+              src: backdrop,
+              fullSrc: backdrop,
+              width: double.infinity,
+              height: 250,
+              placeholderColor: Colors.black,
             ),
             Container(
               decoration: BoxDecoration(
