@@ -27,8 +27,9 @@ class CreditListTile extends StatelessWidget {
       leading: Imgy(
         src: poster,
         fullSrc: poster,
-        width: 35,
-        height: 53,
+        width: 40,
+        height: 60,
+        rounded: 5,
         placeholderColor: Colors.black,
       ),
       title: Column(

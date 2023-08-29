@@ -27,7 +27,7 @@ class MediaListTile extends StatelessWidget {
         src: poster,
         fullSrc: poster,
         width: 40,
-        height: 55,
+        height: 60,
         placeholderColor: Colors.black,
       ),
       title: Text(
