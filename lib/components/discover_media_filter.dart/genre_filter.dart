@@ -97,29 +97,32 @@ class _GenreFilterState extends State<GenreFilter> {
                 spacing: 10,
                 runSpacing: 0,
                 children: [
-                  for (var genre in genres)
-                    FilterChip(
-                      label: Text(
-                        genre.name!,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                      selected: filteredGenres.contains(genre.id),
-                      onSelected: (bool value) {
-                        setGenres(genre, value);
-
-                        if (filteredGenres.isEmpty) {
-                          widget.onChanged(null);
-                          return;
-                        }
-
-                        widget.onChanged(filteredGenres.join(','));
-                      },
-                    ),
+                  for (var genre in genres) genreChip(genre),
                 ],
               ),
             ],
           ),
         );
+      },
+    );
+  }
+
+  FilterChip genreChip(Genre genre) {
+    return FilterChip(
+      label: Text(
+        genre.name!,
+        style: const TextStyle(fontSize: 12),
+      ),
+      selected: filteredGenres.contains(genre.id),
+      onSelected: (bool value) {
+        setGenres(genre, value);
+
+        if (filteredGenres.isEmpty) {
+          widget.onChanged(null);
+          return;
+        }
+
+        widget.onChanged(filteredGenres.join(','));
       },
     );
   }

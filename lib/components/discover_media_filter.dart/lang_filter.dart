@@ -96,20 +96,22 @@ class _LangFilterState extends State<LangFilter> {
                 ),
               );
             }).toList(),
-            onChanged: (Language? value) {
-              setState(() {
-                selectedLang = value!;
-              });
-
-              if (value?.iso6391 != null) {
-                widget.onChanged(value!.iso6391!);
-              } else {
-                widget.onChanged(null);
-              }
-            },
+            onChanged: selectLanguage,
           ),
         ),
       ],
     );
+  }
+
+  void selectLanguage(Language? value) {
+    setState(() {
+      selectedLang = value!;
+    });
+
+    if (value?.iso6391 != null) {
+      widget.onChanged(value!.iso6391!);
+    } else {
+      widget.onChanged(null);
+    }
   }
 }

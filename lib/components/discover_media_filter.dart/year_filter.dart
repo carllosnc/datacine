@@ -109,16 +109,18 @@ class _YearsFilterState extends State<YearsFilter> {
                 child: Text(year.toString()),
               );
             }).toList(),
-            onChanged: (values) {
-              setState(() {
-                currentYear = values.toString();
-              });
-
-              widget.onChanged(years[currentYear]);
-            },
+            onChanged: selectYear,
           ),
         ),
       ],
     );
+  }
+
+  void selectYear(values) {
+    setState(() {
+      currentYear = values.toString();
+    });
+
+    widget.onChanged(years[currentYear]);
   }
 }

@@ -20,6 +20,18 @@ discoverMediaFilters({
     filter = filterNotifier.tvShowFilters.value.copyWith();
   }
 
+  applyAction() {
+    Navigator.pop(context);
+
+    if (mediaType == MediaType.movie) {
+      filterNotifier.movieFilters.value = filter;
+    }
+
+    if (mediaType == MediaType.tv) {
+      filterNotifier.tvShowFilters.value = filter;
+    }
+  }
+
   showDialog(
     context: context,
     builder: (context) {
@@ -86,17 +98,7 @@ discoverMediaFilters({
                   ),
                   padding: const EdgeInsets.all(10),
                   child: FilledButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-
-                      if (mediaType == MediaType.movie) {
-                        filterNotifier.movieFilters.value = filter;
-                      }
-
-                      if (mediaType == MediaType.tv) {
-                        filterNotifier.tvShowFilters.value = filter;
-                      }
-                    },
+                    onPressed: applyAction,
                     child: const Text(
                       'Apply Filters',
                     ),
