@@ -11,7 +11,7 @@ class PersonExternalLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (person.hasExternalLinks) {
+    if (!person.hasExternalLinks) {
       return const SizedBox.shrink();
     }
 
