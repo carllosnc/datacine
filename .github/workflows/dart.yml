@@ -17,8 +17,8 @@ jobs:
           flutter-version: "3.13.0"
       - uses: SpicyPizza/create-envfile@v2.0
         with:
-          envkey_TMDB_AUTH_TOKEN_V3: ${{ secrets.TMDB_AUTH_TOKEN_V3 }}
-          envkey_TMDB_AUTH_TOKEN_V4: ${{ secrets.TMDB_AUTH_TOKEN_V4 }}
+          envkey_TMDB_AUTH_TOKEN_V3: ${{ variables.TMDB_AUTH_TOKEN_V3 }}
+          envkey_TMDB_AUTH_TOKEN_V4: ${{ variables.TMDB_AUTH_TOKEN_V4 }}
           filename: .env
       - run: cat .env
       - run: flutter pub get
