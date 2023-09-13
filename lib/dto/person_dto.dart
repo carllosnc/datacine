@@ -43,7 +43,6 @@ class PersonDto {
     List<MediaItem> movies = person.combinedCredits?['cast'] ?? [];
     List<MediaItem> series = person.combinedCredits?['crew'] ?? [];
 
-    // combine cast and crew
     List<MediaItem> allCredits = [...movies, ...series];
 
     if (allCredits.isNotEmpty) {
@@ -55,10 +54,8 @@ class PersonDto {
       });
     }
 
-    // remove duplicates
     allCredits = allCredits.unique((p1) => p1.id);
 
-    //cut in 20 items
     allCredits = allCredits.take(20).toList();
 
     return allCredits;
