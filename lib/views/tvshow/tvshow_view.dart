@@ -33,6 +33,7 @@ class _TvShowViewState extends State<TvShowView> {
         }
 
         var (TvShowDetails tvshow, _) = snapshot.data!;
+
         var tvshowDto = TvShowDto(tvshow);
 
         if (tvshow.name == null) {
@@ -127,7 +128,7 @@ class _TvShowViewState extends State<TvShowView> {
                 //seasons
                 SectionDivider(condition: tvshowDto.hasSeasons),
                 TvShowSeasons(
-                  tvshow: tvshow,
+                  tvshow: tvshowDto,
                   maxWidth: MediaQuery.of(context).size.width,
                 ),
 
