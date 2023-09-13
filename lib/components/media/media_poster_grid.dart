@@ -135,7 +135,6 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
   @override
   Widget build(BuildContext context) {
-    // if no posters return empty view
     if (posters.isEmpty) {
       return const EmptyView(title: 'Posters');
     }

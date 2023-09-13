@@ -108,10 +108,8 @@ class PersonDto {
   bool get hasProfilePath => person.profilePath != null;
   bool get hasMovieCast => person.movieCredits!['cast']!.isNotEmpty;
   bool get hasMovieCrew => person.movieCredits!['crew']!.isNotEmpty;
-
   bool get hasTvCast => person.tvCredits!['cast']!.isNotEmpty;
   bool get hasTvCrew => person.tvCredits!['crew']!.isNotEmpty;
-
   bool get hasBirthday => person.birthday != null;
   bool get hasDeathday => person.deathday != null;
   bool get hasPlaceOfBirth => person.placeOfBirth != null;

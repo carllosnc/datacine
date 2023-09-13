@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/imports/app.dart';
 
 class TvShowSeasons extends StatelessWidget {
-  final TvShowDetails? tvshow;
+  final TvShowDto tvshow;
   final double maxWidth;
 
   const TvShowSeasons({
@@ -13,11 +13,11 @@ class TvShowSeasons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (tvshow == null || tvshow!.seasons == null || tvshow!.seasons!.isEmpty) {
+    if (!tvshow.hasSeasons) {
       return const SizedBox.shrink();
     }
 
-    final List<Season> seasons = tvshow!.seasons!;
+    var seasons = tvshow.seasons;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,8 +50,8 @@ class TvShowSeasons extends StatelessWidget {
                   Season season = seasons[index];
 
                   return SeasonCard(
-                    tvshowName: tvshow!.name!,
-                    tvshowId: tvshow!.id!,
+                    tvshowName: tvshow.name,
+                    tvshowId: tvshow.id,
                     season: season,
                   );
                 },

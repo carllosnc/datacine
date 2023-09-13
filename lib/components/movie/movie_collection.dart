@@ -23,8 +23,10 @@ class MovieCollection extends StatelessWidget {
 
     return FutureBuilder(
       future: getColection,
-      builder: (BuildContext context,
-          AsyncSnapshot<(Collection, http.Response)> snapshot) {
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<(Collection, http.Response)> snapshot,
+      ) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Loading();
         }

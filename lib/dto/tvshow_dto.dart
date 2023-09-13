@@ -98,6 +98,8 @@ class TvShowDto {
     return 'https://www.youtube.com/watch?v=${trailer.key}';
   }
 
+  List<Season> get seasons => tvshow.seasons!;
+
   List<ImageItem> get posters => tvshow.images!['posters'] ?? [];
 
   //checks

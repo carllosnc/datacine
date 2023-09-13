@@ -61,7 +61,6 @@ showSeasonDetails({
                     ),
                   ),
                 ),
-
                 SliverToBoxAdapter(
                   child: Container(
                     width: double.infinity,
@@ -110,15 +109,12 @@ showSeasonDetails({
                     ),
                   ),
                 ),
-
-                //line divider
                 SliverToBoxAdapter(
                   child: Divider(
                     color: ProjectColors(context).line,
                     height: 40,
                   ),
                 ),
-
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
