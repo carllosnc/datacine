@@ -15,5 +15,9 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.13.0"
+      - name: "Create env file"
+        run: |
+          echo "TMDB_AUTH_TOKEN_V3=${{ secrets.TMDB_AUTH_TOKEN_V3 }}" >> .env
+          echo "TMDB_AUTH_TOKEN_V4=${{ secrets.TMDB_AUTH_TOKEN_V4 }}" >> .env
       - run: flutter pub get
       - run: flutter test
