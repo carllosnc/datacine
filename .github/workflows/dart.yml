@@ -20,6 +20,5 @@ jobs:
           envkey_TMDB_AUTH_TOKEN_V3: ${{ vars.TMDB_AUTH_TOKEN_V3 }}
           envkey_TMDB_AUTH_TOKEN_V4: ${{ vars.TMDB_AUTH_TOKEN_V4 }}
           filename: .env
-      - run: cat .env
       - run: flutter pub get
       - run: flutter test
