@@ -13,12 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+      - uses: SpicyPizza/create-envfile@v2.0
         with:
           flutter-version: "3.13.0"
-      - name: "Create env file"
-        run: |
-          echo "TMDB_AUTH_TOKEN_V3=${{ secrets.TMDB_AUTH_TOKEN_V3 }}" >> .env
-          echo "TMDB_AUTH_TOKEN_V4=${{ secrets.TMDB_AUTH_TOKEN_V4 }}" >> .env
-          cat .env
+          envkey_TMDB_AUTH_TOKEN_V3: ${{ secrets.TMDB_AUTH_TOKEN_V3 }}
+          envkey_TMDB_AUTH_TOKEN_V4: ${{ secrets.TMDB_AUTH_TOKEN_V4 }}
+          filename: .env
       - run: flutter pub get
       - run: flutter test
