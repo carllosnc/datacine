@@ -55,7 +55,7 @@ class _TvShowViewState extends State<TvShowView> {
               children: [
                 MediaHeader(tvshow: tvshowDto),
 
-                const SectionDivider(),
+                SectionDivider(condition: tvshowDto.hasCreatedBy),
 
                 TvShowCreators(tvShowDto: tvshowDto),
 

@@ -48,7 +48,7 @@ class MovieView extends StatelessWidget {
               children: [
                 MediaHeader(movie: movieDto),
 
-                const SectionDivider(),
+                SectionDivider(condition: movieDto.hasDirectors),
 
                 MovieDirectors(movie: movieDto),
 
