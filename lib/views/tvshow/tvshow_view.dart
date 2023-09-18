@@ -59,7 +59,7 @@ class _TvShowViewState extends State<TvShowView> {
 
                 TvShowCreators(tvShowDto: tvshowDto),
 
-                SectionDivider(condition: tvshowDto.hasCreatedBy),
+                SectionDivider(condition: tvshowDto.hasGridMenu),
 
                 GridMenu(
                   items: [
