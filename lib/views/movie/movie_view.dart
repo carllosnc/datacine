@@ -52,7 +52,7 @@ class MovieView extends StatelessWidget {
 
                 MovieDirectors(movie: movieDto),
 
-                SectionDivider(condition: movieDto.hasDirectors),
+                SectionDivider(condition: movieDto.hasGridMenu),
 
                 GridMenu(
                   items: [

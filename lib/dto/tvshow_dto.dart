@@ -145,4 +145,7 @@ class TvShowDto {
       tvshow.credits!['cast']!.isNotEmpty &&
       tvshow.credits!['crew']!.isNotEmpty;
   bool get hasVideos => tvshow.videos!['results']!.isNotEmpty;
+  bool get hasGridMenu {
+    return hasCredits || hasPosters || hasRecommendations || hasSimilar;
+  }
 }

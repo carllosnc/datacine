@@ -138,4 +138,8 @@ class MovieDto {
   bool get hasStatus => movie.status != null;
   bool get hasVoteCount => movie.voteCount != null;
   bool get hasGenres => movie.genres!.isNotEmpty;
+
+  bool get hasGridMenu {
+    return hasPosters || hasCredits || hasRecommendations || hasSimilar;
+  }
 }
