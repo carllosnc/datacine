@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
 import '/imports/app.dart';
 
 class TvShowView extends StatefulWidget {
@@ -11,133 +10,136 @@ class TvShowView extends StatefulWidget {
   State<TvShowView> createState() => _TvShowViewState();
 }
 
-class _TvShowViewState extends State<TvShowView> {
-  final _mediaDetailsRepository = MediaDetailsRepository(http.Client());
+class _TvShowViewState extends State<TvShowView> with TvShowService {
+  @override
+  void initState() {
+    super.initState();
+    fetchTvShow(id: widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final getTvShow = _mediaDetailsRepository.getTvShow(id: widget.id);
+    if (isLoading) {
+      return const Scaffold(
+        body: LoadingView(),
+      );
+    }
 
-    return FutureBuilder(
-      future: getTvShow,
-      builder: (
-        context,
-        AsyncSnapshot<(TvShowDetails, http.Response)> snapshot,
-      ) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const LoadingView();
-        }
+    if (isError) {
+      return const Scaffold(
+        body: ErrorView(),
+      );
+    }
 
-        if (snapshot.hasError) {
-          return const ErrorView();
-        }
-
-        var (TvShowDetails tvshow, _) = snapshot.data!;
-
-        var tvshowDto = TvShowDto(tvshow);
-
-        if (tvshow.name == null) {
-          return const ErrorView();
-        }
-
-        return Scaffold(
-          extendBody: true,
-          appBar: AppBar(
-            centerTitle: true,
-            actions: [
-              MediaInfo(tvShow: tvshowDto),
-            ],
-            title: PageTitle(title: tvshow.name!),
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MediaHeader(tvshow: tvshowDto),
-
-                SectionDivider(condition: tvshowDto.hasCreatedBy),
-
-                TvShowCreators(tvShowDto: tvshowDto),
-
-                SectionDivider(condition: tvshowDto.hasGridMenu),
-
-                GridMenu(
-                  items: [
-                    if (tvshowDto.hasPosters)
-                      GridMenuItem(
-                        label: 'Posters',
-                        icon: Icons.image,
-                        onTap: () {
-                          context.push(
-                            '/tv/$widget.id/images',
-                            extra: tvshowDto,
-                          );
-                        },
-                      ),
-                    if (tvshowDto.hasCredits)
-                      GridMenuItem(
-                        label: 'Credits',
-                        icon: Icons.people,
-                        onTap: () {
-                          context.push(
-                            '/tv/$widget.id/credits',
-                            extra: tvshowDto,
-                          );
-                        },
-                      ),
-                    if (tvshowDto.hasRecommendations)
-                      GridMenuItem(
-                        label: 'Recommendations',
-                        icon: Icons.thumb_up,
-                        onTap: () {
-                          context.push(
-                            '/tv/$widget.id/recommendations',
-                            extra: tvshowDto,
-                          );
-                        },
-                      ),
-                    if (tvshowDto.hasSimilar)
-                      GridMenuItem(
-                        label: 'Similar',
-                        icon: Icons.movie,
-                        onTap: () {
-                          context.push(
-                            '/tv/$widget.id/similar',
-                            extra: tvshowDto,
-                          );
-                        },
-                      ),
-                  ],
-                ),
-
-                //keyword
-                SectionDivider(condition: tvshowDto.hasKeywords),
-                MediaKeywords(tvshow: tvshowDto),
-
-                //overview
-                SectionDivider(condition: tvshowDto.hasOverview),
-                MediaOverview(tvshow: tvshowDto),
-
-                //cast
-                SectionDivider(condition: tvshowDto.hasCast),
-                PersonHorizontalList(
-                  title: 'Cast',
-                  list: tvshowDto.cast,
-                ),
-
-                //seasons
-                SectionDivider(condition: tvshowDto.hasSeasons),
-                TvShowSeasons(
-                  tvshow: tvshowDto,
-                  maxWidth: MediaQuery.of(context).size.width,
-                ),
-
-                const SizedBox(height: 20),
+    return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(1),
+                Colors.transparent,
+                Colors.transparent,
               ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
-        );
-      },
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MediaHeader(tvshow: tvShow),
+
+            SectionDivider(condition: tvShow.hasCreatedBy),
+
+            TvShowCreators(tvShowDto: tvShow),
+
+            const SectionDivider(),
+
+            GridMenu(
+              items: [
+                //info
+                MediaInfo(tvShow: tvShow),
+
+                if (tvShow.hasPosters)
+                  GridMenuItem(
+                    label: 'Posters',
+                    icon: Icons.image,
+                    onTap: () {
+                      context.push(
+                        '/tv/$widget.id/images',
+                        extra: tvShow,
+                      );
+                    },
+                  ),
+                if (tvShow.hasCredits)
+                  GridMenuItem(
+                    label: 'Credits',
+                    icon: Icons.people,
+                    onTap: () {
+                      context.push(
+                        '/tv/$widget.id/credits',
+                        extra: tvShow,
+                      );
+                    },
+                  ),
+                if (tvShow.hasRecommendations)
+                  GridMenuItem(
+                    label: 'Recommendations',
+                    icon: Icons.thumb_up,
+                    onTap: () {
+                      context.push(
+                        '/tv/$widget.id/recommendations',
+                        extra: tvShow,
+                      );
+                    },
+                  ),
+                if (tvShow.hasSimilar)
+                  GridMenuItem(
+                    label: 'Similar',
+                    icon: Icons.movie,
+                    onTap: () {
+                      context.push(
+                        '/tv/$widget.id/similar',
+                        extra: tvShow,
+                      );
+                    },
+                  ),
+              ],
+            ),
+
+            //keyword
+            SectionDivider(condition: tvShow.hasKeywords),
+            MediaKeywords(tvshow: tvShow),
+
+            //overview
+            SectionDivider(condition: tvShow.hasOverview),
+            MediaOverview(tvshow: tvShow),
+
+            //cast
+            SectionDivider(condition: tvShow.hasCast),
+            PersonHorizontalList(
+              title: 'Cast',
+              list: tvShow.cast,
+            ),
+
+            //seasons
+            SectionDivider(condition: tvShow.hasSeasons),
+            TvShowSeasons(
+              tvshow: tvShow,
+              maxWidth: MediaQuery.of(context).size.width,
+            ),
+
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
     );
   }
 }

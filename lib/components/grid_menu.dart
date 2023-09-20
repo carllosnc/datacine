@@ -54,7 +54,7 @@ class GridMenuItem extends StatelessWidget {
 }
 
 class GridMenu extends StatelessWidget {
-  final List<GridMenuItem> items;
+  final List<Widget> items;
 
   const GridMenu({super.key, required this.items});
 

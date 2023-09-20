@@ -15,8 +15,10 @@ class MediaInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
+    return GridMenuItem(
+      label: 'Info',
+      icon: Icons.description,
+      onTap: () {
         showModalBottomSheet(
           isScrollControlled: true,
           useSafeArea: true,
@@ -48,7 +50,6 @@ class MediaInfo extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.description, size: 20),
     );
   }
 
@@ -86,8 +87,12 @@ class MediaInfo extends StatelessWidget {
           item: tvShow!.numberOfEpisodes,
           label: "Number of episodes",
         ),
+        MediaInfoItem(
+          condition: tvShow!.hasGenres,
+          item: tvShow!.genres,
+          label: "Genres",
+        ),
         Companies(tvShow: tvShow),
-        MediaInfoGenres(tvshow: tvShow)
       ],
     );
   }

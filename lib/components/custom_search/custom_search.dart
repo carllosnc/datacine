@@ -72,6 +72,15 @@ class CustomSearchDelegate extends SearchDelegate {
       return const SizedBox.shrink();
     }
 
-    return SearchSugestions(query: query);
+    return FutureBuilder(
+      future: Future.delayed(const Duration(milliseconds: 300)),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container();
+        }
+
+        return SearchSugestions(query: query);
+      },
+    );
   }
 }
