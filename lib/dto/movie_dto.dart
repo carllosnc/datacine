@@ -137,7 +137,7 @@ class MovieDto {
   bool get hasVoteAverage => movie.voteAverage != null;
   bool get hasStatus => movie.status != null;
   bool get hasVoteCount => movie.voteCount != null;
-  bool get hasGenres => movie.genres!.isNotEmpty;
+  bool get hasGenres => movie.genres != null && movie.genres!.isNotEmpty;
 
   bool get hasGridMenu {
     return hasPosters || hasCredits || hasRecommendations || hasSimilar;

@@ -23,15 +23,15 @@ class MediaHeader extends StatelessWidget {
     var mediaStatus = movie?.status ?? tvshow?.status;
     var mediaTrailer = movie?.trailer ?? tvshow?.trailer;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.start,
-        spacing: 20,
-        direction: Axis.vertical,
-        children: [
-          mediaCover(context),
-          Wrap(
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.start,
+      spacing: 20,
+      direction: Axis.vertical,
+      children: [
+        mediaCover(context),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Wrap(
             direction: Axis.vertical,
             spacing: 3,
             children: [
@@ -63,7 +63,10 @@ class MediaHeader extends StatelessWidget {
                 ),
             ],
           ),
-          SizedBox(
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SizedBox(
             width: width,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,13 +82,13 @@ class MediaHeader extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
   Widget mediaCover(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40 - 14;
+    var width = MediaQuery.of(context).size.width;
     var height = width * 1.5;
     var mediaPoster = movie?.poster ?? tvshow?.poster;
 
@@ -96,9 +99,6 @@ class MediaHeader extends StatelessWidget {
 
     return Imgy(
       borderColor: Colors.white.withOpacity(0.2),
-      padding: 6,
-      rounded: 10,
-      borderWidth: 2,
       width: width,
       height: height,
       src: imageSrc,

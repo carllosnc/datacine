@@ -1,134 +1,142 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
 import '/imports/app.dart';
 
-class MovieView extends StatelessWidget {
+class MovieView extends StatefulWidget {
   final String id;
 
-  MovieView({super.key, required this.id});
+  const MovieView({super.key, required this.id});
 
-  final _mediaDetailsRepository = MediaDetailsRepository(http.Client());
+  @override
+  State<MovieView> createState() => MovieViewState();
+}
+
+class MovieViewState extends State<MovieView> with MovieService {
+  @override
+  void initState() {
+    super.initState();
+    fetchMovie(id: widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Future<(MovieDetails, http.Response)> getMovie =
-        _mediaDetailsRepository.getMovie(id: id);
+    if (isLoading) {
+      return const Scaffold(
+        body: LoadingView(),
+      );
+    }
 
-    return FutureBuilder(
-      future: getMovie,
-      builder: (context, AsyncSnapshot snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const LoadingView();
-        }
+    if (isError) {
+      return const Scaffold(
+        body: ErrorView(),
+      );
+    }
 
-        if (snapshot.hasError) {
-          return const ErrorView();
-        }
-
-        var (MovieDetails movie, _) = snapshot.data!;
-        var movieDto = MovieDto(movie);
-
-        if (!movieDto.hasTitle) {
-          return const ErrorView();
-        }
-
-        return Scaffold(
-          extendBody: true,
-          appBar: AppBar(
-            centerTitle: true,
-            title: PageTitle(title: movieDto.title),
-            actions: [
-              MediaInfo(movie: movieDto),
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MediaHeader(movie: movieDto),
-
-                SectionDivider(condition: movieDto.hasDirectors),
-
-                MovieDirectors(movie: movieDto),
-
-                SectionDivider(condition: movieDto.hasGridMenu),
-
-                GridMenu(
-                  items: [
-                    if (movieDto.hasPosters)
-                      GridMenuItem(
-                        label: 'Posters',
-                        icon: Icons.image,
-                        onTap: () {
-                          context.push(
-                            '/movie/$id/images',
-                            extra: movieDto,
-                          );
-                        },
-                      ),
-                    if (movieDto.hasCredits)
-                      GridMenuItem(
-                        label: 'Credits',
-                        icon: Icons.people,
-                        onTap: () {
-                          context.push(
-                            '/movie/$id/credits',
-                            extra: movieDto,
-                          );
-                        },
-                      ),
-                    if (movieDto.hasRecommendations)
-                      GridMenuItem(
-                        label: 'Recommendations',
-                        icon: Icons.thumb_up,
-                        onTap: () {
-                          context.push(
-                            '/movie/$id/recommendations',
-                            extra: movieDto,
-                          );
-                        },
-                      ),
-                    if (movieDto.hasSimilar)
-                      GridMenuItem(
-                        label: 'Similar',
-                        icon: Icons.movie,
-                        onTap: () {
-                          context.push(
-                            '/movie/$id/similar',
-                            extra: movieDto,
-                          );
-                        },
-                      ),
-                  ],
-                ),
-
-                //keyword
-                SectionDivider(condition: movieDto.hasKeywords),
-                MediaKeywords(movie: movieDto),
-
-                //overview
-                SectionDivider(
-                  condition: movieDto.hasOverview || movieDto.hasTagline,
-                ),
-                MediaOverview(movie: movieDto),
-
-                //cast
-                SectionDivider(condition: movieDto.hasCast),
-                PersonHorizontalList(
-                  title: 'Cast',
-                  list: movieDto.cast,
-                ),
-
-                //collection
-                SectionDivider(condition: movieDto.hasCollection),
-                MovieCollection(movie: movieDto),
-                const SizedBox(height: 40),
+    return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(1),
+                Colors.transparent,
+                Colors.transparent,
               ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
-        );
-      },
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MediaHeader(movie: movie),
+
+            SectionDivider(condition: movie.hasDirectors),
+
+            MovieDirectors(movie: movie),
+
+            const SectionDivider(),
+
+            GridMenu(
+              items: [
+                MediaInfo(movie: movie),
+                if (movie.hasPosters)
+                  GridMenuItem(
+                    label: 'Posters',
+                    icon: Icons.image,
+                    onTap: () {
+                      context.push(
+                        '/movie/${widget.id}/images',
+                        extra: movie,
+                      );
+                    },
+                  ),
+                if (movie.hasCredits)
+                  GridMenuItem(
+                    label: 'Credits',
+                    icon: Icons.people,
+                    onTap: () {
+                      context.push(
+                        '/movie/${widget.id}/credits',
+                        extra: movie,
+                      );
+                    },
+                  ),
+                if (movie.hasRecommendations)
+                  GridMenuItem(
+                    label: 'Recommendations',
+                    icon: Icons.thumb_up,
+                    onTap: () {
+                      context.push(
+                        '/movie/${widget.id}/recommendations',
+                        extra: movie,
+                      );
+                    },
+                  ),
+                if (movie.hasSimilar)
+                  GridMenuItem(
+                    label: 'Similar',
+                    icon: Icons.movie,
+                    onTap: () {
+                      context.push(
+                        '/movie/${widget.id}/similar',
+                        extra: movie,
+                      );
+                    },
+                  ),
+              ],
+            ),
+
+            //keyword
+            SectionDivider(condition: movie.hasKeywords),
+            MediaKeywords(movie: movie),
+
+            //overview
+            SectionDivider(
+              condition: movie.hasOverview || movie.hasTagline,
+            ),
+            MediaOverview(movie: movie),
+
+            //cast
+            SectionDivider(condition: movie.hasCast),
+            PersonHorizontalList(
+              title: 'Cast',
+              list: movie.cast,
+            ),
+
+            //collection
+            SectionDivider(condition: movie.hasCollection),
+            MovieCollection(movie: movie),
+            const SizedBox(height: 40),
+          ],
+        ),
+      ),
     );
   }
 }
