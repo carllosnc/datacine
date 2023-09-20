@@ -109,7 +109,6 @@ class _HomeViewState extends State<HomeView>
             height: 22,
           ),
           actions: [
-            const AppVersion(),
             IconButton(
               onPressed: () {
                 showSearch(
