@@ -108,6 +108,9 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       itemCount: filteredPosters.length,
       itemBuilder: (context, index) {
         final ImageItem imageItem = filteredPosters[index];
+        //get english name of language
+        String langName = supportedLangs.keys
+            .firstWhere((key) => supportedLangs[key] == imageItem.iso6391);
 
         String imageSrc = ImageHelper.getPoster(
           path: imageItem.filePath!,
@@ -119,8 +122,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
           size: ImageSize.posterW780,
         );
 
-        String description =
-            "${imageItem.iso6391} - ${imageItem.width} x ${imageItem.height}";
+        String description = langName;
 
         return Imgy(
           src: imageSrc,

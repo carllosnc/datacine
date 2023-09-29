@@ -1,6 +1,7 @@
 import 'package:datacine/domain/domain.dart';
 
 var languages = [
+  {"iso_639_1": "no_lang", "english_name": "No Lang", "name": ""},
   {"iso_639_1": "an", "english_name": "Aragonese", "name": ""},
   {"iso_639_1": "ak", "english_name": "Akan", "name": ""},
   {"iso_639_1": "cr", "english_name": "Cree", "name": ""},
