@@ -31,7 +31,7 @@ class MovieCollectionCard extends StatelessWidget {
               child: Imgy(
                 src: poster,
                 fullSrc: poster,
-                rounded: 7,
+                borderRadius: BorderRadius.circular(7),
                 width: double.infinity,
                 placeholderColor: Colors.black,
               ),

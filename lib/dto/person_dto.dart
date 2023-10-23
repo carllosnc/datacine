@@ -74,6 +74,7 @@ class PersonDto {
 
   //checks
 
+  //has tagged images
   bool get hasName => person.name != null;
   bool get hasImdbId => person.externalIds?['imdb_id'] != null;
   bool get hasInstagramId => person.externalIds?['instagram_id'] != null;

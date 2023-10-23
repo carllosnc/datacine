@@ -38,7 +38,7 @@ class PersonListTile extends StatelessWidget {
           BlendMode.color,
         ),
         child: Imgy(
-          rounded: 4,
+          borderRadius: BorderRadius.circular(4),
           src: image,
           fullSrc: image,
           width: 40,

@@ -40,7 +40,7 @@ class PersonImages extends StatelessWidget {
               );
 
               return Imgy(
-                rounded: 5,
+                borderRadius: BorderRadius.circular(5),
                 width: 120,
                 src: previewImage,
                 fullSrc: fullScreenImage,

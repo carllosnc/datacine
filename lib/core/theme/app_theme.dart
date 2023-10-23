@@ -5,7 +5,7 @@ appTheme(BuildContext context) {
     bottomSheetTheme: const BottomSheetThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(0),
+          top: Radius.circular(25),
         ),
       ),
     ),

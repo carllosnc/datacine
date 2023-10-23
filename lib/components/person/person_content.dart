@@ -26,7 +26,12 @@ class PersonContent extends StatelessWidget {
           children: [
             PersonHeader(person: person),
 
-            const SectionDivider(),
+            SectionDivider(
+              condition: person.hasMovieCast ||
+                  person.hasMovieCrew ||
+                  person.hasTvCast ||
+                  person.hasTvCrew,
+            ),
 
             GridMenu(
               items: [

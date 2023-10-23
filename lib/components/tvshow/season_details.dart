@@ -41,22 +41,42 @@ showSeasonDetails({
           );
 
           return Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
+            ),
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
                   centerTitle: true,
                   pinned: true,
+                  leading: Container(),
+                  //border bottom
+                  actions: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                  backgroundColor: Theme.of(context).colorScheme.onSecondary,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
                   flexibleSpace: FlexibleSpaceBar(
-                    titlePadding: const EdgeInsets.fromLTRB(60, 0, 60, 19),
+                    titlePadding: const EdgeInsets.fromLTRB(25, 0, 80, 19),
                     title: SizedBox(
                       width: double.infinity,
                       child: Text(
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
-                        textAlign: TextAlign.center,
-                        tvshowName,
-                        style: const TextStyle(fontSize: 14),
+                        'Season: ${season.seasonNumber} · ${season.name}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: ProjectColors(context).title,
+                        ),
                       ),
                     ),
                   ),
@@ -67,8 +87,9 @@ showSeasonDetails({
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
+                        const SizedBox(height: 20),
                         Imgy(
-                          rounded: 10,
+                          borderRadius: BorderRadius.circular(10),
                           src: poster,
                           fullSrc: poster,
                           width: 200,

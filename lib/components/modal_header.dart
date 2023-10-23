@@ -10,14 +10,12 @@ class ModalHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
-      padding: const EdgeInsets.fromLTRB(20, 5, 5, 5),
+      padding: const EdgeInsets.fromLTRB(25, 5, 5, 5),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: ProjectColors(context).line,
-            width: 1,
-          ),
+        color: Theme.of(context).colorScheme.onSecondary,
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(20),
         ),
       ),
       child: Row(

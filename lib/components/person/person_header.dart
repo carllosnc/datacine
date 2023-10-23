@@ -27,7 +27,8 @@ class PersonHeader extends StatelessWidget {
             height: 200 * 1.5,
             src: profileImage,
             fullSrc: profileImage,
-            rounded: 10,
+            borderRadius: BorderRadius.circular(20),
+            borderRadiusInside: BorderRadius.circular(14),
             padding: 5,
             borderColor: Colors.white.withOpacity(0.2),
             borderWidth: 2,
@@ -45,12 +46,11 @@ class PersonHeader extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: 5,
             children: [
-              BigTitle(text: person.name),
               Text(
                 person.knownForDepartment,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   color: ProjectColors(context).label,
                 ),
               )

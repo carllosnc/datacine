@@ -29,7 +29,7 @@ class CreditListTile extends StatelessWidget {
         fullSrc: poster,
         width: 40,
         height: 60,
-        rounded: 5,
+        borderRadius: BorderRadius.circular(5),
         placeholderColor: Colors.black,
       ),
       title: Column(

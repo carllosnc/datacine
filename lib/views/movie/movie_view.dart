@@ -36,13 +36,12 @@ class MovieViewState extends State<MovieView> with MovieService {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(10),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.black.withOpacity(1),
-                Colors.transparent,
                 Colors.transparent,
               ],
               begin: Alignment.topCenter,

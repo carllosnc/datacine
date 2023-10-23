@@ -33,7 +33,7 @@ class MiniMediaCard extends StatelessWidget {
           children: [
             Expanded(
               child: Imgy(
-                rounded: 5,
+                borderRadius: BorderRadius.circular(5),
                 src: poster,
                 fullSrc: poster,
                 width: double.infinity,

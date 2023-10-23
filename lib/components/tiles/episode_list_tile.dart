@@ -29,7 +29,7 @@ class EpisodeListTile extends StatelessWidget {
             height: 170,
             width: double.infinity,
             src: image,
-            rounded: 10,
+            borderRadius: BorderRadius.circular(10),
             fullSrc: image,
             placeholderColor: Colors.black,
           ),

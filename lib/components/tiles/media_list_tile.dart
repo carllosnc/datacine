@@ -23,7 +23,7 @@ class MediaListTile extends StatelessWidget {
       },
       trailing: const Icon(Icons.chevron_right),
       leading: Imgy(
-        rounded: 4,
+        borderRadius: BorderRadius.circular(4),
         src: poster,
         fullSrc: poster,
         width: 40,
