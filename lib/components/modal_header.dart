@@ -10,21 +10,24 @@ class ModalHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
-      padding: const EdgeInsets.fromLTRB(25, 5, 5, 5),
+      padding: const EdgeInsets.fromLTRB(25, 10, 10, 5),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSecondary,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(20),
+        border: Border(
+          bottom: BorderSide(
+            color: ProjectColors(context).line,
+          ),
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            title.toString().toUpperCase(),
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 3,
               color: ProjectColors(context).title,
             ),
           ),
