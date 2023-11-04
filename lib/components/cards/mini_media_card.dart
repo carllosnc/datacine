@@ -32,13 +32,19 @@ class MiniMediaCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Imgy(
-                borderRadius: BorderRadius.circular(5),
-                src: poster,
-                fullSrc: poster,
-                width: double.infinity,
-                height: double.infinity,
-                placeholderColor: Colors.black,
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  mediaItem.posterPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
+                  BlendMode.color,
+                ),
+                child: Imgy(
+                  borderRadius: BorderRadius.circular(5),
+                  src: poster,
+                  fullSrc: poster,
+                  width: double.infinity,
+                  height: double.infinity,
+                  placeholderColor: Colors.black,
+                ),
               ),
             ),
             const SizedBox(height: 5),
@@ -55,8 +61,7 @@ class MiniMediaCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  (mediaItem.releaseDate ?? mediaItem.firstAirDate ?? "null")
-                      .formatDateTime(),
+                  (mediaItem.releaseDate ?? mediaItem.firstAirDate ?? "null").formatDateTime(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
