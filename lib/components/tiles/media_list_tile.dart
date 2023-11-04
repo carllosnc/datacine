@@ -22,13 +22,19 @@ class MediaListTile extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: Imgy(
-        borderRadius: BorderRadius.circular(4),
-        src: poster,
-        fullSrc: poster,
-        width: 40,
-        height: 60,
-        placeholderColor: Colors.black,
+      leading: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          item.backdropPath == null ? ProjectColors(context).imageBackground : Colors.transparent,
+          BlendMode.color,
+        ),
+        child: Imgy(
+          borderRadius: BorderRadius.circular(4),
+          src: poster,
+          fullSrc: poster,
+          width: 40,
+          height: 60,
+          placeholderColor: Colors.black,
+        ),
       ),
       title: Text(
         item.title ?? item.name ?? '-',
