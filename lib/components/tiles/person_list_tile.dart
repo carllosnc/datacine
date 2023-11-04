@@ -32,9 +32,7 @@ class PersonListTile extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right),
       leading: ColorFiltered(
         colorFilter: ColorFilter.mode(
-          person.profilePath == null
-              ? ProjectColors(context).imageFilter
-              : ProjectColors(context).profileFilter,
+          person.profilePath == null ? ProjectColors(context).imageFilter : ProjectColors(context).profileFilter,
           BlendMode.color,
         ),
         child: Imgy(
@@ -47,11 +45,7 @@ class PersonListTile extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        person.character ??
-            person.job ??
-            person.knownForDepartment ??
-            person.department ??
-            '-',
+        person.character ?? person.job ?? person.knownForDepartment ?? person.department ?? '-',
         style: TextStyle(
           fontSize: 12,
           color: ProjectColors(context).featured,
