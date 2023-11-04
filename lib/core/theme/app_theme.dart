@@ -1,3 +1,4 @@
+import 'package:datacine/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 appTheme(BuildContext context) {
@@ -24,7 +25,7 @@ appTheme(BuildContext context) {
     ),
     fontFamily: 'SFProDisplay',
     useMaterial3: true,
-    colorSchemeSeed: Colors.teal,
+    colorSchemeSeed: ProjectColors(context).randomColor(),
     brightness: Brightness.dark,
   );
 }
