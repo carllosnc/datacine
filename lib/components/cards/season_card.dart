@@ -36,13 +36,25 @@ class SeasonCard extends StatelessWidget {
                 tvshowName: tvshowName,
               );
             },
-            child: Imgy(
-              src: poster,
-              fullSrc: poster,
-              borderRadius: BorderRadius.circular(7),
-              width: double.infinity,
-              height: 150 * 1.5,
-              placeholderColor: Colors.black,
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  season.posterPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                  BlendMode.color,
+                ),
+                child: Imgy(
+                  src: poster,
+                  fullSrc: poster,
+                  borderRadius: BorderRadius.circular(7),
+                  width: double.infinity,
+                  height: 150 * 1.5,
+                  placeholderColor: Colors.black,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 8),
