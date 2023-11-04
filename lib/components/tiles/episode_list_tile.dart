@@ -25,13 +25,25 @@ class EpisodeListTile extends StatelessWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Imgy(
-            height: 170,
-            width: double.infinity,
-            src: image,
-            borderRadius: BorderRadius.circular(10),
-            fullSrc: image,
-            placeholderColor: Colors.black,
+          Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                episode.stillPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                BlendMode.color,
+              ),
+              child: Imgy(
+                height: 170,
+                width: double.infinity,
+                src: image,
+                borderRadius: BorderRadius.circular(10),
+                fullSrc: image,
+                placeholderColor: Colors.black,
+              ),
+            ),
           ),
           const SizedBox(height: 10),
           Text(
