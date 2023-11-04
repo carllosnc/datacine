@@ -24,7 +24,7 @@ class MediaListTile extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right),
       leading: ColorFiltered(
         colorFilter: ColorFilter.mode(
-          item.backdropPath == null ? ProjectColors(context).imageBackground : Colors.transparent,
+          item.backdropPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
           BlendMode.color,
         ),
         child: Imgy(
