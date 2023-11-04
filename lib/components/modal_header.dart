@@ -23,11 +23,9 @@ class ModalHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title.toString().toUpperCase(),
+            title.toString(),
             style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 3,
+              fontSize: 14,
               color: ProjectColors(context).title,
             ),
           ),
