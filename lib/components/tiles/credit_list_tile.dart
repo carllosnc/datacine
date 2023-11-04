@@ -7,8 +7,11 @@ class CreditListTile extends StatelessWidget {
   final MediaItem item;
   final MediaType mediaType;
 
-  const CreditListTile(
-      {super.key, required this.item, required this.mediaType});
+  const CreditListTile({
+    super.key,
+    required this.item,
+    required this.mediaType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +27,25 @@ class CreditListTile extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: Imgy(
-        src: poster,
-        fullSrc: poster,
-        width: 40,
-        height: 60,
-        borderRadius: BorderRadius.circular(5),
-        placeholderColor: Colors.black,
+      leading: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          item.posterPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
+          BlendMode.color,
+        ),
+        child: Imgy(
+          src: poster,
+          fullSrc: poster,
+          width: 40,
+          height: 60,
+          borderRadius: BorderRadius.circular(5),
+          placeholderColor: Colors.black,
+        ),
       ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.releaseDate?.formatYear() ??
-                item.firstAirDate?.formatYear() ??
-                '-',
+            item.releaseDate?.formatYear() ?? item.firstAirDate?.formatYear() ?? '-',
             style: TextStyle(
               fontSize: 12,
               color: ProjectColors(context).featured,
