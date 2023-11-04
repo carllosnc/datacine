@@ -18,8 +18,8 @@ showSeasonDetails({
 
   showModalBottomSheet(
     isScrollControlled: true,
-    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     useSafeArea: true,
+    backgroundColor: ProjectColors(context).modalBackground,
     context: context,
     builder: (context) {
       return FutureBuilder(
@@ -40,12 +40,16 @@ showSeasonDetails({
             size: ImageSize.posterW342,
           );
 
+          var posterFull = ImageHelper.getPoster(
+            path: season.posterPath,
+            size: ImageSize.backdropW1280,
+          );
+
           return CustomScrollView(
             slivers: [
               SliverAppBar(
-                backgroundColor: const Color(0xFF1c2722),
-                surfaceTintColor: const Color(0xFF1c2722),
-                elevation: 0,
+                forceMaterialTransparency: false,
+                elevation: 1,
                 centerTitle: true,
                 pinned: true,
                 bottom: PreferredSize(
@@ -57,11 +61,9 @@ showSeasonDetails({
                 ),
                 leading: Container(),
                 title: Text(
-                  season.name!.toUpperCase(),
+                  season.name!,
                   style: TextStyle(
-                    fontSize: 12,
-                    letterSpacing: 2,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                     color: ProjectColors(context).title,
                   ),
                 ),
@@ -84,13 +86,26 @@ showSeasonDetails({
                   child: Column(
                     children: [
                       const SizedBox(height: 20),
-                      Imgy(
-                        borderRadius: BorderRadius.circular(10),
-                        src: poster,
-                        fullSrc: poster,
-                        width: 200,
-                        height: 200 * 1.5,
-                        placeholderColor: Colors.black,
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ColorFiltered(
+                          colorFilter: ColorFilter.mode(
+                            season.posterPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                            BlendMode.color,
+                          ),
+                          child: Imgy(
+                            borderRadius: BorderRadius.circular(10),
+                            src: poster,
+                            fullSrc: posterFull,
+                            width: 200,
+                            height: 200 * 1.5,
+                            placeholderColor: Colors.black,
+                            enableFullScreen: true,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 15),
                       Column(
