@@ -44,16 +44,31 @@ class MediaHeader extends StatelessWidget {
         Stack(
           children: [
             Positioned(
-              child: Imgy(
-                borderColor: Colors.white.withOpacity(0.2),
-                width: coverWidth,
-                height: coverHeight,
-                src: imageSrc,
-                placeholderColor: Colors.black,
-                fullSrc: imageSrc,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(35),
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(35),
+                    bottomRight: Radius.circular(35),
+                  ),
+                ),
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    mediaPoster == null ? ProjectColors(context).imageFilter : Colors.transparent,
+                    BlendMode.color,
+                  ),
+                  child: Imgy(
+                    borderColor: Colors.white.withOpacity(0.2),
+                    width: coverWidth,
+                    height: coverHeight,
+                    src: imageSrc,
+                    placeholderColor: Colors.black,
+                    fullSrc: imageSrc,
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(35),
+                      bottomRight: Radius.circular(35),
+                    ),
+                  ),
                 ),
               ),
             ),
