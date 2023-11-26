@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class YearsFilter extends StatefulWidget {
@@ -21,29 +22,17 @@ class _YearsFilterState extends State<YearsFilter> {
   final FilterNotifier filterNotifier = FilterNotifier();
 
   // range of years from 1900 to 2023
-  var rangeOfyears = {
-    for (var v in List.generate(2023 - 1899, (i) => 2023 - i)) '$v': '$v'
-  };
+  var rangeOfyears = {for (var v in List.generate(2023 - 1899, (i) => 2023 - i)) '$v': '$v'};
 
-  var decade60 = {
-    '60\' Decade': '1960,1961,1962,1963,1964,1965,1966,1967,1968,1969'
-  };
+  var decade60 = {'60\' Decade': '1960,1961,1962,1963,1964,1965,1966,1967,1968,1969'};
 
-  var decade70 = {
-    '70\' Decade': '1970,1971,1972,1973,1974,1975,1976,1977,1978,1979'
-  };
+  var decade70 = {'70\' Decade': '1970,1971,1972,1973,1974,1975,1976,1977,1978,1979'};
 
-  var decade80 = {
-    '80\' Decade': '1980,1981,1982,1983,1984,1985,1986,1987,1988,1989'
-  };
+  var decade80 = {'80\' Decade': '1980,1981,1982,1983,1984,1985,1986,1987,1988,1989'};
 
-  var decade90 = {
-    '90\' Decade': '1990,1991,1992,1993,1994,1995,1996,1997,1998,1999'
-  };
+  var decade90 = {'90\' Decade': '1990,1991,1992,1993,1994,1995,1996,1997,1998,1999'};
 
-  var decade00 = {
-    '00\' Decade': '2000,2001,2002,2003,2004,2005,2006,2007,2008,2009'
-  };
+  var decade00 = {'00\' Decade': '2000,2001,2002,2003,2004,2005,2006,2007,2008,2009'};
 
   late String currentYear;
 
@@ -89,13 +78,12 @@ class _YearsFilterState extends State<YearsFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return VWRow(
+      verticalAlignment: CrossAxisAlignment.end,
+      gap: 80,
       children: [
         const Text('Year: '),
-        SizedBox(
-          width: 220,
+        Expanded(
           child: DropdownButtonFormField(
             value: currentYear,
             icon: const Icon(Icons.expand_more),

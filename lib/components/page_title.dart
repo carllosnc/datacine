@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class PageTitle extends StatelessWidget {
@@ -13,8 +14,7 @@ class PageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return VWColumn(
       children: [
         Text(
           title,

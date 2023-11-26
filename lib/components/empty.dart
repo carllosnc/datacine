@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class Empty extends StatelessWidget {
   final String message;
 
-  const Empty({super.key, this.message = 'Nothing here'});
+  const Empty({
+    super.key,
+    this.message = 'Nothing here',
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: VWColumn(
+        horizontalAlignment: CrossAxisAlignment.center,
+        verticalAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '🦖',

@@ -15,34 +15,14 @@ class ProjectColors {
   Color get imageFilter => Theme.of(context).colorScheme.background;
   Color get imageFilterFallback => Theme.of(context).colorScheme.surfaceVariant;
   Color get profileFilter => Theme.of(context).colorScheme.background;
-  Color get logoFilter => Theme.of(context).colorScheme.primary;
   Color get textError => Theme.of(context).colorScheme.error;
   Color get bottomBarBackground => Theme.of(context).colorScheme.primaryContainer;
   Color get label => Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
   Color get text => Theme.of(context).colorScheme.onSurface;
-  Color get title => Theme.of(context).colorScheme.tertiary;
+  Color get title => Colors.white;
   Color get featured => Theme.of(context).colorScheme.primary;
-  Color get line => Theme.of(context).colorScheme.outline.withOpacity(0.15);
-  Color get linkButton => Theme.of(context).colorScheme.secondary.withOpacity(0.1);
+  Color get line => Colors.white.withOpacity(0.1);
+  Color get linkButton => Colors.white.withOpacity(0.07);
   Color get modalBackground => Theme.of(context).colorScheme.background;
-
-  Color randomColor() {
-    var colors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.yellow,
-      Colors.orange,
-      Colors.pink,
-      Colors.teal,
-      Colors.cyan,
-      Colors.indigo,
-      Colors.lime,
-      Colors.amber,
-      Colors.brown,
-      Colors.grey,
-    ];
-
-    return colors[DateTime.now().millisecondsSinceEpoch % colors.length];
-  }
+  Color get imagePlaceholder => Colors.black;
 }

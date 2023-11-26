@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class MovieCollectionCard extends StatelessWidget {
@@ -23,9 +24,8 @@ class MovieCollectionCard extends StatelessWidget {
       },
       child: SizedBox(
         width: 150,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: VWColumn(
+          gap: 8,
           children: [
             Expanded(
               child: Imgy(
@@ -36,10 +36,8 @@ class MovieCollectionCard extends StatelessWidget {
                 placeholderColor: Colors.black,
               ),
             ),
-            const SizedBox(height: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+            VWColumn(
+              gap: 2,
               children: [
                 Text(
                   movie.title!,
@@ -51,7 +49,6 @@ class MovieCollectionCard extends StatelessWidget {
                     color: ProjectColors(context).featured,
                   ),
                 ),
-                const SizedBox(height: 2),
                 Text(
                   (movie.releaseDate ?? '').formatDateTime(),
                   overflow: TextOverflow.ellipsis,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 showMediaCredit(
@@ -7,61 +8,58 @@ showMediaCredit(
   MediaType mediaType,
   String title,
 ) {
-  return showModalBottomSheet(
-    isScrollControlled: true,
-    useSafeArea: true,
+  if (mediaType == MediaType.movie) {
+    list!.sort(
+      (a, b) {
+        var aDate = a.releaseDate ?? '0';
+        var bDate = b.releaseDate ?? '0';
+
+        return bDate.compareTo(aDate);
+      },
+    );
+  }
+
+  if (mediaType == MediaType.tv) {
+    list!.sort(
+      (a, b) {
+        var aDate = a.firstAirDate ?? '0';
+        var bDate = b.firstAirDate ?? '0';
+
+        return bDate.compareTo(aDate);
+      },
+    );
+  }
+
+  return VWPage.open(
     context: context,
-    builder: (context) {
-      if (list == null || list.isEmpty) {
-        return Column(
-          children: [
-            ModalHeader(
-              title: title,
-            ),
-            const Expanded(child: Center(child: Empty())),
-          ],
-        );
-      }
-
-      if (mediaType == MediaType.movie) {
-        list.sort(
-          (a, b) {
-            var aDate = a.releaseDate ?? '0';
-            var bDate = b.releaseDate ?? '0';
-
-            return bDate.compareTo(aDate);
-          },
-        );
-      }
-
-      if (mediaType == MediaType.tv) {
-        list.sort(
-          (a, b) {
-            var aDate = a.firstAirDate ?? '0';
-            var bDate = b.firstAirDate ?? '0';
-
-            return bDate.compareTo(aDate);
-          },
-        );
-      }
-
-      return Column(
-        children: [
-          ModalHeader(
-            title: title,
+    appBar: AppBar(
+      title: SectionTitle(text: title),
+      leading: IconButton(
+        icon: const Icon(Icons.close),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+    ),
+    body: CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Container(
+            height: 1,
+            color: Colors.transparent,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                MediaItem item = list[index];
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            childCount: list?.length,
+            (context, index) {
+              MediaItem item = list![index];
 
-                return CreditListTile(item: item, mediaType: mediaType);
-              },
-            ),
-          )
-        ],
-      );
-    },
+              return CreditListTile(item: item, mediaType: mediaType);
+            },
+          ),
+        ),
+      ],
+    ),
   );
 }

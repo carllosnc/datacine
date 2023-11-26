@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class PersonCard extends StatelessWidget {
@@ -18,8 +19,8 @@ class PersonCard extends StatelessWidget {
       onTap: () {
         context.push('/person/${personItem.id}');
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: VWColumn(
+        gap: 5,
         children: [
           Expanded(
             child: ColorFiltered(
@@ -36,9 +37,7 @@ class PersonCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 5),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          VWColumn(
             children: [
               Text(
                 personItem.name!,

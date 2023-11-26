@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw_column.dart';
 import '/imports/app.dart';
 
 class ErrorBlock extends StatelessWidget {
@@ -9,27 +10,24 @@ class ErrorBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
+      child: VWColumn(
         padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              '💀',
-              style: TextStyle(
-                fontSize: 70,
-              ),
+        gap: 5,
+        children: [
+          const Text(
+            '💀',
+            style: TextStyle(
+              fontSize: 70,
             ),
-            const SizedBox(height: 5),
-            Text(
-              message,
-              style: TextStyle(
-                fontSize: 14,
-                color: ProjectColors(context).text,
-              ),
+          ),
+          Text(
+            message,
+            style: TextStyle(
+              fontSize: 14,
+              color: ProjectColors(context).text,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

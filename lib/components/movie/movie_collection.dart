@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class MovieCollection extends StatefulWidget {
@@ -13,8 +14,7 @@ class MovieCollection extends StatefulWidget {
   State<MovieCollection> createState() => _MovieCollectionState();
 }
 
-class _MovieCollectionState extends State<MovieCollection>
-    with MovieCollectionService {
+class _MovieCollectionState extends State<MovieCollection> with MovieCollectionService {
   @override
   void initState() {
     super.initState();
@@ -46,28 +46,23 @@ class _MovieCollectionState extends State<MovieCollection>
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+    return VWColumn(
+      gap: 20,
       children: [
-        Padding(
+        VWColumn(
+          gap: 5,
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SectionTitle(text: widget.movie.belongsToCollection!.name!),
-              const SizedBox(height: 5),
-              Text(
-                '${collection.parts?.length} movies',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: ProjectColors(context).label,
-                ),
-              )
-            ],
-          ),
+          children: [
+            SectionTitle(text: widget.movie.belongsToCollection!.name!),
+            Text(
+              '${collection.parts?.length} movies',
+              style: TextStyle(
+                fontSize: 12,
+                color: ProjectColors(context).label,
+              ),
+            )
+          ],
         ),
-        const SizedBox(height: 20),
         SizedBox(
           height: 278,
           child: ListView.separated(

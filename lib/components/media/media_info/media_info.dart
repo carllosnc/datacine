@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import './media_info_item.dart';
 import './media_info_companies.dart';
 import '/imports/app.dart';
@@ -15,47 +16,41 @@ class MediaInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridMenuItem(
+    return VWButton(
       label: 'Info',
-      icon: Icons.description,
+      horizontalAlignment: MainAxisAlignment.start,
+      leftIcon: Icons.description_outlined,
       onTap: () {
-        showModalBottomSheet(
-          isScrollControlled: true,
-          useSafeArea: true,
+        VWPage.open(
           context: context,
-          builder: (context) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          appBar: AppBar(
+            title: const SectionTitle(
+              text: "Informations",
+            ),
+            leading: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: VWColumn(
               children: [
-                const ModalHeader(
-                  title: "Informations",
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (movie != null) movieInfo(),
-                        if (tvShow != null) tvShowInfo()
-                      ],
-                    ),
-                  ),
-                ),
+                if (movie != null) movieInfo(),
+                if (tvShow != null) tvShowInfo(),
               ],
-            );
-          },
+            ),
+          ),
         );
       },
     );
   }
 
-  Column tvShowInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget tvShowInfo() {
+    return VWColumn(
+      gap: 20,
       children: [
         MediaInfoItem(
           condition: tvShow!.hasOriginalName,
@@ -97,9 +92,9 @@ class MediaInfo extends StatelessWidget {
     );
   }
 
-  Column movieInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget movieInfo() {
+    return VWColumn(
+      gap: 20,
       children: [
         MediaInfoItem(
           condition: movie!.hasOriginalTitle,

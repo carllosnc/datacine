@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class PersonKnownFor extends StatelessWidget {
@@ -11,16 +12,14 @@ class PersonKnownFor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return VWColumn(
+      gap: 20,
       children: [
         //title
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: SectionTitle(text: "Known For"),
         ),
-
-        const SizedBox(height: 20),
 
         SizedBox(
           height: 245,
@@ -37,8 +36,7 @@ class PersonKnownFor extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               MediaItem media = person.knownForCredits[index];
 
-              MediaType mediaType =
-                  media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
+              MediaType mediaType = media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
 
               return SizedBox(
                 width: 130,

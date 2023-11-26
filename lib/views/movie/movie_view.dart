@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/imports/app.dart';
+import 'package:vw/vw.dart';
 
 class MovieView extends StatefulWidget {
   final String id;
@@ -62,13 +63,18 @@ class MovieViewState extends State<MovieView> with MovieService {
 
             const SectionDivider(),
 
-            GridMenu(
-              items: [
-                MediaInfo(movie: movie),
+            VWColumn(
+              gap: 10,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                MediaInfo(
+                  movie: movie,
+                ),
                 if (movie.hasPosters)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Posters',
-                    icon: Icons.image,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.image_outlined,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/images',
@@ -77,9 +83,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     },
                   ),
                 if (movie.hasCredits)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Credits',
-                    icon: Icons.people,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.people_outline,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/credits',
@@ -88,9 +95,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     },
                   ),
                 if (movie.hasRecommendations)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Recommendations',
-                    icon: Icons.thumb_up,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.thumb_up_outlined,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/recommendations',
@@ -99,9 +107,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     },
                   ),
                 if (movie.hasSimilar)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Similar',
-                    icon: Icons.movie,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.movie_outlined,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/similar',

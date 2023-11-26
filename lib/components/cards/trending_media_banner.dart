@@ -38,7 +38,7 @@ class TrendingMediaBanner extends StatelessWidget {
               fullSrc: backdrop,
               width: double.infinity,
               height: 250,
-              placeholderColor: Colors.black,
+              placeholderColor: ProjectColors(context).imagePlaceholder,
             ),
             Container(
               decoration: BoxDecoration(
@@ -63,8 +63,7 @@ class TrendingMediaBanner extends StatelessWidget {
                   direction: Axis.vertical,
                   children: [
                     Text(
-                      (media.releaseDate ?? media.firstAirDate ?? '')
-                          .formatDateTime(),
+                      (media.releaseDate ?? media.firstAirDate ?? '').formatDateTime(),
                       style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,

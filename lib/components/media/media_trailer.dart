@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vw/vw.dart';
 
 class MediaTrailer extends StatelessWidget {
   final String? trailer;
@@ -10,17 +11,13 @@ class MediaTrailer extends StatelessWidget {
   Widget build(BuildContext context) {
     if (trailer == null) return const SizedBox.shrink();
 
-    return FilledButton(
-      onPressed: () {
+    return VWButton(
+      onTap: () {
         launchUrl(Uri.parse(trailer!));
       },
-      child: const Row(
-        children: [
-          Icon(Icons.play_arrow),
-          SizedBox(width: 8),
-          Text('Watch trailer'),
-        ],
-      ),
+      leftIcon: Icons.play_arrow,
+      color: Colors.red.shade900,
+      label: 'Watch trailer',
     );
   }
 }

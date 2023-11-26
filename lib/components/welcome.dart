@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class Welcome extends StatelessWidget {
@@ -21,14 +22,13 @@ class Welcome extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+        child: VWColumn(
+          gap: 50,
           children: [
             Image.asset(
               Assets.extendedLogo,
               height: 35,
             ),
-            const SizedBox(height: 50),
             Text(
               '"What a lovely day"',
               style: TextStyle(

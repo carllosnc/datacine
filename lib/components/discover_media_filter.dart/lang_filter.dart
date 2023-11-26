@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class LangFilter extends StatefulWidget {
@@ -74,13 +75,12 @@ class _LangFilterState extends State<LangFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return VWRow(
+      verticalAlignment: CrossAxisAlignment.end,
+      gap: 42,
       children: [
         const Text('Language: '),
-        SizedBox(
-          width: 220,
+        Expanded(
           child: DropdownButtonFormField(
             value: selectedLang,
             padding: EdgeInsets.zero,

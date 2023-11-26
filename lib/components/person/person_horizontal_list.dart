@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class PersonHorizontalList extends StatelessWidget {
@@ -27,21 +28,18 @@ class PersonHorizontalList extends StatelessWidget {
       cutList = list!.sublist(0, 20);
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return VWColumn(
+      gap: 15,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SectionTitle(text: title),
         ),
-        const SizedBox(height: 20),
-        Container(
-          width: MediaQuery.of(context).size.width,
+        SizedBox(
           height: 210,
-          color: Colors.transparent,
           child: ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             separatorBuilder: (context, index) => const SizedBox(width: 15),
             itemCount: cutList!.length,
             itemBuilder: (BuildContext context, int index) {

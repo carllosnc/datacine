@@ -43,7 +43,7 @@ class MiniMediaCard extends StatelessWidget {
                   fullSrc: poster,
                   width: double.infinity,
                   height: double.infinity,
-                  placeholderColor: Colors.black,
+                  placeholderColor: ProjectColors(context).imagePlaceholder,
                 ),
               ),
             ),

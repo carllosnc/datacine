@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class PersonContent extends StatelessWidget {
@@ -22,23 +23,24 @@ class PersonContent extends StatelessWidget {
         title: PageTitle(title: person.name),
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: VWColumn(
+          horizontalAlignment: CrossAxisAlignment.center,
           children: [
             PersonHeader(person: person),
 
             SectionDivider(
-              condition: person.hasMovieCast ||
-                  person.hasMovieCrew ||
-                  person.hasTvCast ||
-                  person.hasTvCrew,
+              condition: person.hasMovieCast || person.hasMovieCrew || person.hasTvCast || person.hasTvCrew,
             ),
 
-            GridMenu(
-              items: [
+            VWColumn(
+              gap: 10,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
                 if (person.hasMovieCast)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Movie cast',
-                    icon: Icons.local_movies,
+                    leftIcon: Icons.local_movies_outlined,
+                    horizontalAlignment: MainAxisAlignment.start,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -49,9 +51,10 @@ class PersonContent extends StatelessWidget {
                     },
                   ),
                 if (person.hasMovieCrew)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Movie crew',
-                    icon: Icons.movie,
+                    leftIcon: Icons.movie_outlined,
+                    horizontalAlignment: MainAxisAlignment.start,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -62,9 +65,10 @@ class PersonContent extends StatelessWidget {
                     },
                   ),
                 if (person.hasTvCast)
-                  GridMenuItem(
+                  VWButton(
                     label: 'TV cast',
-                    icon: Icons.live_tv,
+                    leftIcon: Icons.live_tv,
+                    horizontalAlignment: MainAxisAlignment.start,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -75,9 +79,10 @@ class PersonContent extends StatelessWidget {
                     },
                   ),
                 if (person.hasTvCrew)
-                  GridMenuItem(
+                  VWButton(
                     label: 'TV crew',
-                    icon: Icons.tv,
+                    leftIcon: Icons.tv,
+                    horizontalAlignment: MainAxisAlignment.start,
                     onTap: () {
                       showMediaCredit(
                         context,

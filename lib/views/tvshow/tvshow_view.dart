@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class TvShowView extends StatefulWidget {
@@ -61,15 +62,18 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
 
             const SectionDivider(),
 
-            GridMenu(
-              items: [
-                //info
-                MediaInfo(tvShow: tvShow),
-
+            VWColumn(
+              gap: 10,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                MediaInfo(
+                  tvShow: tvShow,
+                ),
                 if (tvShow.hasPosters)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Posters',
-                    icon: Icons.image,
+                    leftIcon: Icons.image_outlined,
+                    horizontalAlignment: MainAxisAlignment.start,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/images',
@@ -78,9 +82,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     },
                   ),
                 if (tvShow.hasCredits)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Credits',
-                    icon: Icons.people,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.people_outline,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/credits',
@@ -89,9 +94,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     },
                   ),
                 if (tvShow.hasRecommendations)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Recommendations',
-                    icon: Icons.thumb_up,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.thumb_up_outlined,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/recommendations',
@@ -100,9 +106,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     },
                   ),
                 if (tvShow.hasSimilar)
-                  GridMenuItem(
+                  VWButton(
                     label: 'Similar',
-                    icon: Icons.movie,
+                    horizontalAlignment: MainAxisAlignment.start,
+                    leftIcon: Icons.movie_outlined,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/similar',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class MediaOverview extends StatelessWidget {
@@ -13,82 +14,57 @@ class MediaOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          if (movie != null) movieOverview(context),
-          if (tvshow != null) tvShowOverview(context),
-        ],
-      ),
+    return VWColumn(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      children: [
+        if (movie != null) movieOverview(context),
+        if (tvshow != null) tvShowOverview(context),
+      ],
     );
   }
 
-  Wrap tvShowOverview(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40;
-
-    return Wrap(
-      runSpacing: 10,
+  Widget tvShowOverview(BuildContext context) {
+    return VWColumn(
+      gap: 10,
       children: [
         if (tvshow!.hasTagline)
-          SizedBox(
-            width: width,
-            child: Text(
-              '"${tvshow?.tagline}"',
-              style: TextStyle(
-                fontSize: 16,
-                color: ProjectColors(context).featured,
-              ),
+          Text(
+            '"${tvshow?.tagline}"',
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).featured,
             ),
           ),
         if (tvshow!.hasOverview)
-          SizedBox(
-            width: width,
-            child: Text(
-              '${tvshow?.overview}',
-              style: TextStyle(
-                fontSize: 16,
-                color: ProjectColors(context).text,
-              ),
+          Text(
+            '${tvshow?.overview}',
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).text,
             ),
           ),
       ],
     );
   }
 
-  Wrap movieOverview(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40;
-
-    return Wrap(
-      direction: Axis.vertical,
-      spacing: 10,
-      runSpacing: 10,
+  Widget movieOverview(BuildContext context) {
+    return VWColumn(
+      gap: 10,
       children: [
         if (movie!.hasTagline)
-          SizedBox(
-            width: width,
-            child: Text(
-              '"${movie!.tagline}"',
-              style: TextStyle(
-                fontSize: 16,
-                color: ProjectColors(context).featured,
-              ),
+          Text(
+            '"${movie!.tagline}"',
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).featured,
             ),
           ),
         if (movie!.hasOverview)
-          SizedBox(
-            width: width,
-            child: Text(
-              movie!.overview,
-              style: TextStyle(
-                fontSize: 16,
-                color: ProjectColors(context).text,
-              ),
+          Text(
+            movie!.overview,
+            style: TextStyle(
+              fontSize: 16,
+              color: ProjectColors(context).text,
             ),
           ),
       ],

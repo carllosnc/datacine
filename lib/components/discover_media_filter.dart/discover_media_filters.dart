@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
 import './lang_filter.dart';
@@ -32,83 +33,51 @@ discoverMediaFilters({
     }
   }
 
-  showDialog(
+  VWPage.open(
     context: context,
-    builder: (context) {
-      return Dialog.fullscreen(
-        child: Container(
-          color: Colors.black.withOpacity(0.5),
-          padding: const EdgeInsets.all(20),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Theme.of(context).colorScheme.background,
-              border: Border.all(
-                color: ProjectColors(context).line,
-                width: 1,
-              ),
-            ),
-            child: Column(
-              children: [
-                ModalHeader(
-                  title: title,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      children: [
-                        YearsFilter(
-                          mediaType: mediaType,
-                          onChanged: (dynamic value) {
-                            filter.years = value;
-                          },
-                        ),
-                        const SizedBox(height: 25),
-                        LangFilter(
-                          mediaType: mediaType,
-                          onChanged: (dynamic value) {
-                            filter.lang = value;
-                          },
-                        ),
-                        const SizedBox(height: 25),
-                        GenreFilter(
-                          onChanged: (dynamic value) {
-                            filter.genres = value;
-                          },
-                          mediaType: mediaType,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        color: ProjectColors(context).line,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  child: FilledButton(
-                    onPressed: applyAction,
-                    child: const Text(
-                      'Apply Filters',
-                    ),
-                  ),
-                )
-              ],
-            ),
+    appBar: AppBar(
+      title: SectionTitle(text: title),
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.close),
+      ),
+    ),
+    body: SingleChildScrollView(
+      child: VWColumn(
+        gap: 30,
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        children: [
+          YearsFilter(
+            mediaType: mediaType,
+            onChanged: (dynamic value) {
+              filter.years = value;
+            },
           ),
-        ),
-      );
-    },
+          LangFilter(
+            mediaType: mediaType,
+            onChanged: (dynamic value) {
+              filter.lang = value;
+            },
+          ),
+          GenreFilter(
+            onChanged: (dynamic value) {
+              filter.genres = value;
+            },
+            mediaType: mediaType,
+          ),
+        ],
+      ),
+    ),
+    bottomBar: Container(
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+      child: VWButton(
+        label: 'Apply',
+        onTap: () {
+          applyAction();
+        },
+      ),
+    ),
   );
 }

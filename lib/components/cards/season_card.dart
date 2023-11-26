@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class SeasonCard extends StatelessWidget {
@@ -23,9 +24,8 @@ class SeasonCard extends StatelessWidget {
 
     return SizedBox(
       width: 150,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: VWColumn(
+        gap: 8,
         children: [
           GestureDetector(
             onTap: () {
@@ -57,10 +57,8 @@ class SeasonCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+          VWColumn(
+            gap: 2,
             children: [
               Text(
                 (season.airDate ?? '').formatDateTime(),
@@ -71,7 +69,6 @@ class SeasonCard extends StatelessWidget {
                   color: ProjectColors(context).label,
                 ),
               ),
-              const SizedBox(height: 2),
               Text(
                 season.name!,
                 overflow: TextOverflow.ellipsis,

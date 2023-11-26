@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw_column.dart';
 import '/imports/app.dart';
 
 class PersonHeader extends StatelessWidget {
@@ -14,25 +15,23 @@ class PersonHeader extends StatelessWidget {
       size: ImageSize.profileOriginal,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return VWColumn(
+      horizontalAlignment: CrossAxisAlignment.center,
       children: [
-        ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            ProjectColors(context).profileFilter,
-            BlendMode.color,
-          ),
-          child: Imgy(
-            width: 200,
-            height: 200 * 1.5,
-            src: profileImage,
-            fullSrc: profileImage,
-            borderRadius: BorderRadius.circular(20),
-            borderRadiusInside: BorderRadius.circular(14),
-            padding: 5,
-            borderColor: Colors.white.withOpacity(0.2),
-            borderWidth: 2,
-            placeholderColor: Colors.black,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: ColorFiltered(
+            colorFilter: ColorFilter.mode(
+              ProjectColors(context).profileFilter,
+              BlendMode.color,
+            ),
+            child: Imgy(
+              width: 200,
+              height: 200 * 1.5,
+              src: profileImage,
+              fullSrc: profileImage,
+              placeholderColor: Colors.black,
+            ),
           ),
         ),
 

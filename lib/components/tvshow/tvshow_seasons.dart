@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class TvShowSeasons extends StatelessWidget {
@@ -22,16 +23,13 @@ class TvShowSeasons extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Wrap(
-          direction: Axis.vertical,
-          spacing: 20,
+        VWColumn(
+          gap: 20,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SectionTitle(
-                text: seasons.length == 1
-                    ? '1 Season'
-                    : '${seasons.length} Seasons',
+                text: seasons.length == 1 ? '1 Season' : '${seasons.length} Seasons',
               ),
             ),
             SizedBox(

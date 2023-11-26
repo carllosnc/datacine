@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class MediaInfoItem extends StatelessWidget {
@@ -17,30 +18,23 @@ class MediaInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Visibility(
       visible: condition,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-        ),
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 14,
-                color: ProjectColors(context).label,
-              ),
+      child: VWColumn(
+        gap: 3,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              color: ProjectColors(context).label,
             ),
-            const SizedBox(height: 3),
-            Text(
-              item,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
+          ),
+          Text(
+            item,
+            style: const TextStyle(
+              fontSize: 16,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

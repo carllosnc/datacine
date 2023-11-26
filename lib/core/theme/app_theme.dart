@@ -1,4 +1,3 @@
-import 'package:datacine/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 appTheme(BuildContext context) {
@@ -25,7 +24,14 @@ appTheme(BuildContext context) {
     ),
     fontFamily: 'SFProDisplay',
     useMaterial3: true,
-    colorSchemeSeed: ProjectColors(context).randomColor(),
+    colorSchemeSeed: Colors.red,
     brightness: Brightness.dark,
+    //set page navigation animation
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
   );
 }

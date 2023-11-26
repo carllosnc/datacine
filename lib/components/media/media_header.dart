@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class MediaHeader extends StatelessWidget {
@@ -14,7 +15,6 @@ class MediaHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width - 40;
     var hasMovie = movie != null;
     var hasTvShow = tvshow != null;
     var mediaTitle = movie?.title ?? tvshow?.name ?? 'No name';
@@ -36,10 +36,8 @@ class MediaHeader extends StatelessWidget {
       size: ImageSize.posterW780,
     );
 
-    return Wrap(
-      crossAxisAlignment: WrapCrossAlignment.start,
-      spacing: 20,
-      direction: Axis.vertical,
+    return VWColumn(
+      gap: 20,
       children: [
         Stack(
           children: [
@@ -100,64 +98,53 @@ class MediaHeader extends StatelessWidget {
             ),
           ],
         ),
-        Padding(
+        VWColumn(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Wrap(
-            direction: Axis.vertical,
-            spacing: 3,
-            children: [
-              Text(
-                date,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
+          gap: 5,
+          children: [
+            Text(
+              date,
+              style: const TextStyle(
+                fontSize: 12,
               ),
-              SizedBox(
-                width: width,
-                child: BigTitle(
-                  text: (mediaTitle),
-                ),
-              ),
-              if (hasMovie && movie!.hasGenres)
-                Text(
-                  movie!.genres,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: ProjectColors(context).label,
-                  ),
-                ),
-              if (hasTvShow && tvshow!.hasGenres)
-                SizedBox(
-                  width: width,
-                  child: Text(
-                    tvshow!.genres,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: ProjectColors(context).label,
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SizedBox(
-            width: width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                MediaTrailer(
-                  trailer: (mediaTrailer),
-                ),
-                MediaVotes(
-                  voteAverage: (mediaVoteAverage),
-                  voteCount: (mediaVoteCount),
-                  status: (mediaStatus),
-                ),
-              ],
             ),
-          ),
+            BigTitle(
+              text: (mediaTitle),
+            ),
+            if (hasMovie && movie!.hasGenres)
+              Text(
+                movie!.genres,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: ProjectColors(context).label,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            if (hasTvShow && tvshow!.hasGenres)
+              Text(
+                tvshow!.genres,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: ProjectColors(context).label,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+          ],
+        ),
+        VWRow(
+          horizontalAlignment: MainAxisAlignment.spaceBetween,
+          verticalAlignment: CrossAxisAlignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          children: [
+            MediaVotes(
+              voteAverage: (mediaVoteAverage),
+              voteCount: (mediaVoteCount),
+              status: (mediaStatus),
+            ),
+            MediaTrailer(
+              trailer: (mediaTrailer),
+            ),
+          ],
         ),
       ],
     );

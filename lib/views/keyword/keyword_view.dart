@@ -17,8 +17,7 @@ class KeywordView extends StatelessWidget {
       http.Client(),
     );
 
-    var (companyMovies, _) =
-        await mediaDiscoverRepository.discoverMoviesByKeyword(
+    var (companyMovies, _) = await mediaDiscoverRepository.discoverMoviesByKeyword(
       page: page,
       mediaType: mediaType,
       keywordId: keyword.id!,

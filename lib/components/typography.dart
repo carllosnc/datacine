@@ -51,8 +51,9 @@ class BigTitle extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
+        fontSize: 25,
+        height: 1.2,
+        fontWeight: FontWeight.w300,
         color: ProjectColors(context).title,
       ),
     );
