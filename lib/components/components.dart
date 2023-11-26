@@ -1,12 +1,10 @@
 export '/components/empty.dart';
 export '/components/section_divider.dart';
 export '/components/trending_media_grid.dart';
-export '/components/modal_header.dart';
 export '/components/custom_search/custom_search.dart';
 export '/components/loading.dart';
 export '/components/link_button.dart';
 export '/components/error.dart';
-export '/components/grid_menu.dart';
 export '/components/welcome.dart';
 export '/components/app_version.dart';
 export '/components/typography.dart';
