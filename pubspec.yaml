@@ -52,6 +52,10 @@ dependencies:
     git:
       url: https://github.com/C4co/imgy.git
 
+  vw:
+    git:
+      url: https://github.com/C4co/vw.git
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
