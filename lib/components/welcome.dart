@@ -12,7 +12,7 @@ class Welcome extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       body: Container(
-        padding: const EdgeInsets.only(bottom: 80),
+        padding: const EdgeInsets.only(bottom: 130),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -31,9 +31,9 @@ class Welcome extends StatelessWidget {
               height: 30,
             ),
             const Text(
-              "First rule: You do not talk about Datacine.",
+              "First rule: you do not talk about Datacine.",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 shadows: [
                   Shadow(
                     color: Colors.black,
@@ -47,7 +47,7 @@ class Welcome extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: VWRow(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.fromLTRB(50, 0, 50, 40),
         children: [
           VWButton(
             fullWidth: true,
