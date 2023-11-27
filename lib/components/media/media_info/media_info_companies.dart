@@ -30,7 +30,7 @@ class Companies extends StatelessWidget {
           "Companies",
           style: TextStyle(
             fontSize: 14,
-            color: ProjectColors(context).label,
+            color: AppColors.label,
           ),
         ),
         Wrap(

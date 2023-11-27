@@ -25,7 +25,7 @@ class MediaInfoItem extends StatelessWidget {
             label,
             style: TextStyle(
               fontSize: 14,
-              color: ProjectColors(context).label,
+              color: AppColors.label,
             ),
           ),
           Text(

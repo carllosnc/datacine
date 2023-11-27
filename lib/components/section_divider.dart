@@ -18,7 +18,7 @@ class SectionDivider extends StatelessWidget {
           const SizedBox(height: 25),
           Divider(
             height: 1,
-            color: ProjectColors(context).line,
+            color: AppColors.line,
           ),
           const SizedBox(height: 25),
         ],

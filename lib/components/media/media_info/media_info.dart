@@ -20,6 +20,7 @@ class MediaInfo extends StatelessWidget {
       label: 'Info',
       horizontalAlignment: MainAxisAlignment.start,
       leftIcon: Icons.description_outlined,
+      color: AppColors.buttonColor,
       onTap: () {
         VWPage.open(
           context: context,
@@ -33,9 +34,7 @@ class MediaInfo extends StatelessWidget {
             ),
           ),
           body: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
+            padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
             child: VWColumn(
               children: [
                 if (movie != null) movieInfo(),

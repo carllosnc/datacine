@@ -58,7 +58,7 @@ class _MovieCollectionState extends State<MovieCollection> with MovieCollectionS
               '${collection.parts?.length} movies',
               style: TextStyle(
                 fontSize: 12,
-                color: ProjectColors(context).label,
+                color: AppColors.label,
               ),
             )
           ],

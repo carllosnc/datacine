@@ -24,7 +24,7 @@ class MediaListTile extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right),
       leading: ColorFiltered(
         colorFilter: ColorFilter.mode(
-          item.backdropPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
+          item.backdropPath == null ? AppColors.imageFilter : Colors.transparent,
           BlendMode.color,
         ),
         child: Imgy(
@@ -40,14 +40,14 @@ class MediaListTile extends StatelessWidget {
         item.title ?? item.name ?? '-',
         style: TextStyle(
           fontSize: 14,
-          color: ProjectColors(context).text,
+          color: AppColors.label,
         ),
       ),
       subtitle: Text(
         "${(item.releaseDate ?? item.firstAirDate!).formatYear()} — ${item.mediaType!.capitalize()}",
         style: TextStyle(
           fontSize: 12,
-          color: ProjectColors(context).featured,
+          color: AppColors.link,
         ),
       ),
     );

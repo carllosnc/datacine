@@ -29,7 +29,7 @@ class PageTitle extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
             style: TextStyle(
-              color: ProjectColors(context).label,
+              color: AppColors.label,
               fontSize: 12,
             ),
             textAlign: TextAlign.center,

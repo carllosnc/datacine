@@ -17,7 +17,7 @@ class LinkButton extends StatelessWidget {
       height: 30,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: ProjectColors(context).linkButton,
+          backgroundColor: AppColors.buttonColor,
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 0,
@@ -27,7 +27,8 @@ class LinkButton extends StatelessWidget {
         child: Text(
           label,
           maxLines: 1,
-          style: const TextStyle(
+          style: TextStyle(
+            color: AppColors.link,
             fontWeight: FontWeight.w400,
             fontFamily: 'SFProDisplay',
             overflow: TextOverflow.ellipsis,

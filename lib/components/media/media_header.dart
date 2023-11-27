@@ -52,7 +52,7 @@ class MediaHeader extends StatelessWidget {
                 ),
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                    mediaPoster == null ? ProjectColors(context).imageFilter : Colors.transparent,
+                    mediaPoster == null ? AppColors.imageFilter : Colors.transparent,
                     BlendMode.color,
                   ),
                   child: Imgy(
@@ -116,7 +116,7 @@ class MediaHeader extends StatelessWidget {
                 movie!.genres,
                 style: TextStyle(
                   fontSize: 14,
-                  color: ProjectColors(context).label,
+                  color: AppColors.label,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -125,7 +125,7 @@ class MediaHeader extends StatelessWidget {
                 tvshow!.genres,
                 style: TextStyle(
                   fontSize: 14,
-                  color: ProjectColors(context).label,
+                  color: AppColors.label,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

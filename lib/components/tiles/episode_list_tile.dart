@@ -32,7 +32,7 @@ class EpisodeListTile extends StatelessWidget {
             ),
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                episode.stillPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                episode.stillPath == null ? AppColors.imageFilter : Colors.transparent,
                 BlendMode.color,
               ),
               child: Imgy(
@@ -50,14 +50,14 @@ class EpisodeListTile extends StatelessWidget {
             (episode.airDate ?? '').formatDateTime(),
             style: TextStyle(
               fontSize: 12,
-              color: ProjectColors(context).featured,
+              color: AppColors.link,
             ),
           ),
           Text(
             episode.name!,
             style: TextStyle(
               fontSize: 16,
-              color: ProjectColors(context).text,
+              color: AppColors.label,
             ),
           ),
           if (checkOverview()) const SizedBox(height: 5),
@@ -66,7 +66,7 @@ class EpisodeListTile extends StatelessWidget {
               episode.overview!,
               style: TextStyle(
                 fontSize: 14,
-                color: ProjectColors(context).label,
+                color: AppColors.label,
               ),
             ),
           const SizedBox(height: 25)
@@ -83,7 +83,7 @@ class EpisodeListTile extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: ProjectColors(context).text,
+            color: AppColors.label,
           ),
         ),
       ),

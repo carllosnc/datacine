@@ -8,8 +8,7 @@ class TrendingTab extends StatefulWidget {
   State<TrendingTab> createState() => _TrendingTabState();
 }
 
-class _TrendingTabState extends State<TrendingTab>
-    with AutomaticKeepAliveClientMixin<TrendingTab>, TrendingsService {
+class _TrendingTabState extends State<TrendingTab> with AutomaticKeepAliveClientMixin<TrendingTab>, TrendingsService {
   @override
   void initState() {
     super.initState();
@@ -63,7 +62,7 @@ class _TrendingTabState extends State<TrendingTab>
               child: Icon(
                 Icons.keyboard_double_arrow_down,
                 size: 50,
-                color: ProjectColors(context).featured,
+                color: AppColors.link,
               ),
             ),
             SliverToBoxAdapter(

@@ -41,7 +41,10 @@ class _GenreFilterState extends State<GenreFilter> with GenreFilterService {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Genres: '),
+          Text(
+            'Genres: ',
+            style: TextStyle(color: AppColors.label),
+          ),
           const SizedBox(height: 5),
           Wrap(
             spacing: 10,

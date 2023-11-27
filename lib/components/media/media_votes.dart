@@ -15,14 +15,14 @@ class MediaVotes extends StatelessWidget {
 
   Color getVoteColor({required BuildContext context, required num vote}) {
     if (vote >= 8) {
-      return ProjectColors(context).ratingGreat;
+      return AppColors.rattingGreat;
     } else if (vote >= 7) {
-      return ProjectColors(context).ratingGood;
+      return AppColors.rattingGood;
     } else if (vote >= 4) {
-      return ProjectColors(context).ratingOk;
+      return AppColors.rattingOk;
     }
 
-    return ProjectColors(context).ratingBad;
+    return AppColors.rattingBad;
   }
 
   @override
@@ -40,7 +40,7 @@ class MediaVotes extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 11,
-          color: ProjectColors(context).status,
+          color: AppColors.status,
         ),
       );
     }
@@ -78,7 +78,7 @@ class MediaVotes extends StatelessWidget {
               voteCount.toString(),
               style: TextStyle(
                 fontSize: 12,
-                color: ProjectColors(context).label,
+                color: AppColors.label,
               ),
             ),
             Text(
@@ -86,7 +86,7 @@ class MediaVotes extends StatelessWidget {
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
-                color: ProjectColors(context).label,
+                color: AppColors.label,
               ),
             ),
           ],

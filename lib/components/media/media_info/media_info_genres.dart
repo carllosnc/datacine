@@ -32,7 +32,7 @@ class MediaInfoGenres extends StatelessWidget {
             "Genres",
             style: TextStyle(
               fontSize: 14,
-              color: ProjectColors(context).label,
+              color: AppColors.label,
             ),
           ),
           const SizedBox(height: 7),

@@ -46,7 +46,7 @@ class MovieCollectionCard extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 14,
-                    color: ProjectColors(context).featured,
+                    color: AppColors.link,
                   ),
                 ),
                 Text(
@@ -55,7 +55,7 @@ class MovieCollectionCard extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 12,
-                    color: ProjectColors(context).label,
+                    color: AppColors.label,
                   ),
                 ),
               ],

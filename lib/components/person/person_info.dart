@@ -58,7 +58,7 @@ class PersonInfo extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 16,
-            color: ProjectColors(context).text,
+            color: AppColors.text,
           ),
         ),
       ],

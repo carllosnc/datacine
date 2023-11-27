@@ -82,7 +82,10 @@ class _YearsFilterState extends State<YearsFilter> {
       verticalAlignment: CrossAxisAlignment.end,
       gap: 80,
       children: [
-        const Text('Year: '),
+        Text(
+          'Year: ',
+          style: TextStyle(color: AppColors.label),
+        ),
         Expanded(
           child: DropdownButtonFormField(
             value: currentYear,

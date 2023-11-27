@@ -79,7 +79,10 @@ class _LangFilterState extends State<LangFilter> {
       verticalAlignment: CrossAxisAlignment.end,
       gap: 42,
       children: [
-        const Text('Language: '),
+        Text(
+          'Language: ',
+          style: TextStyle(color: AppColors.label),
+        ),
         Expanded(
           child: DropdownButtonFormField(
             value: selectedLang,

@@ -62,7 +62,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
           color: Theme.of(context).colorScheme.onSecondary,
           icon: Icon(
             Icons.translate,
-            color: ProjectColors(context).featured,
+            color: AppColors.link,
           ),
           itemBuilder: (context) {
             return supportedLangs.keys.map((String key) {

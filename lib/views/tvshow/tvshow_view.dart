@@ -74,6 +74,7 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     label: 'Posters',
                     leftIcon: Icons.image_outlined,
                     horizontalAlignment: MainAxisAlignment.start,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/images',
@@ -86,6 +87,7 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     label: 'Credits',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.people_outline,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/credits',
@@ -98,6 +100,7 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     label: 'Recommendations',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.thumb_up_outlined,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/recommendations',
@@ -110,6 +113,7 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     label: 'Similar',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.movie_outlined,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/tv/$widget.id/similar',

@@ -41,6 +41,7 @@ class PersonContent extends StatelessWidget {
                     label: 'Movie cast',
                     leftIcon: Icons.local_movies_outlined,
                     horizontalAlignment: MainAxisAlignment.start,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -55,6 +56,7 @@ class PersonContent extends StatelessWidget {
                     label: 'Movie crew',
                     leftIcon: Icons.movie_outlined,
                     horizontalAlignment: MainAxisAlignment.start,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -69,6 +71,7 @@ class PersonContent extends StatelessWidget {
                     label: 'TV cast',
                     leftIcon: Icons.live_tv,
                     horizontalAlignment: MainAxisAlignment.start,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       showMediaCredit(
                         context,
@@ -83,6 +86,7 @@ class PersonContent extends StatelessWidget {
                     label: 'TV crew',
                     leftIcon: Icons.tv,
                     horizontalAlignment: MainAxisAlignment.start,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       showMediaCredit(
                         context,

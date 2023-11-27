@@ -74,6 +74,7 @@ discoverMediaFilters({
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
       child: VWButton(
         label: 'Apply',
+        color: AppColors.buttonColor,
         onTap: () {
           applyAction();
         },

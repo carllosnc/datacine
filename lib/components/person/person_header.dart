@@ -22,7 +22,7 @@ class PersonHeader extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
-              ProjectColors(context).profileFilter,
+              AppColors.imageFilter,
               BlendMode.color,
             ),
             child: Imgy(
@@ -50,7 +50,7 @@ class PersonHeader extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
-                  color: ProjectColors(context).label,
+                  color: AppColors.label,
                 ),
               )
             ],

@@ -43,7 +43,7 @@ class SeasonCard extends StatelessWidget {
               ),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  season.posterPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                  season.posterPath == null ? AppColors.imageFilter : Colors.transparent,
                   BlendMode.color,
                 ),
                 child: Imgy(
@@ -66,7 +66,7 @@ class SeasonCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 12,
-                  color: ProjectColors(context).label,
+                  color: AppColors.label,
                 ),
               ),
               Text(
@@ -77,7 +77,7 @@ class SeasonCard extends StatelessWidget {
                 style: TextStyle(
                   height: 1.2,
                   fontSize: 14,
-                  color: ProjectColors(context).featured,
+                  color: AppColors.link,
                 ),
               ),
             ],

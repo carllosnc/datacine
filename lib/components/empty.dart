@@ -22,7 +22,7 @@ class Empty extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 80,
-              color: ProjectColors(context).text,
+              color: AppColors.label,
             ),
           ),
           Text(
@@ -30,7 +30,7 @@ class Empty extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
-              color: ProjectColors(context).text,
+              color: AppColors.label,
             ),
           ),
         ],

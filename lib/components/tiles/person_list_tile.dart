@@ -26,13 +26,13 @@ class PersonListTile extends StatelessWidget {
         person.name!,
         style: TextStyle(
           fontSize: 14,
-          color: ProjectColors(context).text,
+          color: AppColors.label,
         ),
       ),
       trailing: const Icon(Icons.chevron_right),
       leading: ColorFiltered(
         colorFilter: ColorFilter.mode(
-          person.profilePath == null ? ProjectColors(context).imageFilter : ProjectColors(context).profileFilter,
+          AppColors.imageFilter,
           BlendMode.color,
         ),
         child: Imgy(
@@ -48,7 +48,7 @@ class PersonListTile extends StatelessWidget {
         person.character ?? person.job ?? person.knownForDepartment ?? person.department ?? '-',
         style: TextStyle(
           fontSize: 12,
-          color: ProjectColors(context).featured,
+          color: AppColors.link,
         ),
       ),
     );

@@ -13,7 +13,7 @@ class SectionTitle extends StatelessWidget {
         fontSize: 12,
         letterSpacing: 1.8,
         fontWeight: FontWeight.w700,
-        color: ProjectColors(context).title,
+        color: AppColors.title,
       ),
     );
   }
@@ -32,7 +32,7 @@ class Label extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: 14,
-        color: ProjectColors(context).label,
+        color: AppColors.label,
       ),
     );
   }
@@ -54,7 +54,7 @@ class BigTitle extends StatelessWidget {
         fontSize: 25,
         height: 1.2,
         fontWeight: FontWeight.w300,
-        color: ProjectColors(context).title,
+        color: AppColors.title,
       ),
     );
   }

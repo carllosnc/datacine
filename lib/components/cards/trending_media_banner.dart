@@ -38,7 +38,7 @@ class TrendingMediaBanner extends StatelessWidget {
               fullSrc: backdrop,
               width: double.infinity,
               height: 250,
-              placeholderColor: ProjectColors(context).imagePlaceholder,
+              placeholderColor: AppColors.imageFilter,
             ),
             Container(
               decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class TrendingMediaBanner extends StatelessWidget {
                         media.name ?? media.title!,
                         style: TextStyle(
                           fontSize: 18,
-                          color: ProjectColors(context).title,
+                          color: AppColors.title,
                         ),
                       ),
                     ),

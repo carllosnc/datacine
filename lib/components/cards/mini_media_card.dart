@@ -34,7 +34,7 @@ class MiniMediaCard extends StatelessWidget {
             Expanded(
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  mediaItem.posterPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
+                  mediaItem.posterPath == null ? AppColors.imageFilter : Colors.transparent,
                   BlendMode.color,
                 ),
                 child: Imgy(
@@ -43,7 +43,7 @@ class MiniMediaCard extends StatelessWidget {
                   fullSrc: poster,
                   width: double.infinity,
                   height: double.infinity,
-                  placeholderColor: ProjectColors(context).imagePlaceholder,
+                  placeholderColor: AppColors.imagePlaceholder,
                 ),
               ),
             ),
@@ -57,7 +57,7 @@ class MiniMediaCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 14,
-                    color: ProjectColors(context).featured,
+                    color: AppColors.link,
                   ),
                 ),
                 Text(
@@ -65,7 +65,7 @@ class MiniMediaCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: ProjectColors(context).label,
+                    color: AppColors.label,
                     fontSize: 12,
                   ),
                 ),

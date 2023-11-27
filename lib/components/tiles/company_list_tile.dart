@@ -28,7 +28,7 @@ class CompanyListTile extends StatelessWidget {
         company.originCountry!.isEmpty ? '―' : company.originCountry ?? '―',
         style: TextStyle(
           fontSize: 12,
-          color: ProjectColors(context).featured,
+          color: AppColors.link,
         ),
       ),
     );

@@ -65,7 +65,7 @@ showSeasonDetails({
                       ),
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          season.posterPath == null ? ProjectColors(context).imageFilterFallback : Colors.transparent,
+                          season.posterPath == null ? AppColors.imageFilter : Colors.transparent,
                           BlendMode.color,
                         ),
                         child: Imgy(
@@ -88,7 +88,7 @@ showSeasonDetails({
                             season.name!,
                             style: TextStyle(
                               fontSize: 16,
-                              color: ProjectColors(context).title,
+                              color: AppColors.title,
                             ),
                           ),
                           Text(
@@ -101,7 +101,7 @@ showSeasonDetails({
                             "Episodes: ${season.episodes!.length}",
                             style: TextStyle(
                               fontSize: 14,
-                              color: ProjectColors(context).label,
+                              color: AppColors.label,
                             ),
                           ),
                         ],
@@ -113,7 +113,7 @@ showSeasonDetails({
             ),
             SliverToBoxAdapter(
               child: Divider(
-                color: ProjectColors(context).line,
+                color: AppColors.line,
                 height: 40,
               ),
             ),

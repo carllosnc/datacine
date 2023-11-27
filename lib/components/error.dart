@@ -11,20 +11,21 @@ class ErrorBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: VWColumn(
+        horizontalAlignment: CrossAxisAlignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         gap: 5,
         children: [
           const Text(
             '💀',
             style: TextStyle(
-              fontSize: 70,
+              fontSize: 50,
             ),
           ),
           Text(
             message,
             style: TextStyle(
               fontSize: 14,
-              color: ProjectColors(context).text,
+              color: AppColors.label,
             ),
           ),
         ],
@@ -51,8 +52,7 @@ class ErrorText extends StatelessWidget {
         message,
         style: TextStyle(
           fontSize: 14,
-          fontWeight: FontWeight.bold,
-          color: ProjectColors(context).text,
+          color: AppColors.text,
         ),
       ),
     );

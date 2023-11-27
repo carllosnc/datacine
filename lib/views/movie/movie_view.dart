@@ -75,6 +75,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     label: 'Posters',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.image_outlined,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/images',
@@ -87,6 +88,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     label: 'Credits',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.people_outline,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/credits',
@@ -99,6 +101,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     label: 'Recommendations',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.thumb_up_outlined,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/recommendations',
@@ -111,6 +114,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     label: 'Similar',
                     horizontalAlignment: MainAxisAlignment.start,
                     leftIcon: Icons.movie_outlined,
+                    color: AppColors.buttonColor,
                     onTap: () {
                       context.push(
                         '/movie/${widget.id}/similar',

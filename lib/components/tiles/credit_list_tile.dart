@@ -29,7 +29,7 @@ class CreditListTile extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right),
       leading: ColorFiltered(
         colorFilter: ColorFilter.mode(
-          item.posterPath == null ? ProjectColors(context).imageFilter : Colors.transparent,
+          item.posterPath == null ? AppColors.imageFilter : Colors.transparent,
           BlendMode.color,
         ),
         child: Imgy(
@@ -48,14 +48,14 @@ class CreditListTile extends StatelessWidget {
             item.releaseDate?.formatYear() ?? item.firstAirDate?.formatYear() ?? '-',
             style: TextStyle(
               fontSize: 12,
-              color: ProjectColors(context).featured,
+              color: AppColors.link,
             ),
           ),
           Text(
             item.title ?? item.name ?? '-',
             style: TextStyle(
               fontSize: 14,
-              color: ProjectColors(context).text,
+              color: AppColors.label,
             ),
           ),
         ],
@@ -64,7 +64,7 @@ class CreditListTile extends StatelessWidget {
         item.character ?? item.job ?? '-',
         style: TextStyle(
           fontSize: 14,
-          color: ProjectColors(context).label,
+          color: AppColors.label,
         ),
       ),
     );

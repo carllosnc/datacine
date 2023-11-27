@@ -47,7 +47,7 @@ class TrendingMediaGrid extends StatelessWidget {
                     src: poster,
                     fullSrc: poster,
                     width: double.infinity,
-                    placeholderColor: ProjectColors(context).imagePlaceholder,
+                    placeholderColor: AppColors.imageFilter,
                   ),
                 )
               ],

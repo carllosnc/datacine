@@ -38,7 +38,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
         ),
         hintText: 'Search',
         hintStyle: TextStyle(
-          color: ProjectColors(context).text.withOpacity(0.5),
+          color: AppColors.label.withOpacity(0.5),
           fontSize: 14,
           fontWeight: FontWeight.normal,
         ),
@@ -54,9 +54,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       (person) {
         if (searchQuery.isEmpty) return true;
 
-        return '${person.name}, ${person.character}'
-            .toLowerCase()
-            .contains(searchQuery);
+        return '${person.name}, ${person.character}'.toLowerCase().contains(searchQuery);
       },
     ).toList();
 
@@ -65,9 +63,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       (person) {
         if (searchQuery.isEmpty) return true;
 
-        return '${person.name}, ${person.job}'
-            .toLowerCase()
-            .contains(searchQuery);
+        return '${person.name}, ${person.job}'.toLowerCase().contains(searchQuery);
       },
     ).toList();
 
@@ -76,9 +72,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: showSearch
-              ? filter(context)
-              : PageTitle(title: 'Credits', subtitle: widget.title),
+          title: showSearch ? filter(context) : PageTitle(title: 'Credits', subtitle: widget.title),
           actions: [
             IconButton(
               onPressed: () {
@@ -91,7 +85,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
             ),
           ],
           bottom: TabBar(
-            dividerColor: ProjectColors(context).line,
+            dividerColor: AppColors.line,
             tabs: [
               Tab(text: 'Cast (${cast.length})'),
               Tab(text: 'Crew (${crew.length})'),

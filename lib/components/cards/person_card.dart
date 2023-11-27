@@ -25,7 +25,7 @@ class PersonCard extends StatelessWidget {
           Expanded(
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                ProjectColors(context).imageFilter,
+                AppColors.imageFilter,
                 BlendMode.color,
               ),
               child: Imgy(
@@ -44,7 +44,7 @@ class PersonCard extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: ProjectColors(context).featured,
+                  color: AppColors.link,
                   fontSize: 14,
                 ),
               ),
@@ -53,7 +53,7 @@ class PersonCard extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: ProjectColors(context).label,
+                  color: AppColors.label,
                   fontSize: 12,
                 ),
               ),

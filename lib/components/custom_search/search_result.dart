@@ -103,7 +103,7 @@ class _SearchResultState extends State<SearchResult> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: ProjectColors(context).line,
+                color: AppColors.line,
                 width: 1,
               ),
             ),
@@ -119,7 +119,7 @@ class _SearchResultState extends State<SearchResult> {
                   'Movie',
                   style: TextStyle(
                     fontSize: 12,
-                    color: ProjectColors(context).text,
+                    color: AppColors.label,
                   ),
                 ),
                 selected: _currentSearchType == SearchType.movie,
@@ -134,7 +134,7 @@ class _SearchResultState extends State<SearchResult> {
                   'TV Show',
                   style: TextStyle(
                     fontSize: 12,
-                    color: ProjectColors(context).text,
+                    color: AppColors.label,
                   ),
                 ),
                 selected: _currentSearchType == SearchType.tv,
@@ -149,7 +149,7 @@ class _SearchResultState extends State<SearchResult> {
                   'Person',
                   style: TextStyle(
                     fontSize: 12,
-                    color: ProjectColors(context).text,
+                    color: AppColors.label,
                   ),
                 ),
                 selected: _currentSearchType == SearchType.person,
@@ -164,7 +164,7 @@ class _SearchResultState extends State<SearchResult> {
                   'Company',
                   style: TextStyle(
                     fontSize: 12,
-                    color: ProjectColors(context).text,
+                    color: AppColors.label,
                   ),
                 ),
                 selected: _currentSearchType == SearchType.company,
