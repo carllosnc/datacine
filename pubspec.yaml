@@ -91,7 +91,7 @@ flutter:
     - ./assets/images/no_poster.png
     - ./assets/images/no_backdrop.png
     - ./assets/images/no_profile.png
-    - ./assets/images/welcome.png
+    - ./assets/images/welcome.webp
     - shorebird.yaml
 
   # An image asset can refer to one or more resolution-specific "variants", see

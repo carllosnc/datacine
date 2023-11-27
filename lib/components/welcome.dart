@@ -17,25 +17,24 @@ class Welcome extends StatelessWidget {
         height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/welcome.png'),
+            image: AssetImage('assets/images/welcome.webp'),
             fit: BoxFit.cover,
           ),
         ),
         child: VWColumn(
-          gap: 10,
+          gap: 15,
           verticalAlignment: MainAxisAlignment.end,
           horizontalAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               Assets.extendedLogo,
-              height: 35,
+              height: 30,
             ),
-            Text(
-              '"What a lovely day"',
+            const Text(
+              "First rule: You do not talk about Datacine.",
               style: TextStyle(
-                fontSize: 23,
-                color: Theme.of(context).colorScheme.primary,
-                shadows: const [
+                fontSize: 18,
+                shadows: [
                   Shadow(
                     color: Colors.black,
                     blurRadius: 10,
