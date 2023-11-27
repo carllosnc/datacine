@@ -18,8 +18,7 @@ class CompanyMovieTabs extends StatelessWidget {
       http.Client(),
     );
 
-    var (companyMovies, _) =
-        await mediaDiscoverRepository.discoverMoviesByCompany(
+    var (companyMovies, _) = await mediaDiscoverRepository.discoverMoviesByCompany(
       page: page,
       mediaType: mediaType,
       companyId: company.id,

@@ -36,6 +36,8 @@ export '/components/media/media_votes.dart';
 export '/components/media/media_header.dart';
 export '/components/media/media_credits_list.dart';
 export '/components/media/media_infinity_grid.dart';
+export '/components/media/media_recommendations.dart';
+export '/components/media/media_similar.dart';
 
 //person
 export 'person/person_show_media_credit.dart';

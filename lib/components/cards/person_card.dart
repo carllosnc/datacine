@@ -23,17 +23,20 @@ class PersonCard extends StatelessWidget {
         gap: 5,
         children: [
           Expanded(
-            child: ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                AppColors.imageFilter,
-                BlendMode.color,
-              ),
-              child: Imgy(
-                src: poster,
-                fullSrc: poster,
-                borderRadius: BorderRadius.circular(7),
-                width: double.infinity,
-                placeholderColor: Colors.black,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(7),
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  AppColors.imageFilter,
+                  BlendMode.color,
+                ),
+                child: Imgy(
+                  src: poster,
+                  fullSrc: poster,
+                  borderRadius: BorderRadius.circular(7),
+                  width: double.infinity,
+                  placeholderColor: Colors.black,
+                ),
               ),
             ),
           ),

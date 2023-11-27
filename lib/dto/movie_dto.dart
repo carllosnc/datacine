@@ -15,8 +15,7 @@ class MovieDto {
 
   String get overview => movie.overview!;
 
-  String get releaseDate =>
-      movie.releaseDate?.formatDateTime() ?? 'Unknown date';
+  String get releaseDate => movie.releaseDate?.formatDateTime() ?? 'Unknown date';
 
   String? get poster => movie.posterPath;
 
@@ -87,9 +86,7 @@ class MovieDto {
   BelongsToCollection? get belongsToCollection => movie.belongsToCollection;
 
   List<PersonItem> get directors {
-    var directors = movie.credits!['crew']!
-        .where((crew) => crew.job == 'Director')
-        .toList();
+    var directors = movie.credits!['crew']!.where((crew) => crew.job == 'Director').toList();
     return directors;
   }
 
@@ -97,40 +94,29 @@ class MovieDto {
 
   //has directors
   bool get hasDirectors {
-    var directors = movie.credits!['crew']!
-        .where((crew) => crew.job == 'Director')
-        .toList();
+    var directors = movie.credits!['crew']!.where((crew) => crew.job == 'Director').toList();
     return directors.isNotEmpty;
   }
 
-  bool get hasBudget => movie.budget != null && movie.budget! > 0;
-  bool get hasRevenue => movie.revenue != null && movie.revenue! > 0;
-  bool get hasSpokenLanguages =>
-      movie.spokenLanguages != null && movie.spokenLanguages!.isNotEmpty;
-  bool get hasProductionCountries =>
-      movie.productionCountries != null &&
-      movie.productionCountries!.isNotEmpty;
+  bool get hasBudget => movie.budget != null;
+  bool get hasRevenue => movie.revenue != null;
+  bool get hasSpokenLanguages => movie.spokenLanguages != null && movie.spokenLanguages!.isNotEmpty;
+  bool get hasProductionCountries => movie.productionCountries != null && movie.productionCountries!.isNotEmpty;
   bool get hasRuntime => movie.runtime != null;
   bool get hasTitle => movie.title != null;
   bool get hasOriginalTitle => movie.originalTitle != null;
   bool get hasPosterPath => movie.posterPath != null;
   bool get hasPoster => movie.posterPath != null;
   bool get hasReleaseDate => movie.releaseDate != null;
-  bool get hasKeywords =>
-      movie.keywords!['keywords'] != null &&
-      movie.keywords!['keywords']!.isNotEmpty;
+  bool get hasKeywords => movie.keywords!['keywords'] != null && movie.keywords!['keywords']!.isNotEmpty;
   bool get hasCollection => movie.belongsToCollection != null;
-  bool get hasCast =>
-      movie.credits?['cast'] != null &&
-      movie.credits!['cast']!.isNotEmpty &&
-      movie.credits!['cast']!.length >= 3;
+  bool get hasCast => movie.credits?['cast'] != null && movie.credits!['cast']!.isNotEmpty && movie.credits!['cast']!.length >= 3;
   bool get hasOverview => movie.overview != null && movie.overview!.isNotEmpty;
   bool get hasTagline => movie.tagline != null && movie.tagline!.isNotEmpty;
   bool get hasPosters => movie.images!['posters']!.isNotEmpty;
   bool get hasBackdrop => movie.images!['backdrops']!.isNotEmpty;
   bool get hasLogo => movie.images!['logos']!.isNotEmpty;
-  bool get hasCredits =>
-      movie.credits!['cast']!.isNotEmpty && movie.credits!['crew']!.isNotEmpty;
+  bool get hasCredits => movie.credits!['cast']!.isNotEmpty && movie.credits!['crew']!.isNotEmpty;
   bool get hasVideos => movie.videos!['results']!.isNotEmpty;
   bool get hasRecommendations => movie.recommendations!.results!.isNotEmpty;
   bool get hasSimilar => movie.similar!.results!.isNotEmpty;

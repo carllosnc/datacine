@@ -3,6 +3,24 @@ import '/imports/app.dart';
 
 import 'package:imgy/imgy.dart';
 
+showMediaPosters({
+  required BuildContext context,
+  required List<ImageItem> posters,
+  required String title,
+}) {
+  showModalBottomSheet(
+    useSafeArea: true,
+    isScrollControlled: true,
+    context: context,
+    builder: (context) {
+      return MediaPosterGrid(
+        posters: posters,
+        title: title,
+      );
+    },
+  );
+}
+
 class MediaPosterGrid extends StatefulWidget {
   final List<ImageItem> posters;
   final String title;
@@ -100,8 +118,8 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 0.66666,
-        crossAxisSpacing: 2,
-        mainAxisSpacing: 2,
+        crossAxisSpacing: 1,
+        mainAxisSpacing: 1,
       ),
       itemCount: filteredPosters.length,
       itemBuilder: (context, index) {
@@ -140,11 +158,19 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: PageTitle(
-          title: '$selectedLang: ${filteredPosters.length}',
-          subtitle: widget.title,
+        title: Text(
+          "Posters: ${filteredPosters.length}",
+          style: const TextStyle(
+            fontSize: 14,
+          ),
         ),
         actions: selectLang(context),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.close),
+        ),
       ),
       body: posterGrid(),
     );

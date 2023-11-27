@@ -108,32 +108,20 @@ class TvShowDto {
   bool get hasGenres => tvshow.genres != null && tvshow.genres!.isNotEmpty;
   bool get hasNumberOfSeasons => tvshow.numberOfSeasons != null;
   bool get hasNumberOfEpisodes => tvshow.numberOfEpisodes != null;
-  bool get hasProductionCountries =>
-      tvshow.productionCountries != null &&
-      tvshow.productionCountries!.isNotEmpty;
-  bool get hasSpokenLanguages =>
-      tvshow.spokenLanguages != null && tvshow.spokenLanguages!.isNotEmpty;
+  bool get hasProductionCountries => tvshow.productionCountries != null && tvshow.productionCountries!.isNotEmpty;
+  bool get hasSpokenLanguages => tvshow.spokenLanguages != null && tvshow.spokenLanguages!.isNotEmpty;
   bool get hasOriginalName => tvshow.originalName != null;
   bool get hasProductionCompanies => tvshow.productionCompanies!.isNotEmpty;
   bool get hasLastAirDate => tvshow.lastAirDate != null;
   bool get hasFirstAirDate => tvshow.firstAirDate != null;
   bool get hasStatus => tvshow.status != null;
   bool get hasName => tvshow.name != null;
-  bool get hasCast =>
-      tvshow.credits?['cast'] != null &&
-      tvshow.credits!['cast']!.isNotEmpty &&
-      tvshow.credits!['cast']!.length >= 3;
-  bool get hasCrew =>
-      tvshow.credits?['crew'] != null &&
-      tvshow.credits!['crew']!.isNotEmpty &&
-      tvshow.credits!['crew']!.length >= 3;
-  bool get hasKeywords =>
-      tvshow.keywords!['results'] != null &&
-      tvshow.keywords!['results']!.isNotEmpty;
+  bool get hasCast => tvshow.credits?['cast'] != null && tvshow.credits!['cast']!.isNotEmpty && tvshow.credits!['cast']!.length >= 3;
+  bool get hasCrew => tvshow.credits?['crew'] != null && tvshow.credits!['crew']!.isNotEmpty && tvshow.credits!['crew']!.length >= 3;
+  bool get hasKeywords => tvshow.keywords!['results'] != null && tvshow.keywords!['results']!.isNotEmpty;
   bool get hasPosters => tvshow.images!['posters']!.isNotEmpty;
   bool get hasBackdrop => tvshow.images!['backdrops']!.isNotEmpty;
-  bool get hasOverview =>
-      tvshow.overview != null && tvshow.overview!.isNotEmpty;
+  bool get hasOverview => tvshow.overview != null && tvshow.overview!.isNotEmpty;
   bool get hasRecommendations => tvshow.recommendations!.results!.isNotEmpty;
   bool get hasSimilar => tvshow.similar!.results!.isNotEmpty;
   bool get hasSeasons => tvshow.seasons!.isNotEmpty;
@@ -141,9 +129,7 @@ class TvShowDto {
   bool get hasVoteAverage => tvshow.voteAverage != null;
   bool get hasVoteCount => tvshow.voteCount != null;
   bool get hasLogo => tvshow.images!['logos']!.isNotEmpty;
-  bool get hasCredits =>
-      tvshow.credits!['cast']!.isNotEmpty &&
-      tvshow.credits!['crew']!.isNotEmpty;
+  bool get hasCredits => tvshow.credits!['cast']!.isNotEmpty && tvshow.credits!['crew']!.isNotEmpty;
   bool get hasVideos => tvshow.videos!['results']!.isNotEmpty;
   bool get hasGridMenu {
     return hasCredits || hasPosters || hasRecommendations || hasSimilar;

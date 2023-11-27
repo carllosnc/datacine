@@ -3,6 +3,24 @@ import '/imports/app.dart';
 
 enum CreditType { cast, crew }
 
+showMediaCreditList({
+  required BuildContext context,
+  required Map<String, List<PersonItem>> credits,
+  required String title,
+}) {
+  showModalBottomSheet(
+    useSafeArea: true,
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return MediaCreditsList(
+        credits: credits,
+        title: title,
+      );
+    },
+  );
+}
+
 class MediaCreditsList extends StatefulWidget {
   final Map<String, List<PersonItem>>? credits;
   final String title;
@@ -72,7 +90,18 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: showSearch ? filter(context) : PageTitle(title: 'Credits', subtitle: widget.title),
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.close),
+          ),
+          title: showSearch
+              ? filter(context)
+              : const Text(
+                  "Credits",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
           actions: [
             IconButton(
               onPressed: () {

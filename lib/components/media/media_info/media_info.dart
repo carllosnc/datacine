@@ -25,8 +25,9 @@ class MediaInfo extends StatelessWidget {
         VWPage.open(
           context: context,
           appBar: AppBar(
-            title: const SectionTitle(
-              text: "Informations",
+            title: const Text(
+              "Informations",
+              style: TextStyle(fontSize: 16),
             ),
             leading: IconButton(
               icon: const Icon(Icons.close),
@@ -34,7 +35,7 @@ class MediaInfo extends StatelessWidget {
             ),
           ),
           body: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: VWColumn(
               children: [
                 if (movie != null) movieInfo(),

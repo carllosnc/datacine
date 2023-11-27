@@ -36,7 +36,10 @@ discoverMediaFilters({
   VWPage.open(
     context: context,
     appBar: AppBar(
-      title: SectionTitle(text: title),
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 16),
+      ),
       leading: IconButton(
         onPressed: () {
           Navigator.pop(context);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
@@ -76,9 +75,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     horizontalAlignment: MainAxisAlignment.start,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/tv/$widget.id/images',
-                        extra: tvShow,
+                      showMediaPosters(
+                        context: context,
+                        posters: tvShow.posters,
+                        title: tvShow.name,
                       );
                     },
                   ),
@@ -89,9 +89,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     leftIcon: Icons.people_outline,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/tv/$widget.id/credits',
-                        extra: tvShow,
+                      showMediaCreditList(
+                        context: context,
+                        credits: tvShow.credits!,
+                        title: tvShow.name,
                       );
                     },
                   ),
@@ -102,9 +103,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     leftIcon: Icons.thumb_up_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/tv/$widget.id/recommendations',
-                        extra: tvShow,
+                      showMediaRecommendations(
+                        context: context,
+                        mediaType: MediaType.tv,
+                        tvShow: tvShow,
                       );
                     },
                   ),
@@ -115,9 +117,10 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
                     leftIcon: Icons.movie_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/tv/$widget.id/similar',
-                        extra: tvShow,
+                      showMediaSimilar(
+                        context: context,
+                        mediaType: MediaType.tv,
+                        tvShow: tvShow,
                       );
                     },
                   ),

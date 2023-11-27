@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '/imports/app.dart';
 import 'package:vw/vw.dart';
 
@@ -77,9 +76,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.image_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/movie/${widget.id}/images',
-                        extra: movie,
+                      showMediaPosters(
+                        context: context,
+                        posters: movie.posters,
+                        title: movie.title,
                       );
                     },
                   ),
@@ -90,9 +90,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.people_outline,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/movie/${widget.id}/credits',
-                        extra: movie,
+                      showMediaCreditList(
+                        context: context,
+                        credits: movie.credits!,
+                        title: movie.title,
                       );
                     },
                   ),
@@ -103,9 +104,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.thumb_up_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/movie/${widget.id}/recommendations',
-                        extra: movie,
+                      showMediaRecommendations(
+                        context: context,
+                        movie: movie,
+                        mediaType: MediaType.movie,
                       );
                     },
                   ),
@@ -116,9 +118,10 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.movie_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      context.push(
-                        '/movie/${widget.id}/similar',
-                        extra: movie,
+                      showMediaSimilar(
+                        context: context,
+                        mediaType: MediaType.movie,
+                        movie: movie,
                       );
                     },
                   ),

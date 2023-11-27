@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
+import '/imports/app.dart';
+import 'package:http/http.dart' as http;
+
+showMediaRecommendations({
+  required BuildContext context,
+  MovieDto? movie,
+  TvShowDto? tvShow,
+  required MediaType mediaType,
+}) {
+  Future<MediaList> fetchData({required int page}) async {
+    final mediaRecommendationService = MediaRecommendationsRepository(
+      http.Client(),
+    );
+
+    final (recommendations, _) = await mediaRecommendationService.getRecomendations(
+      mediaId: (movie?.id ?? tvShow?.id) as int,
+      mediaType: mediaType,
+      page: page,
+    );
+
+    return recommendations;
+  }
+
+  VWPage.open(
+    appBar: AppBar(
+      title: const Text(
+        'Recommendations',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+      ),
+      leading: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: const Icon(Icons.close),
+      ),
+    ),
+    context: context,
+    body: MediaInfinityGrid(
+      mediaType: mediaType,
+      fetchData: fetchData,
+    ),
+  );
+}

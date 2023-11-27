@@ -32,18 +32,21 @@ class MiniMediaCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  mediaItem.posterPath == null ? AppColors.imageFilter : Colors.transparent,
-                  BlendMode.color,
-                ),
-                child: Imgy(
-                  borderRadius: BorderRadius.circular(5),
-                  src: poster,
-                  fullSrc: poster,
-                  width: double.infinity,
-                  height: double.infinity,
-                  placeholderColor: AppColors.imagePlaceholder,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    mediaItem.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+                    BlendMode.color,
+                  ),
+                  child: Imgy(
+                    borderRadius: BorderRadius.circular(5),
+                    src: poster,
+                    fullSrc: poster,
+                    width: double.infinity,
+                    height: double.infinity,
+                    placeholderColor: AppColors.imagePlaceholder,
+                  ),
                 ),
               ),
             ),
