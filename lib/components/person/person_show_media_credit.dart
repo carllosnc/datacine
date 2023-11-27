@@ -33,7 +33,10 @@ showMediaCredit(
   return VWPage.open(
     context: context,
     appBar: AppBar(
-      title: SectionTitle(text: title),
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 16),
+      ),
       leading: IconButton(
         icon: const Icon(Icons.close),
         onPressed: () {
