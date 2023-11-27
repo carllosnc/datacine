@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class EpisodeListTile extends StatelessWidget {
@@ -22,8 +23,9 @@ class EpisodeListTile extends StatelessWidget {
     );
 
     return ListTile(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+      title: VWColumn(
+        gap: 5,
         children: [
           Container(
             clipBehavior: Clip.hardEdge,
@@ -45,22 +47,33 @@ class EpisodeListTile extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-          Text(
-            (episode.airDate ?? '').formatDateTime(),
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColors.link,
-            ),
+          const SizedBox(height: 5),
+          VWRow(
+            horizontalAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                (episode.airDate ?? '').formatDateTime(),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.link,
+                ),
+              ),
+              Text(
+                'Ep ${episode.episodeNumber}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.link,
+                ),
+              ),
+            ],
           ),
           Text(
             episode.name!,
             style: TextStyle(
               fontSize: 16,
-              color: AppColors.label,
+              color: AppColors.title,
             ),
           ),
-          if (checkOverview()) const SizedBox(height: 5),
           if (checkOverview())
             Text(
               episode.overview!,
@@ -69,23 +82,8 @@ class EpisodeListTile extends StatelessWidget {
                 color: AppColors.label,
               ),
             ),
-          const SizedBox(height: 25)
+          const SizedBox(height: 30)
         ],
-      ),
-      leading: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(3),
-        ),
-        padding: const EdgeInsets.all(5),
-        child: Text(
-          episode.episodeNumber!.toString().padLeft(2, '0'),
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: AppColors.label,
-          ),
-        ),
       ),
     );
   }

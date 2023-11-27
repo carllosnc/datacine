@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class SearchResult extends StatefulWidget {
@@ -63,7 +64,7 @@ class _SearchResultState extends State<SearchResult> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return VWColumn(
       children: [
         if (_currentSearchType == SearchType.movie)
           Expanded(
@@ -99,7 +100,6 @@ class _SearchResultState extends State<SearchResult> {
           ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 60,
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -109,10 +109,10 @@ class _SearchResultState extends State<SearchResult> {
             ),
             color: Theme.of(context).colorScheme.background,
           ),
-          child: Wrap(
-            spacing: 10,
-            alignment: WrapAlignment.center,
-            runAlignment: WrapAlignment.center,
+          child: VWRow(
+            gap: 10,
+            horizontalAlignment: MainAxisAlignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             children: [
               ChoiceChip(
                 label: Text(

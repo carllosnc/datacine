@@ -55,7 +55,7 @@ class CreditListTile extends StatelessWidget {
             item.title ?? item.name ?? '-',
             style: TextStyle(
               fontSize: 14,
-              color: AppColors.label,
+              color: AppColors.title,
             ),
           ),
         ],

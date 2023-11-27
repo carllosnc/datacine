@@ -93,8 +93,9 @@ showSeasonDetails({
                           ),
                           Text(
                             (season.airDate ?? '').formatDateTime(),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
+                              color: AppColors.link,
                             ),
                           ),
                           Text(
