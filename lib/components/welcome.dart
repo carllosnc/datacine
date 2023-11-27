@@ -23,37 +23,44 @@ class Welcome extends StatelessWidget {
           ),
         ),
         child: VWColumn(
-          gap: 50,
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+          verticalAlignment: MainAxisAlignment.end,
           children: [
-            Image.asset(
-              Assets.extendedLogo,
-              height: 35,
-            ),
-            Text(
-              '"What a lovely day"',
-              style: TextStyle(
-                fontSize: 23,
-                color: Theme.of(context).colorScheme.primary,
-                shadows: const [
-                  Shadow(
-                    color: Colors.black,
-                    blurRadius: 10,
-                    offset: Offset(5, 5),
+            VWColumn(
+              horizontalAlignment: CrossAxisAlignment.center,
+              gap: 20,
+              children: [
+                Image.asset(
+                  Assets.extendedLogo,
+                  height: 35,
+                ),
+                Text(
+                  '"What a lovely day"',
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Theme.of(context).colorScheme.primary,
+                    shadows: const [
+                      Shadow(
+                        color: Colors.black,
+                        blurRadius: 10,
+                        offset: Offset(5, 5),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-        child: FilledButton(
-          onPressed: () {
+        child: VWButton(
+          onTap: () {
             SharedPrefs().prefs.setBool('welcome', false);
             onPressed();
           },
-          child: const Text('Let\'s go!'),
+          label: 'Get Started',
         ),
       ),
     );
