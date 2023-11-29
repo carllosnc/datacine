@@ -28,6 +28,6 @@ sealed class AppColors {
   static Color get link => const Color.fromARGB(255, 255, 193, 183);
   static Color get buttonColor => const Color.fromARGB(255, 57, 48, 45);
   static Color get title => Colors.white;
-  static Color get label => Colors.white.withOpacity(0.6);
+  static Color get label => Colors.white.withOpacity(0.5);
   static Color get text => Colors.white;
 }
