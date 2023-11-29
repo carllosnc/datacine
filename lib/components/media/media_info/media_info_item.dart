@@ -21,19 +21,8 @@ class MediaInfoItem extends StatelessWidget {
       child: VWColumn(
         gap: 3,
         children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 14,
-              color: AppColors.label,
-            ),
-          ),
-          Text(
-            item,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
-          ),
+          Label(text: label),
+          MediumText(text: item),
         ],
       ),
     );

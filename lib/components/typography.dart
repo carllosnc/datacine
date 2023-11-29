@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vw/vw.dart';
 import '/imports/app.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -56,6 +57,101 @@ class BigTitle extends StatelessWidget {
         fontWeight: FontWeight.w300,
         color: AppColors.title,
       ),
+    );
+  }
+}
+
+class SmallText extends StatelessWidget {
+  final String text;
+  const SmallText({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 12,
+        color: AppColors.text,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+}
+
+class MediumText extends StatelessWidget {
+  final String text;
+  const MediumText({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 16,
+        color: AppColors.text,
+      ),
+    );
+  }
+}
+
+class FloatPageTitle extends StatelessWidget {
+  final String text;
+  const FloatPageTitle({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 16,
+        color: AppColors.title,
+      ),
+    );
+  }
+}
+
+class PageTitle extends StatelessWidget {
+  final String title;
+  final String? subtitle;
+
+  const PageTitle({
+    super.key,
+    required this.title,
+    this.subtitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return VWColumn(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        if (subtitle != null) const SizedBox(height: 3),
+        if (subtitle != null)
+          Text(
+            subtitle ?? '-',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(
+              color: AppColors.label,
+              fontSize: 12,
+            ),
+            textAlign: TextAlign.center,
+          )
+      ],
     );
   }
 }

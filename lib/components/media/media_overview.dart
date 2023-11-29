@@ -59,14 +59,7 @@ class MediaOverview extends StatelessWidget {
               color: AppColors.link,
             ),
           ),
-        if (movie!.hasOverview)
-          Text(
-            movie!.overview,
-            style: TextStyle(
-              fontSize: 16,
-              color: AppColors.text,
-            ),
-          ),
+        if (movie!.hasOverview) MediumText(text: movie!.overview)
       ],
     );
   }

@@ -102,33 +102,10 @@ class MediaHeader extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           gap: 5,
           children: [
-            Text(
-              date,
-              style: const TextStyle(
-                fontSize: 12,
-              ),
-            ),
-            BigTitle(
-              text: (mediaTitle),
-            ),
-            if (hasMovie && movie!.hasGenres)
-              Text(
-                movie!.genres,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.label,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            if (hasTvShow && tvshow!.hasGenres)
-              Text(
-                tvshow!.genres,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.label,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
+            SmallText(text: date),
+            BigTitle(text: mediaTitle),
+            if (hasMovie && movie!.hasGenres) Label(text: movie!.genres),
+            if (hasTvShow && tvshow!.hasGenres) Label(text: tvshow!.genres),
           ],
         ),
         VWRow(

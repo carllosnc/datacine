@@ -22,18 +22,21 @@ class MediaListTile extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          item.backdropPath == null ? AppColors.imageFilter : Colors.transparent,
-          BlendMode.color,
-        ),
-        child: Imgy(
-          borderRadius: BorderRadius.circular(4),
-          src: poster,
-          fullSrc: poster,
-          width: 40,
-          height: 60,
-          placeholderColor: Colors.black,
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            item.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+            BlendMode.color,
+          ),
+          child: Imgy(
+            borderRadius: BorderRadius.circular(4),
+            src: poster,
+            fullSrc: poster,
+            width: 40,
+            height: 60,
+            placeholderColor: Colors.black,
+          ),
         ),
       ),
       title: Text(

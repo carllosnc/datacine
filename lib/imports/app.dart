@@ -5,3 +5,4 @@ export '/data/data.dart';
 export '/core/core.dart';
 export '/notifiers/notifiers.dart';
 export '/views/views.dart';
+export '/style/text_style.dart';

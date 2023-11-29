@@ -8,7 +8,6 @@ export '/components/error.dart';
 export '/components/welcome.dart';
 export '/components/app_version.dart';
 export '/components/typography.dart';
-export '/components/page_title.dart';
 
 //company
 export '/components/company/company_infinity_grid.dart';

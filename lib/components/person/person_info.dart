@@ -54,13 +54,15 @@ class PersonInfo extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       children: [
         Label(text: label),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 16,
-            color: AppColors.text,
-          ),
-        ),
+        MediumText(text: text)
+
+        // Text(
+        //   text,
+        //   style: TextStyle(
+        //     fontSize: 16,
+        //     color: AppColors.text,
+        //   ),
+        // ),
       ],
     );
   }

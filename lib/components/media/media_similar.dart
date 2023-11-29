@@ -25,13 +25,7 @@ showMediaSimilar({
 
   VWPage.open(
     appBar: AppBar(
-      title: const Text(
-        'Similar',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
+      title: const FloatPageTitle(text: 'Similar'),
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();

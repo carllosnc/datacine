@@ -55,11 +55,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
           horizontal: 0,
         ),
         hintText: 'Search',
-        hintStyle: TextStyle(
-          color: AppColors.label.withOpacity(0.5),
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-        ),
+        hintStyle: AppTextStyle.inputHint,
         border: const UnderlineInputBorder(),
       ),
     );
@@ -94,14 +90,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.close),
           ),
-          title: showSearch
-              ? filter(context)
-              : const Text(
-                  "Credits",
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
+          title: showSearch ? filter(context) : const FloatPageTitle(text: "Credits"),
           actions: [
             IconButton(
               onPressed: () {

@@ -25,13 +25,7 @@ showMediaRecommendations({
 
   VWPage.open(
     appBar: AppBar(
-      title: const Text(
-        'Recommendations',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
+      title: const FloatPageTitle(text: 'Recommendations'),
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();

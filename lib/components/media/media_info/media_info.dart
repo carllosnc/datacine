@@ -25,10 +25,7 @@ class MediaInfo extends StatelessWidget {
         VWPage.open(
           context: context,
           appBar: AppBar(
-            title: const Text(
-              "Informations",
-              style: TextStyle(fontSize: 16),
-            ),
+            title: const FloatPageTitle(text: 'Informations'),
             leading: IconButton(
               icon: const Icon(Icons.close),
               onPressed: () => Navigator.of(context).pop(),

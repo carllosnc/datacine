@@ -30,24 +30,27 @@ class PersonListTile extends StatelessWidget {
         ),
       ),
       trailing: const Icon(Icons.chevron_right),
-      leading: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          AppColors.imageFilter,
-          BlendMode.color,
-        ),
-        child: Imgy(
-          borderRadius: BorderRadius.circular(4),
-          src: image,
-          fullSrc: image,
-          width: 40,
-          height: 55,
-          placeholderColor: Colors.black,
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            AppColors.imageFilter,
+            BlendMode.color,
+          ),
+          child: Imgy(
+            borderRadius: BorderRadius.circular(4),
+            src: image,
+            fullSrc: image,
+            width: 40,
+            height: 55,
+            placeholderColor: Colors.black,
+          ),
         ),
       ),
       subtitle: Text(
         person.character ?? person.job ?? person.knownForDepartment ?? person.department ?? '-',
         style: TextStyle(
-          fontSize: 12,
+          fontSize: 14,
           color: AppColors.link,
         ),
       ),
