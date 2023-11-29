@@ -75,15 +75,8 @@ class MediaDiscoverRepository extends Repository {
     return (medialist, response);
   }
 
-  Future<(MediaList, http.Response)> discoverMoviesByCompany(
-      {required int companyId,
-      required int page,
-      required MediaType mediaType}) async {
-    Map<String, String> query = {
-      "include_adult": "false",
-      "page": "$page",
-      "with_companies": "$companyId"
-    };
+  Future<(MediaList, http.Response)> discoverMoviesByCompany({required int companyId, required int page, required MediaType mediaType}) async {
+    Map<String, String> query = {"include_adult": "false", "page": "$page", "with_companies": "$companyId"};
 
     var response = await httpClient.get(
       endpoint(
@@ -103,11 +96,7 @@ class MediaDiscoverRepository extends Repository {
     required int page,
     required MediaType mediaType,
   }) async {
-    Map<String, String> query = {
-      "include_adult": "false",
-      "page": "$page",
-      "with_keywords": "$keywordId"
-    };
+    Map<String, String> query = {"include_adult": "false", "page": "$page", "with_keywords": "$keywordId"};
 
     var response = await httpClient.get(
       endpoint(

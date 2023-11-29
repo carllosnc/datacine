@@ -8,11 +8,14 @@ mixin TvShowService<T extends StatefulWidget> on State<T> {
 
   bool isLoading = true;
   bool isError = false;
+  bool isCanceled = false;
   late TvShowDto tvShow;
 
   Future<void> fetchTvShow({required dynamic id}) async {
     try {
       var (tvShowDetail, _) = await _mediaDetailsRepository.getTvShow(id: id);
+
+      if (isCanceled) return;
 
       setState(() {
         tvShow = TvShowDto(tvShowDetail);

@@ -9,19 +9,20 @@ mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
   bool isLoading = true;
   bool isError = false;
   bool isEmpty = false;
+  bool isCanceled = false;
   late Collection collection;
 
   fetchMovieCollection({required String id}) async {
     try {
-      var (Collection movieCollection, _) =
-          await collectionRepository.getCollection(id: id);
+      var (Collection movieCollection, _) = await collectionRepository.getCollection(id: id);
+
+      if (isCanceled) return;
 
       movieCollection.parts!.sort((a, b) {
         return a.releaseDate!.compareTo(b.releaseDate!);
       });
 
-      movieCollection.parts!
-          .removeWhere((element) => element.posterPath == null);
+      movieCollection.parts!.removeWhere((element) => element.posterPath == null);
 
       if (movieCollection.parts == null) {
         setState(() {
@@ -39,5 +40,11 @@ mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
         isLoading = false;
       });
     }
+  }
+
+  @override
+  void dispose() {
+    isCanceled = true;
+    super.dispose();
   }
 }
