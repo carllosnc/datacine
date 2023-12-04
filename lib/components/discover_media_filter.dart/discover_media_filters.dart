@@ -36,9 +36,8 @@ discoverMediaFilters({
   VWPage.open(
     context: context,
     appBar: AppBar(
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 16),
+      title: FloatPageTitle(
+        text: title,
       ),
       leading: IconButton(
         onPressed: () {
@@ -75,12 +74,17 @@ discoverMediaFilters({
     ),
     bottomBar: Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-      child: VWButton(
-        label: 'Apply',
-        color: AppColors.buttonColor,
-        onTap: () {
-          applyAction();
-        },
+      child: VWRow(
+        children: [
+          VWButton(
+            fullWidth: true,
+            label: 'Apply',
+            color: AppColors.buttonColor,
+            onTap: () {
+              applyAction();
+            },
+          ),
+        ],
       ),
     ),
   );
