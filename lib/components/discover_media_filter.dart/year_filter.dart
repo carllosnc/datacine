@@ -83,7 +83,7 @@ class _YearsFilterState extends State<YearsFilter> {
       gap: 80,
       children: [
         Text(
-          'Year: ',
+          'Year:',
           style: TextStyle(color: AppColors.label),
         ),
         Expanded(

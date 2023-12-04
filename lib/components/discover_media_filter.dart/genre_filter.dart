@@ -42,7 +42,7 @@ class _GenreFilterState extends State<GenreFilter> with GenreFilterService {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Genres: ',
+            'Genres:',
             style: TextStyle(color: AppColors.label),
           ),
           const SizedBox(height: 5),

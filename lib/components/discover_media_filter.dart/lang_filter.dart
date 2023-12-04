@@ -80,7 +80,7 @@ class _LangFilterState extends State<LangFilter> {
       gap: 42,
       children: [
         Text(
-          'Language: ',
+          'Language:',
           style: TextStyle(color: AppColors.label),
         ),
         Expanded(
