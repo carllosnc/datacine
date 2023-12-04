@@ -19,11 +19,8 @@ showSeasonDetails({
 
   VWPage.open(
     appBar: AppBar(
-      title: Text(
-        tvshowName,
-        style: const TextStyle(
-          fontSize: 16,
-        ),
+      title: FloatPageTitle(
+        text: tvshowName,
       ),
       leading: IconButton(
         onPressed: () => Navigator.pop(context),

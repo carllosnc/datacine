@@ -158,11 +158,8 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Posters: ${filteredPosters.length}",
-          style: const TextStyle(
-            fontSize: 14,
-          ),
+        title: FloatPageTitle(
+          text: "Posters: ${filteredPosters.length}",
         ),
         actions: selectLang(context),
         leading: IconButton(

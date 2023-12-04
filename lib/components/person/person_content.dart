@@ -47,7 +47,7 @@ class PersonContent extends StatelessWidget {
                         context,
                         person.movieCast,
                         MediaType.movie,
-                        "${person.name}: Movie Cast",
+                        "Movie Cast",
                       );
                     },
                   ),
@@ -62,7 +62,7 @@ class PersonContent extends StatelessWidget {
                         context,
                         person.movieCrew,
                         MediaType.movie,
-                        "${person.name}: Movie Crew",
+                        "Movie Crew",
                       );
                     },
                   ),
@@ -77,7 +77,7 @@ class PersonContent extends StatelessWidget {
                         context,
                         person.tvCast,
                         MediaType.tv,
-                        "${person.name}: TV Cast",
+                        "TV Cast",
                       );
                     },
                   ),
@@ -92,7 +92,7 @@ class PersonContent extends StatelessWidget {
                         context,
                         person.tvCrew,
                         MediaType.tv,
-                        "${person.name}: TV Crew",
+                        "TV Crew",
                       );
                     },
                   ),
