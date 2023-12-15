@@ -110,11 +110,10 @@ class FloatPageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text.toUpperCase(),
+      text,
       style: TextStyle(
-        fontSize: 12,
-        letterSpacing: 1.8,
-        fontWeight: FontWeight.w700,
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
         color: AppColors.title,
       ),
     );

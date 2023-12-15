@@ -25,9 +25,10 @@ sealed class AppColors {
   static Color get imagePlaceholder => Colors.black;
   static Color get imageFilter => const Color.fromARGB(255, 11, 0, 0);
   static Color get line => Colors.white.withOpacity(0.1);
-  static Color get link => const Color.fromARGB(255, 255, 193, 183);
+  static Color get link => const Color.fromARGB(255, 255, 167, 154);
   static Color get buttonColor => const Color.fromARGB(255, 57, 48, 45);
   static Color get title => Colors.white;
+  static Color floatPageColor(BuildContext context) => Theme.of(context).colorScheme.tertiary;
   static Color get label => Colors.white.withOpacity(0.5);
   static Color get text => Colors.white;
 }
