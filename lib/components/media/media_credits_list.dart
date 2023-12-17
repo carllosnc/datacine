@@ -84,59 +84,65 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.close),
-          ),
-          title: showSearch ? filter(context) : const FloatPageTitle(text: "Credits"),
-          actions: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  showSearch = !showSearch;
-                  searchQuery = "";
-                });
-              },
-              icon: const Icon(Icons.filter_list),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
+        ),
+        child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close),
             ),
-          ],
-          bottom: TabBar(
-            dividerColor: AppColors.line,
-            tabs: [
-              Tab(text: 'Cast (${cast.length})'),
-              Tab(text: 'Crew (${crew.length})'),
+            title: showSearch ? filter(context) : const FloatPageTitle(text: "Credits"),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    showSearch = !showSearch;
+                    searchQuery = "";
+                  });
+                },
+                icon: const Icon(Icons.filter_list),
+              ),
+            ],
+            bottom: TabBar(
+              dividerColor: AppColors.line,
+              tabs: [
+                Tab(text: 'Cast (${cast.length})'),
+                Tab(text: 'Crew (${crew.length})'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              cast.isEmpty
+                  ? const Empty()
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: cast.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        PersonItem person = cast[index];
+
+                        return PersonListTile(person: person);
+                      },
+                    ),
+              crew.isEmpty
+                  ? const Empty()
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: crew.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        PersonItem person = crew[index];
+
+                        return PersonListTile(person: person);
+                      },
+                    ),
             ],
           ),
-        ),
-        body: TabBarView(
-          children: [
-            cast.isEmpty
-                ? const Empty()
-                : ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: cast.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      PersonItem person = cast[index];
-
-                      return PersonListTile(person: person);
-                    },
-                  ),
-            crew.isEmpty
-                ? const Empty()
-                : ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: crew.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      PersonItem person = crew[index];
-
-                      return PersonListTile(person: person);
-                    },
-                  ),
-          ],
         ),
       ),
     );
