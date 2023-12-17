@@ -12,8 +12,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView>
-    with SingleTickerProviderStateMixin {
+class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   bool _showMovieFilter = false;
@@ -80,7 +79,7 @@ class _HomeViewState extends State<HomeView>
                 onPressed: () {
                   discoverMediaFilters(
                     context: context,
-                    title: "Filter Movies",
+                    title: "Movie filter",
                     mediaType: MediaType.movie,
                   );
                 },
@@ -95,7 +94,7 @@ class _HomeViewState extends State<HomeView>
                 onPressed: () {
                   discoverMediaFilters(
                     context: context,
-                    title: "Filter TV Shows",
+                    title: "TV Show Filter ",
                     mediaType: MediaType.tv,
                   );
                 },
