@@ -112,8 +112,8 @@ class FloatPageTitle extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w300,
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
         color: AppColors.title,
       ),
     );
