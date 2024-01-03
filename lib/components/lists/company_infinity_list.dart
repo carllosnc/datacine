@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import '/imports/app.dart';
 
-class CompanyInfinityGrid extends StatefulWidget {
+class CompanyInfinityList extends StatefulWidget {
   final Function({required int page}) fetchData;
   final String pageTitle;
 
-  const CompanyInfinityGrid({
+  const CompanyInfinityList({
     super.key,
     required this.fetchData,
     required this.pageTitle,
   });
 
   @override
-  State<CompanyInfinityGrid> createState() => _CompanyInfinityGridState();
+  State<CompanyInfinityList> createState() => _CompanyInfinityListState();
 }
 
-class _CompanyInfinityGridState extends State<CompanyInfinityGrid> {
+class _CompanyInfinityListState extends State<CompanyInfinityList> {
   final List<Company> _dataList = [];
   bool _isLoading = false;
   int _page = 1;

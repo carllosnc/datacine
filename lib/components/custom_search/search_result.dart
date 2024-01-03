@@ -92,7 +92,7 @@ class _SearchResultState extends State<SearchResult> {
           ),
         if (_currentSearchType == SearchType.company)
           Expanded(
-            child: CompanyInfinityGrid(
+            child: CompanyInfinityList(
               key: const Key('company_search_result'),
               pageTitle: 'Search Result',
               fetchData: fetchCompanyData,
