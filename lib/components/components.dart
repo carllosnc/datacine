@@ -1,6 +1,5 @@
 export '/components/empty.dart';
 export '/components/section_divider.dart';
-export '/components/trending_media_grid.dart';
 export '/components/custom_search/custom_search.dart';
 export '/components/loading.dart';
 export '/components/link_button.dart';
@@ -65,3 +64,4 @@ export '/components/grids/media_infinity_grid.dart';
 export '/components/lists/media_poster_grid.dart';
 export '/components/grids/people_infinity_grid.dart';
 export '/components/grids/people_horizontal_list.dart';
+export '/components/grids/trending_media_grid.dart';
