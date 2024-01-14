@@ -29,6 +29,7 @@ sealed class AppColors {
   static Color get buttonColor => const Color.fromARGB(255, 57, 48, 45);
   static Color get title => Colors.white;
   static Color floatPageColor(BuildContext context) => Theme.of(context).colorScheme.tertiary;
+  static Color backgroundColor(BuildContext context) => Theme.of(context).scaffoldBackgroundColor;
   static Color get label => Colors.white.withOpacity(0.5);
   static Color get text => Colors.white;
 }
