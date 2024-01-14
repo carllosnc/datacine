@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import '/imports/app.dart';
 import './tabs/movies/movies.dart';
 import './tabs/tv_shows/tv_shows.dart';
 import './tabs/trending/trending.dart';
 import './tabs/people/people.dart';
-import '/imports/app.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -106,6 +106,14 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           title: Image.asset(
             Assets.extendedLogo,
             height: 22,
+          ),
+          leading: ValueListenableBuilder(
+            valueListenable: authNotifier.isSignedIn,
+            builder: (context, value, child) {
+              return LoginOrProfile(
+                isLoggedIn: value,
+              );
+            },
           ),
           actions: [
             IconButton(
