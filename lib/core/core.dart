@@ -11,3 +11,4 @@ export 'constants/languages.dart';
 export 'constants/search_type.dart';
 export 'external/shared_preferences.dart';
 export 'external/shorebird.dart';
+export 'external/appwrite.dart';
