@@ -54,6 +54,16 @@ final tvshowDetails = GoRoute(
   builder: (context, state) => TvShowView(id: state.params['id']!),
 );
 
+final auth = GoRoute(
+  path: 'auth',
+  builder: (context, state) => const AuthView(),
+);
+
+final profile = GoRoute(
+  path: 'profile',
+  builder: (context, state) => const ProfileView(),
+);
+
 final router = GoRouter(
   routes: [
     GoRoute(
@@ -66,6 +76,8 @@ final router = GoRouter(
         companyDetails,
         keywordMovies,
         keywordTvShows,
+        auth,
+        profile,
       ],
     )
   ],
