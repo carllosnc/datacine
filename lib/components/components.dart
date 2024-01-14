@@ -7,6 +7,7 @@ export '/components/error.dart';
 export '/components/welcome.dart';
 export '/components/app_version.dart';
 export '/components/typography.dart';
+export '/components/login_or_profile.dart';
 
 //tv show
 export '/components/tvshow/tvshow_seasons.dart';
