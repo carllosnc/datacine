@@ -18,8 +18,6 @@ class _PeopleTabState extends State<PeopleTab> with AutomaticKeepAliveClientMixi
       page: page,
     );
 
-    debugPrint('personList: ${personList.results!.length}');
-
     return personList;
   }
 
