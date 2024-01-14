@@ -22,5 +22,12 @@ Future main() async {
   // load shorebird
   await ShoreBird().loadShoreBird();
 
+  // load appwrite
+  var isLoggedIn = await AppWrite.isLoggedIn();
+  authNotifier.setSignedIn(isLoggedIn);
+
+  // load profile
+  await AppWrite.loadProfile();
+
   runApp(const App());
 }
