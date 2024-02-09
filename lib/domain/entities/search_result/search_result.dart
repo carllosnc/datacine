@@ -21,8 +21,7 @@ class SearchResult {
     required this.totalResults,
   });
 
-  factory SearchResult.fromJson(Map<String, dynamic> json) =>
-      _$SearchResultFromJson(json);
+  factory SearchResult.fromJson(Map<String, dynamic> json) => _$SearchResultFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchResultToJson(this);
 }

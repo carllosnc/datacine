@@ -4,5 +4,3 @@ export './tvshow/tvshow_view.dart';
 export './person/person_view.dart';
 export './company/company_view.dart';
 export './keyword/keyword_view.dart';
-export './auth/auth_view.dart';
-export './profile/profile_view.dart';

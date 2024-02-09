@@ -20,3 +20,6 @@ export 'entities/search_result/search_result.dart';
 export 'entities/company/company.dart';
 export 'entities/company_list/company_list.dart';
 export 'entities/person_details/person_details.dart';
+export 'entities/user_category/user_category.dart';
+export 'entities/user_movie/user_movie.dart';
+export 'entities/user_tvshow/user_tvshow.dart';

@@ -138,8 +138,7 @@ class TvShowDetails {
     this.similar,
   });
 
-  factory TvShowDetails.fromJson(Map<String, dynamic> json) =>
-      _$TvShowDetailsFromJson(json);
+  factory TvShowDetails.fromJson(Map<String, dynamic> json) => _$TvShowDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvShowDetailsToJson(this);
 }

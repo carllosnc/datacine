@@ -107,14 +107,6 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
             Assets.extendedLogo,
             height: 22,
           ),
-          leading: ValueListenableBuilder(
-            valueListenable: authNotifier.isSignedIn,
-            builder: (context, value, child) {
-              return LoginOrProfile(
-                isLoggedIn: value,
-              );
-            },
-          ),
           actions: [
             IconButton(
               onPressed: () {

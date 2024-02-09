@@ -92,8 +92,7 @@ class PersonDto {
   }
 
   bool get hasProfileImages {
-    return (person.images?['profiles']?.isNotEmpty ?? false) &&
-        (person.images!['profiles']!.length > 3);
+    return (person.images?['profiles']?.isNotEmpty ?? false) && (person.images!['profiles']!.length > 3);
   }
 
   bool get hasExternalLinks {
@@ -115,8 +114,7 @@ class PersonDto {
   bool get hasBirthday => person.birthday != null;
   bool get hasDeathday => person.deathday != null;
   bool get hasPlaceOfBirth => person.placeOfBirth != null;
-  bool get hasBiography =>
-      person.biography != null && person.biography!.isNotEmpty;
+  bool get hasBiography => person.biography != null && person.biography!.isNotEmpty;
 
   bool get hasInfo {
     return [

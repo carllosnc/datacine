@@ -20,8 +20,7 @@ class BelongsToCollection {
     this.backdropPath,
   });
 
-  factory BelongsToCollection.fromJson(Map<String, dynamic> json) =>
-      _$BelongsToCollectionFromJson(json);
+  factory BelongsToCollection.fromJson(Map<String, dynamic> json) => _$BelongsToCollectionFromJson(json);
 
   Map<String, dynamic> toJson() => _$BelongsToCollectionToJson(this);
 }

@@ -55,8 +55,7 @@ dependencies:
   vw:
     git:
       url: https://github.com/C4co/vw.git
-  appwrite: ^11.0.1
-  random_avatar: ^0.0.8
+
   validatorless: ^1.2.3
 
 dev_dependencies:
