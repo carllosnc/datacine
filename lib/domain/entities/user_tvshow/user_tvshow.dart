@@ -20,4 +20,7 @@ class UserTvshow {
     required this.backdrop,
     required this.userCategory,
   });
+
+  factory UserTvshow.fromJson(Map<String, dynamic> json) => _$UserTvshowFromJson(json);
+  Map<String, dynamic> toJson() => _$UserTvshowToJson(this);
 }

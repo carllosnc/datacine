@@ -15,6 +15,5 @@ class UserCategory {
   });
 
   factory UserCategory.fromJson(Map<String, dynamic> json) => _$UserCategoryFromJson(json);
-
   Map<String, dynamic> toJson() => _$UserCategoryToJson(this);
 }

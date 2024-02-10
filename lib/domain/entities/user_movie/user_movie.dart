@@ -20,4 +20,7 @@ class UserMovie {
     required this.backdrop,
     required this.userCategory,
   });
+
+  factory UserMovie.fromJson(Map<String, dynamic> json) => _$UserMovieFromJson(json);
+  Map<String, dynamic> toJson() => _$UserMovieToJson(this);
 }
