@@ -13,8 +13,7 @@ class SearchSugestions extends StatefulWidget {
   State<SearchSugestions> createState() => _SearchSugestionsState();
 }
 
-class _SearchSugestionsState extends State<SearchSugestions>
-    with SearchSugestionService {
+class _SearchSugestionsState extends State<SearchSugestions> with SearchSugestionService {
   @override
   Widget build(BuildContext context) {
     fetchSugestions(query: widget.query, page: 1);
