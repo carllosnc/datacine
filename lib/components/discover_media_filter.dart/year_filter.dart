@@ -79,7 +79,7 @@ class _YearsFilterState extends State<YearsFilter> {
   @override
   Widget build(BuildContext context) {
     return VWRow(
-      verticalAlignment: CrossAxisAlignment.end,
+      verticalAlignment: CrossAxisAlignment.center,
       gap: 80,
       children: [
         Text(

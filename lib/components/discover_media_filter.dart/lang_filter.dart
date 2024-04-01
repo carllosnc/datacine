@@ -76,7 +76,7 @@ class _LangFilterState extends State<LangFilter> {
   @override
   Widget build(BuildContext context) {
     return VWRow(
-      verticalAlignment: CrossAxisAlignment.end,
+      verticalAlignment: CrossAxisAlignment.center,
       gap: 42,
       children: [
         Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:vw/vw.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
@@ -76,12 +77,14 @@ discoverMediaFilters({
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
       child: VWRow(
         children: [
-          VWButton(
-            label: 'Apply',
-            color: AppColors.buttonColor,
-            onTap: () {
-              applyAction();
-            },
+          Expanded(
+            child: VWButton(
+              label: 'Apply',
+              color: AppColors.buttonColor,
+              onTap: () {
+                applyAction();
+              },
+            ),
           ),
         ],
       ),
