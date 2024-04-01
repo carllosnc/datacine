@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/imports.dart';
 
+bool firstTime = SharedPrefs().prefs.getBool('welcome') ?? true;
+
+String homePath = firstTime ? '/home' : '';
+
 final keywordMovies = GoRoute(
   path: 'keyword_movies',
   builder: (context, state) {
@@ -54,8 +58,15 @@ final tvshowDetails = GoRoute(
 
 final router = GoRouter(
   routes: [
+    if (firstTime)
+      GoRoute(
+        path: '/',
+        builder: (context, state) {
+          return const WelcomeView();
+        },
+      ),
     GoRoute(
-      path: '/',
+      path: firstTime ? '/home' : '/',
       builder: (context, state) => const HomeView(),
       routes: [
         movieDetails,

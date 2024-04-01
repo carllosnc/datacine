@@ -28,7 +28,7 @@ class MovieDirectors extends StatelessWidget {
             LinkButton(
               label: director.name!,
               onPressed: () {
-                context.push('/person/${director.id}');
+                context.push('$homePath/person/${director.id}');
               },
             ),
         ],

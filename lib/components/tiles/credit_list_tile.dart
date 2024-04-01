@@ -23,7 +23,7 @@ class CreditListTile extends StatelessWidget {
     return ListTile(
       onTap: () {
         context.push(
-          '/${mediaType.value}/${item.id.toString()}',
+          '$homePath/${mediaType.value}/${item.id.toString()}',
         );
       },
       trailing: const Icon(Icons.chevron_right),

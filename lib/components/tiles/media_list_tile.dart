@@ -18,7 +18,7 @@ class MediaListTile extends StatelessWidget {
     return ListTile(
       onTap: () {
         context.push(
-          '/${item.mediaType}/${item.id.toString()}',
+          '$homePath/${item.mediaType}/${item.id.toString()}',
         );
       },
       trailing: const Icon(Icons.chevron_right),

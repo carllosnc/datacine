@@ -40,7 +40,7 @@ class Companies extends StatelessWidget {
             for (var company in productionCompanies)
               LinkButton(
                 onPressed: () {
-                  context.push('/company', extra: company);
+                  context.push('$homePath/company', extra: company);
                 },
                 label: company.name!,
               )

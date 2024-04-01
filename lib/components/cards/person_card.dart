@@ -17,7 +17,7 @@ class PersonCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        context.push('/person/${personItem.id}');
+        context.push('$homePath/person/${personItem.id}');
       },
       child: VWColumn(
         gap: 5,

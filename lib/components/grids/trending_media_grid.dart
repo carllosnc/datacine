@@ -35,7 +35,7 @@ class TrendingMediaGrid extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            context.push('/${mediaType.value}/${mediaItem.id.toString()}');
+            context.push('$homePath/${mediaType.value}/${mediaItem.id.toString()}');
           },
           child: SizedBox(
             width: 200,

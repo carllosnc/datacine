@@ -20,7 +20,7 @@ class PersonListTile extends StatelessWidget {
 
     return ListTile(
       onTap: () {
-        context.push('/person/${person.id}');
+        context.push('$homePath/person/${person.id}');
       },
       title: Text(
         person.name!,

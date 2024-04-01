@@ -20,7 +20,7 @@ class MovieCollectionCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        context.push('/movie/${movie.id.toString()}');
+        context.push('$homePath/movie/${movie.id.toString()}');
       },
       child: SizedBox(
         width: 150,

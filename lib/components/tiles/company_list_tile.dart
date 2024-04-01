@@ -14,7 +14,7 @@ class CompanyListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        context.push('/company', extra: company);
+        context.push('$homePath/company', extra: company);
       },
       title: Text(
         company.name!,

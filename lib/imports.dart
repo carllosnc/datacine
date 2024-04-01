@@ -122,6 +122,7 @@ export '/views/tvshow/tvshow_view.dart';
 export '/views/person/person_view.dart';
 export '/views/company/company_view.dart';
 export '/views/keyword/keyword_view.dart';
+export '/views/welcome/welcome_view.dart';
 
 //DOMAIN
 export '/domain/entities/media_item/media_item.dart';

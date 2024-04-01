@@ -23,7 +23,7 @@ class MiniMediaCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-          '/${mediaType.value}/${mediaItem.id.toString()}',
+          '$homePath/${mediaType.value}/${mediaItem.id.toString()}',
         );
       },
       child: Container(

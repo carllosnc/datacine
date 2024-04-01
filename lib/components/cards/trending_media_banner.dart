@@ -25,7 +25,7 @@ class TrendingMediaBanner extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-          '/${mediaType.value}/${media.id.toString()}',
+          '$homePath/${mediaType.value}/${media.id.toString()}',
         );
       },
       child: SizedBox(

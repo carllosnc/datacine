@@ -31,11 +31,11 @@ class MediaKeywords extends StatelessWidget {
                 label: keyword.name!,
                 onPressed: () {
                   if (movie != null) {
-                    context.push('/keyword_movies', extra: keyword);
+                    context.push('$homePath/keyword_movies', extra: keyword);
                   }
 
                   if (tvshow != null) {
-                    context.push('/keyword_tvshows', extra: keyword);
+                    context.push('$homePath/keyword_tvshows', extra: keyword);
                   }
                 },
               ),

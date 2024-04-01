@@ -26,7 +26,7 @@ class TvShowCreators extends StatelessWidget {
             LinkButton(
               label: creator.name!,
               onPressed: () {
-                context.push('/person/${creator.id}');
+                context.push('$homePath/person/${creator.id}');
               },
             ),
         ],
