@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaHeader extends StatelessWidget {
   final MovieDto? movie;

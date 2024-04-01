@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vw/vw_column.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class Companies extends StatelessWidget {
   final MovieDto? movie;

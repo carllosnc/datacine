@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class LinkButton extends StatelessWidget {
   final void Function()? onPressed;

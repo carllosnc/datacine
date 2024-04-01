@@ -1,4 +1,4 @@
-import 'package:datacine/domain/domain.dart';
+import '/imports.dart';
 
 var languages = [
   {"iso_639_1": "no_lang", "english_name": "No Lang", "name": ""},

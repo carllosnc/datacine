@@ -3,7 +3,7 @@ import 'package:vw/vw.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
 import './lang_filter.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 discoverMediaFilters({
   required BuildContext context,
@@ -77,7 +77,6 @@ discoverMediaFilters({
       child: VWRow(
         children: [
           VWButton(
-            fullWidth: true,
             label: 'Apply',
             color: AppColors.buttonColor,
             onTap: () {

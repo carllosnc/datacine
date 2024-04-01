@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class SectionDivider extends StatelessWidget {
   final bool condition;

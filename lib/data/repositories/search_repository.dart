@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class SearchRepository extends Repository {
   SearchRepository(super.httpClient);
@@ -22,8 +22,7 @@ class SearchRepository extends Repository {
       headers: headers,
     );
 
-    SearchResult searchResult =
-        SearchResult.fromJson(jsonDecode(response.body));
+    SearchResult searchResult = SearchResult.fromJson(jsonDecode(response.body));
 
     searchResult.results = searchResult.results!.map((element) {
       if (element['media_type'] == 'movie') {

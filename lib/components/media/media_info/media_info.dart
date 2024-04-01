@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import './media_info_item.dart';
 import './media_info_companies.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaInfo extends StatelessWidget {
   final MovieDto? movie;

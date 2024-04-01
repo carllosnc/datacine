@@ -2,7 +2,7 @@ import 'dart:convert';
 import './repository.dart';
 import 'package:http/http.dart' as http;
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaDiscoverRepository extends Repository {
   MediaDiscoverRepository(super.httpClient);

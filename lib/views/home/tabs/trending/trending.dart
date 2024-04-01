@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class TrendingTab extends StatefulWidget {
   const TrendingTab({super.key});

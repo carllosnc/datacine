@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class PersonListTile extends StatelessWidget {
   final PersonItem person;

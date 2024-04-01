@@ -1,4 +1,4 @@
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MovieDto {
   final MovieDetails movie;

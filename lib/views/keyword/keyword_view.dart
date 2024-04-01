@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '/imports/app.dart';
+import '/imports.dart';
 
 class KeywordView extends StatelessWidget {
   final Keyword keyword;

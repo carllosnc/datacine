@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'person_details.g.dart';
 
@@ -74,8 +74,7 @@ class PersonDetails {
     this.externalIds,
   });
 
-  factory PersonDetails.fromJson(Map<String, dynamic> json) =>
-      _$PersonDetailsFromJson(json);
+  factory PersonDetails.fromJson(Map<String, dynamic> json) => _$PersonDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PersonDetailsToJson(this);
 }

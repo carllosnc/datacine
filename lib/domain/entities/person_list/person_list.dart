@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'person_list.g.dart';
 
@@ -22,8 +22,7 @@ class PersonList {
     required this.totalResults,
   });
 
-  factory PersonList.fromJson(Map<String, dynamic> json) =>
-      _$PersonListFromJson(json);
+  factory PersonList.fromJson(Map<String, dynamic> json) => _$PersonListFromJson(json);
 
   Map<String, dynamic> toJson() => _$PersonListToJson(this);
 }

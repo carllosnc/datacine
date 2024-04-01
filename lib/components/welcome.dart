@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class Welcome extends StatelessWidget {
   final Function onPressed;
@@ -47,10 +47,10 @@ class Welcome extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: VWRow(
+        horizontalAlignment: MainAxisAlignment.center,
         padding: const EdgeInsets.fromLTRB(50, 0, 50, 40),
         children: [
           VWButton(
-            fullWidth: true,
             onTap: () {
               SharedPrefs().prefs.setBool('welcome', false);
               onPressed();

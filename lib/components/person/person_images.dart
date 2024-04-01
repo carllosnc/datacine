@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class PersonImages extends StatelessWidget {
   final PersonDto person;

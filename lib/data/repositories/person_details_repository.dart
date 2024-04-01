@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 class PersonDetailsRepository extends Repository {
   PersonDetailsRepository(super.httpClient);
@@ -10,14 +10,7 @@ class PersonDetailsRepository extends Repository {
   Future<(PersonDetails, http.Response)> getPerson({
     required String id,
   }) async {
-    String itemsToAppend = [
-      "images",
-      "movie_credits",
-      "tv_credits",
-      "combined_credits",
-      "tagged_images",
-      "external_ids"
-    ].join(",");
+    String itemsToAppend = ["images", "movie_credits", "tv_credits", "combined_credits", "tagged_images", "external_ids"].join(",");
 
     var response = await httpClient.get(
       endpoint(

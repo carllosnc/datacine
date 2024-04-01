@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'company_list.g.dart';
 
@@ -22,8 +22,7 @@ class CompanyList {
     required this.totalResults,
   });
 
-  factory CompanyList.fromJson(Map<String, dynamic> json) =>
-      _$CompanyListFromJson(json);
+  factory CompanyList.fromJson(Map<String, dynamic> json) => _$CompanyListFromJson(json);
 
   Map<String, dynamic> toJson() => _$CompanyListToJson(this);
 }

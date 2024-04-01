@@ -12,10 +12,12 @@ UserTvshow _$UserTvshowFromJson(Map<String, dynamic> json) => UserTvshow(
       name: json['name'] as String,
       date: json['date'] as String,
       backdrop: json['backdrop'] as String,
-      userCategory: UserCategory.fromJson(json['userCategory'] as Map<String, dynamic>),
+      userCategory:
+          UserCategory.fromJson(json['userCategory'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserTvshowToJson(UserTvshow instance) => <String, dynamic>{
+Map<String, dynamic> _$UserTvshowToJson(UserTvshow instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'cover': instance.cover,
       'name': instance.name,

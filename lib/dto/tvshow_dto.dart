@@ -1,4 +1,4 @@
-import '/imports/app.dart';
+import '/imports.dart';
 
 class TvShowDto {
   final TvShowDetails tvshow;

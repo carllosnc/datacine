@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/views/views.dart';
-import '/domain/domain.dart';
-import '/core/core.dart';
+import '/imports.dart';
 
 final keywordMovies = GoRoute(
   path: 'keyword_movies',

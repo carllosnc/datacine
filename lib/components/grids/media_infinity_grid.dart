@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaInfinityGrid extends StatefulWidget {
   final Function({required int page}) fetchData;

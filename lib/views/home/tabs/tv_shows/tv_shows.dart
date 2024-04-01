@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 class TVShowsTab extends StatefulWidget {
   const TVShowsTab({
@@ -13,8 +13,7 @@ class TVShowsTab extends StatefulWidget {
   State<TVShowsTab> createState() => _TVShowsTabState();
 }
 
-class _TVShowsTabState extends State<TVShowsTab>
-    with AutomaticKeepAliveClientMixin<TVShowsTab> {
+class _TVShowsTabState extends State<TVShowsTab> with AutomaticKeepAliveClientMixin<TVShowsTab> {
   FilterNotifier filtersState = FilterNotifier();
 
   @override

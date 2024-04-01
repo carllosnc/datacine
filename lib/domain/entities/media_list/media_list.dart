@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'media_list.g.dart';
 
@@ -22,8 +22,7 @@ class MediaList {
     required this.totalResults,
   });
 
-  factory MediaList.fromJson(Map<String, dynamic> json) =>
-      _$MediaListFromJson(json);
+  factory MediaList.fromJson(Map<String, dynamic> json) => _$MediaListFromJson(json);
 
   Map<String, dynamic> toJson() => _$MediaListToJson(this);
 }

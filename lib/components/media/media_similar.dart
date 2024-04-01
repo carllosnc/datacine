@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 import 'package:http/http.dart' as http;
 
 showMediaSimilar({

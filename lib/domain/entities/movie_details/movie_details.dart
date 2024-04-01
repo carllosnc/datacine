@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'movie_details.g.dart';
 
@@ -117,8 +117,7 @@ class MovieDetails {
     this.credits,
   });
 
-  factory MovieDetails.fromJson(Map<String, dynamic> json) =>
-      _$MovieDetailsFromJson(json);
+  factory MovieDetails.fromJson(Map<String, dynamic> json) => _$MovieDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
 }

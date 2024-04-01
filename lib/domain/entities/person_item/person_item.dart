@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'person_item.g.dart';
 
@@ -52,8 +52,7 @@ class PersonItem {
     required this.mediaType,
   });
 
-  factory PersonItem.fromJson(Map<String, dynamic> json) =>
-      _$PersonItemFromJson(json);
+  factory PersonItem.fromJson(Map<String, dynamic> json) => _$PersonItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$PersonItemToJson(this);
 }

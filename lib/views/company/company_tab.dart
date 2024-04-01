@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 class CompanyMovieTabs extends StatelessWidget {
   final Company company;

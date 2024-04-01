@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MoviesTab extends StatefulWidget {
   const MoviesTab({super.key});
@@ -10,8 +10,7 @@ class MoviesTab extends StatefulWidget {
   State<MoviesTab> createState() => _MoviesTabState();
 }
 
-class _MoviesTabState extends State<MoviesTab>
-    with AutomaticKeepAliveClientMixin<MoviesTab> {
+class _MoviesTabState extends State<MoviesTab> with AutomaticKeepAliveClientMixin<MoviesTab> {
   FilterNotifier filtersState = FilterNotifier();
 
   @override

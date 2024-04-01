@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaVotes extends StatelessWidget {
   final num? voteAverage;

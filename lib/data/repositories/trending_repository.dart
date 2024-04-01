@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'repository.dart';
 import 'package:http/http.dart' as http;
-import '/imports/app.dart';
+import '/imports.dart';
 
 class TrendingRepository extends Repository {
   TrendingRepository(super.httpClient);
@@ -85,10 +85,8 @@ class TrendingRepository extends Repository {
     movies1.results?.removeRange(0, 1);
     tvshows1.results?.removeRange(0, 1);
 
-    movies3.results
-        ?.removeRange(movies3.results!.length - 2, movies3.results!.length);
-    tvshows3.results
-        ?.removeRange(tvshows3.results!.length - 2, tvshows3.results!.length);
+    movies3.results?.removeRange(movies3.results!.length - 2, movies3.results!.length);
+    tvshows3.results?.removeRange(tvshows3.results!.length - 2, tvshows3.results!.length);
 
     return {
       'featuredMovie': featuredMovie,

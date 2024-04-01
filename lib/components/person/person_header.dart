@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw_column.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class PersonHeader extends StatelessWidget {
   final PersonDto person;

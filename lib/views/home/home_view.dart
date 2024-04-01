@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 import './tabs/movies/movies.dart';
 import './tabs/tv_shows/tv_shows.dart';
 import './tabs/trending/trending.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MovieCollectionCard extends StatelessWidget {
   final MediaItem movie;

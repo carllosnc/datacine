@@ -1,5 +1,6 @@
+import 'package:datacine/style/text_style.dart';
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 enum CreditType { cast, crew }
 

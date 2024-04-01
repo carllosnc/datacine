@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class GenreFilter extends StatefulWidget {
   final MediaType mediaType;

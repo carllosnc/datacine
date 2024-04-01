@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class MediaOverview extends StatelessWidget {
   final MovieDto? movie;

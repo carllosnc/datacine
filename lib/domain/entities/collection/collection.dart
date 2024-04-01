@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 part 'collection.g.dart';
 
@@ -25,8 +25,7 @@ class Collection {
     this.parts,
   });
 
-  factory Collection.fromJson(Map<String, dynamic> json) =>
-      _$CollectionFromJson(json);
+  factory Collection.fromJson(Map<String, dynamic> json) => _$CollectionFromJson(json);
 
   Map<String, dynamic> toJson() => _$CollectionToJson(this);
 }

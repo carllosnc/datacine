@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 mixin TvShowService<T extends StatefulWidget> on State<T> {
   final _mediaDetailsRepository = MediaDetailsRepository(http.Client());

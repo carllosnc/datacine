@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '/imports/app.dart';
+import '/imports.dart';
 
 mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
   final collectionRepository = MovieCollectionRepository(http.Client());

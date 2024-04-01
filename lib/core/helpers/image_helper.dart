@@ -1,5 +1,4 @@
-import '/core/core.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class ImageHelper {
   static String getPoster({

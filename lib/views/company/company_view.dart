@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'company_tab.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class CompanyView extends StatefulWidget {
   final Company company;

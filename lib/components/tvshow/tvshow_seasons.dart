@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
-import '/imports/app.dart';
+import '/imports.dart';
 
 class TvShowSeasons extends StatelessWidget {
   final TvShowDto tvshow;
