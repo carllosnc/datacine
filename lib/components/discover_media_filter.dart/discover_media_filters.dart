@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:vw/vw.dart';
 import './year_filter.dart';
 import './genre_filter.dart';
