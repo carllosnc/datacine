@@ -113,7 +113,6 @@ export '/dto/person_dto.dart';
 
 //NOTIFIERS
 export '/notifiers/filter_notifier.dart';
-export '/notifiers/auth_notifier.dart';
 
 //VIEWS
 export '/views/home/home_view.dart';
