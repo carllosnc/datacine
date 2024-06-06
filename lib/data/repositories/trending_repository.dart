@@ -82,8 +82,9 @@ class TrendingRepository extends Repository {
     final featuredMovie = movies1.results?.take(1).toList()[0];
     final featuredTvshow = tvshows1.results?.take(1).toList()[0];
 
-    movies1.results?.removeRange(0, 1);
-    tvshows1.results?.removeRange(0, 1);
+    // fixin grid
+    // movies1.results?.removeRange(0, 1);
+    // tvshows1.results?.removeRange(0, 1);
 
     movies3.results?.removeRange(movies3.results!.length - 2, movies3.results!.length);
     tvshows3.results?.removeRange(tvshows3.results!.length - 2, tvshows3.results!.length);
