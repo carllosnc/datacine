@@ -407,8 +407,8 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "1a9c27324b5a881c19dc2d97b07d9af7648cbb79"
-      url: "https://github.com/C4co/imgy.git"
+      resolved-ref: c8d0496b501b0f99740535491914d1f16ad70de0
+      url: "https://github.com/carllosnc/imgy.git"
     source: git
     version: "0.0.12"
   integration_test:
@@ -986,10 +986,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: e50b311e803f4db68ae721c31601508cd2fafea2
-      url: "https://github.com/C4co/vw.git"
+      resolved-ref: "956611b2a1efef96d8e1eaf570748764f65c2ebe"
+      url: "https://github.com/carllosnc/vw.git"
     source: git
-    version: "0.0.12"
+    version: "0.0.13"
   watcher:
     dependency: transitive
     description:

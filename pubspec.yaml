@@ -50,11 +50,11 @@ dependencies:
   # packages from git
   imgy:
     git:
-      url: https://github.com/C4co/imgy.git
+      url: https://github.com/carllosnc/imgy.git
 
   vw:
     git:
-      url: https://github.com/C4co/vw.git
+      url: https://github.com/carllosnc/vw.git
 
   validatorless: ^1.2.3
 
