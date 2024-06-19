@@ -19,7 +19,9 @@ class MediaGenreRepository extends Repository {
       headers: headers,
     );
 
-    var genres = [for (var genre in jsonDecode(response.body)["genres"]) Genre.fromJson(genre)];
+    var genres = [
+      for (var genre in jsonDecode(response.body)["genres"]) Genre.fromJson(genre),
+    ];
 
     return (genres, response);
   }

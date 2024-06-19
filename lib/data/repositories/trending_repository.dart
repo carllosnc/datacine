@@ -54,20 +54,24 @@ class TrendingRepository extends Repository {
     final responseMoviesPage1 = await getMovies(page: 1);
     final responseMoviesPage2 = await getMovies(page: 2);
     final responseMoviesPage3 = await getMovies(page: 3);
+    final responseMoviesPage4 = await getMovies(page: 4);
 
     final responseTvshows1 = await tv(page: 1);
     final responseTvshows2 = await tv(page: 2);
     final responseTvshows3 = await tv(page: 3);
+    final responseTvshows4 = await tv(page: 4);
 
     final reponsePeople = await getPeople(page: 1);
 
     final movies1 = MediaList.fromJson(jsonDecode(responseMoviesPage1.body));
     final movies2 = MediaList.fromJson(jsonDecode(responseMoviesPage2.body));
     final movies3 = MediaList.fromJson(jsonDecode(responseMoviesPage3.body));
+    final movies4 = MediaList.fromJson(jsonDecode(responseMoviesPage4.body));
 
     final tvshows1 = MediaList.fromJson(jsonDecode(responseTvshows1.body));
     final tvshows2 = MediaList.fromJson(jsonDecode(responseTvshows2.body));
     final tvshows3 = MediaList.fromJson(jsonDecode(responseTvshows3.body));
+    final tvshows4 = MediaList.fromJson(jsonDecode(responseTvshows4.body));
 
     final people = PersonList.fromJson(jsonDecode(reponsePeople.body));
 
@@ -82,18 +86,47 @@ class TrendingRepository extends Repository {
     final featuredMovie = movies1.results?.take(1).toList()[0];
     final featuredTvshow = tvshows1.results?.take(1).toList()[0];
 
-    // fixin grid
-    // movies1.results?.removeRange(0, 1);
-    // tvshows1.results?.removeRange(0, 1);
+    List<MediaItem> totalMovies = movies1.results! + movies2.results! + movies3.results!;
+    totalMovies.removeAt(0);
 
-    movies3.results?.removeRange(movies3.results!.length - 2, movies3.results!.length);
-    tvshows3.results?.removeRange(tvshows3.results!.length - 2, tvshows3.results!.length);
+    List<MediaItem> totalTvshows = tvshows1.results! + tvshows2.results! + tvshows3.results!;
+    totalTvshows.removeAt(0);
+
+    //fix movie grid
+    switch (totalMovies.length) {
+      case 59:
+        totalMovies.addAll(movies4.results!.take(1).toList());
+        break;
+      case 58:
+        totalMovies.addAll(movies4.results!.take(2).toList());
+        break;
+      case 2:
+        totalMovies.addAll(movies4.results!.take(3).toList());
+        break;
+      default:
+        break;
+    }
+
+    //fix tv grid
+    switch (totalTvshows.length) {
+      case 59:
+        totalTvshows.addAll(tvshows4.results!.take(1).toList());
+        break;
+      case 58:
+        totalTvshows.addAll(tvshows4.results!.take(2).toList());
+        break;
+      case 2:
+        totalTvshows.addAll(tvshows4.results!.take(3).toList());
+        break;
+      default:
+        break;
+    }
 
     return {
       'featuredMovie': featuredMovie,
       'featuredTvshow': featuredTvshow,
-      'movies': movies1.results! + movies2.results! + movies3.results!,
-      'tvshows': tvshows1.results! + tvshows2.results! + tvshows3.results!,
+      'movies': totalMovies,
+      'tvshows': totalTvshows,
       'people': people.results,
     };
   }

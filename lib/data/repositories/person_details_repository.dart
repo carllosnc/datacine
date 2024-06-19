@@ -10,7 +10,14 @@ class PersonDetailsRepository extends Repository {
   Future<(PersonDetails, http.Response)> getPerson({
     required String id,
   }) async {
-    String itemsToAppend = ["images", "movie_credits", "tv_credits", "combined_credits", "tagged_images", "external_ids"].join(",");
+    String itemsToAppend = [
+      "images",
+      "movie_credits",
+      "tv_credits",
+      "combined_credits",
+      "tagged_images",
+      "external_ids",
+    ].join(",");
 
     var response = await httpClient.get(
       endpoint(
