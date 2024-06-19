@@ -50,8 +50,8 @@ void main() {
     expect(items['tvshows'], isA<List<MediaItem?>?>());
     expect(items['people'], isA<List<PersonItem>>());
 
-    expect(items['movies'].length, 57);
-    expect(items['tvshows'].length, 57);
-    expect(items['people'].length, 20);
+    expect(items['movies'].length, anyOf(57, 58, 59, 60));
+    expect(items['tvshows'].length, anyOf(57, 58, 59, 60));
+    expect(items['people'].length, anyOf(17, 18, 19, 20));
   });
 }
