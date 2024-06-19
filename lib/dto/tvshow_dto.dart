@@ -98,7 +98,10 @@ class TvShowDto {
     return 'https://www.youtube.com/watch?v=${trailer.key}';
   }
 
-  List<Season> get seasons => tvshow.seasons!;
+  List<Season> get seasons {
+    tvshow.seasons!.removeWhere((element) => element.airDate == null || element.airDate!.isEmpty);
+    return tvshow.seasons!;
+  }
 
   List<ImageItem> get posters => tvshow.images!['posters'] ?? [];
 
