@@ -23,11 +23,16 @@ mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
       });
 
       movieCollection.parts!.removeWhere((element) => element.posterPath == null);
+      movieCollection.parts!.removeWhere((element) => element.releaseDate == "");
 
       if (movieCollection.parts == null) {
         setState(() {
           isEmpty = true;
         });
+      }
+
+      for (var element in movieCollection.parts!) {
+        print(element.releaseDate);
       }
 
       setState(() {
