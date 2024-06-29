@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
+import '../components/media_header.dart';
+import '../components/media_info/media_info.dart';
+import '../components/media_keywords.dart';
+import '../components/media_overview.dart';
+import '../components/media_recommendations.dart';
+import '../components/media_similar.dart';
+import '../components/tvshow_creators.dart';
+import '../components/tvshow_seasons.dart';
 
 class TvShowView extends StatefulWidget {
   final String id;

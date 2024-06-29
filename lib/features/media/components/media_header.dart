@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
+import '../components/media_votes.dart';
+import '../components/media_trailer.dart';
 
 class MediaHeader extends StatelessWidget {
   final MovieDto? movie;

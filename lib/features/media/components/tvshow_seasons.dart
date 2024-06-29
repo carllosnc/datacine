@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
+import 'tvshow_season_card.dart';
 
 class TvShowSeasons extends StatelessWidget {
   final TvShowDto tvshow;
@@ -47,7 +48,7 @@ class TvShowSeasons extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   Season season = seasons[index];
 
-                  return SeasonCard(
+                  return TvShowSeasonCard(
                     tvshowName: tvshow.name,
                     tvshowId: tvshow.id,
                     season: season,

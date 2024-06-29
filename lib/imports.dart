@@ -10,26 +10,6 @@ export '/components/app_version.dart';
 export '/components/typography.dart';
 export '/components/login_or_profile.dart';
 
-//COMPONENTS -- tv show
-export '/components/tvshow/tvshow_seasons.dart';
-export '/components/tvshow/tvshow_creators.dart';
-export '/components/tvshow/season_details.dart';
-
-//COMPONENTS -- movie
-export '/components/movie/movie_directors.dart';
-export '/components/movie/movie_collection.dart';
-
-//COMPONENTS -- media
-export '/components/media/media_trailer.dart';
-export '/components/media/media_overview.dart';
-export '/components/media/media_info/media_info.dart';
-export '/components/media/media_keywords.dart';
-export '/components/media/media_info/media_info_genres.dart';
-export '/components/media/media_votes.dart';
-export '/components/media/media_header.dart';
-export '/components/media/media_recommendations.dart';
-export '/components/media/media_similar.dart';
-
 //COMPONENTS -- person
 export '/components/person/person_show_media_credit.dart';
 export '/components/person/person_header.dart';
@@ -43,7 +23,6 @@ export '/components/person/person_images.dart';
 export '/components/cards/person_card.dart';
 export '/components/cards/mini_media_card.dart';
 export '/components/cards/movie_collection_card.dart';
-export '/components/cards/season_card.dart';
 
 //COMPONENTS -- tiles
 export '/components/tiles/company_list_tile.dart';
@@ -111,8 +90,8 @@ export '/notifiers/filter_notifier.dart';
 
 //VIEWS
 export 'features/home/home_view.dart';
-export 'features/movie/movie_view.dart';
-export 'features/tvshow/tvshow_view.dart';
+export 'features/media/movie/movie_view.dart';
+export 'features/media/tvshow/tvshow_view.dart';
 export 'features/person/person_view.dart';
 export 'features/company/company_view.dart';
 export 'features/keyword/keyword_view.dart';

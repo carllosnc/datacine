@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
 import 'package:vw/vw.dart';
+import '../components/movie_collection.dart';
+import '../components/movie_directors.dart';
+import '../components/media_header.dart';
+import '../components/media_info/media_info.dart';
+import '../components/media_keywords.dart';
+import '../components/media_overview.dart';
+import '../components/media_recommendations.dart';
+import '../components/media_similar.dart';
 
 class MovieView extends StatefulWidget {
   final String id;

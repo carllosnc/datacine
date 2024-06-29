@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
+import 'tvshow_season_details.dart';
 
-class SeasonCard extends StatelessWidget {
+class TvShowSeasonCard extends StatelessWidget {
   final int tvshowId;
   final Season season;
   final String tvshowName;
 
-  const SeasonCard({
+  const TvShowSeasonCard({
     super.key,
     required this.season,
     required this.tvshowId,
@@ -29,7 +30,7 @@ class SeasonCard extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              showSeasonDetails(
+              tvshowOpenSeasonDetails(
                 context: context,
                 tvshowId: tvshowId,
                 seasonNumber: season.seasonNumber!,

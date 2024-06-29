@@ -4,7 +4,7 @@ import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-showSeasonDetails({
+tvshowOpenSeasonDetails({
   required BuildContext context,
   required int tvshowId,
   required int seasonNumber,
