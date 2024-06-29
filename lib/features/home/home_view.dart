@@ -111,7 +111,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           bottom: TabBar(
             controller: _tabController,
             tabs: const [
-              Tab(text: 'Trendings'),
+              Tab(text: 'Trending'),
               Tab(text: 'Movies'),
               Tab(text: 'TV'),
               Tab(text: 'People'),

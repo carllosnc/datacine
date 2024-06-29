@@ -4,19 +4,9 @@ export '/components/section_divider.dart';
 export '/components/loading.dart';
 export '/components/link_button.dart';
 export '/components/error.dart';
-export '/components/welcome.dart';
 export '/components/app_version.dart';
 export '/components/typography.dart';
 export '/components/login_or_profile.dart';
-
-//COMPONENTS -- person
-export '/components/person/person_show_media_credit.dart';
-export '/components/person/person_header.dart';
-export '/components/person/person_content.dart';
-export '/components/person/person_info.dart';
-export '/components/person/person_external_links.dart';
-export '/components/person/person_known_for.dart';
-export '/components/person/person_images.dart';
 
 //COMPONENTS -- cards
 export '/components/cards/person_card.dart';
@@ -24,11 +14,11 @@ export '/components/cards/mini_media_card.dart';
 export '/components/cards/movie_collection_card.dart';
 
 //COMPONENTS -- tiles
-export '/components/tiles/company_list_tile.dart';
 export '/components/tiles/person_list_tile.dart';
 export '/components/tiles/media_list_tile.dart';
 export '/components/tiles/episode_list_tile.dart';
 export '/components/tiles/credit_list_tile.dart';
+export '/components/tiles/company_list_tile.dart';
 
 //COMPONENTS -- lists
 export '/components/lists/people_infinity_list.dart';

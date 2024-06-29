@@ -48,7 +48,7 @@ void main(List<String> args) {
     await widgetTester.pumpAndSettle();
 
     expect(find.text("Movies"), findsOneWidget);
-    expect(find.text("Trendings"), findsOneWidget);
+    expect(find.text("Trending"), findsOneWidget);
     expect(find.text("TV"), findsOneWidget);
     expect(find.text("People"), findsOneWidget);
 

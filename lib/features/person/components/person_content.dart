@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
+import 'person_external_links.dart';
+import 'person_header.dart';
+import 'person_images.dart';
+import 'person_info.dart';
+import 'person_known_for.dart';
+import 'person_show_media_credit.dart';
 
 class PersonContent extends StatelessWidget {
   final PersonDto person;

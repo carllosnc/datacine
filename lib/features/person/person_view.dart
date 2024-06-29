@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
+import 'components/person_content.dart';
 
 class PersonView extends StatefulWidget {
   final String id;

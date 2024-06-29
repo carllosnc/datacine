@@ -1,4 +1,3 @@
-import 'package:datacine/style/text_style.dart';
 import 'package:flutter/material.dart';
 import '/imports.dart';
 
@@ -56,7 +55,11 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
           horizontal: 0,
         ),
         hintText: 'Search',
-        hintStyle: AppTextStyle.inputHint,
+        hintStyle: TextStyle(
+          color: AppColors.label.withOpacity(0.5),
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        ),
         border: const UnderlineInputBorder(),
       ),
     );
