@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './search_result.dart';
-import './search_sugestions.dart';
+import 'custom_search_result.dart';
+import 'custom_search_sugestions.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
@@ -63,7 +63,7 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return SearchResult(query: query);
+    return CustomSearchResult(query: query);
   }
 
   @override

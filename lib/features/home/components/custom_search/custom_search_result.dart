@@ -3,19 +3,19 @@ import 'package:http/http.dart' as http;
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class SearchResult extends StatefulWidget {
+class CustomSearchResult extends StatefulWidget {
   final String query;
 
-  const SearchResult({
+  const CustomSearchResult({
     super.key,
     required this.query,
   });
 
   @override
-  State<SearchResult> createState() => _SearchResultState();
+  State<CustomSearchResult> createState() => _CustomSearchResultState();
 }
 
-class _SearchResultState extends State<SearchResult> {
+class _CustomSearchResultState extends State<CustomSearchResult> {
   SearchType _currentSearchType = SearchType.movie;
 
   Future<MediaList> fetchMoviesData({required int page}) async {

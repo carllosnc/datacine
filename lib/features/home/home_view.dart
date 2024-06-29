@@ -5,6 +5,7 @@ import 'components/tabs/tv_shows.dart';
 import 'components/tabs/trending.dart';
 import 'components/tabs/people.dart';
 import 'components/media_filter/media_filters.dart';
+import 'components/custom_search/custom_search.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

@@ -1,7 +1,6 @@
 //COMPONENTS
 export '/components/empty.dart';
 export '/components/section_divider.dart';
-export '/components/custom_search/custom_search.dart';
 export '/components/loading.dart';
 export '/components/link_button.dart';
 export '/components/error.dart';
