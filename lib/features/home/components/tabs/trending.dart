@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
+import '../trending_media_banner.dart';
+import '../trending_media_grid.dart';
 
 class TrendingTab extends StatefulWidget {
   const TrendingTab({super.key});

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
-import './tabs/movies/movies.dart';
-import './tabs/tv_shows/tv_shows.dart';
-import './tabs/trending/trending.dart';
-import './tabs/people/people.dart';
+import 'components/tabs/movies.dart';
+import 'components/tabs/tv_shows.dart';
+import 'components/tabs/trending.dart';
+import 'components/tabs/people.dart';
+import 'components/media_filter/media_filters.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -65,7 +66,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                 label: const Text('Discover movies'),
                 icon: const Icon(Icons.movie),
                 onPressed: () {
-                  discoverMediaFilters(
+                  mediaFilter(
                     context: context,
                     title: "Movie filter",
                     mediaType: MediaType.movie,
@@ -80,7 +81,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                 label: const Text('Discover TV Shows'),
                 icon: const Icon(Icons.tv),
                 onPressed: () {
-                  discoverMediaFilters(
+                  mediaFilter(
                     context: context,
                     title: "TV Show Filter ",
                     mediaType: MediaType.tv,

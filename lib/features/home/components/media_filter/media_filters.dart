@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
-import './year_filter.dart';
-import './genre_filter.dart';
-import './lang_filter.dart';
+import 'year_filter.dart';
+import 'genre_filter.dart';
+import 'lang_filter.dart';
 import '/imports.dart';
 
-discoverMediaFilters({
+mediaFilter({
   required BuildContext context,
   required String title,
   required MediaType mediaType,
