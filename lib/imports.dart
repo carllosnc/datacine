@@ -106,4 +106,4 @@ export '/features/person/person_view.dart';
 export '/features/welcome/welcome_view.dart';
 
 //NOTIFIERS
-export '/notifiers/filter_notifier.dart';
+export '/shared_state/filter_notifier.dart';
