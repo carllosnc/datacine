@@ -43,7 +43,6 @@ appTheme(BuildContext context) {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      //prefixicon size
       prefixStyle: const TextStyle(
         fontSize: 15,
       ),
