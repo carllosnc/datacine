@@ -16,7 +16,7 @@ showMediaRecommendations({
     );
 
     final (recommendations, _) =
-        await mediaRecommendationService.getRecomendations(
+        await mediaRecommendationService.getRecommendations(
       mediaId: (movie?.id ?? tvShow?.id) as int,
       mediaType: mediaType,
       page: page,

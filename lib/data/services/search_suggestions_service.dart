@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '/imports.dart';
 
-mixin SearchSugestionService<T extends StatefulWidget> on State<T> {
+mixin SearchSuggestionService<T extends StatefulWidget> on State<T> {
   final _searchRepository = SearchRepository(http.Client());
 
   bool isLoading = true;
   bool isError = false;
-  late SearchResult sugestions;
+  late SearchResult suggestions;
   bool isEmpty = false;
 
-  fetchSugestions({required String query, required int page}) async {
+  fetchSuggestions({required String query, required int page}) async {
     try {
-      var (SearchResult data, _) = await _searchRepository.getSugestions(
+      var (SearchResult data, _) = await _searchRepository.getSuggestions(
         query: query,
         page: page,
       );
@@ -25,7 +25,7 @@ mixin SearchSugestionService<T extends StatefulWidget> on State<T> {
 
       setState(() {
         isLoading = false;
-        sugestions = data;
+        suggestions = data;
       });
     } catch (e) {
       setState(() {

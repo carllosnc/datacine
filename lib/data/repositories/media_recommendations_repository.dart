@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './repository.dart';
-
 import '/imports.dart';
 
 class MediaRecommendationsRepository extends Repository {
   MediaRecommendationsRepository(super.httpClient);
 
-  Future<(MediaList, http.Response)> getRecomendations({
+  Future<(MediaList, http.Response)> getRecommendations({
     required int mediaId,
     required int page,
     required MediaType mediaType,

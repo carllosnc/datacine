@@ -45,7 +45,7 @@ class TvShowDetails {
   List<Company>? productionCompanies;
 
   @JsonKey(name: 'production_countries')
-  List<ProductionContry>? productionCountries;
+  List<ProductionCountry>? productionCountries;
 
   @JsonKey(name: 'spoken_languages')
   List<Language>? spokenLanguages;
@@ -138,7 +138,8 @@ class TvShowDetails {
     this.similar,
   });
 
-  factory TvShowDetails.fromJson(Map<String, dynamic> json) => _$TvShowDetailsFromJson(json);
+  factory TvShowDetails.fromJson(Map<String, dynamic> json) =>
+      _$TvShowDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvShowDetailsToJson(this);
 }

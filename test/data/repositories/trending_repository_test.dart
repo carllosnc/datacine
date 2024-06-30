@@ -44,7 +44,7 @@ void main() {
   test('check trending all', () async {
     final trendingRepository = TrendingRepository(http.Client());
 
-    final items = await trendingRepository.getTrendings();
+    final items = await trendingRepository.getTrending();
 
     expect(items['movies'], isA<List<MediaItem?>?>());
     expect(items['tvshows'], isA<List<MediaItem?>?>());

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import '/imports.dart';
 
 mixin MovieService<T extends StatefulWidget> on State<T> {

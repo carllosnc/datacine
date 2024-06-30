@@ -27,7 +27,7 @@ class MovieDetails {
   final List<Company>? productionCompanies;
 
   @JsonKey(name: 'production_countries')
-  final List<ProductionContry>? productionCountries;
+  final List<ProductionCountry>? productionCountries;
 
   @JsonKey(name: 'release_date')
   final String? releaseDate;
@@ -117,7 +117,8 @@ class MovieDetails {
     this.credits,
   });
 
-  factory MovieDetails.fromJson(Map<String, dynamic> json) => _$MovieDetailsFromJson(json);
+  factory MovieDetails.fromJson(Map<String, dynamic> json) =>
+      _$MovieDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/imports.dart';
 
-bool firstTime = SharedPrefs().prefs.getBool('welcome') ?? true;
+bool firstTime = sharedPreferences.prefs.getBool('welcome') ?? true;
 
 String homePath = firstTime ? '/home' : '';
 

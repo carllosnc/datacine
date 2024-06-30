@@ -29,7 +29,7 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
           ?.map((e) => Company.fromJson(e as Map<String, dynamic>))
           .toList(),
       productionCountries: (json['production_countries'] as List<dynamic>?)
-          ?.map((e) => ProductionContry.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductionCountry.fromJson(e as Map<String, dynamic>))
           .toList(),
       releaseDate: json['release_date'] as String?,
       revenue: json['revenue'] as num?,

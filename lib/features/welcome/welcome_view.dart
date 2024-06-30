@@ -51,7 +51,7 @@ class WelcomeView extends StatelessWidget {
         children: [
           VWButton(
             onTap: () {
-              SharedPrefs().prefs.setBool('welcome', false);
+              sharedPreferences.prefs.setBool('welcome', false);
               context.go('/home');
             },
             label: 'Let\'s go!',

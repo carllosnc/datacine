@@ -42,7 +42,7 @@ TvShowDetails _$TvShowDetailsFromJson(Map<String, dynamic> json) =>
           ?.map((e) => Company.fromJson(e as Map<String, dynamic>))
           .toList(),
       productionCountries: (json['production_countries'] as List<dynamic>?)
-          ?.map((e) => ProductionContry.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductionCountry.fromJson(e as Map<String, dynamic>))
           .toList(),
       seasons: (json['seasons'] as List<dynamic>?)
           ?.map((e) => Season.fromJson(e as Map<String, dynamic>))

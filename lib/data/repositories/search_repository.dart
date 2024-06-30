@@ -6,7 +6,7 @@ import '/imports.dart';
 class SearchRepository extends Repository {
   SearchRepository(super.httpClient);
 
-  Future<(SearchResult, http.Response)> getSugestions({
+  Future<(SearchResult, http.Response)> getSuggestions({
     required String query,
     required int page,
   }) async {
@@ -22,7 +22,8 @@ class SearchRepository extends Repository {
       headers: headers,
     );
 
-    SearchResult searchResult = SearchResult.fromJson(jsonDecode(response.body));
+    SearchResult searchResult =
+        SearchResult.fromJson(jsonDecode(response.body));
 
     searchResult.results = searchResult.results!.map((element) {
       if (element['media_type'] == 'movie') {
@@ -112,8 +113,8 @@ class SearchRepository extends Repository {
       type: SearchType.company,
     );
 
-    var companyLits = CompanyList.fromJson(jsonDecode(response.body));
+    var companyList = CompanyList.fromJson(jsonDecode(response.body));
 
-    return (companyLits, response);
+    return (companyList, response);
   }
 }

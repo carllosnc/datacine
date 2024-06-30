@@ -3,19 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 part 'production_country.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ProductionContry {
+class ProductionCountry {
   @JsonKey(name: 'iso_3166_1')
   final String? iso31661;
 
   final String? name;
 
-  ProductionContry({
+  ProductionCountry({
     required this.iso31661,
     required this.name,
   });
 
-  factory ProductionContry.fromJson(Map<String, dynamic> json) =>
-      _$ProductionContryFromJson(json);
+  factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
+      _$ProductionCountryFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductionContryToJson(this);
+  Map<String, dynamic> toJson() => _$ProductionCountryToJson(this);
 }

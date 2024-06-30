@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import '/imports.dart';
 
 mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
@@ -14,7 +13,8 @@ mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
 
   fetchMovieCollection({required String id}) async {
     try {
-      var (Collection movieCollection, _) = await collectionRepository.getCollection(id: id);
+      var (Collection movieCollection, _) =
+          await collectionRepository.getCollection(id: id);
 
       if (isCanceled) return;
 
@@ -22,17 +22,18 @@ mixin MovieCollectionService<T extends StatefulWidget> on State<T> {
         return a.releaseDate!.compareTo(b.releaseDate!);
       });
 
-      movieCollection.parts!.removeWhere((element) => element.posterPath == null);
-      movieCollection.parts!.removeWhere((element) => element.releaseDate == "");
+      movieCollection //
+          .parts!
+          .removeWhere((element) => element.posterPath == null);
+
+      movieCollection //
+          .parts!
+          .removeWhere((element) => element.releaseDate == "");
 
       if (movieCollection.parts == null) {
         setState(() {
           isEmpty = true;
         });
-      }
-
-      for (var element in movieCollection.parts!) {
-        print(element.releaseDate);
       }
 
       setState(() {

@@ -14,12 +14,15 @@ void main() {
   test('check search results', () async {
     SearchRepository searchRepository = SearchRepository(http.Client());
 
-    final (searchResult, response) = await searchRepository.getSugestions(query: "tarantino", page: 1);
+    final (searchResult, response) =
+        await searchRepository.getSuggestions(query: "tarantino", page: 1);
 
     expect(response.statusCode, 200);
 
     for (var result in searchResult.results!) {
-      result is MediaItem ? expect(result, isA<MediaItem>()) : expect(result, isA<PersonItem>());
+      result is MediaItem
+          ? expect(result, isA<MediaItem>())
+          : expect(result, isA<PersonItem>());
     }
   });
 

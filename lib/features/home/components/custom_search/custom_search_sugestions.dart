@@ -15,10 +15,10 @@ class SearchSugestions extends StatefulWidget {
 }
 
 class _SearchSugestionsState extends State<SearchSugestions>
-    with SearchSugestionService {
+    with SearchSuggestionService {
   @override
   Widget build(BuildContext context) {
-    fetchSugestions(query: widget.query, page: 1);
+    fetchSuggestions(query: widget.query, page: 1);
 
     if (isLoading) {
       return const Loading();
@@ -37,9 +37,9 @@ class _SearchSugestionsState extends State<SearchSugestions>
     }
 
     return ListView.builder(
-      itemCount: sugestions.results!.length,
+      itemCount: suggestions.results!.length,
       itemBuilder: (BuildContext context, int index) {
-        dynamic item = sugestions.results![index];
+        dynamic item = suggestions.results![index];
 
         if (item is MediaItem) {
           return ListTileMedia(item: item);

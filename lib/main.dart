@@ -17,10 +17,7 @@ Future main() async {
   await dotenv.load(fileName: ".env");
 
   // load shared preferences
-  await SharedPrefs().loadPreferences();
-
-  // load shorebird
-  await ShoreBird().loadShoreBird();
+  await sharedPreferences.loadPreferences();
 
   runApp(const App());
 }

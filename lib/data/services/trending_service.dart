@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import '/imports.dart';
 
-mixin TrendingsService<T extends StatefulWidget> on State<T> {
+mixin TrendingService<T extends StatefulWidget> on State<T> {
   bool isLoading = true;
   bool isError = false;
 
@@ -12,9 +11,9 @@ mixin TrendingsService<T extends StatefulWidget> on State<T> {
   late List<MediaItem> movies;
   late List<MediaItem> tvShows;
 
-  fetchTrendings() async {
+  fetchTrending() async {
     try {
-      var result = await TrendingRepository(http.Client()).getTrendings();
+      var result = await TrendingRepository(http.Client()).getTrending();
 
       setState(() {
         isLoading = false;

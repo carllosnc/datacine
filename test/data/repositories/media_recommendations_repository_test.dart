@@ -16,7 +16,8 @@ void main() {
       http.Client(),
     );
 
-    final (recommendations, response) = await recommendationsRepository.getRecomendations(
+    final (recommendations, response) =
+        await recommendationsRepository.getRecommendations(
       mediaType: MediaType.movie,
       mediaId: 385687,
       page: 1,
@@ -32,7 +33,8 @@ void main() {
       http.Client(),
     );
 
-    final (recommendations, response) = await recommendationsRepository.getRecomendations(
+    final (recommendations, response) =
+        await recommendationsRepository.getRecommendations(
       mediaType: MediaType.tv,
       mediaId: 85271,
       page: 1,

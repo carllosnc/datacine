@@ -10,11 +10,12 @@ class TrendingTab extends StatefulWidget {
   State<TrendingTab> createState() => _TrendingTabState();
 }
 
-class _TrendingTabState extends State<TrendingTab> with AutomaticKeepAliveClientMixin<TrendingTab>, TrendingsService {
+class _TrendingTabState extends State<TrendingTab>
+    with AutomaticKeepAliveClientMixin<TrendingTab>, TrendingService {
   @override
   void initState() {
     super.initState();
-    fetchTrendings();
+    fetchTrending();
   }
 
   @override

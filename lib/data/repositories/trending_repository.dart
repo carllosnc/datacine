@@ -50,7 +50,7 @@ class TrendingRepository extends Repository {
     return (personList, response);
   }
 
-  Future<dynamic> getTrendings() async {
+  Future<dynamic> getTrending() async {
     final responseMoviesPage1 = await getMovies(page: 1);
     final responseMoviesPage2 = await getMovies(page: 2);
     final responseMoviesPage3 = await getMovies(page: 3);
@@ -61,7 +61,7 @@ class TrendingRepository extends Repository {
     final responseTvshows3 = await tv(page: 3);
     final responseTvshows4 = await tv(page: 4);
 
-    final reponsePeople = await getPeople(page: 1);
+    final responsePeople = await getPeople(page: 1);
 
     final movies1 = MediaList.fromJson(jsonDecode(responseMoviesPage1.body));
     final movies2 = MediaList.fromJson(jsonDecode(responseMoviesPage2.body));
@@ -73,7 +73,7 @@ class TrendingRepository extends Repository {
     final tvshows3 = MediaList.fromJson(jsonDecode(responseTvshows3.body));
     final tvshows4 = MediaList.fromJson(jsonDecode(responseTvshows4.body));
 
-    final people = PersonList.fromJson(jsonDecode(reponsePeople.body));
+    final people = PersonList.fromJson(jsonDecode(responsePeople.body));
 
     movies1.results?.shuffle();
     movies2.results?.shuffle();
@@ -86,10 +86,12 @@ class TrendingRepository extends Repository {
     final featuredMovie = movies1.results?.take(1).toList()[0];
     final featuredTvshow = tvshows1.results?.take(1).toList()[0];
 
-    List<MediaItem> totalMovies = movies1.results! + movies2.results! + movies3.results!;
+    List<MediaItem> totalMovies =
+        movies1.results! + movies2.results! + movies3.results!;
     totalMovies.removeAt(0);
 
-    List<MediaItem> totalTvshows = tvshows1.results! + tvshows2.results! + tvshows3.results!;
+    List<MediaItem> totalTvshows =
+        tvshows1.results! + tvshows2.results! + tvshows3.results!;
     totalTvshows.removeAt(0);
 
     //fix movie grid
