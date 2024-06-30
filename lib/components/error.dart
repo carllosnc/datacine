@@ -11,6 +11,7 @@ class ErrorBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: VWColumn(
+        verticalAlignment: MainAxisAlignment.center,
         horizontalAlignment: CrossAxisAlignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         gap: 5,
