@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/imports.dart';
 
-class CompanyListTile extends StatelessWidget {
+class ListTileCompany extends StatelessWidget {
   final Company company;
 
-  const CompanyListTile({
+  const ListTileCompany({
     super.key,
     required this.company,
   });

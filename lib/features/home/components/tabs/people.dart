@@ -10,7 +10,8 @@ class PeopleTab extends StatefulWidget {
   State<PeopleTab> createState() => _PeopleTabState();
 }
 
-class _PeopleTabState extends State<PeopleTab> with AutomaticKeepAliveClientMixin<PeopleTab> {
+class _PeopleTabState extends State<PeopleTab>
+    with AutomaticKeepAliveClientMixin<PeopleTab> {
   Future<PersonList> fetchPeople({required int page}) async {
     final trendingRepository = TrendingRepository(http.Client());
 
@@ -25,7 +26,7 @@ class _PeopleTabState extends State<PeopleTab> with AutomaticKeepAliveClientMixi
   Widget build(BuildContext context) {
     super.build(context);
 
-    return PeopleInfinityGrid(
+    return GridPeopleInfinity(
       pageTitle: 'People',
       fetchData: fetchPeople,
     );

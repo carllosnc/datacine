@@ -3,10 +3,10 @@ import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class EpisodeListTile extends StatelessWidget {
+class ListTileEpisode extends StatelessWidget {
   final Episode episode;
 
-  const EpisodeListTile({super.key, required this.episode});
+  const ListTileEpisode({super.key, required this.episode});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,9 @@ class EpisodeListTile extends StatelessWidget {
             ),
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                episode.stillPath == null ? AppColors.imageFilter : Colors.transparent,
+                episode.stillPath == null
+                    ? AppColors.imageFilter
+                    : Colors.transparent,
                 BlendMode.color,
               ),
               child: Imgy(

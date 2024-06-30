@@ -18,7 +18,8 @@ class CompanyMovieTabs extends StatelessWidget {
       http.Client(),
     );
 
-    var (companyMovies, _) = await mediaDiscoverRepository.discoverMoviesByCompany(
+    var (companyMovies, _) =
+        await mediaDiscoverRepository.discoverMoviesByCompany(
       page: page,
       mediaType: mediaType,
       companyId: company.id,
@@ -29,7 +30,7 @@ class CompanyMovieTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaInfinityGrid(
+    return GridMediaInfinity(
       fetchData: fetchData,
       mediaType: mediaType,
     );

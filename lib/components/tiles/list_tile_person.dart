@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+
 import '/imports.dart';
 
-class PersonListTile extends StatelessWidget {
+class ListTilePerson extends StatelessWidget {
   final PersonItem person;
 
-  const PersonListTile({
+  const ListTilePerson({
     super.key,
     required this.person,
   });
@@ -48,7 +49,11 @@ class PersonListTile extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        person.character ?? person.job ?? person.knownForDepartment ?? person.department ?? '-',
+        person.character ??
+            person.job ??
+            person.knownForDepartment ??
+            person.department ??
+            '-',
         style: TextStyle(
           fontSize: 14,
           color: AppColors.link,

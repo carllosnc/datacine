@@ -33,3 +33,4 @@ sealed class AppColors {
   static Color get label => Colors.white.withOpacity(0.5);
   static Color get text => Colors.white;
 }
+

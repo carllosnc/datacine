@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
+
 import '/imports.dart';
 
 class PersonKnownFor extends StatelessWidget {
@@ -36,11 +37,12 @@ class PersonKnownFor extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               MediaItem media = person.knownForCredits[index];
 
-              MediaType mediaType = media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
+              MediaType mediaType =
+                  media.mediaType == 'movie' ? MediaType.movie : MediaType.tv;
 
               return SizedBox(
                 width: 130,
-                child: MiniMediaCard(
+                child: CardMiniMedia(
                   mediaItem: media,
                   mediaType: mediaType,
                 ),

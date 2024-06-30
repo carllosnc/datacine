@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '/imports.dart';
 import 'package:vw/vw.dart';
-import '../components/movie_collection.dart';
-import '../components/movie_directors.dart';
+
 import '../components/media_header.dart';
 import '../components/media_info/media_info.dart';
 import '../components/media_keywords.dart';
 import '../components/media_overview.dart';
 import '../components/media_recommendations.dart';
 import '../components/media_similar.dart';
+import '../components/movie_collection.dart';
+import '../components/movie_directors.dart';
+import '/imports.dart';
 
 class MovieView extends StatefulWidget {
   final String id;
@@ -84,7 +85,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.image_outlined,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      showMediaPosters(
+                      showGridPosters(
                         context: context,
                         posters: movie.posters,
                         title: movie.title,
@@ -98,7 +99,7 @@ class MovieViewState extends State<MovieView> with MovieService {
                     leftIcon: Icons.people_outline,
                     color: AppColors.buttonColor,
                     onTap: () {
-                      showMediaCreditList(
+                      showListMediaCredits(
                         context: context,
                         credits: movie.credits!,
                         title: movie.title,
@@ -148,7 +149,7 @@ class MovieViewState extends State<MovieView> with MovieService {
 
             //cast
             SectionDivider(condition: movie.hasCast),
-            PersonHorizontalList(
+            ListPeopleHorizontal(
               title: 'Cast',
               list: movie.cast,
             ),

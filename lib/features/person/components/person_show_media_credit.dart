@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
+
 import '/imports.dart';
 
 showMediaCredit(
@@ -57,7 +58,7 @@ showMediaCredit(
             (context, index) {
               MediaItem item = list![index];
 
-              return CreditListTile(item: item, mediaType: mediaType);
+              return ListTileCredit(item: item, mediaType: mediaType);
             },
           ),
         ),

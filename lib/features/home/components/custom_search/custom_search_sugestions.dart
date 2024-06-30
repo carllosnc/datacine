@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/imports.dart';
 
 class SearchSugestions extends StatefulWidget {
@@ -13,7 +14,8 @@ class SearchSugestions extends StatefulWidget {
   State<SearchSugestions> createState() => _SearchSugestionsState();
 }
 
-class _SearchSugestionsState extends State<SearchSugestions> with SearchSugestionService {
+class _SearchSugestionsState extends State<SearchSugestions>
+    with SearchSugestionService {
   @override
   Widget build(BuildContext context) {
     fetchSugestions(query: widget.query, page: 1);
@@ -40,11 +42,11 @@ class _SearchSugestionsState extends State<SearchSugestions> with SearchSugestio
         dynamic item = sugestions.results![index];
 
         if (item is MediaItem) {
-          return MediaListTile(item: item);
+          return ListTileMedia(item: item);
         }
 
         if (item is PersonItem) {
-          return PersonListTile(person: item);
+          return ListTilePerson(person: item);
         }
 
         return null;

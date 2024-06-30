@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class MiniMediaCard extends StatelessWidget {
+class CardMiniMedia extends StatelessWidget {
   final MediaItem mediaItem;
   final MediaType mediaType;
 
-  const MiniMediaCard({
+  const CardMiniMedia({
     super.key,
     required this.mediaItem,
     required this.mediaType,
@@ -28,15 +29,18 @@ class MiniMediaCard extends StatelessWidget {
       },
       child: Container(
         alignment: Alignment.center,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: VWColumn(
+          gap: 5,
+          horizontalAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                    mediaItem.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+                    mediaItem.posterPath == null
+                        ? AppColors.imageFilter
+                        : Colors.transparent,
                     BlendMode.color,
                   ),
                   child: Imgy(
@@ -50,9 +54,8 @@ class MiniMediaCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            VWColumn(
+              horizontalAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   mediaItem.title ?? mediaItem.name!,
@@ -64,7 +67,8 @@ class MiniMediaCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  (mediaItem.releaseDate ?? mediaItem.firstAirDate ?? "null").formatDateTime(),
+                  (mediaItem.releaseDate ?? mediaItem.firstAirDate ?? "null")
+                      .formatDateTime(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

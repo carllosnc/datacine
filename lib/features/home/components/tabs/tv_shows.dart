@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,7 +14,8 @@ class TVShowsTab extends StatefulWidget {
   State<TVShowsTab> createState() => _TVShowsTabState();
 }
 
-class _TVShowsTabState extends State<TVShowsTab> with AutomaticKeepAliveClientMixin<TVShowsTab> {
+class _TVShowsTabState extends State<TVShowsTab>
+    with AutomaticKeepAliveClientMixin<TVShowsTab> {
   FilterNotifier filtersState = FilterNotifier();
 
   @override
@@ -39,7 +41,7 @@ class _TVShowsTabState extends State<TVShowsTab> with AutomaticKeepAliveClientMi
           return discovered;
         }
 
-        return MediaInfinityGrid(
+        return GridMediaInfinity(
           key: ValueKey(randomKey),
           mediaType: MediaType.tv,
           fetchData: getData,

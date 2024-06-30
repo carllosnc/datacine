@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:imgy/imgy.dart';
 import '/imports.dart';
 
-import 'package:imgy/imgy.dart';
-
-showMediaPosters({
+showGridPosters({
   required BuildContext context,
   required List<ImageItem> posters,
   required String title,
@@ -69,7 +68,7 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       }
     }
 
-    //filteres posters init value is all posters
+    //filters posters init value is all posters
     filteredPosters = posters;
   }
 
@@ -92,9 +91,11 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
           },
           onSelected: (String value) {
             setState(() {
-              selectedLang = supportedLangs.keys.firstWhere((key) => supportedLangs[key] == value);
+              selectedLang = supportedLangs.keys
+                  .firstWhere((key) => supportedLangs[key] == value);
 
-              filteredPosters = posters.where((element) => element.iso6391 == value).toList();
+              filteredPosters =
+                  posters.where((element) => element.iso6391 == value).toList();
             });
           },
         ),
@@ -125,7 +126,8 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       itemBuilder: (context, index) {
         final ImageItem imageItem = filteredPosters[index];
         //get english name of language
-        String langName = supportedLangs.keys.firstWhere((key) => supportedLangs[key] == imageItem.iso6391);
+        String langName = supportedLangs.keys
+            .firstWhere((key) => supportedLangs[key] == imageItem.iso6391);
 
         String imageSrc = ImageHelper.getPoster(
           path: imageItem.filePath!,

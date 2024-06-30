@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vw/vw.dart';
-import '/imports.dart';
 import 'package:http/http.dart' as http;
+import 'package:vw/vw.dart';
+
+import '/imports.dart';
 
 showMediaSimilar({
   required BuildContext context,
@@ -34,7 +35,7 @@ showMediaSimilar({
       ),
     ),
     context: context,
-    body: MediaInfinityGrid(
+    body: GridMediaInfinity(
       mediaType: mediaType,
       fetchData: fetchData,
     ),

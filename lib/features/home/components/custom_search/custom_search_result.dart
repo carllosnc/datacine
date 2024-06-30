@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:vw/vw.dart';
+
 import '/imports.dart';
 
 class CustomSearchResult extends StatefulWidget {
@@ -68,7 +69,7 @@ class _CustomSearchResultState extends State<CustomSearchResult> {
       children: [
         if (_currentSearchType == SearchType.movie)
           Expanded(
-            child: MediaInfinityGrid(
+            child: GridMediaInfinity(
               key: const Key('movie_search_result'),
               mediaType: MediaType.movie,
               fetchData: fetchMoviesData,
@@ -76,7 +77,7 @@ class _CustomSearchResultState extends State<CustomSearchResult> {
           ),
         if (_currentSearchType == SearchType.tv)
           Expanded(
-            child: MediaInfinityGrid(
+            child: GridMediaInfinity(
               key: const Key('tv_search_result'),
               mediaType: MediaType.tv,
               fetchData: fetchTvData,
@@ -84,7 +85,7 @@ class _CustomSearchResultState extends State<CustomSearchResult> {
           ),
         if (_currentSearchType == SearchType.person)
           Expanded(
-            child: PeopleInfinityList(
+            child: ListPeopleInfinity(
               key: const Key('people_search_result'),
               pageTitle: 'Search Result',
               fetchData: fetchPeopleData,
@@ -92,7 +93,7 @@ class _CustomSearchResultState extends State<CustomSearchResult> {
           ),
         if (_currentSearchType == SearchType.company)
           Expanded(
-            child: CompanyInfinityList(
+            child: ListCompanyInfinity(
               key: const Key('company_search_result'),
               pageTitle: 'Search Result',
               fetchData: fetchCompanyData,

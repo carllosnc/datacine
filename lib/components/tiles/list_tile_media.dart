@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+
 import '/imports.dart';
 
-class MediaListTile extends StatelessWidget {
+class ListTileMedia extends StatelessWidget {
   final MediaItem item;
 
-  const MediaListTile({super.key, required this.item});
+  const ListTileMedia({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,9 @@ class MediaListTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         child: ColorFiltered(
           colorFilter: ColorFilter.mode(
-            item.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+            item.posterPath == null
+                ? AppColors.imageFilter
+                : Colors.transparent,
             BlendMode.color,
           ),
           child: Imgy(

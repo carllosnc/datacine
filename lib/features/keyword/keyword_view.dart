@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 import '/imports.dart';
 
 class KeywordView extends StatelessWidget {
@@ -17,7 +18,8 @@ class KeywordView extends StatelessWidget {
       http.Client(),
     );
 
-    var (companyMovies, _) = await mediaDiscoverRepository.discoverMoviesByKeyword(
+    var (companyMovies, _) =
+        await mediaDiscoverRepository.discoverMoviesByKeyword(
       page: page,
       mediaType: mediaType,
       keywordId: keyword.id!,
@@ -35,7 +37,7 @@ class KeywordView extends StatelessWidget {
           subtitle: "Keyword for ${mediaType.value}",
         ),
       ),
-      body: MediaInfinityGrid(
+      body: GridMediaInfinity(
         key: PageStorageKey(keyword.id),
         fetchData: fetchData,
         mediaType: mediaType,

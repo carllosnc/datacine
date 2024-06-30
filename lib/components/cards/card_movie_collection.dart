@@ -4,9 +4,10 @@ import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class MovieCollectionCard extends StatelessWidget {
+class CardMovieCollection extends StatelessWidget {
   final MediaItem movie;
-  const MovieCollectionCard({
+
+  const CardMovieCollection({
     super.key,
     required this.movie,
   });

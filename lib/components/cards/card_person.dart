@@ -4,9 +4,13 @@ import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class PersonCard extends StatelessWidget {
+class CardPerson extends StatelessWidget {
   final PersonItem personItem;
-  const PersonCard({super.key, required this.personItem});
+
+  const CardPerson({
+    super.key,
+    required this.personItem,
+  });
 
   @override
   Widget build(BuildContext context) {

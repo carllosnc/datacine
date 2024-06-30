@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vw/vw.dart';
-import '/imports.dart';
 import 'package:http/http.dart' as http;
+import 'package:vw/vw.dart';
+
+import '/imports.dart';
 
 showMediaRecommendations({
   required BuildContext context,
@@ -14,7 +15,8 @@ showMediaRecommendations({
       http.Client(),
     );
 
-    final (recommendations, _) = await mediaRecommendationService.getRecomendations(
+    final (recommendations, _) =
+        await mediaRecommendationService.getRecomendations(
       mediaId: (movie?.id ?? tvShow?.id) as int,
       mediaType: mediaType,
       page: page,
@@ -34,7 +36,7 @@ showMediaRecommendations({
       ),
     ),
     context: context,
-    body: MediaInfinityGrid(
+    body: GridMediaInfinity(
       mediaType: mediaType,
       fetchData: fetchData,
     ),

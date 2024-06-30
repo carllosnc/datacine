@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
 
-class PeopleInfinityGrid extends StatefulWidget {
+class GridMediaInfinity extends StatefulWidget {
   final Function({required int page}) fetchData;
-  final String pageTitle;
+  final MediaType mediaType;
 
-  const PeopleInfinityGrid({
+  const GridMediaInfinity({
     super.key,
     required this.fetchData,
-    required this.pageTitle,
+    required this.mediaType,
   });
 
   @override
-  State<PeopleInfinityGrid> createState() => _PeopleInfinityGridState();
+  State<GridMediaInfinity> createState() => _GridMediaInfinityState();
 }
 
-class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
-  final List<PersonItem> _dataList = [];
+class _GridMediaInfinityState extends State<GridMediaInfinity> {
+  final List<MediaItem> _dataList = [];
   bool _isLoading = false;
   int _page = 1;
   dynamic _totalPages = false;
@@ -25,10 +25,12 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
   @override
   void initState() {
     super.initState();
+
+    //initial fetch
     fetchData();
   }
 
-  // fetch data from api and add to _dataList and increase _page by 1
+  //fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
     try {
       final newData = await widget.fetchData(page: _page);
@@ -46,7 +48,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
     }
   }
 
-  // check if scroll reached the end of the page
+  //check if scroll reached the end of the page
   bool _onScrollNotification(ScrollNotification notification) {
     if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
       if (!_isLoading && _page <= _totalPages) {
@@ -56,7 +58,6 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
         fetchData();
       }
     }
-
     return false;
   }
 
@@ -79,7 +80,7 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
           //if _dataList is empty and _totalPages is not 0 or 1 show loading
           if (_dataList.isEmpty && (_totalPages != 0 && _totalPages != 1))
             const SliverFillRemaining(
-              child: Loading(),
+              child: Center(child: Loading()),
             ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 80),
@@ -92,12 +93,14 @@ class _PeopleInfinityGridState extends State<PeopleInfinityGrid> {
                 mainAxisSpacing: 25,
               ),
               itemBuilder: (context, index) {
-                PersonItem personItem = _dataList[index];
+                MediaItem mediaItem = _dataList[index];
 
                 if (index < _dataList.length) {
-                  return PersonCard(personItem: personItem);
+                  return CardMiniMedia(
+                    mediaItem: mediaItem,
+                    mediaType: widget.mediaType,
+                  );
                 }
-
                 return null;
               },
             ),

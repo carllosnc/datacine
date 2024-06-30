@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import '/imports.dart';
 
-class CompanyInfinityList extends StatefulWidget {
+class ListPeopleInfinity extends StatefulWidget {
   final Function({required int page}) fetchData;
   final String pageTitle;
 
-  const CompanyInfinityList({
+  const ListPeopleInfinity({
     super.key,
     required this.fetchData,
     required this.pageTitle,
   });
 
   @override
-  State<CompanyInfinityList> createState() => _CompanyInfinityListState();
+  State<ListPeopleInfinity> createState() => _ListPeopleInfinityState();
 }
 
-class _CompanyInfinityListState extends State<CompanyInfinityList> {
-  final List<Company> _dataList = [];
+class _ListPeopleInfinityState extends State<ListPeopleInfinity> {
+  final List<PersonItem> _dataList = [];
   bool _isLoading = false;
   int _page = 1;
   dynamic _totalPages = false;
@@ -25,16 +25,13 @@ class _CompanyInfinityListState extends State<CompanyInfinityList> {
   @override
   void initState() {
     super.initState();
-
-    //initial fetch
     fetchData();
   }
 
-  //fetch data from api and add to _dataList and increase _page by 1
+  // fetch data from api and add to _dataList and increase _page by 1
   Future<void> fetchData() async {
     try {
       final newData = await widget.fetchData(page: _page);
-
       setState(() {
         _dataList.addAll(newData.results!);
         _isLoading = false;
@@ -48,7 +45,7 @@ class _CompanyInfinityListState extends State<CompanyInfinityList> {
     }
   }
 
-  //check if scroll reached the end of the page
+  // check if scroll reached the end of the page
   bool _onScrollNotification(ScrollNotification notification) {
     if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
       if (!_isLoading && _page <= _totalPages) {
@@ -85,15 +82,16 @@ class _CompanyInfinityListState extends State<CompanyInfinityList> {
                 const Positioned(
                   child: Loading(),
                 ),
+
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataList.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
-                  Company company = _dataList[index];
+                  PersonItem person = _dataList[index];
 
                   if (index < _dataList.length) {
-                    return CompanyListTile(company: company);
+                    return ListTilePerson(person: person);
                   }
 
                   return null;

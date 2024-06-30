@@ -1,6 +1,8 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 import '/imports.dart';
 
 class MoviesTab extends StatefulWidget {
@@ -10,7 +12,8 @@ class MoviesTab extends StatefulWidget {
   State<MoviesTab> createState() => _MoviesTabState();
 }
 
-class _MoviesTabState extends State<MoviesTab> with AutomaticKeepAliveClientMixin<MoviesTab> {
+class _MoviesTabState extends State<MoviesTab>
+    with AutomaticKeepAliveClientMixin<MoviesTab> {
   FilterNotifier filtersState = FilterNotifier();
 
   @override
@@ -36,7 +39,7 @@ class _MoviesTabState extends State<MoviesTab> with AutomaticKeepAliveClientMixi
           return discovered;
         }
 
-        return MediaInfinityGrid(
+        return GridMediaInfinity(
           key: ValueKey(randomKey),
           mediaType: MediaType.movie,
           fetchData: getData,

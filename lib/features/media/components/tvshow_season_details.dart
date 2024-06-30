@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
+
 import '/imports.dart';
 
 tvshowOpenSeasonDetails({
@@ -67,7 +68,9 @@ tvshowOpenSeasonDetails({
                       ),
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          season.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+                          season.posterPath == null
+                              ? AppColors.imageFilter
+                              : Colors.transparent,
                           BlendMode.color,
                         ),
                         child: Imgy(
@@ -125,7 +128,7 @@ tvshowOpenSeasonDetails({
                 (BuildContext context, int index) {
                   Episode episode = season.episodes![index];
 
-                  return EpisodeListTile(episode: episode);
+                  return ListTileEpisode(episode: episode);
                 },
                 childCount: season.episodes!.length,
               ),

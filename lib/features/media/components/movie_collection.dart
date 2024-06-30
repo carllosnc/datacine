@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
+
 import '/imports.dart';
 
 class MovieCollection extends StatefulWidget {
@@ -14,7 +15,8 @@ class MovieCollection extends StatefulWidget {
   State<MovieCollection> createState() => _MovieCollectionState();
 }
 
-class _MovieCollectionState extends State<MovieCollection> with MovieCollectionService {
+class _MovieCollectionState extends State<MovieCollection>
+    with MovieCollectionService {
   @override
   void initState() {
     super.initState();
@@ -77,7 +79,7 @@ class _MovieCollectionState extends State<MovieCollection> with MovieCollectionS
             itemBuilder: (BuildContext context, int index) {
               MediaItem movie = collection.parts![index];
 
-              return MovieCollectionCard(movie: movie);
+              return CardMovieCollection(movie: movie);
             },
           ),
         ),

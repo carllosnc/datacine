@@ -3,7 +3,7 @@ import '/imports.dart';
 
 enum CreditType { cast, crew }
 
-showMediaCreditList({
+showListMediaCredits({
   required BuildContext context,
   required Map<String, List<PersonItem>> credits,
   required String title,
@@ -72,7 +72,9 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       (person) {
         if (searchQuery.isEmpty) return true;
 
-        return '${person.name}, ${person.character}'.toLowerCase().contains(searchQuery);
+        return '${person.name}, ${person.character}'
+            .toLowerCase()
+            .contains(searchQuery);
       },
     ).toList();
 
@@ -81,7 +83,9 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
       (person) {
         if (searchQuery.isEmpty) return true;
 
-        return '${person.name}, ${person.job}'.toLowerCase().contains(searchQuery);
+        return '${person.name}, ${person.job}'
+            .toLowerCase()
+            .contains(searchQuery);
       },
     ).toList();
 
@@ -99,7 +103,9 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.close),
             ),
-            title: showSearch ? filter(context) : const FloatPageTitle(text: "Credits"),
+            title: showSearch
+                ? filter(context)
+                : const FloatPageTitle(text: "Credits"),
             actions: [
               IconButton(
                 onPressed: () {
@@ -130,7 +136,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
                       itemBuilder: (context, index) {
                         PersonItem person = cast[index];
 
-                        return PersonListTile(person: person);
+                        return ListTilePerson(person: person);
                       },
                     ),
               crew.isEmpty
@@ -142,7 +148,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
                       itemBuilder: (context, index) {
                         PersonItem person = crew[index];
 
-                        return PersonListTile(person: person);
+                        return ListTilePerson(person: person);
                       },
                     ),
             ],

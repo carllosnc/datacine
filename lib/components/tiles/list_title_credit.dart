@@ -3,11 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
 import '/imports.dart';
 
-class CreditListTile extends StatelessWidget {
+class ListTileCredit extends StatelessWidget {
   final MediaItem item;
   final MediaType mediaType;
 
-  const CreditListTile({
+  const ListTileCredit({
     super.key,
     required this.item,
     required this.mediaType,
@@ -45,7 +45,9 @@ class CreditListTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.releaseDate?.formatYear() ?? item.firstAirDate?.formatYear() ?? '-',
+            item.releaseDate?.formatYear() ??
+                item.firstAirDate?.formatYear() ??
+                '-',
             style: TextStyle(
               fontSize: 12,
               color: AppColors.link,

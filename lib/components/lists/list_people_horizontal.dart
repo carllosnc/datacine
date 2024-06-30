@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class PersonHorizontalList extends StatelessWidget {
+class ListPeopleHorizontal extends StatelessWidget {
   final List<PersonItem>? list;
   final String title;
 
-  const PersonHorizontalList({
+  const ListPeopleHorizontal({
     super.key,
     required this.list,
     required this.title,
@@ -47,7 +47,7 @@ class PersonHorizontalList extends StatelessWidget {
 
               return SizedBox(
                 width: 120,
-                child: PersonCard(personItem: personItem),
+                child: CardPerson(personItem: personItem),
               );
             },
           ),
