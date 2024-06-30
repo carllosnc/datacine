@@ -19,6 +19,7 @@ tvshowOpenSeasonDetails({
   );
 
   VWPage.open(
+    borderRadius: 0,
     appBar: AppBar(
       title: FloatPageTitle(
         text: tvshowName,

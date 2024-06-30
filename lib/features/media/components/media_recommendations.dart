@@ -26,6 +26,7 @@ showMediaRecommendations({
   }
 
   VWPage.open(
+    borderRadius: 0,
     appBar: AppBar(
       title: const FloatPageTitle(text: 'Recommendations'),
       leading: IconButton(

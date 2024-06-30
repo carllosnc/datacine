@@ -34,6 +34,7 @@ mediaFilter({
   }
 
   VWPage.open(
+    borderRadius: 0,
     context: context,
     appBar: AppBar(
       title: FloatPageTitle(

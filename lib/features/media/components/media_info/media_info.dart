@@ -23,9 +23,10 @@ class MediaInfo extends StatelessWidget {
       color: AppColors.buttonColor,
       onTap: () {
         VWPage.open(
+          borderRadius: 0,
           context: context,
           appBar: AppBar(
-            title: const FloatPageTitle(text: 'Informations'),
+            title: const FloatPageTitle(text: 'Information'),
             leading: IconButton(
               icon: const Icon(Icons.close),
               onPressed: () => Navigator.of(context).pop(),

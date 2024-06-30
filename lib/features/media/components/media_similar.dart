@@ -25,6 +25,7 @@ showMediaSimilar({
   }
 
   VWPage.open(
+    borderRadius: 0,
     appBar: AppBar(
       title: const FloatPageTitle(text: 'Similar'),
       leading: IconButton(

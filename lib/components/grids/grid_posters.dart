@@ -158,26 +158,20 @@ class _MediaPosterGridState extends State<MediaPosterGrid> {
       return const EmptyView(title: 'Posters');
     }
 
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(15),
-        topRight: Radius.circular(15),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: FloatPageTitle(
-            text: "Posters: ${filteredPosters.length}",
-          ),
-          actions: selectLang(context),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(Icons.close),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: FloatPageTitle(
+          text: "Posters: ${filteredPosters.length}",
         ),
-        body: posterGrid(),
+        actions: selectLang(context),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.close),
+        ),
       ),
+      body: posterGrid(),
     );
   }
 }
