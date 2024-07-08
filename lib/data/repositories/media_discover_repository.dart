@@ -7,7 +7,10 @@ class MediaDiscoverRepository extends Repository {
   MediaDiscoverRepository(super.httpClient);
 
   Future<(MediaList, http.Response)> discoverMovies({
-    required Filter filter,
+    String? startYear,
+    String? endYear,
+    String? genres,
+    String? lang,
     required int page,
   }) async {
     Map<String, String> query = {
@@ -15,16 +18,23 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    if (filter.genres != null) {
-      query.addAll({"with_genres": filter.genres!});
+    if (genres != null) {
+      query.addAll({
+        "with_genres": genres,
+      });
     }
 
-    if (filter.years != null) {
-      query.addAll({"primary_release_year": filter.years!});
+    if (startYear != null) {
+      query.addAll({
+        "primary_release_date.gte": "$startYear-01-01",
+        "primary_release_date.lte": "$endYear-12-31",
+      });
     }
 
-    if (filter.lang != null) {
-      query.addAll({"with_original_language": filter.lang!});
+    if (lang != null) {
+      query.addAll({
+        "with_original_language": lang,
+      });
     }
 
     var response = await httpClient.get(
@@ -35,13 +45,15 @@ class MediaDiscoverRepository extends Repository {
       headers: headers,
     );
 
-    var medialist = MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
 
-    return (medialist, response);
+    return (mediaList, response);
   }
 
   Future<(MediaList, http.Response)> discoverTvShows({
-    required Filter filter,
+    String? genre,
+    String? releaseYear,
+    String? lang,
     required int page,
   }) async {
     Map<String, String> query = {
@@ -49,16 +61,16 @@ class MediaDiscoverRepository extends Repository {
       "page": "$page",
     };
 
-    if (filter.genres != null) {
-      query.addAll({"with_genres": filter.genres!});
+    if (genre != null) {
+      query.addAll({"with_genres": genre});
     }
 
-    if (filter.years != null) {
-      query.addAll({"first_air_date_year": filter.years!});
+    if (releaseYear != null) {
+      query.addAll({"first_air_date_year": releaseYear});
     }
 
-    if (filter.lang != null) {
-      query.addAll({"with_original_language": filter.lang!});
+    if (lang != null) {
+      query.addAll({"with_original_language": lang});
     }
 
     var response = await httpClient.get(
@@ -69,15 +81,16 @@ class MediaDiscoverRepository extends Repository {
       headers: headers,
     );
 
-    var medialist = MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
 
-    return (medialist, response);
+    return (mediaList, response);
   }
 
-  Future<(MediaList, http.Response)> discoverMoviesByCompany(
-      {required int companyId,
-      required int page,
-      required MediaType mediaType}) async {
+  Future<(MediaList, http.Response)> discoverMoviesByCompany({
+    required int companyId,
+    required int page,
+    required MediaType mediaType,
+  }) async {
     Map<String, String> query = {
       "include_adult": "false",
       "page": "$page",
@@ -92,9 +105,9 @@ class MediaDiscoverRepository extends Repository {
       headers: headers,
     );
 
-    var medialist = MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
 
-    return (medialist, response);
+    return (mediaList, response);
   }
 
   Future<(MediaList, http.Response)> discoverMoviesByKeyword({
@@ -116,8 +129,8 @@ class MediaDiscoverRepository extends Repository {
       headers: headers,
     );
 
-    var medialist = MediaList.fromJson(jsonDecode(response.body));
+    var mediaList = MediaList.fromJson(jsonDecode(response.body));
 
-    return (medialist, response);
+    return (mediaList, response);
   }
 }

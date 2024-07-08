@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import '/imports.dart';
 
-class SearchSugestions extends StatefulWidget {
+class SearchSuggestions extends StatefulWidget {
   final String query;
 
-  const SearchSugestions({
+  const SearchSuggestions({
     super.key,
     required this.query,
   });
 
   @override
-  State<SearchSugestions> createState() => _SearchSugestionsState();
+  State<SearchSuggestions> createState() => _SearchSuggestionsState();
 }
 
-class _SearchSugestionsState extends State<SearchSugestions>
+class _SearchSuggestionsState extends State<SearchSuggestions>
     with SearchSuggestionService {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _SearchSugestionsState extends State<SearchSugestions>
 
     if (isError) {
       return const ErrorText(
-        message: 'Error while fetching sugestions',
+        message: 'Error while fetching suggestions',
       );
     }
 

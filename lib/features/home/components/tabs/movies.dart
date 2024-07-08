@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '/imports.dart';
@@ -11,38 +10,35 @@ class MoviesTab extends StatefulWidget {
 }
 
 class _MoviesTabState extends State<MoviesTab>
-    with AutomaticKeepAliveClientMixin<MoviesTab> {
-  FilterNotifier filtersState = FilterNotifier();
-
+    with AutomaticKeepAliveClientMixin<MoviesTab>, SharedState {
   @override
   Widget build(BuildContext context) {
+    var key = ValueKey(
+      'movies-${movieFilterState.dateLabel}-${movieFilterState.genre?.id}-${movieFilterState.lang?.iso6391}',
+    );
+
     super.build(context);
 
-    return ValueListenableBuilder(
-      valueListenable: filtersState.movieFilters,
-      builder: (context, value, child) {
-        var randomKey = Random().nextInt(1000);
+    Future<MediaList> getData({required int page}) async {
+      var mediaDiscoverRepository = MediaDiscoverRepository(
+        http.Client(),
+      );
 
-        // get data from api using filters
-        Future<MediaList> getData({required int page}) async {
-          var mediaDiscoverRepository = MediaDiscoverRepository(
-            http.Client(),
-          );
+      var (discovered, _) = await mediaDiscoverRepository.discoverMovies(
+        page: page,
+        startYear: movieFilterState.startDate,
+        endYear: movieFilterState.endDate,
+        genres: movieFilterState.genre?.id.toString(),
+        lang: movieFilterState.lang?.iso6391,
+      );
 
-          var (discovered, _) = await mediaDiscoverRepository.discoverMovies(
-            page: page,
-            filter: value,
-          );
+      return discovered;
+    }
 
-          return discovered;
-        }
-
-        return GridMediaInfinity(
-          key: ValueKey(randomKey),
-          mediaType: MediaType.movie,
-          fetchData: getData,
-        );
-      },
+    return GridMediaInfinity(
+      key: key,
+      mediaType: MediaType.movie,
+      fetchData: getData,
     );
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_search_result.dart';
-import 'custom_search_sugestions.dart';
+import 'custom_search_suggestions.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
@@ -79,7 +79,7 @@ class CustomSearchDelegate extends SearchDelegate {
           return Container();
         }
 
-        return SearchSugestions(query: query);
+        return SearchSuggestions(query: query);
       },
     );
   }

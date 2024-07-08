@@ -105,5 +105,7 @@ export '/features/media/tvshow/tvshow_view.dart';
 export '/features/person/person_view.dart';
 export '/features/welcome/welcome_view.dart';
 
-//NOTIFIERS
-export '/shared_state/filter_notifier.dart';
+//SHARED STATE
+export '/shared_state/movie_filter_state.dart';
+export '/shared_state/shared_state.dart';
+export '/shared_state/tvshow_filter_state.dart';

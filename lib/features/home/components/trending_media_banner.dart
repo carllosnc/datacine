@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
+
 import '/imports.dart';
 
 class TrendingMediaBanner extends StatelessWidget {
@@ -63,7 +64,8 @@ class TrendingMediaBanner extends StatelessWidget {
                   direction: Axis.vertical,
                   children: [
                     Text(
-                      (media.releaseDate ?? media.firstAirDate ?? '').formatDateTime(),
+                      (media.releaseDate ?? media.firstAirDate ?? '')
+                          .formatDateTime(),
                       style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,

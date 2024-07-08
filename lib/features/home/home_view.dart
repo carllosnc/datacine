@@ -4,8 +4,9 @@ import 'components/tabs/movies.dart';
 import 'components/tabs/tv_shows.dart';
 import 'components/tabs/trending.dart';
 import 'components/tabs/people.dart';
-import 'components/media_filter/media_filters.dart';
 import 'components/custom_search/custom_search.dart';
+import 'components/movie_filters/movie_filters.dart';
+import 'components/tvshow_filters/tvshow_filters.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,7 +15,8 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin {
+class _HomeViewState extends State<HomeView>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   bool _showMovieFilter = false;
@@ -51,46 +53,24 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
     });
   }
 
+  Widget getFilter() {
+    if (_showMovieFilter) {
+      return const MovieFilters();
+    }
+
+    if (_showTvShowFilter) {
+      return const TvShowFilters();
+    }
+
+    return const SizedBox.shrink();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
       length: 4,
       child: Scaffold(
-        floatingActionButton: Wrap(
-          children: [
-            if (_showMovieFilter)
-              FloatingActionButton.extended(
-                extendedTextStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                label: const Text('Discover movies'),
-                icon: const Icon(Icons.movie),
-                onPressed: () {
-                  mediaFilter(
-                    context: context,
-                    title: "Movie filter",
-                    mediaType: MediaType.movie,
-                  );
-                },
-              ),
-            if (_showTvShowFilter)
-              FloatingActionButton.extended(
-                extendedTextStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                label: const Text('Discover TV Shows'),
-                icon: const Icon(Icons.tv),
-                onPressed: () {
-                  mediaFilter(
-                    context: context,
-                    title: "TV Show Filter ",
-                    mediaType: MediaType.tv,
-                  );
-                },
-              ),
-          ],
-        ),
         appBar: AppBar(
           centerTitle: true,
           title: Image.asset(
@@ -127,6 +107,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
             PeopleTab(),
           ],
         ),
+        bottomNavigationBar: getFilter(),
       ),
     );
   }

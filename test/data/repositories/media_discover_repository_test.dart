@@ -2,6 +2,7 @@ import 'package:datacine/imports.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 @GenerateNiceMocks([MockSpec<http.Client>()])
 import 'package:http/http.dart' as http;
 
@@ -15,13 +16,13 @@ void main() {
       http.Client(),
     );
 
-    var filter = Filter(
-      years: "2020",
+    final (movies, response) = await discoverRepository.discoverMovies(
+      startYear: "2020",
+      endYear: "2020",
       genres: "28",
       lang: "en",
+      page: 1,
     );
-
-    final (movies, response) = await discoverRepository.discoverMovies(filter: filter, page: 1);
 
     expect(response.statusCode, 200);
     expect(movies, isA<MediaList>());
@@ -32,13 +33,12 @@ void main() {
       http.Client(),
     );
 
-    var filter = Filter(
-      years: "2020",
-      genres: "28",
+    final (tvShows, response) = await discoverRepository.discoverTvShows(
+      releaseYear: "2020",
+      genre: "28",
       lang: "en",
+      page: 1,
     );
-
-    final (tvShows, response) = await discoverRepository.discoverTvShows(filter: filter, page: 1);
 
     expect(response.statusCode, 200);
     expect(tvShows, isA<MediaList>());

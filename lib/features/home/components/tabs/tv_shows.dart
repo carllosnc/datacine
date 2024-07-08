@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,38 +13,34 @@ class TVShowsTab extends StatefulWidget {
 }
 
 class _TVShowsTabState extends State<TVShowsTab>
-    with AutomaticKeepAliveClientMixin<TVShowsTab> {
-  FilterNotifier filtersState = FilterNotifier();
-
+    with AutomaticKeepAliveClientMixin<TVShowsTab>, SharedState {
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
-    return ValueListenableBuilder(
-      valueListenable: filtersState.tvShowFilters,
-      builder: (context, value, child) {
-        var randomKey = Random().nextInt(100000);
+    var key = ValueKey(
+      'tvshows-${tvShowFilterState.releaseYear}-${tvShowFilterState.genre?.id}-${tvShowFilterState.lang?.iso6391}',
+    );
 
-        // get data from api using filters
-        Future<MediaList> getData({required int page}) async {
-          var mediaDiscoverRepository = MediaDiscoverRepository(
-            http.Client(),
-          );
+    Future<MediaList> getData({required int page}) async {
+      var mediaDiscoverRepository = MediaDiscoverRepository(
+        http.Client(),
+      );
 
-          var (discovered, _) = await mediaDiscoverRepository.discoverTvShows(
-            page: page,
-            filter: value,
-          );
+      var (discovered, _) = await mediaDiscoverRepository.discoverTvShows(
+        page: page,
+        releaseYear: tvShowFilterState.releaseYear,
+        genre: tvShowFilterState.genre?.id.toString(),
+        lang: tvShowFilterState.lang?.iso6391,
+      );
 
-          return discovered;
-        }
+      return discovered;
+    }
 
-        return GridMediaInfinity(
-          key: ValueKey(randomKey),
-          mediaType: MediaType.tv,
-          fetchData: getData,
-        );
-      },
+    return GridMediaInfinity(
+      key: key,
+      mediaType: MediaType.tv,
+      fetchData: getData,
     );
   }
 
