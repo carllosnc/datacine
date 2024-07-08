@@ -11,7 +11,8 @@ extension ColorExtension on Color {
   Color lighten([double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(this);
-    final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+    final hslLight =
+        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
     return hslLight.toColor();
   }
 }
@@ -28,9 +29,12 @@ sealed class AppColors {
   static Color get link => const Color.fromARGB(255, 255, 167, 154);
   static Color get buttonColor => const Color.fromARGB(255, 57, 48, 45);
   static Color get title => Colors.white;
-  static Color floatPageColor(BuildContext context) => Theme.of(context).colorScheme.tertiary;
-  static Color backgroundColor(BuildContext context) => Theme.of(context).scaffoldBackgroundColor;
+  static Color floatPageColor(BuildContext context) =>
+      Theme.of(context).colorScheme.tertiary;
+  static Color backgroundColor(BuildContext context) =>
+      Theme.of(context).scaffoldBackgroundColor;
+  static Color secondaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.secondaryContainer;
   static Color get label => Colors.white.withOpacity(0.5);
   static Color get text => Colors.white;
 }
-
