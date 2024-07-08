@@ -111,4 +111,4 @@ export '/shared_state/shared_state.dart';
 export '/shared_state/tvshow_filter_state.dart';
 
 //CUSTOM SEARCH
-export 'features/home/components/custom_search/custom_search.dart';
+export '/features/home/components/custom_search/custom_search.dart';
