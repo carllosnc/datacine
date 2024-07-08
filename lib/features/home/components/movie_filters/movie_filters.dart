@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
-import 'date_filter.dart';
-import 'genre_filter.dart';
-import 'lang_filter.dart';
+import 'movie_date_filter.dart';
+import 'movie_genre_filter.dart';
+import 'movie_lang_filter.dart';
 
 class MovieFilters extends StatelessWidget {
   const MovieFilters({super.key});
@@ -27,9 +27,9 @@ class MovieFilters extends StatelessWidget {
         verticalAlignment: CrossAxisAlignment.center,
         horizontalAlignment: MainAxisAlignment.center,
         children: [
-          DateFilter(),
-          GenreFilter(),
-          LangFilter(),
+          MovieDateFilter(),
+          MovieGenreFilter(),
+          MovieLangFilter(),
         ],
       ),
     );

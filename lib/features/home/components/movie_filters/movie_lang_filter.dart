@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class LangFilter extends StatefulWidget {
-  const LangFilter({super.key});
+class MovieLangFilter extends StatefulWidget {
+  const MovieLangFilter({super.key});
 
   @override
-  State<LangFilter> createState() => _LangFilterState();
+  State<MovieLangFilter> createState() => _MovieLangFilterState();
 }
 
-class _LangFilterState extends State<LangFilter> with SharedState {
+class _MovieLangFilterState extends State<MovieLangFilter> with SharedState {
   List<Language> getLang() {
     return languages.where((element) {
       return [
@@ -30,7 +30,7 @@ class _LangFilterState extends State<LangFilter> with SharedState {
 
   @override
   Widget build(BuildContext context) {
-    var currentLang = tvShowFilterState.lang?.englishName;
+    var currentLang = movieFilterState.lang?.englishName;
 
     return VWButton(
       label: currentLang ?? 'All languages',
@@ -51,7 +51,7 @@ class _LangFilterState extends State<LangFilter> with SharedState {
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      tvShowFilterState.setLang(null);
+                      movieFilterState.setLang(null);
                     },
                     icon: const Icon(Icons.refresh),
                   )
@@ -73,7 +73,7 @@ class _LangFilterState extends State<LangFilter> with SharedState {
                     return ListTile(
                       onTap: () {
                         Navigator.pop(context);
-                        tvShowFilterState.setLang(lang);
+                        movieFilterState.setLang(lang);
                       },
                       leading: Icon(
                         Icons.translate,

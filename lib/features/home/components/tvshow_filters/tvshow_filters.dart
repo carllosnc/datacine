@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
-import 'date_filter.dart';
-import 'genre_filter.dart';
-import 'lang_filter.dart';
+import 'tvshow_date_filter.dart';
+import 'tvshow_genre_filter.dart';
+import 'tvshow_lang_filter.dart';
 
 class TvShowFilters extends StatelessWidget {
   const TvShowFilters({super.key});
@@ -27,9 +27,9 @@ class TvShowFilters extends StatelessWidget {
         verticalAlignment: CrossAxisAlignment.center,
         horizontalAlignment: MainAxisAlignment.center,
         children: [
-          DateFilter(),
-          GenreFilter(),
-          LangFilter(),
+          TvShowDateFilter(),
+          TvShowGenreFilter(),
+          TvShowLangFilter(),
         ],
       ),
     );

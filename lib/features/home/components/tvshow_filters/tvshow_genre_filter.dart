@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class GenreFilter extends StatefulWidget {
-  const GenreFilter({super.key});
+class TvShowGenreFilter extends StatefulWidget {
+  const TvShowGenreFilter({super.key});
 
   @override
-  State<GenreFilter> createState() => _GenreFilterState();
+  State<TvShowGenreFilter> createState() => _TvShowGenreFilterState();
 }
 
-class _GenreFilterState extends State<GenreFilter>
+class _TvShowGenreFilterState extends State<TvShowGenreFilter>
     with GenreFilterService, SharedState {
   @override
   initState() {
     super.initState();
 
-    fetchGenre(MediaType.movie);
+    fetchGenre(MediaType.tv);
   }
 
   Widget content() {
@@ -26,11 +26,11 @@ class _GenreFilterState extends State<GenreFilter>
 
         return ListTile(
           onTap: () {
-            movieFilterState.setGenres(genre);
+            tvShowFilterState.setGenres(genre);
             Navigator.pop(context);
           },
           leading: Icon(
-            Icons.movie,
+            Icons.tv,
             color: Colors.white.withOpacity(0.2),
           ),
           title: Text("${genre.name}"),
@@ -48,8 +48,8 @@ class _GenreFilterState extends State<GenreFilter>
   @override
   Widget build(BuildContext context) {
     return VWButton(
-      label: movieFilterState.genre != null
-          ? "Genre: ${movieFilterState.genre?.name}"
+      label: tvShowFilterState.genre != null
+          ? "Genre: ${tvShowFilterState.genre?.name}"
           : "All genres",
       onTap: () {
         showModalBottomSheet(
@@ -60,7 +60,7 @@ class _GenreFilterState extends State<GenreFilter>
                 actions: [
                   IconButton(
                     onPressed: () {
-                      movieFilterState.setGenres(null);
+                      tvShowFilterState.setGenres(null);
                       Navigator.pop(context);
                     },
                     icon: const Icon(Icons.refresh),

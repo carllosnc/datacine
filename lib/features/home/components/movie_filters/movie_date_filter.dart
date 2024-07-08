@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class DateFilter extends StatefulWidget {
-  const DateFilter({super.key});
+class MovieDateFilter extends StatefulWidget {
+  const MovieDateFilter({super.key});
 
   @override
-  State<DateFilter> createState() => _DateFilterState();
+  State<MovieDateFilter> createState() => _MovieDateFilterState();
 }
 
-class _DateFilterState extends State<DateFilter> with SharedState {
+class _MovieDateFilterState extends State<MovieDateFilter> with SharedState {
   Map<String, dynamic> getDecade(int startYear, int endYear) {
     return {
       "startYear": "$startYear",

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
 
-class DateFilter extends StatefulWidget {
-  const DateFilter({super.key});
+class TvShowDateFilter extends StatefulWidget {
+  const TvShowDateFilter({super.key});
 
   @override
-  State<DateFilter> createState() => _DateFilterState();
+  State<TvShowDateFilter> createState() => _TvShowDateFilterState();
 }
 
-class _DateFilterState extends State<DateFilter> with SharedState {
+class _TvShowDateFilterState extends State<TvShowDateFilter> with SharedState {
   List<Map<String, dynamic>> rangeOfYears() {
     List<Map<String, dynamic>> years = [];
 
