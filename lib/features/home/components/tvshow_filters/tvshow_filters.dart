@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:vw/vw.dart';
+import 'package:flutter/material.dart';
 import '/imports.dart';
 import 'tvshow_date_filter.dart';
 import 'tvshow_genre_filter.dart';
@@ -11,7 +11,7 @@ class TvShowFilters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VWBox(
-      height: 60,
+      height: 80,
       blurEffect: 5,
       border: Border(
         top: BorderSide(
@@ -21,7 +21,7 @@ class TvShowFilters extends StatelessWidget {
       ),
       color: AppColors.backgroundColor(context),
       child: const VWRow(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
         scrollable: true,
         gap: 10,
         verticalAlignment: CrossAxisAlignment.center,

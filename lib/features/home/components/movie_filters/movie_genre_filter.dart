@@ -49,7 +49,7 @@ class _MovieGenreFilterState extends State<MovieGenreFilter>
   Widget build(BuildContext context) {
     return VWButton(
       label: movieFilterState.genre != null
-          ? "Genre: ${movieFilterState.genre?.name}"
+          ? "${movieFilterState.genre?.name}"
           : "All genres",
       onTap: () {
         showModalBottomSheet(

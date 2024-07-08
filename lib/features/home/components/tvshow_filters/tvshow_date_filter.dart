@@ -29,7 +29,7 @@ class _TvShowDateFilterState extends State<TvShowDateFilter> with SharedState {
   @override
   Widget build(BuildContext context) {
     return VWButton(
-      label: "Date: ${tvShowFilterState.releaseYear}",
+      label: tvShowFilterState.releaseYear,
       onTap: () {
         showModalBottomSheet(
           context: context,

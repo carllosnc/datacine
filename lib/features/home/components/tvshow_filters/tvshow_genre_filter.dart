@@ -49,7 +49,7 @@ class _TvShowGenreFilterState extends State<TvShowGenreFilter>
   Widget build(BuildContext context) {
     return VWButton(
       label: tvShowFilterState.genre != null
-          ? "Genre: ${tvShowFilterState.genre?.name}"
+          ? "${tvShowFilterState.genre?.name}"
           : "All genres",
       onTap: () {
         showModalBottomSheet(

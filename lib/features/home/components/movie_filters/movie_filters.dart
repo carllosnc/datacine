@@ -11,7 +11,7 @@ class MovieFilters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VWBox(
-      height: 60,
+      height: 80,
       blurEffect: 5,
       border: Border(
         top: BorderSide(
@@ -21,7 +21,7 @@ class MovieFilters extends StatelessWidget {
       ),
       color: AppColors.backgroundColor(context),
       child: const VWRow(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
         scrollable: true,
         gap: 10,
         verticalAlignment: CrossAxisAlignment.center,

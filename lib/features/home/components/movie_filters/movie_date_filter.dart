@@ -47,7 +47,7 @@ class _MovieDateFilterState extends State<MovieDateFilter> with SharedState {
   @override
   Widget build(BuildContext context) {
     return VWButton(
-      label: "Date: ${movieFilterState.dateLabel}",
+      label: movieFilterState.dateLabel,
       onTap: () {
         showModalBottomSheet(
           context: context,
