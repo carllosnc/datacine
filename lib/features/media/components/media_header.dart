@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:imgy/imgy.dart';
 import 'package:vw/vw.dart';
 import '/imports.dart';
@@ -54,7 +55,9 @@ class MediaHeader extends StatelessWidget {
                 ),
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                    mediaPoster == null ? AppColors.imageFilter : Colors.transparent,
+                    mediaPoster == null
+                        ? AppColors.imageFilter
+                        : Colors.transparent,
                     BlendMode.color,
                   ),
                   child: Imgy(
@@ -75,29 +78,47 @@ class MediaHeader extends StatelessWidget {
             Positioned(
               top: 70,
               left: 20,
-              child: Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Material(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(20),
-                  child: InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: const SizedBox(
-                      width: 50,
-                      height: 35,
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 22,
-                      ),
+              child: VWRow(
+                gap: 10,
+                children: [
+                  IconButton.filled(
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.backgroundColor(context),
+                      foregroundColor: Colors.white,
+                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
+                      shape: const CircleBorder(),
                     ),
+                    icon: const Icon(Icons.chevron_left),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                ),
+                  IconButton.filled(
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.backgroundColor(context),
+                      foregroundColor: Colors.white,
+                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
+                      shape: const CircleBorder(),
+                    ),
+                    icon: const Icon(Icons.home_outlined),
+                    onPressed: () => context.push('/'),
+                  ),
+                  IconButton.filled(
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.backgroundColor(context),
+                      foregroundColor: Colors.white,
+                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
+                      shape: const CircleBorder(),
+                    ),
+                    icon: const Icon(Icons.search_outlined),
+                    onPressed: () {
+                      showSearch(
+                        context: context,
+                        delegate: CustomSearchDelegate(),
+                      );
+                    },
+                  )
+                ],
               ),
-            ),
+            )
           ],
         ),
         VWColumn(
