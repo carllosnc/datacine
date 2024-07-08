@@ -57,7 +57,7 @@ class _TvShowDateFilterState extends State<TvShowDateFilter> with SharedState {
                   itemBuilder: (context, index) {
                     return ListTile(
                       leading: Icon(
-                        Icons.calendar_today,
+                        Icons.calendar_month_outlined,
                         color: Colors.white.withOpacity(0.2),
                       ),
                       onTap: () {

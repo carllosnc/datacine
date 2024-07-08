@@ -30,7 +30,7 @@ class _MovieGenreFilterState extends State<MovieGenreFilter>
             Navigator.pop(context);
           },
           leading: Icon(
-            Icons.movie,
+            Icons.movie_outlined,
             color: Colors.white.withOpacity(0.2),
           ),
           title: Text("${genre.name}"),
