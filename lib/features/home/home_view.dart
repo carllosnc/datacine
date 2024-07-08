@@ -4,7 +4,6 @@ import 'components/tabs/movies.dart';
 import 'components/tabs/tv_shows.dart';
 import 'components/tabs/trending.dart';
 import 'components/tabs/people.dart';
-import 'components/custom_search/custom_search.dart';
 import 'components/movie_filters/movie_filters.dart';
 import 'components/tvshow_filters/tvshow_filters.dart';
 
