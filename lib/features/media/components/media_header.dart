@@ -42,82 +42,53 @@ class MediaHeader extends StatelessWidget {
     return VWColumn(
       gap: 20,
       children: [
-        Stack(
-          children: [
-            Positioned(
-              child: Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(35),
-                    bottomRight: Radius.circular(35),
-                  ),
-                ),
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                    mediaPoster == null
-                        ? AppColors.imageFilter
-                        : Colors.transparent,
-                    BlendMode.color,
-                  ),
-                  child: Imgy(
-                    borderColor: Colors.white.withOpacity(0.2),
-                    width: coverWidth,
-                    height: coverHeight,
-                    src: imageSrc,
-                    placeholderColor: Colors.black,
-                    fullSrc: imageSrc,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(35),
-                      bottomRight: Radius.circular(35),
-                    ),
-                  ),
-                ),
+        Container(
+          clipBehavior: Clip.hardEdge,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(35),
+              bottomRight: Radius.circular(35),
+            ),
+          ),
+          child: ColorFiltered(
+            colorFilter: ColorFilter.mode(
+              mediaPoster == null ? AppColors.imageFilter : Colors.transparent,
+              BlendMode.color,
+            ),
+            child: Imgy(
+              borderColor: Colors.white.withOpacity(0.2),
+              width: coverWidth,
+              height: coverHeight,
+              src: imageSrc,
+              placeholderColor: Colors.black,
+              fullSrc: imageSrc,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(35),
+                bottomRight: Radius.circular(35),
               ),
             ),
-            Positioned(
-              top: 70,
-              left: 20,
-              child: VWRow(
-                gap: 10,
-                children: [
-                  IconButton.filled(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColors.backgroundColor(context),
-                      foregroundColor: Colors.white,
-                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
-                      shape: const CircleBorder(),
-                    ),
-                    icon: const Icon(Icons.chevron_left),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  IconButton.filled(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColors.backgroundColor(context),
-                      foregroundColor: Colors.white,
-                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
-                      shape: const CircleBorder(),
-                    ),
-                    icon: const Icon(Icons.home_outlined),
-                    onPressed: () => context.push('/'),
-                  ),
-                  IconButton.filled(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColors.backgroundColor(context),
-                      foregroundColor: Colors.white,
-                      side: BorderSide(color: Colors.white.withOpacity(0.4)),
-                      shape: const CircleBorder(),
-                    ),
-                    icon: const Icon(Icons.search_outlined),
-                    onPressed: () {
-                      showSearch(
-                        context: context,
-                        delegate: CustomSearchDelegate(),
-                      );
-                    },
-                  )
-                ],
-              ),
+          ),
+        ),
+        VWRow(
+          gap: 10,
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          children: [
+            IconButton.outlined(
+              icon: const Icon(Icons.chevron_left),
+              onPressed: () => Navigator.pop(context),
+            ),
+            IconButton.outlined(
+              icon: const Icon(Icons.home_outlined),
+              onPressed: () => context.push('/'),
+            ),
+            IconButton.outlined(
+              icon: const Icon(Icons.search_outlined),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),
+                );
+              },
             )
           ],
         ),
