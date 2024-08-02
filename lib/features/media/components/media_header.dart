@@ -79,7 +79,7 @@ class MediaHeader extends StatelessWidget {
             ),
             IconButton.outlined(
               icon: const Icon(Icons.home_outlined),
-              onPressed: () => context.push('/'),
+              onPressed: () => context.push("$homePath/"),
             ),
             IconButton.outlined(
               icon: const Icon(Icons.search_outlined),
