@@ -1,9 +1,7 @@
 import 'package:datacine/imports.dart';
-import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-@GenerateNiceMocks([MockSpec<http.Client>()])
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -16,8 +14,7 @@ void main() {
       http.Client(),
     );
 
-    final (recommendations, response) =
-        await recommendationsRepository.getRecommendations(
+    final (recommendations, response) = await recommendationsRepository.getRecommendations(
       mediaType: MediaType.movie,
       mediaId: 385687,
       page: 1,
@@ -33,8 +30,7 @@ void main() {
       http.Client(),
     );
 
-    final (recommendations, response) =
-        await recommendationsRepository.getRecommendations(
+    final (recommendations, response) = await recommendationsRepository.getRecommendations(
       mediaType: MediaType.tv,
       mediaId: 85271,
       page: 1,
