@@ -108,7 +108,7 @@ class _CustomSearchResultState extends State<CustomSearchResult> {
                 width: 1,
               ),
             ),
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
           ),
           child: VWRow(
             gap: 10,
