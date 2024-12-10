@@ -18,7 +18,7 @@ tvshowOpenSeasonDetails({
     seasonNumber: seasonNumber,
   );
 
-  VWPage.open(
+  context.openSheet(
     borderRadius: 0,
     appBar: AppBar(
       title: FloatPageTitle(
@@ -29,7 +29,6 @@ tvshowOpenSeasonDetails({
         icon: const Icon(Icons.close),
       ),
     ),
-    context: context,
     body: FutureBuilder(
       future: getSeason,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -69,9 +68,7 @@ tvshowOpenSeasonDetails({
                       ),
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          season.posterPath == null
-                              ? AppColors.imageFilter
-                              : Colors.transparent,
+                          season.posterPath == null ? AppColors.imageFilter : Colors.transparent,
                           BlendMode.color,
                         ),
                         child: Imgy(

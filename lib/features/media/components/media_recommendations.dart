@@ -15,8 +15,7 @@ showMediaRecommendations({
       http.Client(),
     );
 
-    final (recommendations, _) =
-        await mediaRecommendationService.getRecommendations(
+    final (recommendations, _) = await mediaRecommendationService.getRecommendations(
       mediaId: (movie?.id ?? tvShow?.id) as int,
       mediaType: mediaType,
       page: page,
@@ -25,7 +24,7 @@ showMediaRecommendations({
     return recommendations;
   }
 
-  VWPage.open(
+  context.openSheet(
     borderRadius: 0,
     appBar: AppBar(
       title: const FloatPageTitle(text: 'Recommendations'),
@@ -36,7 +35,6 @@ showMediaRecommendations({
         icon: const Icon(Icons.close),
       ),
     ),
-    context: context,
     body: GridMediaInfinity(
       mediaType: mediaType,
       fetchData: fetchData,

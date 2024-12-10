@@ -24,7 +24,7 @@ showMediaSimilar({
     return similar;
   }
 
-  VWPage.open(
+  context.openSheet(
     borderRadius: 0,
     appBar: AppBar(
       title: const FloatPageTitle(text: 'Similar'),
@@ -35,7 +35,6 @@ showMediaSimilar({
         icon: const Icon(Icons.close),
       ),
     ),
-    context: context,
     body: GridMediaInfinity(
       mediaType: mediaType,
       fetchData: fetchData,

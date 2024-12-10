@@ -22,9 +22,8 @@ class MediaInfo extends StatelessWidget {
       leftIcon: Icons.description_outlined,
       color: AppColors.buttonColor,
       onTap: () {
-        VWPage.open(
+        context.openSheet(
           borderRadius: 0,
-          context: context,
           appBar: AppBar(
             title: const FloatPageTitle(text: 'Information'),
             leading: IconButton(

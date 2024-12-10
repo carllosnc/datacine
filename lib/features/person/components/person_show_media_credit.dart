@@ -31,9 +31,8 @@ showMediaCredit(
     );
   }
 
-  return VWPage.open(
+  return context.openSheet(
     borderRadius: 0,
-    context: context,
     appBar: AppBar(
       title: FloatPageTitle(
         text: title,
