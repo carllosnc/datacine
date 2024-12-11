@@ -12,7 +12,6 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
   // load dotenv
   await dotenv.load(fileName: ".env");
 
