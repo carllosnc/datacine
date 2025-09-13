@@ -14,7 +14,7 @@ appTheme(BuildContext context) {
         fontSize: 16,
       ),
     ),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelStyle: TextStyle(
         fontSize: 14,
       ),
