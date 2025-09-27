@@ -30,7 +30,7 @@ class WelcomeView extends StatelessWidget {
               height: 30,
             ),
             const Text(
-              "First rule: you do not talk about Datacine.",
+              "Your Pocket Guide to Every Movie Ever Made",
               style: TextStyle(
                 fontSize: 16,
                 shadows: [
