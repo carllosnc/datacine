@@ -5,21 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "datacine",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "datacine (profile mode)",
+      "name": "Launch",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
-    },
-    {
-      "name": "datacine (release mode)",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "release"
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file", "api-keys.json"]
     }
   ]
 }

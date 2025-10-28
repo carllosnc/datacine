@@ -1,8 +1,7 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Repository {
-  static final String? token = dotenv.env['TMDB_AUTH_TOKEN_V4'];
+  static const String token = String.fromEnvironment("TMDB_AUTH_TOKEN_V4");
 
   final String baseUrl = "api.themoviedb.org";
 

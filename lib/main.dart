@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '/app.dart';
 import '/imports.dart';
 
@@ -12,8 +11,6 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  // load dotenv
-  await dotenv.load(fileName: ".env");
 
   // load shared preferences
   await sharedPreferences.loadPreferences();
