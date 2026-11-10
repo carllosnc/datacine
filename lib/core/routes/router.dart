@@ -42,18 +42,18 @@ final companyDetails = GoRoute(
 final personDetails = GoRoute(
   path: 'person/:id',
   builder: (BuildContext content, state) {
-    return PersonView(id: state.params['id']!);
+    return PersonView(id: state.pathParameters['id']!);
   },
 );
 
 final movieDetails = GoRoute(
   path: '${MediaType.movie.value}/:id',
-  builder: (context, state) => MovieView(id: state.params['id']!),
+  builder: (context, state) => MovieView(id: state.pathParameters['id']!),
 );
 
 final tvshowDetails = GoRoute(
   path: '${MediaType.tv.value}/:id',
-  builder: (context, state) => TvShowView(id: state.params['id']!),
+  builder: (context, state) => TvShowView(id: state.pathParameters['id']!),
 );
 
 final router = GoRouter(
