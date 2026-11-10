@@ -46,8 +46,8 @@ class TrendingMediaBanner extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     Colors.black,
-                    Colors.black.withOpacity(0.4),
-                    Colors.black.withOpacity(0.1),
+                    Colors.black.withValues(alpha: 0.4),
+                    Colors.black.withValues(alpha: 0.1),
                   ],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
