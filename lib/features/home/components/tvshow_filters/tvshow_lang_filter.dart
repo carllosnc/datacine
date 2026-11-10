@@ -77,7 +77,7 @@ class _TvShowLangFilterState extends State<TvShowLangFilter> with SharedState {
                       },
                       leading: Icon(
                         Icons.translate,
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                       ),
                       title: Text("${lang.englishName}"),
                     );
