@@ -31,7 +31,7 @@ class _TvShowGenreFilterState extends State<TvShowGenreFilter>
           },
           leading: Icon(
             Icons.tv,
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
           ),
           title: Text("${genre.name}"),
         );
