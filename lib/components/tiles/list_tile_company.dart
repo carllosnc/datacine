@@ -22,7 +22,7 @@ class ListTileCompany extends StatelessWidget {
       ),
       leading: Icon(
         Icons.factory,
-        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
       ),
       subtitle: Text(
         company.originCountry!.isEmpty ? '―' : company.originCountry ?? '―',
