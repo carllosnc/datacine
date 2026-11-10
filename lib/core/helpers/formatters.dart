@@ -13,22 +13,36 @@ extension StringExtension on String {
       return "Unknown date";
     }
 
-    DateTime dateTime = DateTime.parse(this);
+    try {
+      DateTime? dateTime = DateTime.tryParse(this);
+      if (dateTime != null) {
+        return DateFormat.yMMMMd('en_US').format(dateTime);
+      }
+    } catch (_) {}
 
-    return DateFormat.yMMMMd('en_US').format(dateTime).toString();
+    return this;
   }
 
   String formatYear() {
     if (isEmpty || this == "null") {
-      return "Unknown date";
+      return "—";
     }
 
-    DateTime dateTime = DateTime.parse(this);
+    try {
+      DateTime? dateTime = DateTime.tryParse(this);
+      if (dateTime != null) {
+        return DateFormat.y('en_US').format(dateTime);
+      }
+      if (length >= 4 && int.tryParse(substring(0, 4)) != null) {
+        return substring(0, 4);
+      }
+    } catch (_) {}
 
-    return DateFormat.y('en_US').format(dateTime).toString();
+    return "—";
   }
 
   String capitalize() {
+    if (isEmpty) return this;
     return "${this[0].toUpperCase()}${substring(1)}";
   }
 }
