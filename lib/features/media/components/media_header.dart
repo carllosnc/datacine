@@ -56,7 +56,7 @@ class MediaHeader extends StatelessWidget {
               BlendMode.color,
             ),
             child: Imgy(
-              borderColor: Colors.white.withOpacity(0.2),
+              borderColor: Colors.white.withValues(alpha: 0.2),
               width: coverWidth,
               height: coverHeight,
               src: imageSrc,
