@@ -25,7 +25,7 @@ sealed class AppColors {
   static Color get status => const Color.fromARGB(255, 225, 99, 247);
   static Color get imagePlaceholder => Colors.black;
   static Color get imageFilter => const Color.fromARGB(255, 11, 0, 0);
-  static Color get line => Colors.white.withOpacity(0.1);
+  static Color get line => Colors.white.withValues(alpha: 0.1);
   static Color get link => const Color.fromARGB(255, 255, 167, 154);
   static Color get buttonColor => const Color.fromARGB(255, 57, 48, 45);
   static Color get title => Colors.white;
@@ -35,6 +35,6 @@ sealed class AppColors {
       Theme.of(context).scaffoldBackgroundColor;
   static Color secondaryContainer(BuildContext context) =>
       Theme.of(context).colorScheme.secondaryContainer;
-  static Color get label => Colors.white.withOpacity(0.5);
+  static Color get label => Colors.white.withValues(alpha: 0.5);
   static Color get text => Colors.white;
 }
