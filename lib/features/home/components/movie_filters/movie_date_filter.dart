@@ -76,7 +76,7 @@ class _MovieDateFilterState extends State<MovieDateFilter> with SharedState {
                     return ListTile(
                       leading: Icon(
                         Icons.calendar_month_outlined,
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                       ),
                       onTap: () {
                         movieFilterState.setYears(
