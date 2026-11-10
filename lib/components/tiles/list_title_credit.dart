@@ -20,6 +20,21 @@ class ListTileCredit extends StatelessWidget {
       size: ImageSize.posterW154,
     );
 
+    final rawDate = mediaType == MediaType.movie
+        ? (item.releaseDate?.isNotEmpty == true ? item.releaseDate : item.firstAirDate)
+        : (item.firstAirDate?.isNotEmpty == true ? item.firstAirDate : item.releaseDate);
+    final dateStr = rawDate?.formatYear();
+
+    final titleText = (item.title?.trim().isNotEmpty == true
+            ? item.title
+            : (item.name?.trim().isNotEmpty == true ? item.name : '-')) ??
+        '-';
+
+    final roleText = (item.character?.trim().isNotEmpty == true
+            ? item.character!
+            : (item.job?.trim().isNotEmpty == true ? item.job! : ''))
+        .trim();
+
     return ListTile(
       onTap: () {
         context.push(
@@ -27,34 +42,39 @@ class ListTileCredit extends StatelessWidget {
         );
       },
       trailing: const Icon(Icons.chevron_right),
-      leading: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          item.posterPath == null ? AppColors.imageFilter : Colors.transparent,
-          BlendMode.color,
-        ),
-        child: Imgy(
-          src: poster,
-          fullSrc: poster,
-          width: 40,
-          height: 60,
-          borderRadius: BorderRadius.circular(5),
-          placeholderColor: Colors.black,
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            item.posterPath == null ? AppColors.imageFilter : Colors.transparent,
+            BlendMode.color,
+          ),
+          child: Imgy(
+            src: poster,
+            fullSrc: poster,
+            width: 40,
+            height: 60,
+            borderRadius: BorderRadius.circular(4),
+            placeholderColor: Colors.black,
+          ),
         ),
       ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            item.releaseDate?.formatYear() ??
-                item.firstAirDate?.formatYear() ??
-                '-',
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColors.link,
+          if (dateStr != null && dateStr.isNotEmpty && dateStr != '—' && dateStr != 'Unknown date')
+            Text(
+              dateStr,
+              style: TextStyle(
+                fontSize: 12,
+                color: AppColors.link,
+              ),
             ),
-          ),
           Text(
-            item.title ?? item.name ?? '-',
+            titleText,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 14,
               color: AppColors.title,
@@ -62,13 +82,17 @@ class ListTileCredit extends StatelessWidget {
           ),
         ],
       ),
-      subtitle: Text(
-        item.character ?? item.job ?? '-',
-        style: TextStyle(
-          fontSize: 14,
-          color: AppColors.label,
-        ),
-      ),
+      subtitle: roleText.isNotEmpty
+          ? Text(
+              roleText,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14,
+                color: AppColors.label,
+              ),
+            )
+          : null,
     );
   }
 }
