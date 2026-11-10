@@ -61,7 +61,7 @@ class PersonExternalLinks extends StatelessWidget {
 
   PopupMenuItem<dynamic> linkItem({
     required String url,
-    required IconData icon,
+    required FaIconData icon,
     required String label,
   }) {
     return PopupMenuItem(
