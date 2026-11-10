@@ -56,7 +56,7 @@ class _MediaCreditsListState extends State<MediaCreditsList> {
         ),
         hintText: 'Search',
         hintStyle: TextStyle(
-          color: AppColors.label.withOpacity(0.5),
+          color: AppColors.label.withValues(alpha: 0.5),
           fontSize: 14,
           fontWeight: FontWeight.normal,
         ),
