@@ -33,11 +33,11 @@ class PersonDto {
 
   String get knownForDepartment => person.knownForDepartment ?? '—';
 
-  List<MediaItem> get movieCast => person.movieCredits!['cast']!;
-  List<MediaItem> get tvCast => person.tvCredits!['cast']!;
+  List<MediaItem> get movieCast => person.movieCredits?['cast'] ?? [];
+  List<MediaItem> get tvCast => person.tvCredits?['cast'] ?? [];
 
-  List<MediaItem> get movieCrew => person.movieCredits!['crew']!;
-  List<MediaItem> get tvCrew => person.tvCredits!['crew']!;
+  List<MediaItem> get movieCrew => person.movieCredits?['crew'] ?? [];
+  List<MediaItem> get tvCrew => person.tvCredits?['crew'] ?? [];
 
   List<MediaItem> get knownForCredits {
     List<MediaItem> movies = person.combinedCredits?['cast'] ?? [];
@@ -67,10 +67,10 @@ class PersonDto {
     return images;
   }
 
-  String get birthday => person.birthday!.formatDateTime();
-  String get deathday => person.deathday!.formatDateTime();
-  String get placeOfBirth => person.placeOfBirth!;
-  String get biography => person.biography!;
+  String get birthday => person.birthday?.formatDateTime() ?? '—';
+  String get deathday => person.deathday?.formatDateTime() ?? '—';
+  String get placeOfBirth => person.placeOfBirth ?? '—';
+  String get biography => person.biography ?? '';
 
   //checks
 
@@ -107,10 +107,10 @@ class PersonDto {
   }
 
   bool get hasProfilePath => person.profilePath != null;
-  bool get hasMovieCast => person.movieCredits!['cast']!.isNotEmpty;
-  bool get hasMovieCrew => person.movieCredits!['crew']!.isNotEmpty;
-  bool get hasTvCast => person.tvCredits!['cast']!.isNotEmpty;
-  bool get hasTvCrew => person.tvCredits!['crew']!.isNotEmpty;
+  bool get hasMovieCast => (person.movieCredits?['cast']?.isNotEmpty ?? false);
+  bool get hasMovieCrew => (person.movieCredits?['crew']?.isNotEmpty ?? false);
+  bool get hasTvCast => (person.tvCredits?['cast']?.isNotEmpty ?? false);
+  bool get hasTvCrew => (person.tvCredits?['crew']?.isNotEmpty ?? false);
   bool get hasBirthday => person.birthday != null;
   bool get hasDeathday => person.deathday != null;
   bool get hasPlaceOfBirth => person.placeOfBirth != null;
