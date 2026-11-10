@@ -49,7 +49,7 @@ class _TvShowViewState extends State<TvShowView> with TvShowService {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.black.withOpacity(1),
+                Colors.black.withValues(alpha: 1),
                 Colors.transparent,
               ],
               begin: Alignment.topCenter,
